@@ -119,21 +119,8 @@ async function fetchGitHubStats() {
 function updateProfileWithGitHubData(profile) {
     if (!profile) return;
     
-    // Update name if available
-    if (profile.name) {
-        const nameElement = document.querySelector('.name');
-        if (nameElement) {
-            nameElement.textContent = profile.name;
-        }
-    }
-    
-    // Update bio/description
-    if (profile.bio) {
-        const descElement = document.querySelector('.description');
-        if (descElement) {
-            descElement.textContent = profile.bio;
-        }
-    }
+    // Don't update name - keep custom name "Fahmid Hasan"
+    // Don't update bio - keep custom bio "AI & Tech Enthusiast | Agriculture Graduate"
     
     // Update social links
     const githubLinks = document.querySelectorAll('a[href*="github.com"]');
