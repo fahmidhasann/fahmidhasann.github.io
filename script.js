@@ -2,6 +2,30 @@
 const GITHUB_USERNAME = 'fahmidhasann'; // Your GitHub username
 const GITHUB_API_BASE = 'https://api.github.com';
 
+// Repository filtering configuration
+const REPO_CONFIG = {
+    // Repositories to exclude (they won't show up in your portfolio)
+    excludeRepos: [
+        'fahmidhasann.github.io',  // Hide the portfolio repo itself
+        // Add more repo names here that you want to hide
+        // 'repo-name-to-hide',
+        // 'another-repo-to-hide'
+    ],
+    
+    // Optional: Only show specific repositories (leave empty to show all except excluded)
+    includeOnlyRepos: [
+        // Uncomment and add specific repo names if you only want to show certain repos
+        // 'my-awesome-project',
+        // 'another-cool-project'
+    ],
+    
+    // Maximum number of repositories to display
+    maxRepos: 6,
+    
+    // Sort order: 'updated', 'created', 'pushed', 'full_name'
+    sortBy: 'updated'
+};
+
 // GitHub API functions
 async function fetchGitHubProfile() {
     try {
@@ -16,14 +40,40 @@ async function fetchGitHubProfile() {
 
 async function fetchGitHubRepos() {
     try {
-        const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=6`);
+        const response = await fetch(`${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?sort=${REPO_CONFIG.sortBy}&per_page=100`);
         if (!response.ok) throw new Error('GitHub repos not found');
-        const repos = await response.json();
-        return repos.filter(repo => !repo.fork); // Filter out forked repos
+        let repos = await response.json();
+        
+        // Filter out forked repositories
+        repos = repos.filter(repo => !repo.fork);
+        
+        // Apply repository filtering
+        repos = filterRepositories(repos);
+        
+        // Limit to max number of repos
+        return repos.slice(0, REPO_CONFIG.maxRepos);
     } catch (error) {
         console.error('Error fetching GitHub repos:', error);
         return [];
     }
+}
+
+function filterRepositories(repos) {
+    let filteredRepos = repos;
+    
+    // If includeOnlyRepos is specified, only show those repositories
+    if (REPO_CONFIG.includeOnlyRepos.length > 0) {
+        filteredRepos = repos.filter(repo => 
+            REPO_CONFIG.includeOnlyRepos.includes(repo.name)
+        );
+    } else {
+        // Otherwise, exclude specified repositories
+        filteredRepos = repos.filter(repo => 
+            !REPO_CONFIG.excludeRepos.includes(repo.name)
+        );
+    }
+    
+    return filteredRepos;
 }
 
 async function fetchGitHubStats() {
