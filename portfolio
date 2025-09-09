@@ -1,0 +1,2 @@
+// Fetches your GitHub repositories dynamically
+fetch('https://api.github.com/users/YOUR-USERNAME/repos')
