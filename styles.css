@@ -80,11 +80,34 @@ body {
     font-size: 1.4rem;
     transition: color 0.3s ease, transform 0.2s ease;
     text-decoration: none;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #007acc;
     transform: translateY(-2px);
+}
+
+/* Platform-specific hover colors */
+.social-links a[aria-label="LinkedIn"]:hover {
+    color: #0077b5;
+}
+
+.social-links a[aria-label="GitHub"]:hover {
+    color: #333;
+}
+
+.social-links a[aria-label="Instagram"]:hover {
+    color: #e4405f;
+}
+
+.social-links a[aria-label="Facebook"]:hover {
+    color: #1877f2;
+}
+
+.social-links a[aria-label="Email"]:hover {
+    color: #007acc;
 }
 
 /* Section styles */
@@ -717,6 +740,27 @@ button:focus {
 
 .dark-mode .social-links a:hover,
 .dark-mode .footer-links a:hover {
+    color: #007acc;
+}
+
+/* Dark mode platform-specific colors */
+.dark-mode .social-links a[aria-label="LinkedIn"]:hover {
+    color: #0077b5;
+}
+
+.dark-mode .social-links a[aria-label="GitHub"]:hover {
+    color: #f0f6fc;
+}
+
+.dark-mode .social-links a[aria-label="Instagram"]:hover {
+    color: #e4405f;
+}
+
+.dark-mode .social-links a[aria-label="Facebook"]:hover {
+    color: #1877f2;
+}
+
+.dark-mode .social-links a[aria-label="Email"]:hover {
     color: #007acc;
 }
 
