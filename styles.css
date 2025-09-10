@@ -362,6 +362,15 @@ body {
     .social-links {
         gap: 15px;
     }
+    
+    /* Responsive dark mode toggle */
+    .dark-mode-toggle {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -375,6 +384,15 @@ body {
     
     .section-title {
         font-size: 1.4rem;
+    }
+    
+    /* Smaller dark mode toggle for very small screens */
+    .dark-mode-toggle {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+        top: 10px;
+        right: 10px;
     }
 }
 
@@ -662,6 +680,48 @@ button:focus {
     .stats-grid {
         grid-template-columns: 1fr 1fr;
     }
+}
+
+/* Dark mode toggle specific styles */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ffffff;
+    color: #333333;
+    border: 2px solid #007acc;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 122, 204, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.dark-mode-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 122, 204, 0.3);
+}
+
+.dark-mode-toggle:active {
+    transform: scale(0.9);
+}
+
+.dark-mode .dark-mode-toggle {
+    background: #2a2a2a;
+    color: #ffffff;
+    border-color: #007acc;
+}
+
+/* Smooth transitions for dark mode */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Dark mode styles */
