@@ -27,6 +27,25 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
+.profile-photo {
+    margin-bottom: 40px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #007acc;
+    box-shadow: 0 6px 25px rgba(0, 122, 204, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 35px rgba(0, 122, 204, 0.35);
+}
+
 .name {
     font-size: 2.5rem;
     font-weight: 700;
@@ -279,6 +298,11 @@ body {
 @media (max-width: 768px) {
     .container {
         padding: 30px 15px;
+    }
+    
+    .profile-image {
+        width: 160px;
+        height: 160px;
     }
     
     .name {
@@ -621,6 +645,15 @@ button:focus {
 .dark-mode {
     background-color: #1a1a1a;
     color: #e0e0e0;
+}
+
+.dark-mode .profile-image {
+    border-color: #007acc;
+    box-shadow: 0 6px 25px rgba(0, 122, 204, 0.35);
+}
+
+.dark-mode .profile-image:hover {
+    box-shadow: 0 8px 35px rgba(0, 122, 204, 0.45);
 }
 
 .dark-mode .name {
