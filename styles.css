@@ -168,7 +168,22 @@ body {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
+}
+
+.project-link-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    order: 2;
+}
+
+.project-tools {
+    color: #888;
+    font-size: 0.9rem;
+    font-style: italic;
+    order: 1;
+    flex: 1;
 }
 
 .project-link, .project-status {
@@ -176,6 +191,7 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    margin-right: 10px;
 }
 
 .project-link:hover {
@@ -351,7 +367,22 @@ body {
     .project-links {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 12px;
+    }
+    
+    .project-tools {
+        order: 1;
+        margin-bottom: 8px;
+    }
+    
+    .project-link-group {
+        order: 2;
+        gap: 10px;
+    }
+    
+    .project-link {
+        margin-right: 0;
+        margin-bottom: 5px;
     }
     
     .footer-links {
