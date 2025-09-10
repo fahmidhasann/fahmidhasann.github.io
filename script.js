@@ -181,6 +181,49 @@ function initializeClickTracking() {
     });
 }
 
+// Initialize projects toggle functionality
+function initializeProjectsToggle() {
+    const showMoreBtn = document.getElementById('show-more-projects');
+    const hiddenProjects = document.querySelectorAll('.hidden-project');
+    let isExpanded = false;
+    
+    if (showMoreBtn && hiddenProjects.length > 0) {
+        showMoreBtn.addEventListener('click', function() {
+            if (!isExpanded) {
+                // Show projects with staggered animation
+                hiddenProjects.forEach((project, index) => {
+                    setTimeout(() => {
+                        project.style.display = 'block';
+                        project.classList.remove('hide');
+                        project.classList.add('show');
+                    }, index * 150);
+                });
+                
+                showMoreBtn.textContent = 'Show Less Projects';
+                isExpanded = true;
+            } else {
+                // Hide projects with staggered animation (reverse order)
+                const reversedProjects = Array.from(hiddenProjects).reverse();
+                reversedProjects.forEach((project, index) => {
+                    setTimeout(() => {
+                        project.classList.remove('show');
+                        project.classList.add('hide');
+                        
+                        // Hide element after animation completes
+                        setTimeout(() => {
+                            project.style.display = 'none';
+                            project.classList.remove('hide');
+                        }, 400);
+                    }, index * 100);
+                });
+                
+                showMoreBtn.textContent = 'Show More Projects';
+                isExpanded = false;
+            }
+        });
+    }
+}
+
 // Initialize lazy loading for images
 function initializeLazyLoading() {
     if ('IntersectionObserver' in window) {
@@ -251,6 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeHoverEffects();
     initializeTypingEffect();
     initializeClickTracking();
+    initializeProjectsToggle();
     initializeLazyLoading();
 });
 
