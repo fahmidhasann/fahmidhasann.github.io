@@ -222,6 +222,25 @@ body {
     font-style: italic;
 }
 
+/* Video thumbnail styles */
+.video-thumbnail {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-video-thumb {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-video-thumb:hover {
+    transform: scale(1.02);
+}
+
 /* Hidden projects functionality */
 .hidden-project {
     display: none;

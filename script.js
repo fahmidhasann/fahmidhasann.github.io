@@ -224,6 +224,53 @@ function initializeProjectsToggle() {
     }
 }
 
+// Initialize video projects toggle functionality
+function initializeVideoProjectsToggle() {
+    const showMoreVideosBtn = document.getElementById('show-more-videos');
+    if (!showMoreVideosBtn) return;
+    
+    // Get the video projects section and find hidden projects within it
+    const videoSection = showMoreVideosBtn.closest('.section');
+    const hiddenVideoProjects = videoSection.querySelectorAll('.hidden-project');
+    let isVideoExpanded = false;
+    
+    if (showMoreVideosBtn && hiddenVideoProjects.length > 0) {
+        showMoreVideosBtn.addEventListener('click', function() {
+            if (!isVideoExpanded) {
+                // Show video projects with staggered animation
+                hiddenVideoProjects.forEach((project, index) => {
+                    setTimeout(() => {
+                        project.style.display = 'block';
+                        project.classList.remove('hide');
+                        project.classList.add('show');
+                    }, index * 150);
+                });
+                
+                showMoreVideosBtn.textContent = 'Show Less Videos';
+                isVideoExpanded = true;
+            } else {
+                // Hide video projects with staggered animation (reverse order)
+                const reversedProjects = Array.from(hiddenVideoProjects).reverse();
+                reversedProjects.forEach((project, index) => {
+                    setTimeout(() => {
+                        project.classList.remove('show');
+                        project.classList.add('hide');
+                        
+                        // Hide element after animation completes
+                        setTimeout(() => {
+                            project.style.display = 'none';
+                            project.classList.remove('hide');
+                        }, 400);
+                    }, index * 100);
+                });
+                
+                showMoreVideosBtn.textContent = 'Show More Videos';
+                isVideoExpanded = false;
+            }
+        });
+    }
+}
+
 // Initialize lazy loading for images
 function initializeLazyLoading() {
     if ('IntersectionObserver' in window) {
@@ -295,6 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeTypingEffect();
     initializeClickTracking();
     initializeProjectsToggle();
+    initializeVideoProjectsToggle();
     initializeLazyLoading();
 });
 
