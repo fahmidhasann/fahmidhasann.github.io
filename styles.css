@@ -84,18 +84,44 @@ body {
 .social-links a {
     color: #333;
     font-size: 1.8rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
     padding: 15px;
-    border-radius: 8px;
-    background: transparent;
-    border: 2px solid transparent;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .social-links a:hover {
     color: #000;
-    border-color: #000;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Platform-specific hover colors for header social links */
+.social-links a[aria-label="LinkedIn"]:hover {
+    color: #0077b5;
+    background: rgba(0, 119, 181, 0.1);
+    border-color: rgba(0, 119, 181, 0.2);
+}
+
+.social-links a[aria-label="GitHub"]:hover {
+    color: #333;
+    background: rgba(51, 51, 51, 0.1);
+    border-color: rgba(51, 51, 51, 0.2);
+}
+
+.social-links a[aria-label="Instagram"]:hover {
+    color: #e4405f;
+    background: rgba(228, 64, 95, 0.1);
+    border-color: rgba(228, 64, 95, 0.2);
+}
+
+.social-links a[aria-label="Facebook"]:hover {
+    color: #1877f2;
+    background: rgba(24, 119, 242, 0.1);
+    border-color: rgba(24, 119, 242, 0.2);
 }
 
 /* Section styles */
@@ -1142,7 +1168,8 @@ button:focus {
 
 .dark-mode .social-links a:hover {
     color: #ffffff;
-    border-color: #ffffff;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode .header {
@@ -1303,11 +1330,6 @@ button:focus {
     color: #b0b0b0;
     background: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .social-links a:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Dark mode platform-specific colors */
