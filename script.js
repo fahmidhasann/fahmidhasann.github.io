@@ -1,10 +1,3 @@
-// Portfolio Configuration - Static Project Showcase
-const PORTFOLIO_CONFIG = {
-    // Static portfolio - no external API integrations
-    enableGitHubIntegration: false,
-    showStaticProjects: true
-};
-
 // Dark Mode Toggle Function
 function initializeDarkMode() {
     const body = document.body;
@@ -175,8 +168,7 @@ function initializeClickTracking() {
     projectLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             const projectTitle = this.closest('.project, .blog-post').querySelector('h3').textContent;
-            console.log(`Clicked on: ${projectTitle}`);
-            // You can add analytics tracking here
+            // Analytics tracking can be added here
         });
     });
 }
@@ -306,34 +298,14 @@ function handleContactForm(event) {
     }
     
     // Here you would typically send the data to a server
-    console.log('Contact form submitted:', data);
     alert('Thank you for your message! I will get back to you soon.');
     
     // Reset form
     event.target.reset();
 }
 
-// Initialize performance optimizations
-function initializePerformanceOptimizations() {
-    // Preload important assets
-    const preloadLinks = [
-        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
-        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
-    ];
-    
-    preloadLinks.forEach(href => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'style';
-        link.href = href;
-        document.head.appendChild(link);
-    });
-}
-
 // Main initialization
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Portfolio loaded - showing static projects');
-    
     // Initialize all features
     initializeDarkMode();
     initializeSmoothScrolling();
@@ -344,9 +316,4 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeProjectsToggle();
     initializeVideoProjectsToggle();
     initializeLazyLoading();
-});
-
-// Initialize performance optimizations on load
-window.addEventListener('load', function() {
-    initializePerformanceOptimizations();
 });
