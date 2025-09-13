@@ -205,6 +205,25 @@ body {
   }
 }
 
+/* Hero section mobile-first approach */
+.hero-image.mobile-first {
+  display: block;
+}
+
+.hero-image.desktop-only {
+  display: none;
+}
+
+@media (min-width: 993px) {
+  .hero-image.mobile-first {
+    display: none;
+  }
+  
+  .hero-image.desktop-only {
+    display: block;
+  }
+}
+
 /* Original nav-dots styles (commented out for reference) */
 /*
 .nav-dots {
@@ -1107,11 +1126,19 @@ body {
 @media (max-width: 992px) {
   .hero-content {
     grid-template-columns: 1fr;
+    grid-template-areas: 
+      "image"
+      "text";
     text-align: center;
     gap: 2rem;
   }
   
+  .hero-image.mobile-first {
+    grid-area: image;
+  }
+  
   .hero-text {
+    grid-area: text;
     display: flex;
     flex-direction: column;
     align-items: center;
