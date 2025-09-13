@@ -207,7 +207,8 @@ body {
 
 /* Hero section mobile-first approach */
 .hero-image.mobile-first {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-image.desktop-only {
@@ -220,7 +221,8 @@ body {
   }
   
   .hero-image.desktop-only {
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -408,6 +410,7 @@ body {
 .hero-image {
   display: flex;
   justify-content: center;
+  align-items: center;
   animation: fadeIn 1s ease-out 0.5s both;
 }
 
