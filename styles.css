@@ -1135,6 +1135,8 @@ body {
   
   .hero-image.mobile-first {
     grid-area: image;
+    display: flex;
+    justify-content: center;
   }
   
   .hero-text {
