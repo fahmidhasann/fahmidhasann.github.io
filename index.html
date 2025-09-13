@@ -5,228 +5,324 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fahmid Hasan - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-                <header class="header">
-            <div class="profile-photo">
-                <img src="assets/profile-photo.jpg" alt="Fahmid Hasan" class="profile-image">
-            </div>
-            <h1 class="name">Fahmid Hasan</h1>
-            <p class="title">AI & Tech Enthusiast | Agriculture Undergraduate</p>
-            <p class="description">I started out in agricultural science, but my curiosity for tech pulled me into the world of data, AI, and machine learning. Now I'm obsessed with using these tools to tackle real farming challenges and make agriculture smarter, faster, and more sustainable. I'm also a storyteller at heart — creating videos and capturing powerful moments through my photography. 
+    <div class="progress-bar"></div>
 
-At the end of the day, I just love solving problems, learning new things, and building stuff that actually makes a difference.</p>
+    <nav class="nav-dots">
+        <a href="#hero" class="nav-dot active" data-tooltip="Home">
+            <span class="dot"></span>
+        </a>
+        <a href="#projects" class="nav-dot" data-tooltip="Projects">
+            <span class="dot"></span>
+        </a>
+        <a href="#videos" class="nav-dot" data-tooltip="Videos">
+            <span class="dot"></span>
+        </a>
+        <a href="#contact" class="nav-dot" data-tooltip="Contact">
+            <span class="dot"></span>
+        </a>
+    </nav>
+
+    <section id="hero" class="section hero">
+        <div class="hero-background">
+            <div id="particles-js"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-name">
+                    <span class="name-char">F</span>
+                    <span class="name-char">a</span>
+                    <span class="name-char">h</span>
+                    <span class="name-char">m</span>
+                    <span class="name-char">i</span>
+                    <span class="name-char">d</span>
+                    <span class="name-char space"></span>
+                    <span class="name-char">H</span>
+                    <span class="name-char">a</span>
+                    <span class="name-char">s</span>
+                    <span class="name-char">a</span>
+                    <span class="name-char">n</span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="typed-text"></span>
+                    <span class="cursor-blink">|</span>
+                </div>
+                <p class="hero-description">I bridge agricultural science and cutting-edge technology to build intelligent solutions for sustainable farming. Part storyteller, part problem solver.</p>
+                
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">Explore My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
             
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/fahmid-hasan-taohid/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/fahmidhasann" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.instagram.com/fahmid_hasann/" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/fahmiddhasann" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
+            <div class="hero-image">
+                <div class="profile-frame">
+                    <img src="assets/profile-photo.jpg" alt="Fahmid Hasan" class="profile-image">
+                </div>
             </div>
-        </header>
+        </div>
+        
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section class="section">
-            <h2 class="section-title">Projects & Research</h2>
+    <section id="projects" class="section projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Projects & Research</h2>
+                <p class="section-subtitle">Innovative solutions at the intersection of agriculture and technology</p>
+            </div>
             
-            <div class="project">
-                <h3 class="project-title">Drug Discovery Using Machine Learning</h3>
-                <p class="project-description">
-                    A QSAR (Quantitative Structure-Activity Relationship) model for predicting acetylcholinesterase inhibition using machine learning and cheminformatics. 
-                    Demonstrates computational drug discovery techniques for identifying potential Alzheimer's disease treatments using ~6,000 compounds from ChEMBL database.
-                </p>
-                <div class="project-links">
-                    <span class="project-tools">Tools: Python, Pandas, Scikit-learn, RDKit, ChEMBL API, Random Forest</span>
-                    <div class="project-link-group">
-                        <a href="https://github.com/fahmidhasann/Drug-Discovery-Using-Machine-Learning" target="_blank" class="project-link">View Project →</a>
-                    </div>
-                </div>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="data">Data</button>
             </div>
-
-            <div class="project">
-                <h3 class="project-title">PlantDoc RAG ChatBot</h3>
-                <p class="project-description">
-                    An AI-powered document Q&A chatbot using Retrieval-Augmented Generation (RAG) with specialized agricultural models. 
-                    Processes PDF documents into searchable chunks and provides accurate, context-aware responses with source citations for plant pathology questions.
-                </p>
-                <div class="project-links">
-                    <span class="project-tools">Tools: Python, Streamlit, ChromaDB, Ollama, Gemma, Agricultural Embeddings</span>
-                    <div class="project-link-group">
-                        <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" class="project-link">View Project →</a>
-                        <a href="https://huggingface.co/spaces/fahmidhasan/plant-pathology-expert" target="_blank" class="project-link">Live Demo →</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project hidden-project">
-                <h3 class="project-title">Potato Leaf Disease Detector</h3>
-                <p class="project-description">
-                    A machine learning-powered web application for detecting diseases in potato leaves using computer vision. 
-                    Uses a fine-tuned ResNet18 model to classify potato leaf images into three categories: Early Blight, Healthy, and Late Blight with high accuracy.
-                </p>
-                <div class="project-links">
-                    <span class="project-tools">Tools: FastAI, PyTorch, ResNet18, Gradio, Computer Vision</span>
-                    <div class="project-link-group">
-                        <a href="https://github.com/fahmidhasann/Potato-leaf-disease-detector" target="_blank" class="project-link">View Project →</a>
-                        <a href="https://huggingface.co/spaces/fahmidhasan/Potato-Leaf-Disease-Detector" target="_blank" class="project-link">Live Demo →</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project hidden-project">
-                <h3 class="project-title">Interactive Bangladesh Choropleth Map</h3>
-                <p class="project-description">
-                    An interactive web-based choropleth map visualization tool for exploring educational statistics across all 64 districts of Bangladesh. 
-                    Features dynamic metric selection, real-time statistics, hover interactions, and CSV data upload support for comprehensive educational data analysis.
-                </p>
-                <div class="project-links">
-                    <span class="project-tools">Tools: Leaflet.js, D3.js, Papa Parse, JavaScript, GeoJSON, Data Visualization</span>
-                    <div class="project-link-group">
-                        <a href="https://github.com/fahmidhasann/Interactive-BD-Choropleth" target="_blank" class="project-link">View Project →</a>
-                        <a href="https://fahmidhasann.github.io/Interactive-BD-Choropleth/" target="_blank" class="project-link">Live Demo →</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project hidden-project">
-                <h3 class="project-title">Crop Yield & Pesticides Analysis</h3>
-                <p class="project-description">
-                    Comprehensive exploratory data analysis examining the relationship between global pesticide usage and crop yields across 165+ countries (1990-2016). 
-                    Features interactive visualizations and statistical analysis to identify agricultural patterns, with special focus on Bangladesh and leading agricultural nations.
-                </p>
-                <div class="project-links">
-                    <span class="project-tools">Tools: Python, Pandas, Plotly, Jupyter, Scipy, Statistical Analysis, Data Visualization</span>
-                    <div class="project-link-group">
-                        <a href="https://github.com/fahmidhasann/CropYield-Pesticides-Analysis" target="_blank" class="project-link">View Project →</a>
-                        <a href="https://fahmidhasann.github.io/CropYield-Pesticides-Analysis/" target="_blank" class="project-link">Interactive Analysis →</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="projects-toggle">
-                <button id="show-more-projects" class="show-more-btn">Show More Projects</button>
-            </div>
-        </section>
-
-        <!-- Video Projects Section -->
-        <section class="section">
-            <h2 class="section-title">Video Projects</h2>
             
-            <div class="project">
-                <div class="video-thumbnail">
-                    <img src="assets/project_1.jpg" alt="Video Project 1" class="project-video-thumb">
-                </div>
-                <h3 class="project-title">Project 1</h3>
-                <p class="project-description">
-                    Bangladesh Agricultural University — The way you have never seen it before!
-                </p>
-                <div class="project-links">
-                    <div class="project-link-group">
-                        <a href="https://www.facebook.com/watch/?v=769200925475489" target="_blank" class="project-link">Watch Video →</a>
+            <div class="projects-grid">
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <img src="assets/Project/drug-discovery.png" alt="Drug Discovery Project">
+                        <div class="project-overlay">
+                            <span class="featured-badge">Featured</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="project">
-                <div class="video-thumbnail">
-                    <img src="assets/project_2.jpg" alt="Video Project 2" class="project-video-thumb">
-                </div>
-                <h3 class="project-title">Project 2</h3>
-                <p class="project-description">
-                    “Bivrom” A short film by Fahmid Hasan.
-                </p>
-                <div class="project-links">
-                    <div class="project-link-group">
-                        <a href="https://www.facebook.com/fahmiddhasann/videos/2089556841420087" target="_blank" class="project-link">Watch Video →</a>
+                    <div class="project-content">
+                        <h3 class="project-title">Drug Discovery Using Machine Learning</h3>
+                        <p class="project-description">A QSAR model for predicting acetylcholinesterase inhibition using machine learning and cheminformatics.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scikit-learn</span>
+                            <span class="tag">RDKit</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/fahmidhasann/Drug-Discovery-Using-Machine-Learning" target="_blank" class="btn-link">View Project →</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="project hidden-project">
-                <div class="video-thumbnail">
-                    <img src="assets/project_3.jpg" alt="Video Project 3" class="project-video-thumb">
-                </div>
-                <h3 class="project-title">Project 3</h3>
-                <p class="project-description">
-                    Your choices define your algorithm of life.
-                </p>
-                <div class="project-links">
-                    <div class="project-link-group">
-                        <a href="https://www.facebook.com/fahmiddhasann/videos/1470028527301962" target="_blank" class="project-link">Watch Video →</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="projects-toggle">
-                <button id="show-more-videos" class="show-more-btn">Show More Videos</button>
-            </div>
-        </section>
-
-        <!-- Resume Section -->
-        <section class="section">
-            <h2 class="section-title">Resume</h2>
-            <div class="resume-content">
-                <a href="#" class="resume-link">Download Resume →</a>
-            </div>
-        </section>        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-name">
-                    <h3>Fahmid Hasan Taohid</h3>
                 </div>
                 
-                <div class="footer-links-section">
-                    <div class="footer-group">
-                        <span class="footer-label">Connect:</span>
-                        <div class="footer-social">
-                            <a href="https://www.linkedin.com/in/fahmid-hasan-taohid/" target="_blank" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://github.com/fahmidhasann" target="_blank" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.instagram.com/fahmid_hasann/" target="_blank" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://www.facebook.com/fahmiddhasann" target="_blank" aria-label="Facebook">
-                                <i class="fab fa-facebook"></i>
-                            </a>
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <img src="assets/Project/plantdoc-chatbot.png" alt="PlantDoc RAG ChatBot">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">PlantDoc RAG ChatBot</h3>
+                        <p class="project-description">An AI-powered document Q&A chatbot using Retrieval-Augmented Generation with specialized agricultural models.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">ChromaDB</span>
                         </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" class="btn-link">View Project →</a>
+                            <a href="https://huggingface.co/spaces/fahmidhasan/plant-pathology-expert" target="_blank" class="btn-link live">Live Demo →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <img src="assets/Project/potato-disease-detector.png" alt="Potato Leaf Disease Detector">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Potato Leaf Disease Detector</h3>
+                        <p class="project-description">A machine learning-powered web application for detecting diseases in potato leaves using computer vision.</p>
+                        <div class="project-tags">
+                            <span class="tag">FastAI</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">ResNet18</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/fahmidhasann/Potato-leaf-disease-detector" target="_blank" class="btn-link">View Project →</a>
+                            <a href="https://huggingface.co/spaces/fahmidhasan/Potato-Leaf-Disease-Detector" target="_blank" class="btn-link live">Live Demo →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="assets/Project/bd-choropleth-map.png" alt="Interactive Bangladesh Choropleth Map">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Interactive Bangladesh Choropleth Map</h3>
+                        <p class="project-description">An interactive web-based choropleth map visualization tool for exploring educational statistics across all 64 districts of Bangladesh.</p>
+                        <div class="project-tags">
+                            <span class="tag">Leaflet.js</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/fahmidhasann/Interactive-BD-Choropleth" target="_blank" class="btn-link">View Project →</a>
+                            <a href="https://fahmidhasann.github.io/Interactive-BD-Choropleth/" target="_blank" class="btn-link live">Live Demo →</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="data">
+                    <div class="project-image">
+                        <img src="assets/Project/crop-yield-analysis.png" alt="Crop Yield & Pesticides Analysis">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Crop Yield & Pesticides Analysis</h3>
+                        <p class="project-description">Comprehensive exploratory data analysis examining the relationship between global pesticide usage and crop yields.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">Plotly</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://github.com/fahmidhasann/CropYield-Pesticides-Analysis" target="_blank" class="btn-link">View Project →</a>
+                            <a href="https://fahmidhasann.github.io/CropYield-Pesticides-Analysis/" target="_blank" class="btn-link live">Interactive Analysis →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos" class="section video-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Video Projects</h2>
+                <p class="section-subtitle">Storytelling through the lens</p>
+            </div>
+            
+            <div class="video-grid">
+                <a href="https://www.facebook.com/watch/?v=769200925475489" target="_blank" class="video-card-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="assets/project_1.jpg" alt="BAU - The Way You've Never Seen It">
+                            <div class="video-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">BAU - The Way You've Never Seen It</h3>
+                            <p class="video-description">Bangladesh Agricultural University showcased like never before.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://www.facebook.com/fahmiddhasann/videos/2089556841420087" target="_blank" class="video-card-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="assets/project_2.jpg" alt=""Bivrom" - A Short Film">
+                            <div class="video-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">"Bivrom" - A Short Film</h3>
+                            <p class="video-description">A cinematic exploration of life's complexities and choices.</p>
+                        </div>
+                    </div>
+                </a>
+                
+                <a href="https://www.facebook.com/fahmiddhasann/videos/1470028527301962" target="_blank" class="video-card-link">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="assets/project_3.jpg" alt="Algorithm of Life">
+                            <div class="video-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Algorithm of Life</h3>
+                            <p class="video-description">Your choices define your life's algorithm.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Have a project in mind or want to discuss opportunities?</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <a href="mailto:fahmidhasantaohid@gmail.com">fahmidhasantaohid@gmail.com</a>
                     </div>
                     
-                    <div class="footer-group">
-                        <span class="footer-label">Contact:</span>
-                        <div class="footer-contacts">
-                            <a href="mailto:fahmidhasantaohid@gmail.com" class="footer-email">
-                                fahmidhasantaohid@gmail.com
-                            </a>
-                            <a href="https://wa.me/8801732021592" target="_blank" class="footer-whatsapp">
-                                <i class="fab fa-whatsapp"></i> +880 1732-021592
-                            </a>
-                        </div>
+                    <div class="contact-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/8801732021592" target="_blank">+880 1732-021592</a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>Mymensingh, Bangladesh</p>
                     </div>
                 </div>
                 
-                <div class="footer-bottom">
-                    <span class="footer-copyright">© 2025</span>
-                    <span class="footer-status">Available for opportunities</span>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/fahmid-hasan-taohid/" target="_blank" aria-label="LinkedIn" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/fahmidhasann" target="_blank" aria-label="GitHub" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/fahmid_hasann/" target="_blank" aria-label="Instagram" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/fahmiddhasann" target="_blank" aria-label="Facebook" class="social-link">
+                        <i class="fab fa-facebook"></i>
+                    </a>
                 </div>
             </div>
-        </footer>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Fahmid Hasan Taohid</h3>
+                    <p class="footer-status">Available for opportunities</p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2025 Fahmid Hasan. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="command-palette" id="commandPalette">
+        <div class="command-palette-content">
+            <input type="text" id="commandInput" placeholder="Type a command or search...">
+            <ul id="commandList" class="command-list">
+                <li data-action="home">Home</li>
+                <li data-action="projects">Projects</li>
+                <li data-action="videos">Videos</li>
+                <li data-action="contact">Contact</li>
+                <li data-action="dark-mode">Toggle Dark Mode</li>
+                <li data-action="download-resume">Download Resume</li>
+            </ul>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

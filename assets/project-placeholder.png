@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placeholder Image</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #0066FF, #7928CA, #FF0080);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .placeholder-text {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="placeholder-text">
+        <h2>Project Image</h2>
+        <p>Placeholder for project screenshots</p>
+    </div>
+</body>
+</html>
