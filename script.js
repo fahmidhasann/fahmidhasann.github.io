@@ -388,7 +388,33 @@ function executeCommand(action) {
       toggleTheme();
       break;
     case 'download-resume':
-      alert('Resume download functionality would be implemented here.');
+      // Create a more user-friendly notification
+      const notification = document.createElement('div');
+      notification.textContent = 'Resume download functionality would be implemented here.';
+      notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--primary, #0066FF);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 10000;
+        font-weight: 500;
+      `;
+      document.body.appendChild(notification);
+      
+      // Remove notification after 3 seconds
+      setTimeout(() => {
+        notification.style.opacity = '0';
+        notification.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }, 3000);
       break;
   }
 }
