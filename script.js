@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeEasterEgg();
   
   window.addEventListener('scroll', updateProgressBar);
-  window.addEventListener('scroll', updateActiveNavDot);
 });
 
 function initializeTheme() {
@@ -256,29 +255,6 @@ function initializeNavigation() {
       navMenu.classList.toggle('active');
     });
   }
-}
-
-function updateActiveNavDot() {
-  const sections = document.querySelectorAll('.section');
-  const navLinks = document.querySelectorAll('.nav-link');
-  
-  let currentSection = '';
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.clientHeight;
-    
-    if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
-      currentSection = section.getAttribute('id');
-    }
-  });
-  
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === `#${currentSection}`) {
-      link.classList.add('active');
-    }
-  });
 }
 
 function initializeProjectFiltering() {
@@ -550,14 +526,3 @@ function createConfetti() {
   }, 5000);
 }
 
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
