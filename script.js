@@ -118,7 +118,7 @@ function initializeScrollAnimations() {
     }, observerOptions);
     
     // Observe all animated elements
-    const animatedElements = document.querySelectorAll('.project, .blog-post, .update');
+    const animatedElements = document.querySelectorAll('.project, .update');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -164,10 +164,10 @@ function initializeTypingEffect() {
 
 // Initialize click tracking
 function initializeClickTracking() {
-    const projectLinks = document.querySelectorAll('.project-link, .blog-link');
+    const projectLinks = document.querySelectorAll('.project-link');
     projectLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            const projectTitle = this.closest('.project, .blog-post').querySelector('h3').textContent;
+            const projectTitle = this.closest('.project').querySelector('h3').textContent;
             // Analytics tracking can be added here
         });
     });
