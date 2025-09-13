@@ -223,6 +223,7 @@ function updateProgressBar() {
 }
 
 function initializeNavigation() {
+  // Handle all anchor links with hash
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
@@ -236,14 +237,30 @@ function initializeNavigation() {
           top: targetElement.offsetTop,
           behavior: 'smooth'
         });
+        
+        // Close mobile menu if open
+        const navMenu = document.getElementById('navMenu');
+        if (navMenu && navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+        }
       }
     });
   });
+  
+  // Handle mobile navigation toggle
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  }
 }
 
 function updateActiveNavDot() {
   const sections = document.querySelectorAll('.section');
-  const navDots = document.querySelectorAll('.nav-dot');
+  const navLinks = document.querySelectorAll('.nav-link');
   
   let currentSection = '';
   
@@ -256,10 +273,10 @@ function updateActiveNavDot() {
     }
   });
   
-  navDots.forEach(dot => {
-    dot.classList.remove('active');
-    if (dot.getAttribute('href') === `#${currentSection}`) {
-      dot.classList.add('active');
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${currentSection}`) {
+      link.classList.add('active');
     }
   });
 }
