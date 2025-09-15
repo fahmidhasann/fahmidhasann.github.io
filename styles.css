@@ -20,6 +20,13 @@
   --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 20px 25px rgba(0, 0, 0, 0.1);
   --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+  --transition-default: all 0.3s ease;
+  --transition-fast: all 0.2s ease;
+  --transition-slow: all 0.5s ease;
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  --border-radius-xl: 50px;
 }
 
 /* Dark theme overrides */
@@ -37,6 +44,10 @@
   --card-bg: var(--bg-light);
   --border-color: rgba(0, 0, 0, 0.1);
 }
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
 
 *,
 *::before,
@@ -57,8 +68,29 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   overflow-x: hidden;
-  transition: background-color 0.5s ease, color 0.5s ease;
+  transition: var(--transition-slow);
 }
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: white;
+  padding: 8px;
+  z-index: 10000;
+  text-decoration: none;
+  border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ==========================================================================
+   Progress Bar
+   ========================================================================== */
 
 .progress-bar {
   position: fixed;
@@ -71,7 +103,10 @@ body {
   transition: width 0.1s ease;
 }
 
-/* Compact Navigation Styles */
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
 .compact-nav {
   position: fixed;
   top: 20px;
@@ -93,7 +128,7 @@ body {
   height: 3px;
   background: var(--text-color);
   margin: 3px 0;
-  transition: 0.3s;
+  transition: var(--transition-fast);
   border-radius: 2px;
 }
 
@@ -110,8 +145,8 @@ body {
   text-decoration: none;
   font-weight: 500;
   padding: 8px 12px;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-fast);
   position: relative;
   overflow: hidden;
 }
@@ -155,7 +190,7 @@ body {
     left: 0;
     flex-direction: column;
     background: var(--card-bg);
-    border-radius: 0 12px 12px 0;
+    border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0;
     box-shadow: var(--shadow-lg);
     padding: 15px;
     width: 200px;
@@ -189,7 +224,7 @@ body {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     padding: 8px 15px;
-    border-radius: 50px;
+    border-radius: var(--border-radius-xl);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
@@ -198,6 +233,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
 
 /* Hero section mobile-first approach */
 .hero-image.mobile-first {
@@ -351,7 +390,7 @@ body {
   position: relative;
   width: 300px;
   height: 300px;
-  border-radius: 50px;
+  border-radius: var(--border-radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-xl);
   border: 5px solid rgba(255, 255, 255, 0.2);
@@ -363,24 +402,26 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-  border-radius: 50px;
+  transition: var(--transition-slow);
+  border-radius: var(--border-radius-xl);
 }
 
 .profile-frame:hover .profile-image {
   transform: scale(1.05);
 }
 
-
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 
 .btn {
   display: inline-block;
   padding: 1rem 2rem;
-  border-radius: 50px;
+  border-radius: var(--border-radius-xl);
   font-weight: 600;
   text-decoration: none;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   position: relative;
   overflow: hidden;
   border: none;
@@ -427,6 +468,10 @@ body {
   transform: translateY(-3px);
 }
 
+/* ==========================================================================
+   Section Headers
+   ========================================================================== */
+
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -459,6 +504,10 @@ body {
   margin: 0 auto;
 }
 
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
+
 .projects-filter {
   display: flex;
   justify-content: center;
@@ -471,10 +520,10 @@ body {
   background: transparent;
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 50px;
+  border-radius: var(--border-radius-xl);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   position: relative;
   overflow: hidden;
   color: var(--text-color);
@@ -513,10 +562,10 @@ body {
 
 .project-card {
   background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   position: relative;
   border: 1px solid var(--border-color);
   transform-style: preserve-3d;
@@ -538,7 +587,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: var(--transition-slow);
 }
 
 .project-card:hover .project-image img {
@@ -562,7 +611,7 @@ body {
   background: linear-gradient(90deg, var(--accent), var(--accent-end));
   color: white;
   padding: 0.5rem 1rem;
-  border-radius: 50px;
+  border-radius: var(--border-radius-xl);
   font-size: 0.8rem;
   font-weight: 600;
   box-shadow: 0 4px 10px rgba(121, 40, 202, 0.3);
@@ -595,7 +644,7 @@ body {
   background: rgba(0, 102, 255, 0.1);
   color: var(--primary);
   padding: 0.3rem 0.8rem;
-  border-radius: 50px;
+  border-radius: var(--border-radius-xl);
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -612,7 +661,7 @@ body {
   font-weight: 600;
   position: relative;
   padding: 0.5rem 0;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .btn-link::after {
@@ -638,6 +687,10 @@ body {
   background: var(--accent-end);
 }
 
+/* ==========================================================================
+   Videos Section
+   ========================================================================== */
+
 .video-section {
   background: var(--gray-light);
 }
@@ -652,22 +705,28 @@ body {
   gap: 2rem;
 }
 
+.video-card-link-wrapper {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-fast);
+}
+
+.video-card-link-wrapper:hover {
+  transform: translateY(-5px);
+}
+
 .video-card-link {
   text-decoration: none;
   color: inherit;
-  transition: transform 0.3s ease;
-}
-
-.video-card-link:hover {
-  transform: translateY(-5px);
+  transition: var(--transition-fast);
 }
 
 .video-card {
   background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   border: 1px solid var(--border-color);
 }
 
@@ -686,7 +745,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: var(--transition-slow);
 }
 
 .video-card:hover .video-thumbnail img {
@@ -704,7 +763,7 @@ body {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .video-card:hover .video-overlay {
@@ -714,7 +773,7 @@ body {
 .video-overlay i {
   color: white;
   font-size: 3rem;
-  transition: transform 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .video-card:hover .video-overlay i {
@@ -736,6 +795,10 @@ body {
   line-height: 1.6;
 }
 
+/* ==========================================================================
+   Contact Section
+   ========================================================================== */
+
 .contact-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -752,9 +815,9 @@ body {
   text-align: center;
   padding: 2rem;
   background: var(--card-bg);
-  border-radius: 20px;
+  border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   border: 1px solid var(--border-color);
 }
 
@@ -778,7 +841,7 @@ body {
   color: var(--primary);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .contact-card a:hover {
@@ -802,13 +865,13 @@ body {
   justify-content: center;
   width: 60px;
   height: 60px;
-  border-radius: 50px;
+  border-radius: var(--border-radius-xl);
   background: var(--card-bg);
   color: var(--text-color);
   font-size: 1.5rem;
   text-decoration: none;
   box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   border: 1px solid var(--border-color);
 }
 
@@ -819,11 +882,15 @@ body {
   background: rgba(0, 102, 255, 0.1);
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
 .footer {
   background: var(--gray-light);
   padding: 3rem 0;
   border-top: 1px solid var(--border-color);
-  border-radius: 20px 20px 0 0;
+  border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
 }
 
 [data-theme="dark"] .footer {
@@ -848,7 +915,7 @@ body {
   background: rgba(0, 102, 255, 0.1);
   color: var(--primary);
   padding: 0.5rem 1rem;
-  border-radius: 50px;
+  border-radius: var(--border-radius-xl);
   font-weight: 600;
   font-size: 0.9rem;
 }
@@ -856,6 +923,10 @@ body {
 .footer-copyright p {
   color: var(--gray-medium);
 }
+
+/* ==========================================================================
+   Command Palette
+   ========================================================================== */
 
 .command-palette {
   position: fixed;
@@ -872,7 +943,7 @@ body {
   z-index: 10000;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .command-palette.active {
@@ -884,7 +955,7 @@ body {
   background: var(--card-bg);
   width: 90%;
   max-width: 600px;
-  border-radius: 20px;
+  border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-xl);
   overflow: hidden;
   border: 1px solid var(--border-color);
@@ -916,7 +987,7 @@ body {
 .command-list li {
   padding: 1rem 1.5rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--transition-fast);
   border-bottom: 1px solid var(--border-color);
 }
 
@@ -929,6 +1000,39 @@ body {
   background: rgba(0, 102, 255, 0.1);
   color: var(--primary);
 }
+
+/* ==========================================================================
+   Dark Mode Toggle
+   ========================================================================== */
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--primary);
+  border-radius: var(--border-radius-xl);
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
 
 @keyframes fadeIn {
   from {
@@ -973,32 +1077,9 @@ body {
   }
 }
 
-
-
-.dark-mode-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--card-bg);
-  color: var(--text-color);
-  border: 2px solid var(--primary);
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dark-mode-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
-}
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
 
 @media (max-width: 992px) {
   .hero-content {
@@ -1037,8 +1118,6 @@ body {
     justify-content: center;
   }
   
-  
-  
   .dark-mode-toggle {
     right: 20px;
   }
@@ -1066,8 +1145,6 @@ body {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
-  
-  
   
   .dark-mode-toggle {
     right: 20px;
@@ -1122,8 +1199,6 @@ body {
     grid-template-columns: 1fr;
   }
   
-  
-  
   .dark-mode-toggle {
     right: 20px;
     top: 20px;
@@ -1142,6 +1217,10 @@ body {
     font-size: 1rem;
   }
 }
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
