@@ -1,4 +1,6 @@
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all components
   initializeTheme();
   initializeParticles();
   initializeTextAnimations();
@@ -10,14 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeHoverEffects();
   initializeEasterEgg();
   
+  // Add scroll event listener for progress bar
   window.addEventListener('scroll', updateProgressBar);
 });
 
+/* ==========================================================================
+   Theme Functions
+   ========================================================================== */
+
+/**
+ * Initialize the theme based on localStorage or default to light
+ */
 function initializeTheme() {
   const savedTheme = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', savedTheme);
 }
 
+/**
+ * Toggle between light and dark themes
+ */
 function toggleTheme() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -30,6 +43,13 @@ function toggleTheme() {
   }
 }
 
+/* ==========================================================================
+   Animation & Visual Effects
+   ========================================================================== */
+
+/**
+ * Initialize the particle background effect
+ */
 function initializeParticles() {
   if (typeof particlesJS !== 'undefined') {
     particlesJS('particles-js', {
@@ -123,6 +143,9 @@ function initializeParticles() {
   }
 }
 
+/**
+ * Initialize the typed text animation
+ */
 function initializeTextAnimations() {
   if (typeof Typed !== 'undefined') {
     new Typed('.typed-text', {
@@ -145,6 +168,9 @@ function initializeTextAnimations() {
   }
 }
 
+/**
+ * Initialize scroll-triggered animations
+ */
 function initializeScrollEffects() {
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -214,6 +240,9 @@ function initializeScrollEffects() {
   }
 }
 
+/**
+ * Update the progress bar based on scroll position
+ */
 function updateProgressBar() {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -221,6 +250,13 @@ function updateProgressBar() {
   document.querySelector('.progress-bar').style.width = scrolled + '%';
 }
 
+/* ==========================================================================
+   Navigation Functions
+   ========================================================================== */
+
+/**
+ * Initialize smooth scrolling navigation
+ */
 function initializeNavigation() {
   // Handle all anchor links with hash
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -257,6 +293,13 @@ function initializeNavigation() {
   }
 }
 
+/* ==========================================================================
+   Project Functions
+   ========================================================================== */
+
+/**
+ * Initialize project filtering functionality
+ */
 function initializeProjectFiltering() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
@@ -287,6 +330,13 @@ function initializeProjectFiltering() {
   });
 }
 
+/* ==========================================================================
+   Command Palette Functions
+   ========================================================================== */
+
+/**
+ * Initialize the command palette functionality
+ */
 function initializeCommandPalette() {
   const commandPalette = document.getElementById('commandPalette');
   const commandInput = document.getElementById('commandInput');
@@ -367,6 +417,9 @@ function initializeCommandPalette() {
   });
 }
 
+/**
+ * Execute a command from the command palette
+ */
 function executeCommand(action) {
   const commandPalette = document.getElementById('commandPalette');
   commandPalette.classList.remove('active');
@@ -419,6 +472,9 @@ function executeCommand(action) {
   }
 }
 
+/**
+ * Scroll to a specific section
+ */
 function scrollToSection(sectionId) {
   const targetElement = document.getElementById(sectionId);
   if (targetElement) {
@@ -429,6 +485,13 @@ function scrollToSection(sectionId) {
   }
 }
 
+/* ==========================================================================
+   UI Components
+   ========================================================================== */
+
+/**
+ * Initialize the dark mode toggle button
+ */
 function initializeDarkModeToggle() {
   const toggleButton = document.createElement('button');
   toggleButton.innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
@@ -439,6 +502,9 @@ function initializeDarkModeToggle() {
   document.body.appendChild(toggleButton);
 }
 
+/**
+ * Initialize 3D hover effects on project cards
+ */
 function initializeHoverEffects() {
   document.querySelectorAll('.project-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -461,6 +527,13 @@ function initializeHoverEffects() {
   });
 }
 
+/* ==========================================================================
+   Easter Egg Functions
+   ========================================================================== */
+
+/**
+ * Initialize the Konami code easter egg
+ */
 function initializeEasterEgg() {
   const konamiCode = [
     'ArrowUp',
@@ -491,6 +564,9 @@ function initializeEasterEgg() {
   });
 }
 
+/**
+ * Activate the easter egg effect
+ */
 function activateEasterEgg() {
   const body = document.body;
   body.classList.add('konami-activated');
@@ -501,6 +577,9 @@ function activateEasterEgg() {
   }, 5000);
 }
 
+/**
+ * Create confetti effect for the easter egg
+ */
 function createConfetti() {
   const confettiContainer = document.createElement('div');
   confettiContainer.style.cssText = `
@@ -551,4 +630,3 @@ function createConfetti() {
     style.remove();
   }, 5000);
 }
-

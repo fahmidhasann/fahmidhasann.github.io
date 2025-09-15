@@ -38,6 +38,10 @@
   --border-color: rgba(0, 0, 0, 0.1);
 }
 
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
 *,
 *::before,
 *::after {
@@ -60,6 +64,7 @@ body {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* Progress Bar */
 .progress-bar {
   position: fixed;
   top: 0;
@@ -70,6 +75,10 @@ body {
   z-index: 10000;
   transition: width 0.1s ease;
 }
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
 
 /* Compact Navigation Styles */
 .compact-nav {
@@ -198,6 +207,10 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
 
 /* Hero section mobile-first approach */
 .hero-image.mobile-first {
@@ -371,7 +384,9 @@ body {
   transform: scale(1.05);
 }
 
-
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 
 .btn {
   display: inline-block;
@@ -427,6 +442,10 @@ body {
   transform: translateY(-3px);
 }
 
+/* ==========================================================================
+   Section Headers
+   ========================================================================== */
+
 .section-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -458,6 +477,10 @@ body {
   max-width: 600px;
   margin: 0 auto;
 }
+
+/* ==========================================================================
+   Projects Section
+   ========================================================================== */
 
 .projects-filter {
   display: flex;
@@ -638,6 +661,10 @@ body {
   background: var(--accent-end);
 }
 
+/* ==========================================================================
+   Videos Section
+   ========================================================================== */
+
 .video-section {
   background: var(--gray-light);
 }
@@ -736,6 +763,10 @@ body {
   line-height: 1.6;
 }
 
+/* ==========================================================================
+   Contact Section
+   ========================================================================== */
+
 .contact-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -819,6 +850,10 @@ body {
   background: rgba(0, 102, 255, 0.1);
 }
 
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
 .footer {
   background: var(--gray-light);
   padding: 3rem 0;
@@ -856,6 +891,10 @@ body {
 .footer-copyright p {
   color: var(--gray-medium);
 }
+
+/* ==========================================================================
+   Command Palette
+   ========================================================================== */
 
 .command-palette {
   position: fixed;
@@ -930,6 +969,39 @@ body {
   color: var(--primary);
 }
 
+/* ==========================================================================
+   Dark Mode Toggle
+   ========================================================================== */
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -973,32 +1045,9 @@ body {
   }
 }
 
-
-
-.dark-mode-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--card-bg);
-  color: var(--text-color);
-  border: 2px solid var(--primary);
-  border-radius: 50px;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.2);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dark-mode-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.3);
-}
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
 
 @media (max-width: 992px) {
   .hero-content {
@@ -1037,8 +1086,6 @@ body {
     justify-content: center;
   }
   
-  
-  
   .dark-mode-toggle {
     right: 20px;
   }
@@ -1066,8 +1113,6 @@ body {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
-  
-  
   
   .dark-mode-toggle {
     right: 20px;
@@ -1122,8 +1167,6 @@ body {
     grid-template-columns: 1fr;
   }
   
-  
-  
   .dark-mode-toggle {
     right: 20px;
     top: 20px;
@@ -1142,6 +1185,10 @@ body {
     font-size: 1rem;
   }
 }
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
   *,
