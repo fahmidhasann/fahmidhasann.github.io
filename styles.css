@@ -806,11 +806,14 @@ body {
   box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
   border: 1px solid var(--border-color);
+  text-decoration: none;
+  display: block;
 }
 
 .contact-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
 }
 
 .contact-card i {
@@ -821,7 +824,8 @@ body {
 
 .contact-card h3 {
   font-size: 1.3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  color: var(--text-color);
 }
 
 .contact-card a {
