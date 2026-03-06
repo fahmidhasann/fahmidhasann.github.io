@@ -441,35 +441,66 @@ function executeCommand(action) {
       toggleTheme();
       break;
     case 'download-resume':
-      // Create a more user-friendly notification
-      const notification = document.createElement('div');
-      notification.textContent = 'Resume download functionality would be implemented here.';
-      notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--primary, #0066FF);
-        color: white;
-        padding: 15px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
-        font-weight: 500;
-      `;
-      document.body.appendChild(notification);
-      
-      // Remove notification after 3 seconds
-      setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transition = 'opacity 0.3s ease';
-        setTimeout(() => {
-          if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-          }
-        }, 300);
-      }, 3000);
+      downloadResume();
       break;
   }
+}
+
+/**
+ * Try to download resume from assets; show fallback notice if unavailable.
+ */
+function downloadResume() {
+  const resumePath = 'assets/resume.pdf';
+
+  fetch(resumePath, { method: 'HEAD' })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Resume file not found');
+      }
+
+      const downloadLink = document.createElement('a');
+      downloadLink.href = resumePath;
+      downloadLink.download = 'Fahmid-Hasan-Resume.pdf';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
+
+      showToast('Resume download started.');
+    })
+    .catch(() => {
+      showToast('Resume is not available yet. Please check back soon.');
+    });
+}
+
+/**
+ * Show a short-lived toast notification.
+ */
+function showToast(message) {
+  const notification = document.createElement('div');
+  notification.textContent = message;
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary, #0066FF);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10000;
+    font-weight: 500;
+  `;
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.style.opacity = '0';
+    notification.style.transition = 'opacity 0.3s ease';
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 300);
+  }, 3000);
 }
 
 /**
