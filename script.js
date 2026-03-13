@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeCommandPalette();
   initializeDarkModeToggle();
   initializeHoverEffects();
+  initializeNavScroll();
   initializeEasterEgg();
   
   // Add scroll event listener for progress bar
@@ -39,7 +40,7 @@ function toggleTheme() {
   
   const toggleButton = document.querySelector('.dark-mode-toggle');
   if (toggleButton) {
-    toggleButton.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+    toggleButton.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   }
 }
 
@@ -55,10 +56,10 @@ function initializeParticles() {
     particlesJS('particles-js', {
       particles: {
         number: {
-          value: 80,
+          value: 30,
           density: {
             enable: true,
-            value_area: 800
+            value_area: 1200
           }
         },
         color: {
@@ -72,70 +73,49 @@ function initializeParticles() {
           }
         },
         opacity: {
-          value: 0.5,
+          value: 0.15,
           random: true,
           anim: {
             enable: true,
-            speed: 1,
-            opacity_min: 0.1,
+            speed: 0.3,
+            opacity_min: 0.05,
             sync: false
           }
         },
         size: {
-          value: 3,
+          value: 2,
           random: true,
           anim: {
-            enable: true,
-            speed: 2,
-            size_min: 0.1,
-            sync: false
+            enable: false
           }
         },
         line_linked: {
           enable: true,
-          distance: 150,
+          distance: 180,
           color: "#ffffff",
-          opacity: 0.4,
+          opacity: 0.08,
           width: 1
         },
         move: {
           enable: true,
-          speed: 1,
+          speed: 0.4,
           direction: "none",
           random: true,
           straight: false,
           out_mode: "out",
-          bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200
-          }
+          bounce: false
         }
       },
       interactivity: {
         detect_on: "canvas",
         events: {
           onhover: {
-            enable: true,
-            mode: "grab"
+            enable: false
           },
           onclick: {
-            enable: true,
-            mode: "push"
+            enable: false
           },
           resize: true
-        },
-        modes: {
-          grab: {
-            distance: 140,
-            line_linked: {
-              opacity: 1
-            }
-          },
-          push: {
-            particles_nb: 4
-          }
         }
       },
       retina_detect: true
@@ -150,16 +130,15 @@ function initializeTextAnimations() {
   if (typeof Typed !== 'undefined') {
     new Typed('.typed-text', {
       strings: [
-        'AI and Tech Enthusiast',
-        'Agriculture Undergraduate',
-        'Problem Solver',
-        'Storyteller'
+        'Agriculture',
+        'AI &amp; Data Science',
+        'Storytelling'
       ],
-      typeSpeed: 60,
-      backSpeed: 40,
+      typeSpeed: 45,
+      backSpeed: 25,
       loop: true,
-      backDelay: 1500,
-      startDelay: 1000,
+      backDelay: 3000,
+      startDelay: 1500,
       showCursor: true,
       cursorChar: '|',
       autoInsertCss: true,
@@ -179,41 +158,41 @@ function initializeScrollEffects() {
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
-          start: 'top bottom-=100',
+          start: 'top bottom-=50',
           toggleActions: 'play none none reverse'
         },
-        y: 100,
+        y: 30,
         opacity: 0,
-        duration: 0.8,
-        delay: i * 0.1
+        duration: 0.6,
+        delay: i * 0.08
       });
     });
-    
+
     gsap.utils.toArray('.video-card').forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
-          start: 'top bottom-=100',
+          start: 'top bottom-=50',
           toggleActions: 'play none none reverse'
         },
-        y: 100,
+        y: 30,
         opacity: 0,
-        duration: 0.8,
-        delay: i * 0.1
+        duration: 0.6,
+        delay: i * 0.08
       });
     });
-    
+
     gsap.utils.toArray('.contact-card').forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
-          start: 'top bottom-=100',
+          start: 'top bottom-=50',
           toggleActions: 'play none none reverse'
         },
-        y: 100,
+        y: 30,
         opacity: 0,
-        duration: 0.8,
-        delay: i * 0.1
+        duration: 0.6,
+        delay: i * 0.08
       });
     });
   } else {
@@ -465,36 +444,34 @@ function scrollToSection(sectionId) {
  */
 function initializeDarkModeToggle() {
   const toggleButton = document.createElement('button');
-  toggleButton.innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+  toggleButton.innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
   toggleButton.classList.add('dark-mode-toggle');
   toggleButton.setAttribute('aria-label', 'Toggle dark mode');
   toggleButton.addEventListener('click', toggleTheme);
-  
+
   document.body.appendChild(toggleButton);
 }
 
 /**
- * Initialize 3D hover effects on project cards
+ * Initialize hover effects (3D effects removed for cleaner aesthetic)
  */
 function initializeHoverEffects() {
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const cardRect = card.getBoundingClientRect();
-      const x = e.clientX - cardRect.left;
-      const y = e.clientY - cardRect.top;
-      
-      const centerX = cardRect.width / 2;
-      const centerY = cardRect.height / 2;
-      
-      const rotateY = (x - centerX) / 25;
-      const rotateX = (centerY - y) / 25;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-    });
+  // Hover feedback is now handled purely via CSS
+}
+
+/**
+ * Add scroll-aware styling to navigation
+ */
+function initializeNavScroll() {
+  const nav = document.querySelector('.compact-nav');
+  if (!nav) return;
+
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 100) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
   });
 }
 
