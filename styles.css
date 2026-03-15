@@ -634,6 +634,23 @@ body {
 
 [data-theme="dark"] .tag {
   background: rgba(240, 237, 232, 0.08);
+  color: var(--text-dark);
+}
+
+[data-theme="dark"] .btn-link {
+  color: var(--accent);
+}
+
+[data-theme="dark"] .btn-link::after {
+  background: var(--accent);
+}
+
+[data-theme="dark"] .contact-card a {
+  color: var(--accent);
+}
+
+[data-theme="dark"] .contact-card a:hover {
+  color: var(--text-dark);
 }
 
 .project-actions {
