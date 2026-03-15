@@ -291,8 +291,12 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: var(--primary);
-  opacity: 0.95;
+  background: linear-gradient(135deg, #2A3F6F 0%, #1B2A4A 55%, #1a3040 100%);
+  opacity: 1;
+}
+
+[data-theme="dark"] .hero-background {
+  background: linear-gradient(135deg, #0e1929 0%, #1B2A4A 55%, #0a1520 100%);
 }
 
 #particles-js {
@@ -325,6 +329,7 @@ body {
   position: relative;
   display: flex;
   flex-wrap: wrap;
+  color: rgba(255, 255, 255, 0.95);
 }
 
 .name-char {
@@ -376,7 +381,7 @@ body {
   font-size: clamp(1rem, 1.1vw, 1.15rem);
   margin-bottom: 2.5rem;
   max-width: 650px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.88);
   line-height: 1.9;
   text-align: left;
 }
@@ -403,6 +408,7 @@ body {
   box-shadow: var(--shadow-md);
   border: 1px solid rgba(255, 255, 255, 0.15);
   margin: 0 auto;
+  animation: floatImage 4s ease-in-out infinite;
 }
 
 .profile-image {
@@ -1041,7 +1047,10 @@ body {
   }
 }
 
-/* float animation removed for cleaner aesthetic */
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
 
 /* ==========================================================================
    Responsive Media Queries

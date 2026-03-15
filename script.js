@@ -56,10 +56,10 @@ function initializeParticles() {
     particlesJS('particles-js', {
       particles: {
         number: {
-          value: 30,
+          value: 60,
           density: {
             enable: true,
-            value_area: 1200
+            value_area: 900
           }
         },
         color: {
@@ -73,17 +73,17 @@ function initializeParticles() {
           }
         },
         opacity: {
-          value: 0.15,
+          value: 0.45,
           random: true,
           anim: {
             enable: true,
-            speed: 0.3,
-            opacity_min: 0.05,
+            speed: 0.5,
+            opacity_min: 0.15,
             sync: false
           }
         },
         size: {
-          value: 2,
+          value: 2.5,
           random: true,
           anim: {
             enable: false
@@ -91,14 +91,14 @@ function initializeParticles() {
         },
         line_linked: {
           enable: true,
-          distance: 180,
+          distance: 160,
           color: "#ffffff",
-          opacity: 0.08,
+          opacity: 0.2,
           width: 1
         },
         move: {
           enable: true,
-          speed: 0.4,
+          speed: 0.5,
           direction: "none",
           random: true,
           straight: false,
@@ -110,12 +110,21 @@ function initializeParticles() {
         detect_on: "canvas",
         events: {
           onhover: {
-            enable: false
+            enable: true,
+            mode: "grab"
           },
           onclick: {
             enable: false
           },
           resize: true
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            line_linked: {
+              opacity: 0.5
+            }
+          }
         }
       },
       retina_detect: true
