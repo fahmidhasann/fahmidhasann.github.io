@@ -232,10 +232,12 @@ function initializeScrollEffects() {
  * Update the progress bar based on scroll position
  */
 function updateProgressBar() {
+  const progressBar = document.querySelector('.progress-bar');
+  if (!progressBar) return;
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const scrolled = (winScroll / height) * 100;
-  document.querySelector('.progress-bar').style.width = scrolled + '%';
+  progressBar.style.width = scrolled + '%';
 }
 
 /* ==========================================================================
@@ -575,7 +577,7 @@ function createConfetti() {
         transform: translateY(0) rotate(0deg);
       }
       100% {
-        transform: translateY(100vh) rotate(${Math.random() * 360}deg);
+        transform: translateY(100vh) rotate(720deg);
       }
     }
   `;
