@@ -392,6 +392,11 @@ body {
   flex-wrap: wrap;
 }
 
+.social-links.hero-social {
+  justify-content: flex-start;
+  margin-top: 1.5rem;
+}
+
 .hero-image {
   display: flex;
   justify-content: center;
@@ -1105,7 +1110,11 @@ body {
   .hero-cta {
     justify-content: center;
   }
-  
+
+  .social-links.hero-social {
+    justify-content: center;
+  }
+
   .hero-name {
     justify-content: center;
   }
