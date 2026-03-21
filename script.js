@@ -139,9 +139,9 @@ function initializeTextAnimations() {
   if (typeof Typed !== 'undefined') {
     new Typed('.typed-text', {
       strings: [
-        'Agriculture',
-        'AI &amp; Data Science',
-        'Storytelling'
+        'AI',
+        'ML',
+        'Automation'
       ],
       typeSpeed: 45,
       backSpeed: 25,
