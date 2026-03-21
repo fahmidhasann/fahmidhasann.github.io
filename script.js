@@ -140,7 +140,7 @@ function initializeTextAnimations() {
     new Typed('.typed-text', {
       strings: [
         'Agriculture',
-        'AI &amp; Data Science',
+        'AI, ML and Automation',
         'Storytelling'
       ],
       typeSpeed: 45,
