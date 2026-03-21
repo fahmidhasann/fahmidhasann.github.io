@@ -471,15 +471,13 @@ function initializeHoverEffects() {
   const popup = document.getElementById('videoPopup');
   const popupPlayer = document.getElementById('videoPopupPlayer');
   const popupTitle = document.getElementById('videoPopupTitle');
+  const closeBtn = document.getElementById('videoPopupClose');
   if (!backdrop || !popup || !popupPlayer) return;
-
-  let hideTimeout;
 
   function showPopup(card) {
     const src = card.dataset.video;
     const title = card.dataset.title || '';
     if (!src) return;
-    clearTimeout(hideTimeout);
     if (popupPlayer.src !== new URL(src, location.href).href) {
       popupPlayer.src = src;
     }
@@ -496,16 +494,16 @@ function initializeHoverEffects() {
     popupPlayer.pause();
   }
 
-  document.querySelectorAll('.project-card[data-video]').forEach(card => {
-    card.addEventListener('mouseenter', () => showPopup(card));
-    card.addEventListener('mouseleave', () => {
-      hideTimeout = setTimeout(hidePopup, 150);
-    });
+  // Open on "Watch Demo" button click
+  document.querySelectorAll('.btn-demo').forEach(btn => {
+    const card = btn.closest('.project-card[data-video]');
+    if (card) btn.addEventListener('click', () => showPopup(card));
   });
 
-  // Keep popup alive if mouse moves onto it
-  popup.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
-  popup.addEventListener('mouseleave', () => { hideTimeout = setTimeout(hidePopup, 150); });
+  // Close on backdrop click, close button, or Escape
+  backdrop.addEventListener('click', hidePopup);
+  if (closeBtn) closeBtn.addEventListener('click', hidePopup);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hidePopup(); });
 }
 
 /**
