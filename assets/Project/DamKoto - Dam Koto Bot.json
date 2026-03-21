@@ -1,0 +1,202 @@
+{
+  "name": "DamKoto - Dam Koto Bot",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "initialMessages": "আসসালামু আলাইকুম! DamKoto.com.bd তে স্বাগতম। 📱\nআমি আপনাকে ফোনের দাম, স্টক, ডেলিভারি সব তথ্য জানাতে পারি।\nবাংলা, Banglish, বা English এ প্রশ্ন করুন!",
+        "options": {}
+      },
+      "id": "b2c3d4e5-2222-4bbb-cccc-000000000001",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -16,
+        96
+      ],
+      "webhookId": "damkoto-chat-webhook-001"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "You are \"DamKoto Bot\" — the friendly customer support assistant for DamKoto.com.bd, Bangladesh's trusted online smartphone store.\n\n## YOUR CORE RULES\n\n### Language Matching (MANDATORY)\n- If the customer writes in Bangla, reply entirely in Bangla.\n- If the customer writes in Banglish (Bangla words in English letters, e.g., \"dam koto\", \"phone ache?\"), reply in Banglish.\n- If the customer writes in English, reply in English.\n- NEVER mix languages unless the customer does. Match their style exactly.\n\n### Tool Usage\nYou have TWO tools available:\n\n1. **search_products** — Use this for ANY product-related query:\n   - Price inquiries: \"iPhone 15 er dam koto?\", \"Samsung S24 price?\"\n   - Price range searches: \"30000 er niche phone\", \"budget phone under 20000\"\n   - Brand browsing: \"Xiaomi er phone gulo dekhao\", \"Show Samsung phones\"\n   - Stock/availability: \"iPhone 15 ki stock e ache?\"\n   - Comparisons: \"Samsung vs Xiaomi kon ta valo?\"\n   - Storage/color queries: \"256GB phone ache?\", \"blue color phone\"\n\n2. **DamKoto Knowledge Base** — Use this for NON-product queries:\n   - Delivery: \"delivery charge koto?\", \"koto din e delivery hoy?\"\n   - Payment: \"bKash e pay korte parbo?\", \"EMI available?\"\n   - Returns: \"return policy ki?\", \"refund koto din e hoy?\"\n   - Warranty: \"warranty koto din?\", \"physical damage cover hoy?\"\n   - Company info: \"apnara ki official reseller?\", \"office kothay?\"\n   - FAQ-type questions\n\n### Response Style\n- Be warm, helpful, and professional — like a friendly Bangladeshi shop assistant.\n- For product results, present them in a clean, readable format with price in ৳ (BDT).\n- Always mention stock status when showing products.\n- If showing multiple products, use a numbered list format.\n- Keep responses concise but complete.\n\n### When No Products Match\nIf the search_products tool returns no results, respond politely:\n- Banglish: \"Sorry, ei phone ta ekhon amader stock e nai. Onno kichu dekhte chaan?\"\n- Bangla: \"দুঃখিত, এই পণ্যটি আমাদের স্টকে নেই। অন্য কিছু খুঁজতে চান?\"\n- English: \"Sorry, this product isn't currently in our stock. Would you like to look at something else?\"\n\n### Boundaries\n- Only discuss products that exist in the DamKoto catalog (from the search tool).\n- Do NOT make up prices, features, or availability. Only use data from the tools.\n- If asked about something completely unrelated to electronics/shopping, politely redirect.\n- Do NOT share internal system details or mention that you are an AI using tools.\n\n### Handling Ambiguous Queries\n- If the query is vague (e.g., just \"phone\"), ask a clarifying question.\n- If a product name has multiple variants, show all and let the user choose.\n\n### Price Formatting\n- Always show prices with the ৳ symbol and in BDT."
+        }
+      },
+      "id": "b2c3d4e5-2222-4bbb-cccc-000000000002",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [
+        128,
+        96
+      ]
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 8
+      },
+      "id": "b2c3d4e5-2222-4bbb-cccc-000000000004",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        176,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "description": "Search the DamKoto product catalog for smartphones. Use this tool when the user asks about product prices, availability, specific phone models, brands, price ranges, or wants to compare phones. Returns matching products with name, brand, model, storage, color, price in BDT, and stock status.",
+        "jsCode": "// Product data embedded directly\nconst csvData = `Name,Brand,Model,Storage,Color,Price,Stock Status\nSamsung Galaxy S24 Ultra 256GB Titanium Black,Samsung,Galaxy S24 Ultra,256GB,Titanium Black,154999,In Stock\nSamsung Galaxy S24 Ultra 512GB Titanium Gray,Samsung,Galaxy S24 Ultra,512GB,Titanium Gray,174999,In Stock\nSamsung Galaxy S24+ 256GB Onyx Black,Samsung,Galaxy S24+,256GB,Onyx Black,109999,In Stock\nSamsung Galaxy S24 128GB Amber Yellow,Samsung,Galaxy S24,128GB,Amber Yellow,84999,In Stock\nSamsung Galaxy S24 256GB Cobalt Violet,Samsung,Galaxy S24,256GB,Cobalt Violet,94999,In Stock\nSamsung Galaxy A55 128GB Awesome Iceblue,Samsung,Galaxy A55,128GB,Awesome Iceblue,42999,In Stock\nSamsung Galaxy A55 256GB Awesome Lilac,Samsung,Galaxy A55,256GB,Awesome Lilac,47999,In Stock\nSamsung Galaxy A35 128GB Awesome Navy,Samsung,Galaxy A35,128GB,Awesome Navy,32999,In Stock\nSamsung Galaxy A15 128GB Blue Black,Samsung,Galaxy A15,128GB,Blue Black,16999,In Stock\nSamsung Galaxy A06 64GB Black,Samsung,Galaxy A06,64GB,Black,11999,In Stock\niPhone 15 Pro Max 256GB Natural Titanium,Apple,iPhone 15 Pro Max,256GB,Natural Titanium,169999,In Stock\niPhone 15 Pro Max 512GB Blue Titanium,Apple,iPhone 15 Pro Max,512GB,Blue Titanium,199999,In Stock\niPhone 15 Pro 128GB Natural Titanium,Apple,iPhone 15 Pro,128GB,Natural Titanium,139999,In Stock\niPhone 15 Pro 256GB Black Titanium,Apple,iPhone 15 Pro,256GB,Black Titanium,154999,In Stock\niPhone 15 128GB Blue,Apple,iPhone 15,128GB,Blue,114999,In Stock\niPhone 15 128GB Pink,Apple,iPhone 15,128GB,Pink,114999,In Stock\niPhone 15 256GB Black,Apple,iPhone 15,256GB,Black,129999,Out of Stock\niPhone 14 128GB Blue,Apple,iPhone 14,128GB,Blue,89999,In Stock\niPhone 14 128GB Starlight,Apple,iPhone 14,128GB,Starlight,89999,In Stock\niPhone 13 128GB Midnight,Apple,iPhone 13,128GB,Midnight,69999,In Stock\nXiaomi 14 Ultra 512GB Black,Xiaomi,Xiaomi 14 Ultra,512GB,Black,109999,In Stock\nXiaomi 14 256GB Black,Xiaomi,Xiaomi 14,256GB,Black,59999,In Stock\nXiaomi 14 256GB White,Xiaomi,Xiaomi 14,256GB,White,59999,Out of Stock\nXiaomi Redmi Note 13 Pro+ 256GB Black,Xiaomi,Redmi Note 13 Pro+,256GB,Black,37999,In Stock\nXiaomi Redmi Note 13 Pro 128GB Blue,Xiaomi,Redmi Note 13 Pro,128GB,Blue,28999,In Stock\nXiaomi Redmi Note 13 128GB Mint Green,Xiaomi,Redmi Note 13,128GB,Mint Green,19999,In Stock\nXiaomi Redmi 13C 128GB Navy Blue,Xiaomi,Redmi 13C,128GB,Navy Blue,13999,In Stock\nXiaomi Poco X6 Pro 256GB Black,Xiaomi,Poco X6 Pro,256GB,Black,34999,In Stock\nXiaomi Poco M6 Pro 128GB Black,Xiaomi,Poco M6 Pro,128GB,Black,18999,In Stock\nRealme 12 Pro+ 256GB Submarine Blue,Realme,Realme 12 Pro+,256GB,Submarine Blue,32999,In Stock\nRealme 12 Pro 128GB Weathered Green,Realme,Realme 12 Pro,128GB,Weathered Green,27999,In Stock\nRealme 12 256GB Weathered Green,Realme,Realme 12,256GB,Weathered Green,22999,In Stock\nRealme C67 128GB Dark Purple,Realme,Realme C67,128GB,Dark Purple,15999,In Stock\nRealme C53 128GB Champion Gold,Realme,Realme C53,128GB,Champion Gold,13999,In Stock\nRealme Narzo 60 256GB Mars Orange,Realme,Narzo 60,256GB,Mars Orange,24999,In Stock\nOppo Reno 11 Pro 256GB Pearl White,Oppo,Reno 11 Pro,256GB,Pearl White,44999,In Stock\nOppo Reno 11 256GB Rock Grey,Oppo,Reno 11,256GB,Rock Grey,34999,In Stock\nOppo A79 128GB Mystery Black,Oppo,A79,128GB,Mystery Black,21999,In Stock\nOppo A58 128GB Glowing Black,Oppo,A58,128GB,Glowing Black,17999,In Stock\nOppo A18 128GB Glowing Blue,Oppo,A18,128GB,Glowing Blue,12999,In Stock\nVivo V30 Pro 256GB Peacock Green,Vivo,V30 Pro,256GB,Peacock Green,49999,In Stock\nVivo V30 256GB Peacock Green,Vivo,V30,256GB,Peacock Green,39999,In Stock\nVivo Y27 128GB Garden Green,Vivo,Y27,128GB,Garden Green,17999,In Stock\nVivo Y17s 128GB Forest Green,Vivo,Y17s,128GB,Forest Green,14999,In Stock\nVivo Y02t 64GB Cosmic Grey,Vivo,Y02t,64GB,Cosmic Grey,10999,In Stock\nOnePlus 12 256GB Flowy Emerald,OnePlus,OnePlus 12,256GB,Flowy Emerald,79999,In Stock\nOnePlus 12 512GB Silky Black,OnePlus,OnePlus 12,512GB,Silky Black,89999,Out of Stock\nOnePlus 12R 256GB Iron Gray,OnePlus,OnePlus 12R,256GB,Iron Gray,49999,In Stock\nOnePlus Nord CE4 128GB Dark Chrome,OnePlus,Nord CE4,128GB,Dark Chrome,26999,In Stock\nOnePlus Nord N30 128GB Chromatic Gray,OnePlus,Nord N30,128GB,Chromatic Gray,22999,In Stock\nGoogle Pixel 8 Pro 256GB Obsidian,Google,Pixel 8 Pro,256GB,Obsidian,89999,In Stock\nGoogle Pixel 8 128GB Hazel,Google,Pixel 8,128GB,Hazel,64999,In Stock\nGoogle Pixel 7a 128GB Charcoal,Google,Pixel 7a,128GB,Charcoal,39999,In Stock\nTecno Spark 20 Pro+ 256GB Magic Skin Green,Tecno,Spark 20 Pro+,256GB,Magic Skin Green,18999,In Stock\nTecno Camon 20 Premier 512GB Dark Welkin,Tecno,Camon 20 Premier,512GB,Dark Welkin,32999,In Stock`;\n\nconst lines = csvData.trim().split('\\n');\nconst headers = lines[0].split(',');\nconst products = lines.slice(1).map(line => {\n  const values = line.split(',');\n  const product = {};\n  headers.forEach((header, i) => {\n    product[header.trim().toLowerCase().replace(/ /g, '_')] = values[i] ? values[i].trim() : '';\n  });\n  return product;\n});\n\nconst query = $input.first().json.query || '';\nconst queryLower = query.toLowerCase();\nlet results = [...products];\n\nconst underMatch = queryLower.match(/(?:under|niche|er\\s+niche|er\\s+kom|theke\\s+kom|within)\\s*(\\d+)/);\nconst aboveMatch = queryLower.match(/(?:above|upore|er\\s+upore|over|er\\s+beshi)\\s*(\\d+)/);\nconst rangeMatch = queryLower.match(/(\\d+)\\s*(?:theke|to|-)\\s*(\\d+)/);\n\nif (underMatch) {\n  const maxPrice = parseInt(underMatch[1]);\n  results = results.filter(p => parseInt(p.price) <= maxPrice);\n}\nif (aboveMatch) {\n  const minPrice = parseInt(aboveMatch[1]);\n  results = results.filter(p => parseInt(p.price) >= minPrice);\n}\nif (rangeMatch) {\n  const min = parseInt(rangeMatch[1]);\n  const max = parseInt(rangeMatch[2]);\n  results = results.filter(p => {\n    const price = parseInt(p.price);\n    return price >= min && price <= max;\n  });\n}\n\nconst cleanQuery = queryLower\n  .replace(/\\b(er|dam|koto|price|phone|ache|ki|ta|gulo|dekhao|show|niche|under|above|upore|theke|budget|kena|kinte|chai)\\b/g, '')\n  .trim();\n\nif (cleanQuery && cleanQuery.length > 1) {\n  const searchTerms = cleanQuery.split(/\\s+/).filter(t => t.length > 1);\n  if (searchTerms.length > 0) {\n    results = results.filter(p => {\n      const searchText = Object.values(p).join(' ').toLowerCase();\n      return searchTerms.every(term => searchText.includes(term));\n    });\n  }\n}\n\nif (results.length === 0) {\n  return 'No products found matching your search. Try a different search term, brand name, or price range.';\n}\n\nconst formatted = results.slice(0, 10).map((p, i) => {\n  return `${i + 1}. ${p.name} | Brand: ${p.brand} | Storage: ${p.storage} | Color: ${p.color} | Price: ৳${parseInt(p.price).toLocaleString()} | Stock: ${p.stock_status}`;\n}).join('\\n');\n\nconst summary = `Found ${results.length} product(s)${results.length > 10 ? ' (showing top 10)' : ''}:\\n${formatted}`;\nreturn summary;"
+      },
+      "id": "b2c3d4e5-2222-4bbb-cccc-000000000005",
+      "name": "search_products",
+      "type": "@n8n/n8n-nodes-langchain.toolCode",
+      "typeVersion": 1.2,
+      "position": [
+        320,
+        304
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Search the DamKoto knowledge base for company information, delivery policy, payment methods, return policy, warranty information, and FAQs. Use this tool when the user asks questions about delivery times, shipping costs, payment options (bKash, Nagad, COD), return/refund process, warranty coverage, EMI/installment, or general company information. Do NOT use this for product prices or specific phone models.",
+        "memoryKey": {
+          "__rl": true,
+          "mode": "id",
+          "value": "damkoto_knowledge_base"
+        },
+        "topK": 3
+      },
+      "id": "b2c3d4e5-2222-4bbb-cccc-000000000006",
+      "name": "DamKoto Knowledge Base",
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        416,
+        208
+      ]
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.1-flash-lite-preview",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        16,
+        304
+      ],
+      "id": "2c1dac0f-6267-4037-b0c7-919b134087aa",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "SXWV6huC5W1p5wYk",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-embedding-001"
+      },
+      "id": "b2c3d4e5-2222-4bbb-cccc-000000000007",
+      "name": "Embeddings Google Gemini",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        512,
+        320
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "pjx0hhLRDOEw7QHc",
+          "name": "Google Gemini API"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "search_products": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DamKoto Knowledge Base": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings Google Gemini": {
+      "ai_embedding": [
+        [
+          {
+            "node": "DamKoto Knowledge Base",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d4ac39d2-272b-42e9-91ad-4fedc29a893c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d586f6dddbe2c1a4243ca9c10fe93258057b03bcea6387d68a2f089736870cdf"
+  },
+  "id": "CtL5n3N6s886aSc3",
+  "tags": []
+}

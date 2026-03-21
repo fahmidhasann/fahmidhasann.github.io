@@ -171,9 +171,10 @@
           </div>
           
           <!-- Project 3: AI-Powered Cold Outreach Automation -->
-          <div class="project-card" data-category="ai">
+          <div class="project-card" data-category="ai" data-video="assets/Project/Al-Powered Lead Generation & Cold Outreach.mp4" data-title="AI-Powered Cold Outreach Automation">
             <div class="project-image">
-              <img src="assets/Project/n8n projet.png" alt="AI-Powered Cold Outreach Automation" loading="lazy">
+              <video src="assets/Project/Al-Powered Lead Generation & Cold Outreach.mp4" muted playsinline preload="metadata" aria-label="AI-Powered Cold Outreach Automation demo"></video>
+              <div class="project-video-hint"><i class="fas fa-play" aria-hidden="true"></i> Hover to preview</div>
             </div>
             <div class="project-content">
               <h3 class="project-title">AI-Powered Cold Outreach Automation</h3>
@@ -187,7 +188,26 @@
             </div>
           </div>
 
-          <!-- Project 4: PlantDoc RAG ChatBot -->
+          <!-- Project 4: DamKoto Bot -->
+          <div class="project-card" data-category="ai" data-video="assets/Project/Dam koto bot.mp4" data-title="DamKoto Bot — Multilingual AI Customer Support">
+            <div class="project-image">
+              <video src="assets/Project/Dam koto bot.mp4" muted playsinline preload="metadata" aria-label="DamKoto Bot demo"></video>
+              <div class="project-video-hint"><i class="fas fa-play" aria-hidden="true"></i> Hover to preview</div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">DamKoto Bot — Multilingual AI Support</h3>
+              <p class="project-description">An AI customer support chatbot for DamKoto.com.bd, a Bangladeshi smartphone store. Responds fluently in Bangla, Banglish, or English — matching the customer's language. Searches a live product catalog of 55+ phones by brand, price range, or model, checks stock, and answers delivery, payment, and return policy questions via a vector knowledge base.</p>
+              <div class="project-tags">
+                <span class="tag">n8n</span>
+                <span class="tag">Google Gemini</span>
+                <span class="tag">AI Agent</span>
+                <span class="tag">Vector Store</span>
+                <span class="tag">Bangla NLP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: PlantDoc RAG ChatBot -->
           <div class="project-card" data-category="ai">
             <div class="project-image">
               <img src="assets/Project/plantdoc-chatbot.jpeg" alt="PlantDoc RAG ChatBot" loading="lazy">
@@ -386,6 +406,16 @@
           <li data-action="dark-mode" role="option">Toggle Dark Mode</li>
         </ul>
       </div>
+    </div>
+
+    <!-- Video Demo Popup -->
+    <div class="video-popup-backdrop" id="videoPopupBackdrop" aria-hidden="true"></div>
+    <div class="video-popup" id="videoPopup" role="dialog" aria-label="Project demo preview">
+      <div class="video-popup-header">
+        <span class="video-popup-badge"><i class="fas fa-play" aria-hidden="true"></i> Live Demo</span>
+        <span class="video-popup-title" id="videoPopupTitle"></span>
+      </div>
+      <video id="videoPopupPlayer" muted loop playsinline></video>
     </div>
 
     <!-- External Scripts -->

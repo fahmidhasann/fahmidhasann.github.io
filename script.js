@@ -467,7 +467,45 @@ function initializeDarkModeToggle() {
  * Initialize hover effects (3D effects removed for cleaner aesthetic)
  */
 function initializeHoverEffects() {
-  // Hover feedback is now handled purely via CSS
+  const backdrop = document.getElementById('videoPopupBackdrop');
+  const popup = document.getElementById('videoPopup');
+  const popupPlayer = document.getElementById('videoPopupPlayer');
+  const popupTitle = document.getElementById('videoPopupTitle');
+  if (!backdrop || !popup || !popupPlayer) return;
+
+  let hideTimeout;
+
+  function showPopup(card) {
+    const src = card.dataset.video;
+    const title = card.dataset.title || '';
+    if (!src) return;
+    clearTimeout(hideTimeout);
+    if (popupPlayer.src !== new URL(src, location.href).href) {
+      popupPlayer.src = src;
+    }
+    popupTitle.textContent = title;
+    backdrop.classList.add('visible');
+    popup.classList.add('visible');
+    popupPlayer.currentTime = 0;
+    popupPlayer.play();
+  }
+
+  function hidePopup() {
+    backdrop.classList.remove('visible');
+    popup.classList.remove('visible');
+    popupPlayer.pause();
+  }
+
+  document.querySelectorAll('.project-card[data-video]').forEach(card => {
+    card.addEventListener('mouseenter', () => showPopup(card));
+    card.addEventListener('mouseleave', () => {
+      hideTimeout = setTimeout(hidePopup, 150);
+    });
+  });
+
+  // Keep popup alive if mouse moves onto it
+  popup.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
+  popup.addEventListener('mouseleave', () => { hideTimeout = setTimeout(hidePopup, 150); });
 }
 
 /**
