@@ -338,37 +338,78 @@
         </header>
         
         <div class="contact-content">
-          <div class="contact-info">
-            <!-- Email Contact -->
-            <a href="mailto:fahmidhasantaohid@gmail.com" class="contact-card">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-              <h3>Email</h3>
-            </a>
-            
-            <!-- WhatsApp Contact -->
-            <a href="https://wa.me/8801732021592" target="_blank" rel="noopener noreferrer" class="contact-card">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              <h3>WhatsApp</h3>
-            </a>
+          <!-- Contact Form -->
+          <div class="contact-form-wrapper">
+            <form id="contactForm" class="contact-form">
+              <input type="hidden" name="access_key" value="756aa2fa-77ba-4671-9ba7-2161b61c8c11">
+              <input type="hidden" name="subject" value="New message from portfolio">
+              <input type="checkbox" name="botcheck" style="display:none">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name">Name</label>
+                  <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email" name="email" placeholder="you@company.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-company">Company</label>
+                <input type="text" id="contact-company" name="company" placeholder="Your company">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary contact-submit">
+                <span class="btn-text">Send Message</span>
+                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                <span class="btn-loading" style="display:none"><i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Sending...</span>
+              </button>
+
+              <div id="formResult" class="form-result" aria-live="polite"></div>
+            </form>
           </div>
-          
-          <!-- Social Media Links -->
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/fahmid-hasan-taohid/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-link">
-              <i class="fab fa-linkedin" aria-hidden="true"></i>
-            </a>
-            <a href="https://github.com/fahmidhasann" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-link">
-              <i class="fab fa-github" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.researchgate.net/profile/Fahmid-Hasan-Taohid" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile" class="social-link">
-              <i class="fab fa-researchgate" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.instagram.com/fahmid_hasann/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" class="social-link">
-              <i class="fab fa-instagram" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.facebook.com/fahmiddhasann" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="social-link">
-              <i class="fab fa-facebook" aria-hidden="true"></i>
-            </a>
+
+          <!-- Sidebar: contact cards + social links -->
+          <div class="contact-sidebar">
+            <div class="contact-info">
+              <!-- Email Contact -->
+              <a href="mailto:fahmidhasantaohid@gmail.com" class="contact-card">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <h3>Email</h3>
+              </a>
+
+              <!-- WhatsApp Contact -->
+              <a href="https://wa.me/8801732021592" target="_blank" rel="noopener noreferrer" class="contact-card">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <h3>WhatsApp</h3>
+              </a>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="social-links">
+              <a href="https://www.linkedin.com/in/fahmid-hasan-taohid/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="social-link">
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              </a>
+              <a href="https://github.com/fahmidhasann" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="social-link">
+                <i class="fab fa-github" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.researchgate.net/profile/Fahmid-Hasan-Taohid" target="_blank" rel="noopener noreferrer" aria-label="ResearchGate Profile" class="social-link">
+                <i class="fab fa-researchgate" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.instagram.com/fahmid_hasann/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile" class="social-link">
+                <i class="fab fa-instagram" aria-hidden="true"></i>
+              </a>
+              <a href="https://www.facebook.com/fahmiddhasann" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile" class="social-link">
+                <i class="fab fa-facebook" aria-hidden="true"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeDarkModeToggle();
   initializeHoverEffects();
   initializeNavScroll();
+  initializeContactForm();
   initializeEasterEgg();
   
   // Add scroll event listener for progress bar
@@ -525,6 +526,60 @@ function initializeNavScroll() {
 /* ==========================================================================
    Easter Egg Functions
    ========================================================================== */
+
+/**
+ * Initialize the contact form with Web3Forms submission
+ */
+function initializeContactForm() {
+  const form = document.getElementById('contactForm');
+  const result = document.getElementById('formResult');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('.contact-submit');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnIcon = submitBtn.querySelector('.fa-paper-plane');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+
+    // Loading state
+    btnText.style.display = 'none';
+    btnIcon.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    submitBtn.disabled = true;
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        result.textContent = 'Message sent! I\'ll get back to you soon.';
+        result.className = 'form-result success';
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch {
+      result.textContent = 'Failed to send message. Please try emailing me directly.';
+      result.className = 'form-result error';
+    } finally {
+      btnText.style.display = 'inline';
+      btnIcon.style.display = 'inline';
+      btnLoading.style.display = 'none';
+      submitBtn.disabled = false;
+
+      setTimeout(() => {
+        result.textContent = '';
+        result.className = 'form-result';
+      }, 5000);
+    }
+  });
+}
 
 /**
  * Initialize the Konami code easter egg
