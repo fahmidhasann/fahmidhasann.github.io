@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeScrollEffects();
   initializeNavigation();
   initializeProjectFiltering();
+  initializeShowMore();
   initializeCommandPalette();
   initializeDarkModeToggle();
   initializeHoverEffects();
@@ -294,31 +295,114 @@ function initializeNavigation() {
 function initializeProjectFiltering() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
-  
+  const VISIBLE_COUNT = 3;
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      
+
       const filter = btn.getAttribute('data-filter');
-      
+      const showMoreBtn = document.getElementById('projectsShowMore');
+
+      // Collect cards that match the filter
+      const matchingCards = [];
       projectCards.forEach(card => {
         if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          matchingCards.push(card);
+        }
+      });
+
+      // Apply visibility based on filter match and show-more state
+      projectCards.forEach(card => {
+        const matches = filter === 'all' || card.getAttribute('data-category') === filter;
+        if (!matches) {
+          card.classList.remove('hidden-card');
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          setTimeout(() => { card.style.display = 'none'; }, 300);
+        } else {
           card.style.display = 'block';
           setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
           }, 10);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
         }
       });
+
+      // Reset show-more state for the new filtered set
+      if (showMoreBtn) {
+        if (matchingCards.length > VISIBLE_COUNT) {
+          matchingCards.forEach((card, i) => {
+            if (i >= VISIBLE_COUNT) {
+              card.classList.add('hidden-card');
+            } else {
+              card.classList.remove('hidden-card');
+            }
+          });
+          showMoreBtn.setAttribute('aria-expanded', 'false');
+          const label = showMoreBtn.querySelector('.show-more-label');
+          if (label) label.textContent = 'Show More Projects';
+          showMoreBtn.style.display = '';
+        } else {
+          matchingCards.forEach(card => card.classList.remove('hidden-card'));
+          showMoreBtn.style.display = 'none';
+        }
+      }
     });
   });
+}
+
+/**
+ * Show/hide items beyond the initial visible count with a toggle button.
+ * Works independently for projects and videos.
+ */
+function initializeShowMore() {
+  const VISIBLE_COUNT = 3;
+
+  function setup(gridId, btnId) {
+    const grid = document.getElementById(gridId);
+    const btn = document.getElementById(btnId);
+    if (!grid || !btn) return;
+
+    // Mark cards beyond the initial count as hidden
+    const allItems = Array.from(grid.children);
+    allItems.forEach((item, i) => {
+      if (i >= VISIBLE_COUNT) {
+        item.classList.add('hidden-card');
+      }
+    });
+
+    // Only show the button when there are more items than VISIBLE_COUNT
+    if (allItems.length <= VISIBLE_COUNT) {
+      btn.style.display = 'none';
+      return;
+    }
+
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      const label = btn.querySelector('.show-more-label');
+      const isProjects = gridId === 'projectsGrid';
+
+      if (isExpanded) {
+        // Collapse: hide cards beyond visible count
+        allItems.forEach((item, i) => {
+          if (i >= VISIBLE_COUNT) item.classList.add('hidden-card');
+        });
+        btn.setAttribute('aria-expanded', 'false');
+        if (label) label.textContent = isProjects ? 'Show More Projects' : 'Show More Videos';
+      } else {
+        // Expand: show all cards
+        allItems.forEach(item => item.classList.remove('hidden-card'));
+        btn.setAttribute('aria-expanded', 'true');
+        if (label) label.textContent = isProjects ? 'Show Less Projects' : 'Show Less Videos';
+      }
+    });
+  }
+
+  setup('projectsGrid', 'projectsShowMore');
+  setup('videosGrid', 'videosShowMore');
 }
 
 /* ==========================================================================

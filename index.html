@@ -124,7 +124,7 @@
           <button class="filter-btn" data-filter="data" aria-label="Show Data & Viz projects">Data & Viz</button>
         </div>
         
-        <div class="projects-grid">
+        <div class="projects-grid" id="projectsGrid">
           <!-- Project 1: Chashi Bondhu -->
           <div class="project-card" data-category="ai">
             <div class="project-image">
@@ -266,6 +266,12 @@
           </div>
 
         </div>
+
+        <div class="show-more-container">
+          <button class="btn-show-more" id="projectsShowMore" aria-expanded="false" aria-controls="projectsGrid">
+            <span class="show-more-label">Show More Projects</span> <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -277,7 +283,7 @@
           <p class="section-subtitle">Storytelling through the lens</p>
         </header>
         
-        <div class="video-grid">
+        <div class="video-grid" id="videosGrid">
           <!-- Video 1: BAU - The Way You've Never Seen It -->
           <a href="https://www.facebook.com/watch/?v=769200925475489" target="_blank" rel="noopener noreferrer" class="video-card-link" aria-label="Watch BAU - The Way You've Never Seen It">
             <div class="video-card">
@@ -325,6 +331,12 @@
               </div>
             </div>
           </a>
+        </div>
+
+        <div class="show-more-container">
+          <button class="btn-show-more" id="videosShowMore" aria-expanded="false" aria-controls="videosGrid">
+            <span class="show-more-label">Show More Videos</span> <i class="fas fa-chevron-down" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </section>
