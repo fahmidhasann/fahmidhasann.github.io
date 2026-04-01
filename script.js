@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeHoverEffects();
   initializeNavScroll();
   initializeContactForm();
+  initializeServiceSelection();
   initializeEasterEgg();
   
   // Add scroll event listener for progress bar
@@ -141,9 +142,9 @@ function initializeTextAnimations() {
   if (typeof Typed !== 'undefined') {
     new Typed('.typed-text', {
       strings: [
-        'Agriculture',
-        'AI, ML and Automation',
-        'Storytelling'
+        'AI Automation for SMBs',
+        'AI Chatbots',
+        'Dashboards & AI Tools'
       ],
       typeSpeed: 45,
       backSpeed: 25,
@@ -166,6 +167,20 @@ function initializeScrollEffects() {
     gsap.registerPlugin(ScrollTrigger);
     
     gsap.utils.toArray('.project-card').forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: 'top bottom-=50',
+          toggleActions: 'play none none reverse'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        delay: i * 0.08
+      });
+    });
+
+    gsap.utils.toArray('.service-card').forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
@@ -221,7 +236,7 @@ function initializeScrollEffects() {
       });
     }, observerOptions);
     
-    document.querySelectorAll('.project-card, .video-card, .contact-card').forEach(el => {
+    document.querySelectorAll('.service-card, .project-card, .video-card, .contact-card').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(30px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -251,7 +266,7 @@ function updateProgressBar() {
  */
 function initializeNavigation() {
   // Handle all anchor links with hash
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]:not(.service-cta)').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
@@ -260,9 +275,15 @@ function initializeNavigation() {
       
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop,
-          behavior: 'smooth'
+        if (targetElement.classList.contains('project-card')) {
+          revealProjectCard(targetElement);
+        }
+
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: getScrollTargetTop(targetElement),
+            behavior: 'smooth'
+          });
         });
         
         // Close mobile menu if open
@@ -288,6 +309,21 @@ function initializeNavigation() {
 /* ==========================================================================
    Project Functions
    ========================================================================== */
+
+function clearProjectHideTimeout(projectCard) {
+  if (!projectCard || !projectCard._hideTimeoutId) return;
+
+  clearTimeout(projectCard._hideTimeoutId);
+  projectCard._hideTimeoutId = null;
+}
+
+function scheduleProjectHide(projectCard) {
+  clearProjectHideTimeout(projectCard);
+  projectCard._hideTimeoutId = window.setTimeout(() => {
+    projectCard.style.display = 'none';
+    projectCard._hideTimeoutId = null;
+  }, 300);
+}
 
 /**
  * Initialize project filtering functionality
@@ -315,12 +351,13 @@ function initializeProjectFiltering() {
 
       // Apply visibility based on filter match and show-more state
       projectCards.forEach(card => {
+        clearProjectHideTimeout(card);
         const matches = filter === 'all' || card.getAttribute('data-category') === filter;
         if (!matches) {
           card.classList.remove('hidden-card');
           card.style.opacity = '0';
           card.style.transform = 'translateY(20px)';
-          setTimeout(() => { card.style.display = 'none'; }, 300);
+          scheduleProjectHide(card);
         } else {
           card.style.display = 'block';
           setTimeout(() => {
@@ -416,6 +453,7 @@ function initializeCommandPalette() {
   const commandPalette = document.getElementById('commandPalette');
   const commandInput = document.getElementById('commandInput');
   const commandList = document.getElementById('commandList');
+  if (!commandPalette || !commandInput || !commandList) return;
   
   document.addEventListener('keydown', (e) => {
     if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
@@ -503,11 +541,11 @@ function executeCommand(action) {
     case 'home':
       scrollToSection('hero');
       break;
+    case 'services':
+      scrollToSection('services');
+      break;
     case 'projects':
       scrollToSection('projects');
-      break;
-    case 'videos':
-      scrollToSection('videos');
       break;
     case 'contact':
       scrollToSection('contact');
@@ -525,9 +563,32 @@ function scrollToSection(sectionId) {
   const targetElement = document.getElementById(sectionId);
   if (targetElement) {
     window.scrollTo({
-      top: targetElement.offsetTop,
+      top: getScrollTargetTop(targetElement),
       behavior: 'smooth'
     });
+  }
+}
+
+function getScrollTargetTop(targetElement) {
+  const NAV_OFFSET = 80;
+  const top = targetElement.getBoundingClientRect().top + window.scrollY;
+  return Math.max(top - NAV_OFFSET, 0);
+}
+
+function revealProjectCard(projectCard) {
+  if (!projectCard || !projectCard.classList.contains('project-card')) return;
+
+  clearProjectHideTimeout(projectCard);
+
+  const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
+  const showMoreBtn = document.getElementById('projectsShowMore');
+
+  if (allFilterBtn && !allFilterBtn.classList.contains('active')) {
+    allFilterBtn.click();
+  }
+
+  if (projectCard.classList.contains('hidden-card') && showMoreBtn && showMoreBtn.getAttribute('aria-expanded') !== 'true') {
+    showMoreBtn.click();
   }
 }
 
@@ -662,6 +723,30 @@ function initializeContactForm() {
         result.className = 'form-result';
       }, 5000);
     }
+  });
+}
+
+/**
+ * Prefill the contact form when a service package is selected
+ */
+function initializeServiceSelection() {
+  const serviceButtons = document.querySelectorAll('.service-cta');
+  const serviceSelect = document.getElementById('contact-service');
+  const messageField = document.getElementById('contact-message');
+  if (!serviceButtons.length || !serviceSelect || !messageField) return;
+
+  serviceButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const serviceName = button.dataset.service;
+      if (!serviceName) return;
+
+      serviceSelect.value = serviceName;
+      messageField.value = `Hi Fahmid, I'm interested in the ${serviceName} package. I'd like help with `;
+      scrollToSection('contact');
+      messageField.focus();
+      messageField.setSelectionRange(messageField.value.length, messageField.value.length);
+    });
   });
 }
 
