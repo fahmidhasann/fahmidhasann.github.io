@@ -1,0 +1,6 @@
+  transcribing Al-Powered Lead Generation & Cold Outreach.mp4 (model=base) ...
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+  transcript saved -> graphify-out/transcripts/Al-Powered Lead Generation & Cold Outreach.txt (lang=cy, 1 segments)
+  transcribing Dam koto bot.mp4 (model=base) ...
+  transcript saved -> graphify-out/transcripts/Dam koto bot.txt (lang=en, 1 segments)
+["graphify-out/transcripts/Al-Powered Lead Generation & Cold Outreach.txt", "graphify-out/transcripts/Dam koto bot.txt"]
