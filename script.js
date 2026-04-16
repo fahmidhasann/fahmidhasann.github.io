@@ -144,7 +144,7 @@ function initializeTextAnimations() {
       strings: [
         'AI Automation for SMBs',
         'AI Chatbots',
-        'Dashboards & AI Tools'
+        'Dashboards and AI Tools'
       ],
       typeSpeed: 45,
       backSpeed: 25,
