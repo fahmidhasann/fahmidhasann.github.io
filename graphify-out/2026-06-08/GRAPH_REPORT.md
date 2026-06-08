@@ -1,18 +1,13 @@
-# Graph Report - fahmidhasann.github.io  (2026-06-08)
+# Graph Report - .  (2026-06-08)
 
 ## Corpus Check
-- 8 files · ~202,682 words
+- 24 files · ~202,604 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 138 nodes · 134 edges · 29 communities (14 shown, 15 thin omitted)
+- 130 nodes · 126 edges · 29 communities (13 shown, 16 thin omitted)
 - Extraction: 93% EXTRACTED · 6% INFERRED · 1% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.72)
-- Token cost: 0 input · 0 output
-
-## Graph Freshness
-- Built from commit: `cc0608df`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
+- Token cost: 24,150 input · 8,380 output
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_AI Freelancer Landscape|AI Freelancer Landscape]]
@@ -68,7 +63,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (29 total, 15 thin omitted)
+## Communities (29 total, 16 thin omitted)
 
 ### Community 0 - "AI Freelancer Landscape"
 Cohesion: 0.11
@@ -122,18 +117,14 @@ Nodes (3): 40% Higher Hourly Earnings with AI, AI Saves ~8 hrs/week for Freelanc
 Cohesion: 0.67
 Nodes (3): Asset Cache Control (1yr immutable), Security Headers Configuration, X-Frame-Options: SAMEORIGIN
 
-### Community 17 - "Graphify Watch Hook"
-Cohesion: 0.22
-Nodes (7): Architecture, Command Palette, Development, graphify, Overview, Project Filtering, Theming
-
 ## Ambiguous Edges - Review These
 - `AI-Powered Lead Generation & Cold Outreach Transcript` → `Dam koto bot`  [AMBIGUOUS]
   graphify-out/transcripts/Dam koto bot.txt · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **65 isolated node(s):** `PreToolUse`, `Overview`, `Development`, `Architecture`, `Theming` (+60 more)
+- **59 isolated node(s):** `AI-Powered Lead Generation & Cold Outreach Transcript`, `Dam Koto Bot Transcript`, `Portfolio Website`, `PreToolUse`, `success` (+54 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -141,11 +132,11 @@ _Questions this graph is uniquely positioned to answer:_
 - **What is the exact relationship between `AI-Powered Lead Generation & Cold Outreach Transcript` and `Dam koto bot`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
 - **Why does `Freelance Business Automation` connect `Freelance Automation Tools` to `AI Freelancer Landscape`, `Productivity & Meeting Tools`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.116) - this node is a cross-community bridge._
+  _High betweenness centrality (0.131) - this node is a cross-community bridge._
 - **Why does `AI Agent` connect `AI Freelancer Landscape` to `Freelance Automation Tools`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.082) - this node is a cross-community bridge._
-- **What connects `PreToolUse`, `Overview`, `Development` to the rest of the system?**
-  _68 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+- **What connects `AI-Powered Lead Generation & Cold Outreach Transcript`, `Dam Koto Bot Transcript`, `Portfolio Website` to the rest of the system?**
+  _62 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**
   _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._
 - **Should `Freelance Automation Tools` be split into smaller, more focused modules?**
