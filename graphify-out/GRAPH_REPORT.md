@@ -1,154 +1,143 @@
-# Graph Report - .  (2026-04-11)
+# Graph Report - .  (2026-06-08)
 
 ## Corpus Check
-- 19 files · ~92,168 words
+- 24 files · ~202,604 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 156 nodes · 182 edges · 19 communities detected
-- Extraction: 84% EXTRACTED · 15% INFERRED · 1% AMBIGUOUS · INFERRED: 27 edges (avg confidence: 0.85)
-- Token cost: 0 input · 0 output
+- 130 nodes · 126 edges · 29 communities (13 shown, 16 thin omitted)
+- Extraction: 93% EXTRACTED · 6% INFERRED · 1% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.72)
+- Token cost: 24,150 input · 8,380 output
+
+## Community Hubs (Navigation)
+- [[_COMMUNITY_AI Freelancer Landscape|AI Freelancer Landscape]]
+- [[_COMMUNITY_Portfolio Projects & Stack|Portfolio Projects & Stack]]
+- [[_COMMUNITY_Freelance Automation Tools|Freelance Automation Tools]]
+- [[_COMMUNITY_Productivity & Meeting Tools|Productivity & Meeting Tools]]
+- [[_COMMUNITY_AI Automation Agencies|AI Automation Agencies]]
+- [[_COMMUNITY_Freelancer Adoption Stats|Freelancer Adoption Stats]]
+- [[_COMMUNITY_AI Agency Web Data|AI Agency Web Data]]
+- [[_COMMUNITY_No-Code Web Builders|No-Code Web Builders]]
+- [[_COMMUNITY_AI Freelancers Dataset|AI Freelancers Dataset]]
+- [[_COMMUNITY_AI vs Traditional Automation|AI vs Traditional Automation]]
+- [[_COMMUNITY_Agentic Workflow Concepts|Agentic Workflow Concepts]]
+- [[_COMMUNITY_Claude Dev Settings|Claude Dev Settings]]
+- [[_COMMUNITY_Upwork Research Insights|Upwork Research Insights]]
+- [[_COMMUNITY_MCP & Playwright Config|MCP & Playwright Config]]
+- [[_COMMUNITY_Vercel Security Headers|Vercel Security Headers]]
+- [[_COMMUNITY_Project Transcripts|Project Transcripts]]
+- [[_COMMUNITY_Vercel Deployment|Vercel Deployment]]
+- [[_COMMUNITY_Graphify Watch Hook|Graphify Watch Hook]]
+- [[_COMMUNITY_Freelancers Data File|Freelancers Data File]]
+- [[_COMMUNITY_Medium Content|Medium Content]]
+- [[_COMMUNITY_Reddit Community|Reddit Community]]
+- [[_COMMUNITY_YouTube Channel|YouTube Channel]]
+- [[_COMMUNITY_Portfolio Profile|Portfolio Profile]]
+- [[_COMMUNITY_Contact Section|Contact Section]]
+- [[_COMMUNITY_Portfolio Owner|Portfolio Owner]]
+- [[_COMMUNITY_Hero Section|Hero Section]]
+- [[_COMMUNITY_Video Popup|Video Popup]]
+- [[_COMMUNITY_Videos Section|Videos Section]]
+- [[_COMMUNITY_DamKoto Transcript|DamKoto Transcript]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `script.js - All Interactivity` - 9 edges
-2. `Fahmid Hasan Portfolio Website` - 8 edges
-3. `index.html - Main Markup File` - 7 edges
-4. `Crop Yield by Crop Type (Wheat, Corn, Rice, Soy)` - 6 edges
-5. `Yield by Crop Pie Chart` - 6 edges
-6. `PlantDoc AI Plant Pathology Chatbot` - 5 edges
-7. `Chashi Bondhu - Crop Disease Identifier App` - 5 edges
-8. `Wheat Crop` - 5 edges
-9. `AI Agent Node` - 5 edges
-10. `GSAP + ScrollTrigger Animation Library` - 4 edges
+1. `Ashley Allen (freelance developer)` - 15 edges
+2. `Project Management Automation` - 11 edges
+3. `Freelance Business Automation` - 8 edges
+4. `Projects Section` - 6 edges
+5. `AI Agent` - 5 edges
+6. `AI Automation Stack for Freelancers` - 5 edges
+7. `Financial Management Automation` - 5 edges
+8. `Services Section` - 4 edges
+9. `Project: VocabFlow` - 4 edges
+10. `n8n Workflow Automation Tool` - 4 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Fahmid Hasan Taohid Profile Photo` --references--> `Portfolio Website`  [INFERRED]
-  assets/profile-photo.jpg → index.html
-- `AI-Powered Lead Generation & Cold Outreach Transcript` --references--> `Fahmid Hasan - Portfolio Owner`  [AMBIGUOUS]
-  graphify-out/transcripts/Al-Powered Lead Generation & Cold Outreach.txt → QWEN.md
-- `Dam Koto Bot Transcript` --references--> `Fahmid Hasan - Portfolio Owner`  [AMBIGUOUS]
-  graphify-out/transcripts/Dam koto bot.txt → QWEN.md
-- `Portfolio Website Overview (QWEN Context)` --references--> `Fahmid Hasan Portfolio Website`  [EXTRACTED]
-  QWEN.md → CLAUDE.md
-- `Fahmid Hasan - Portfolio Owner` --references--> `Fahmid Hasan Portfolio Website`  [EXTRACTED]
-  QWEN.md → CLAUDE.md
+- `Service: AI Workflow Automation ($599)` --conceptually_related_to--> `Traditional Structured Workflow`  [INFERRED]
+  index.html → .firecrawl/ai-vs-traditional.json
+- `Agentic Workflow Concept` --conceptually_related_to--> `n8n Workflow Automation Tool`  [INFERRED]
+  .firecrawl/ai-vs-traditional.json → index.html
+- `Dam koto bot` --conceptually_related_to--> `AI-Powered Lead Generation & Cold Outreach Transcript`  [AMBIGUOUS]
+  graphify-out/transcripts/Dam koto bot.txt → graphify-out/transcripts/Al-Powered Lead Generation & Cold Outreach.txt
 
-## Hyperedges (group relationships)
-- **Core Portfolio Files Trio** — claudemd_indexhtml, claudemd_stylescss, claudemd_scriptjs [EXTRACTED 1.00]
-- **CDN External Dependencies** — claudemd_particlesjs, claudemd_gsap, claudemd_typedjs, claudemd_fontawesome, claudemd_googlefonts [EXTRACTED 1.00]
-- **script.js Initialize Functions** — qwenmd_initializetheme, qwenmd_toggletheme, qwenmd_initializeparticles, qwenmd_initializetextanimations, qwenmd_initializescrolleffects, qwenmd_initializenavigation, qwenmd_initializeprojectfiltering, qwenmd_initializecommandpalette, qwenmd_initializeeasteregg [EXTRACTED 1.00]
-- **Portfolio Content Sections** — qwenmd_hero_section, qwenmd_projects_section, qwenmd_videos_section, qwenmd_contact_section [EXTRACTED 1.00]
-- **Agriculture and AI Projects Showcase** — geminimd_drug_discovery, geminimd_chashi_bondhu, geminimd_plantdoc_chatbot [EXTRACTED 1.00]
-- **AI Assistant Documentation Files for Portfolio** — qwenmd_portfolio_overview, claudemd_portfolio_website, geminimd_theme_system [INFERRED 0.75]
+## Import Cycles
+- None detected.
 
-## Communities
+## Communities (29 total, 16 thin omitted)
 
-### Community 0 - "Portfolio Architecture"
-Cohesion: 0.09
-Nodes (26): Command Palette (Cmd+K), GSAP + ScrollTrigger Animation Library, particles.js CDN Library, Fahmid Hasan Portfolio Website, script.js - All Interactivity, styles.css - All Styles, CSS Variable Theming System, Typed.js Typing Animation Library (+18 more)
+### Community 0 - "AI Freelancer Landscape"
+Cohesion: 0.11
+Nodes (24): AI Agent, AI Cannot Replace Developers, AI Hallucination Problem, AI-Driven Layoffs, AI Tool, Ashley Allen (freelance developer), Battle Ready Laravel (book), ChatGPT (+16 more)
 
-### Community 1 - "JavaScript Functions"
-Cohesion: 0.1
-Nodes (9): activateEasterEgg(), clearProjectHideTimeout(), createConfetti(), executeCommand(), getScrollTargetTop(), revealProjectCard(), scheduleProjectHide(), scrollToSection() (+1 more)
+### Community 1 - "Portfolio Projects & Stack"
+Cohesion: 0.15
+Nodes (18): Google Gemini AI, Groq LLM, n8n Workflow Automation Tool, Next.js, Project: Chashi Bondhu, Project: Interactive Bangladesh Choropleth Map, Project: AI-Powered Cold Outreach Automation, Project: DamKoto Bot (+10 more)
 
-### Community 2 - "Frontend & AI Concepts"
+### Community 2 - "Freelance Automation Tools"
 Cohesion: 0.13
-Nodes (15): Font Awesome Icon Library, Google Fonts - Cormorant Garamond and Inter, index.html - Main Markup File, Agriculture and AI Intersection, Retrieval-Augmented Generation (RAG), Fahmid Hasan - Portfolio Owner, Chashi Bondhu - AI Crop Disease Detection, Drug Discovery ML Project (+7 more)
+Nodes (15): Commission-Free Freelance Platform, Content Marketing Automation, Contract Management Automation, Figma, Financial Management Automation, Freelance Business Automation, FreshBooks, Intuit Assist (QuickBooks AI) (+7 more)
 
-### Community 3 - "Cold Outreach Pipeline"
-Cohesion: 0.14
-Nodes (15): AI Generate Outreach Email Node, Clean HTML Data Node, AI-Powered Lead Generation & Cold Outreach Workflow Thumbnail, AI-Powered Lead Generation & Cold Outreach Automation, Filter Unsent Leads Node, Get Leads from Google Sheet Node, Groq Chat Model Node, Mark Invalid Email Node (+7 more)
+### Community 3 - "Productivity & Meeting Tools"
+Cohesion: 0.18
+Nodes (11): Asana, Calendly, ClickUp, Fireflies.ai, Granola, Linear, Notion, Otter.ai (+3 more)
 
-### Community 4 - "DamKoto Bot"
-Cohesion: 0.21
-Nodes (12): AI Agent Node, Chat Interface, Chat Trigger Node, Embeddings Google Gemini, Google Gemini Chat Model, DamKoto Knowledge Base, n8n Workflow Editor, DamKoto - Dam Koto Bot (+4 more)
+### Community 4 - "AI Automation Agencies"
+Cohesion: 0.36
+Nodes (9): AI Automation Stack for Freelancers, Client Acquisition Automation, Hostinger, Liam Ottley (YouTube creator), Lindy, Make (formerly Integromat), n8n, Workflow Orchestration Platform (+1 more)
 
-### Community 5 - "Crop Yield Analytics"
-Cohesion: 0.47
-Nodes (9): Corn Crop, Crop Yield by Crop Type (Wheat, Corn, Rice, Soy), Crop Yield Time Series (Jan–Nov), Agricultural Analytics Dashboard, Pesticide Usage Bar Chart (Jan–Nov, kg), Rice Crop, Soy Crop, Wheat Crop (+1 more)
+### Community 5 - "Freelancer Adoption Stats"
+Cohesion: 0.40
+Nodes (5): 75% of Freelancers Use Generative AI, 90% of AI Adopters Report Skill Acceleration, Freelancer.com, Generative AI Adoption by Freelancers, AI-Enabled Niche Specialization
 
-### Community 6 - "BD Choropleth Map"
-Cohesion: 0.38
-Nodes (7): Bangladesh Geographic Data, Educational Statistics Bar Chart, Educational Statistics Dashboard, Educational Statistics Pie Chart, Bangladesh Choropleth Map Project, Search Interface UI, Bangladesh District-Level Choropleth Map
+### Community 6 - "AI Agency Web Data"
+Cohesion: 0.50
+Nodes (3): data, web, success
 
-### Community 7 - "PlantDoc Chatbot"
-Cohesion: 0.47
-Nodes (6): AI Chatbot Interface, Conversational UI Design, Leaf Disease Detection, Plant Pathology / Disease Identification, PlantDoc Chatbot Project Image, PlantDoc AI Plant Pathology Chatbot
+### Community 7 - "No-Code Web Builders"
+Cohesion: 0.50
+Nodes (4): Framer AI Website Builder, Lovable + GitHub + Vercel Stack, AI Agencies Web Search Dataset, Webflow AI Website Builder
 
-### Community 8 - "Chashi Bondhu App"
-Cohesion: 0.47
-Nodes (6): Agricultural Technology Domain, Chashi Bondhu - Crop Disease Identifier App, Bengali Language Support, Crop Disease Detection Feature, Leaf Visual Analysis with Magnification, Chashi Bondhu Mobile UI Screen
+### Community 8 - "AI Freelancers Dataset"
+Cohesion: 0.50
+Nodes (3): data, web, success
 
-### Community 9 - "Bikrom Creative Project"
-Cohesion: 0.7
-Nodes (5): Bengali Script Title Text - Bikrom, Bikrom - Bengali Short Film or Music Video, Project 2 Image - Bikrom Short Film Thumbnail, Person Wearing Earphones and Disturbed Hoodie, Silhouette of Person Against Sunset
+### Community 9 - "AI vs Traditional Automation"
+Cohesion: 0.50
+Nodes (3): data, web, success
 
-### Community 10 - "Drug Discovery ML"
-Cohesion: 0.7
-Nodes (5): 2D Chemical Structures, Acetylcholinesterase Enzyme Inhibition, Computational Drug Discovery Pipeline, Molecular Descriptors (logP), Random Forest ML Model
+### Community 10 - "Agentic Workflow Concepts"
+Cohesion: 0.50
+Nodes (4): Agentic Workflow Concept, AI Agents vs Traditional Automation, AI Agents vs Traditional Dev Tools, Traditional Structured Workflow
 
-### Community 11 - "Potato Disease Detector"
-Cohesion: 0.5
-Nodes (5): Potato Disease Detector, Diseased Potato Leaf, Healthy Potato Leaf, Image Classification (Healthy vs Diseased), Potato Disease Detector Project Image
-
-### Community 12 - "Project Filtering"
+### Community 12 - "Upwork Research Insights"
 Cohesion: 0.67
-Nodes (4): Project Category Filtering, data-category HTML Attribute Filter Pattern, Project Filtering Mechanism Detail, initializeProjectFiltering() Function
+Nodes (3): 40% Higher Hourly Earnings with AI, AI Saves ~8 hrs/week for Freelancers, Upwork Research Institute
 
-### Community 13 - "Author Lifestyle Photos"
+### Community 14 - "Vercel Security Headers"
 Cohesion: 0.67
-Nodes (4): Project 3 Photo - Man Selfie in Corridor, Covered Walkway or Corridor, Motion Blur Selfie Photography, Young Man (Portfolio Author)
-
-### Community 14 - "Agricultural University"
-Cohesion: 0.83
-Nodes (4): Bangladesh Agricultural University, Project 1 Portfolio Image, Red University Building, Liberation War Monument / Sculpture
-
-### Community 15 - "VocabFlow App"
-Cohesion: 1.0
-Nodes (3): Brand Identity - Blue V Letter Mark, VocabFlow Logo Design, VocabFlow Project Thumbnail
-
-### Community 16 - "Easter Egg Feature"
-Cohesion: 1.0
-Nodes (2): Easter Egg - Konami Code Confetti, initializeEasterEgg() Function (Konami Code)
-
-### Community 17 - "Profile Identity"
-Cohesion: 1.0
-Nodes (2): Fahmid Hasan Taohid Profile Photo, Portfolio Website
-
-### Community 18 - "Navigation"
-Cohesion: 1.0
-Nodes (1): initializeNavigation() Function
+Nodes (3): Asset Cache Control (1yr immutable), Security Headers Configuration, X-Frame-Options: SAMEORIGIN
 
 ## Ambiguous Edges - Review These
-- `AI-Powered Lead Generation & Cold Outreach Transcript` → `Fahmid Hasan - Portfolio Owner`  [AMBIGUOUS]
-  graphify-out/transcripts/Al-Powered Lead Generation & Cold Outreach.txt · relation: references
-- `Dam Koto Bot Transcript` → `Fahmid Hasan - Portfolio Owner`  [AMBIGUOUS]
-  graphify-out/transcripts/Dam koto bot.txt · relation: references
+- `AI-Powered Lead Generation & Cold Outreach Transcript` → `Dam koto bot`  [AMBIGUOUS]
+  graphify-out/transcripts/Dam koto bot.txt · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **38 isolated node(s):** `Font Awesome Icon Library`, `Google Fonts - Cormorant Garamond and Inter`, `Vercel Deployment via GitHub Push`, `Portfolio Website Overview (QWEN Context)`, `toggleTheme() Function` (+33 more)
+- **59 isolated node(s):** `AI-Powered Lead Generation & Cold Outreach Transcript`, `Dam Koto Bot Transcript`, `Portfolio Website`, `PreToolUse`, `success` (+54 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `Easter Egg Feature`** (2 nodes): `Easter Egg - Konami Code Confetti`, `initializeEasterEgg() Function (Konami Code)`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Profile Identity`** (2 nodes): `Fahmid Hasan Taohid Profile Photo`, `Portfolio Website`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Navigation`** (1 nodes): `initializeNavigation() Function`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **What is the exact relationship between `AI-Powered Lead Generation & Cold Outreach Transcript` and `Fahmid Hasan - Portfolio Owner`?**
-  _Edge tagged AMBIGUOUS (relation: references) - confidence is low._
-- **What is the exact relationship between `Dam Koto Bot Transcript` and `Fahmid Hasan - Portfolio Owner`?**
-  _Edge tagged AMBIGUOUS (relation: references) - confidence is low._
-- **Why does `script.js - All Interactivity` connect `Portfolio Architecture` to `Project Filtering`?**
-  _High betweenness centrality (0.051) - this node is a cross-community bridge._
-- **Why does `Fahmid Hasan Portfolio Website` connect `Portfolio Architecture` to `Frontend & AI Concepts`?**
-  _High betweenness centrality (0.050) - this node is a cross-community bridge._
-- **Why does `index.html - Main Markup File` connect `Frontend & AI Concepts` to `Portfolio Architecture`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **What connects `Font Awesome Icon Library`, `Google Fonts - Cormorant Garamond and Inter`, `Vercel Deployment via GitHub Push` to the rest of the system?**
-  _38 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Portfolio Architecture` be split into smaller, more focused modules?**
-  _Cohesion score 0.09 - nodes in this community are weakly interconnected._
+- **What is the exact relationship between `AI-Powered Lead Generation & Cold Outreach Transcript` and `Dam koto bot`?**
+  _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
+- **Why does `Freelance Business Automation` connect `Freelance Automation Tools` to `AI Freelancer Landscape`, `Productivity & Meeting Tools`, `AI Automation Agencies`?**
+  _High betweenness centrality (0.131) - this node is a cross-community bridge._
+- **Why does `AI Agent` connect `AI Freelancer Landscape` to `Freelance Automation Tools`, `AI Automation Agencies`?**
+  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+- **What connects `AI-Powered Lead Generation & Cold Outreach Transcript`, `Dam Koto Bot Transcript`, `Portfolio Website` to the rest of the system?**
+  _62 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**
+  _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._
+- **Should `Freelance Automation Tools` be split into smaller, more focused modules?**
+  _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
