@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeHoverEffects();
   initializeNavScroll();
   initializeContactForm();
-  initializeServiceSelection();
   initializeEasterEgg();
   
   // Add scroll event listener for progress bar
@@ -180,20 +179,6 @@ function initializeScrollEffects() {
       });
     });
 
-    gsap.utils.toArray('.service-card').forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top bottom-=50',
-          toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: i * 0.08
-      });
-    });
-
     gsap.utils.toArray('.video-card').forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: {
@@ -236,7 +221,7 @@ function initializeScrollEffects() {
       });
     }, observerOptions);
     
-    document.querySelectorAll('.service-card, .project-card, .video-card, .contact-card').forEach(el => {
+    document.querySelectorAll('.project-card, .video-card, .contact-card').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(30px)';
       el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -266,7 +251,7 @@ function updateProgressBar() {
  */
 function initializeNavigation() {
   // Handle all anchor links with hash
-  document.querySelectorAll('a[href^="#"]:not(.service-cta)').forEach(anchor => {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
@@ -541,9 +526,6 @@ function executeCommand(action) {
     case 'home':
       scrollToSection('hero');
       break;
-    case 'services':
-      scrollToSection('services');
-      break;
     case 'projects':
       scrollToSection('projects');
       break;
@@ -723,30 +705,6 @@ function initializeContactForm() {
         result.className = 'form-result';
       }, 5000);
     }
-  });
-}
-
-/**
- * Prefill the contact form when a service package is selected
- */
-function initializeServiceSelection() {
-  const serviceButtons = document.querySelectorAll('.service-cta');
-  const serviceSelect = document.getElementById('contact-service');
-  const messageField = document.getElementById('contact-message');
-  if (!serviceButtons.length || !serviceSelect || !messageField) return;
-
-  serviceButtons.forEach(button => {
-    button.addEventListener('click', (event) => {
-      event.preventDefault();
-      const serviceName = button.dataset.service;
-      if (!serviceName) return;
-
-      serviceSelect.value = serviceName;
-      messageField.value = `Hi Fahmid, I'm interested in the ${serviceName} package. I'd like help with `;
-      scrollToSection('contact');
-      messageField.focus();
-      messageField.setSelectionRange(messageField.value.length, messageField.value.length);
-    });
   });
 }
 

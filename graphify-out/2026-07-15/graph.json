@@ -4,574 +4,112 @@
   "graph": {},
   "nodes": [
     {
-      "label": ".mcp.json",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_config_file"
-      },
-      "_origin": "ast",
-      "id": "mcp",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": ".mcp.json"
-    },
-    {
-      "label": "playwright",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_server"
-      },
-      "_origin": "ast",
-      "id": "mcp_mcp_server_playwright",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": "playwright"
-    },
-    {
-      "label": "npx",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_command"
-      },
-      "_origin": "ast",
-      "id": "mcp_command_npx",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": "npx"
-    },
-    {
-      "label": "@playwright/mcp",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_package"
-      },
-      "_origin": "ast",
-      "id": "mcp_package_playwright_mcp",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": "@playwright/mcp"
-    },
-    {
-      "label": "script.js",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "script",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "script.js"
-    },
-    {
-      "label": "initializeTheme()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "script_initializetheme",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializetheme()"
-    },
-    {
-      "label": "toggleTheme()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "script_toggletheme",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "toggletheme()"
-    },
-    {
-      "label": "initializeParticles()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L56",
-      "_origin": "ast",
-      "id": "script_initializeparticles",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializeparticles()"
-    },
-    {
-      "label": "initializeTextAnimations()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L140",
-      "_origin": "ast",
-      "id": "script_initializetextanimations",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializetextanimations()"
-    },
-    {
-      "label": "initializeScrollEffects()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L164",
-      "_origin": "ast",
-      "id": "script_initializescrolleffects",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializescrolleffects()"
-    },
-    {
-      "label": "updateProgressBar()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L236",
-      "_origin": "ast",
-      "id": "script_updateprogressbar",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "updateprogressbar()"
-    },
-    {
-      "label": "initializeNavigation()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L252",
-      "_origin": "ast",
-      "id": "script_initializenavigation",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializenavigation()"
-    },
-    {
-      "label": "clearProjectHideTimeout()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L298",
-      "_origin": "ast",
-      "id": "script_clearprojecthidetimeout",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "clearprojecthidetimeout()"
-    },
-    {
-      "label": "scheduleProjectHide()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L305",
-      "_origin": "ast",
-      "id": "script_scheduleprojecthide",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "scheduleprojecthide()"
-    },
-    {
-      "label": "initializeProjectFiltering()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L316",
-      "_origin": "ast",
-      "id": "script_initializeprojectfiltering",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializeprojectfiltering()"
-    },
-    {
-      "label": "initializeShowMore()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L382",
-      "_origin": "ast",
-      "id": "script_initializeshowmore",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializeshowmore()"
-    },
-    {
-      "label": "initializeCommandPalette()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L437",
-      "_origin": "ast",
-      "id": "script_initializecommandpalette",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializecommandpalette()"
-    },
-    {
-      "label": "executeCommand()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L521",
-      "_origin": "ast",
-      "id": "script_executecommand",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "executecommand()"
-    },
-    {
-      "label": "scrollToSection()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L544",
-      "_origin": "ast",
-      "id": "script_scrolltosection",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "scrolltosection()"
-    },
-    {
-      "label": "getScrollTargetTop()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L554",
-      "_origin": "ast",
-      "id": "script_getscrolltargettop",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "getscrolltargettop()"
-    },
-    {
-      "label": "revealProjectCard()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L560",
-      "_origin": "ast",
-      "id": "script_revealprojectcard",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "revealprojectcard()"
-    },
-    {
-      "label": "initializeDarkModeToggle()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L584",
-      "_origin": "ast",
-      "id": "script_initializedarkmodetoggle",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializedarkmodetoggle()"
-    },
-    {
-      "label": "initializeHoverEffects()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L597",
-      "_origin": "ast",
-      "id": "script_initializehovereffects",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializehovereffects()"
-    },
-    {
-      "label": "initializeNavScroll()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L640",
-      "_origin": "ast",
-      "id": "script_initializenavscroll",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializenavscroll()"
-    },
-    {
-      "label": "initializeContactForm()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L660",
-      "_origin": "ast",
-      "id": "script_initializecontactform",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializecontactform()"
-    },
-    {
-      "label": "initializeEasterEgg()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L714",
-      "_origin": "ast",
-      "id": "script_initializeeasteregg",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializeeasteregg()"
-    },
-    {
-      "label": "activateEasterEgg()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L747",
-      "_origin": "ast",
-      "id": "script_activateeasteregg",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "activateeasteregg()"
-    },
-    {
-      "label": "createConfetti()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L760",
-      "_origin": "ast",
-      "id": "script_createconfetti",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "createconfetti()"
-    },
-    {
-      "label": "vercel.json",
-      "file_type": "code",
-      "source_file": "vercel.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "vercel",
-      "community": 16,
-      "community_name": "Vercel Deployment",
-      "norm_label": "vercel.json"
-    },
-    {
-      "label": "headers",
-      "file_type": "code",
-      "source_file": "vercel.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "vercel_headers",
-      "community": 16,
-      "community_name": "Vercel Deployment",
-      "norm_label": "headers"
-    },
-    {
-      "label": "AGENTS.md",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "agents.md"
-    },
-    {
-      "label": "AGENTS.md",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "agents_agents_md",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "agents.md"
-    },
-    {
-      "label": "Overview",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "agents_overview",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "overview"
-    },
-    {
-      "label": "Development",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "agents_development",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "development"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "agents_architecture",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "architecture"
-    },
-    {
-      "label": "Theming",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "agents_theming",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "theming"
-    },
-    {
-      "label": "Project Filtering",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "agents_project_filtering",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "project filtering"
-    },
-    {
-      "label": "Command Palette",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "agents_command_palette",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "command palette"
-    },
-    {
-      "label": "graphify",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L48",
-      "_origin": "ast",
-      "id": "agents_graphify",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "graphify"
-    },
-    {
-      "label": "CLAUDE.md",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "claude",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "claude.md"
-    },
-    {
-      "label": "CLAUDE.md",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "claude_claude_md",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "claude.md"
-    },
-    {
-      "label": "Overview",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "claude_overview",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "overview"
-    },
-    {
-      "label": "Development",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "claude_development",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "development"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "claude_architecture",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "architecture"
-    },
-    {
-      "label": "Theming",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L34",
-      "_origin": "ast",
-      "id": "claude_theming",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "theming"
-    },
-    {
-      "label": "Project Filtering",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L38",
-      "_origin": "ast",
-      "id": "claude_project_filtering",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "project filtering"
-    },
-    {
-      "label": "Command Palette",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L44",
-      "_origin": "ast",
-      "id": "claude_command_palette",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "command palette"
-    },
-    {
-      "label": "graphify",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L48",
-      "_origin": "ast",
-      "id": "claude_graphify",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "graphify"
-    },
-    {
       "label": "settings.json",
       "file_type": "code",
       "source_file": ".claude/settings.json",
       "source_location": "L1",
-      "community": 11,
-      "norm_label": "settings.json",
       "id": "claude_settings",
-      "community_name": "Claude Dev Settings"
+      "community": 11,
+      "norm_label": "settings.json"
     },
     {
       "label": "hooks",
       "file_type": "code",
       "source_file": ".claude/settings.json",
       "source_location": "L2",
-      "community": 11,
-      "norm_label": "hooks",
       "id": "claude_settings_hooks",
-      "community_name": "Claude Dev Settings"
+      "community": 11,
+      "norm_label": "hooks"
     },
     {
       "label": "PreToolUse",
       "file_type": "code",
       "source_file": ".claude/settings.json",
       "source_location": "L3",
-      "community": 11,
-      "norm_label": "pretooluse",
       "id": "claude_settings_hooks_pretooluse",
-      "community_name": "Claude Dev Settings"
+      "community": 11,
+      "norm_label": "pretooluse"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "id": "claude",
+      "community": 17,
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "id": "claude_claude_md",
+      "community": 17,
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "id": "claude_overview",
+      "community": 17,
+      "norm_label": "overview"
+    },
+    {
+      "label": "Development",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L9",
+      "id": "claude_development",
+      "community": 17,
+      "norm_label": "development"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L19",
+      "id": "claude_architecture",
+      "community": 17,
+      "norm_label": "architecture"
+    },
+    {
+      "label": "Theming",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L34",
+      "id": "claude_theming",
+      "community": 17,
+      "norm_label": "theming"
+    },
+    {
+      "label": "Project Filtering",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L38",
+      "id": "claude_project_filtering",
+      "community": 17,
+      "norm_label": "project filtering"
+    },
+    {
+      "label": "Command Palette",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L44",
+      "id": "claude_command_palette",
+      "community": 17,
+      "norm_label": "command palette"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L48",
+      "id": "claude_graphify",
+      "community": 17,
+      "norm_label": "graphify"
     },
     {
       "label": "AI-Powered Lead Generation & Cold Outreach Transcript",
@@ -584,8 +122,7 @@
       "contributor": null,
       "community": 15,
       "norm_label": "ai-powered lead generation & cold outreach transcript",
-      "id": "transcript_ai_lead_gen",
-      "community_name": "Project Transcripts"
+      "id": "transcript_ai_lead_gen"
     },
     {
       "label": "Dam Koto Bot Transcript",
@@ -598,8 +135,7 @@
       "contributor": null,
       "community": 28,
       "norm_label": "dam koto bot transcript",
-      "id": "transcript_damkoto_bot",
-      "community_name": "DamKoto Transcript"
+      "id": "transcript_damkoto_bot"
     },
     {
       "label": "Portfolio Website",
@@ -612,8 +148,7 @@
       "contributor": null,
       "community": 22,
       "norm_label": "portfolio website",
-      "id": "profilephoto_portfolio_website",
-      "community_name": "Portfolio Profile"
+      "id": "profilephoto_portfolio_website"
     },
     {
       "label": "ai-agencies.json",
@@ -622,8 +157,7 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "ai-agencies.json",
-      "id": "firecrawl_ai_agencies",
-      "community_name": "AI Agency Web Data"
+      "id": "firecrawl_ai_agencies"
     },
     {
       "label": "success",
@@ -632,8 +166,7 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "success",
-      "id": "firecrawl_ai_agencies_success",
-      "community_name": "AI Agency Web Data"
+      "id": "firecrawl_ai_agencies_success"
     },
     {
       "label": "data",
@@ -642,8 +175,7 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "data",
-      "id": "firecrawl_ai_agencies_data",
-      "community_name": "AI Agency Web Data"
+      "id": "firecrawl_ai_agencies_data"
     },
     {
       "label": "web",
@@ -652,8 +184,7 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "web",
-      "id": "firecrawl_ai_agencies_data_web",
-      "community_name": "AI Agency Web Data"
+      "id": "firecrawl_ai_agencies_data_web"
     },
     {
       "label": "ai-freelancers.json",
@@ -662,8 +193,7 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "ai-freelancers.json",
-      "id": "firecrawl_ai_freelancers",
-      "community_name": "AI Freelancers Dataset"
+      "id": "firecrawl_ai_freelancers"
     },
     {
       "label": "success",
@@ -672,8 +202,7 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "success",
-      "id": "firecrawl_ai_freelancers_success",
-      "community_name": "AI Freelancers Dataset"
+      "id": "firecrawl_ai_freelancers_success"
     },
     {
       "label": "data",
@@ -682,8 +211,7 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "data",
-      "id": "firecrawl_ai_freelancers_data",
-      "community_name": "AI Freelancers Dataset"
+      "id": "firecrawl_ai_freelancers_data"
     },
     {
       "label": "web",
@@ -692,8 +220,7 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "web",
-      "id": "firecrawl_ai_freelancers_data_web",
-      "community_name": "AI Freelancers Dataset"
+      "id": "firecrawl_ai_freelancers_data_web"
     },
     {
       "label": "ai-vs-traditional.json",
@@ -702,8 +229,7 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "ai-vs-traditional.json",
-      "id": "firecrawl_ai_vs_traditional",
-      "community_name": "AI vs Traditional Automation"
+      "id": "firecrawl_ai_vs_traditional"
     },
     {
       "label": "success",
@@ -712,8 +238,7 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "success",
-      "id": "firecrawl_ai_vs_traditional_success",
-      "community_name": "AI vs Traditional Automation"
+      "id": "firecrawl_ai_vs_traditional_success"
     },
     {
       "label": "data",
@@ -722,8 +247,7 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "data",
-      "id": "firecrawl_ai_vs_traditional_data",
-      "community_name": "AI vs Traditional Automation"
+      "id": "firecrawl_ai_vs_traditional_data"
     },
     {
       "label": "web",
@@ -732,8 +256,49 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "web",
-      "id": "firecrawl_ai_vs_traditional_data_web",
-      "community_name": "AI vs Traditional Automation"
+      "id": "firecrawl_ai_vs_traditional_data_web"
+    },
+    {
+      "label": ".mcp.json",
+      "file_type": "code",
+      "source_file": ".mcp.json",
+      "source_location": "L1",
+      "metadata": {
+        "mcp_kind": "mcp_config_file"
+      },
+      "community": 13,
+      "norm_label": ".mcp.json",
+      "id": "mcp"
+    },
+    {
+      "label": "npx",
+      "file_type": "code",
+      "source_file": ".mcp.json",
+      "source_location": "L1",
+      "metadata": {
+        "mcp_kind": "mcp_command"
+      },
+      "community": 13,
+      "norm_label": "npx",
+      "id": "mcp_command_npx"
+    },
+    {
+      "label": "vercel.json",
+      "file_type": "code",
+      "source_file": "vercel.json",
+      "source_location": "L1",
+      "community": 16,
+      "norm_label": "vercel.json",
+      "id": "vercel"
+    },
+    {
+      "label": "headers",
+      "file_type": "code",
+      "source_file": "vercel.json",
+      "source_location": "L2",
+      "community": 16,
+      "norm_label": "headers",
+      "id": "vercel_headers"
     },
     {
       "label": "Hero Section",
@@ -746,8 +311,7 @@
       "contributor": null,
       "community": 25,
       "norm_label": "hero section",
-      "id": "root_index_hero_section",
-      "community_name": "Hero Section"
+      "id": "root_index_hero_section"
     },
     {
       "label": "Services Section",
@@ -760,8 +324,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "services section",
-      "id": "root_index_services_section",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_services_section"
     },
     {
       "label": "Projects Section",
@@ -774,8 +337,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "projects section",
-      "id": "root_index_projects_section",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_projects_section"
     },
     {
       "label": "Contact Section",
@@ -788,8 +350,7 @@
       "contributor": null,
       "community": 23,
       "norm_label": "contact section",
-      "id": "root_index_contact_section",
-      "community_name": "Contact Section"
+      "id": "root_index_contact_section"
     },
     {
       "label": "Videos Section",
@@ -802,8 +363,7 @@
       "contributor": null,
       "community": 27,
       "norm_label": "videos section",
-      "id": "root_index_videos_section",
-      "community_name": "Videos Section"
+      "id": "root_index_videos_section"
     },
     {
       "label": "Video Demo Popup",
@@ -816,8 +376,7 @@
       "contributor": null,
       "community": 26,
       "norm_label": "video demo popup",
-      "id": "root_index_video_popup",
-      "community_name": "Video Popup"
+      "id": "root_index_video_popup"
     },
     {
       "label": "Project: Chashi Bondhu",
@@ -830,8 +389,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: chashi bondhu",
-      "id": "root_index_project_chashi_bondhu",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_project_chashi_bondhu"
     },
     {
       "label": "Project: VocabFlow",
@@ -844,8 +402,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: vocabflow",
-      "id": "root_index_project_vocabflow",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_project_vocabflow"
     },
     {
       "label": "Project: AI-Powered Cold Outreach Automation",
@@ -858,8 +415,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: ai-powered cold outreach automation",
-      "id": "root_index_project_cold_outreach",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_project_cold_outreach"
     },
     {
       "label": "Project: DamKoto Bot",
@@ -872,8 +428,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: damkoto bot",
-      "id": "root_index_project_damkoto",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_project_damkoto"
     },
     {
       "label": "Project: PlantDoc RAG ChatBot",
@@ -886,8 +441,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: plantdoc rag chatbot",
-      "id": "root_index_project_plantdoc",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_project_plantdoc"
     },
     {
       "label": "Project: Interactive Bangladesh Choropleth Map",
@@ -900,8 +454,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: interactive bangladesh choropleth map",
-      "id": "root_index_project_choropleth",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_project_choropleth"
     },
     {
       "label": "Service: AI Workflow Automation ($599)",
@@ -914,8 +467,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: ai workflow automation ($599)",
-      "id": "root_index_service_workflow_automation",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_service_workflow_automation"
     },
     {
       "label": "Service: AI Support Chatbot ($799)",
@@ -928,8 +480,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: ai support chatbot ($799)",
-      "id": "root_index_service_chatbot",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_service_chatbot"
     },
     {
       "label": "Service: Data Dashboard & Insight Pack ($449)",
@@ -942,8 +493,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: data dashboard & insight pack ($449)",
-      "id": "root_index_service_dashboard",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_service_dashboard"
     },
     {
       "label": "Service: Lean AI MVP / Internal Tool ($1499)",
@@ -956,8 +506,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: lean ai mvp / internal tool ($1499)",
-      "id": "root_index_service_mvp",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_service_mvp"
     },
     {
       "label": "Fahmid Hasan Taohid",
@@ -970,8 +519,7 @@
       "contributor": null,
       "community": 24,
       "norm_label": "fahmid hasan taohid",
-      "id": "root_index_fahmid_hasan",
-      "community_name": "Portfolio Owner"
+      "id": "root_index_fahmid_hasan"
     },
     {
       "label": "Security Headers Configuration",
@@ -984,8 +532,7 @@
       "contributor": null,
       "community": 14,
       "norm_label": "security headers configuration",
-      "id": "vercel_json_security_headers",
-      "community_name": "Vercel Security Headers"
+      "id": "vercel_json_security_headers"
     },
     {
       "label": "Asset Cache Control (1yr immutable)",
@@ -998,8 +545,7 @@
       "contributor": null,
       "community": 14,
       "norm_label": "asset cache control (1yr immutable)",
-      "id": "vercel_json_cache_control",
-      "community_name": "Vercel Security Headers"
+      "id": "vercel_json_cache_control"
     },
     {
       "label": "X-Frame-Options: SAMEORIGIN",
@@ -1012,8 +558,7 @@
       "contributor": null,
       "community": 14,
       "norm_label": "x-frame-options: sameorigin",
-      "id": "vercel_json_x_frame_options",
-      "community_name": "Vercel Security Headers"
+      "id": "vercel_json_x_frame_options"
     },
     {
       "label": "Playwright MCP Server",
@@ -1026,8 +571,7 @@
       "contributor": null,
       "community": 13,
       "norm_label": "playwright mcp server",
-      "id": "mcp_json_playwright",
-      "community_name": "MCP & Playwright Config"
+      "id": "mcp_json_playwright"
     },
     {
       "label": "AI Agencies Web Search Dataset",
@@ -1040,8 +584,7 @@
       "contributor": null,
       "community": 7,
       "norm_label": "ai agencies web search dataset",
-      "id": "firecrawl_ai_agencies_web_search",
-      "community_name": "No-Code Web Builders"
+      "id": "firecrawl_ai_agencies_web_search"
     },
     {
       "label": "Framer AI Website Builder",
@@ -1054,8 +597,7 @@
       "contributor": null,
       "community": 7,
       "norm_label": "framer ai website builder",
-      "id": "firecrawl_ai_agencies_framer",
-      "community_name": "No-Code Web Builders"
+      "id": "firecrawl_ai_agencies_framer"
     },
     {
       "label": "Webflow AI Website Builder",
@@ -1068,8 +610,7 @@
       "contributor": null,
       "community": 7,
       "norm_label": "webflow ai website builder",
-      "id": "firecrawl_ai_agencies_webflow",
-      "community_name": "No-Code Web Builders"
+      "id": "firecrawl_ai_agencies_webflow"
     },
     {
       "label": "Lovable + GitHub + Vercel Stack",
@@ -1082,8 +623,7 @@
       "contributor": null,
       "community": 7,
       "norm_label": "lovable + github + vercel stack",
-      "id": "firecrawl_ai_agencies_lovable_stack",
-      "community_name": "No-Code Web Builders"
+      "id": "firecrawl_ai_agencies_lovable_stack"
     },
     {
       "label": "AI Agents vs Traditional Automation",
@@ -1094,10 +634,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 10,
       "norm_label": "ai agents vs traditional automation",
-      "id": "firecrawl_ai_vs_traditional_ai_agents",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "firecrawl_ai_vs_traditional_ai_agents"
     },
     {
       "label": "Agentic Workflow Concept",
@@ -1108,10 +647,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 10,
       "norm_label": "agentic workflow concept",
-      "id": "firecrawl_ai_vs_traditional_agentic_workflow",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "firecrawl_ai_vs_traditional_agentic_workflow"
     },
     {
       "label": "Traditional Structured Workflow",
@@ -1122,10 +660,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 10,
       "norm_label": "traditional structured workflow",
-      "id": "firecrawl_ai_vs_traditional_traditional_workflow",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "firecrawl_ai_vs_traditional_traditional_workflow"
     },
     {
       "label": "AI Agents vs Traditional Dev Tools",
@@ -1136,10 +673,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 10,
       "norm_label": "ai agents vs traditional dev tools",
-      "id": "firecrawl_ai_vs_traditional_dev_tools",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "firecrawl_ai_vs_traditional_dev_tools"
     },
     {
       "label": "n8n Workflow Automation Tool",
@@ -1152,8 +688,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "n8n workflow automation tool",
-      "id": "root_index_n8n",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_n8n"
     },
     {
       "label": "Groq LLM",
@@ -1166,8 +701,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "groq llm",
-      "id": "root_index_groq_llm",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_groq_llm"
     },
     {
       "label": "Google Gemini AI",
@@ -1180,8 +714,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "google gemini ai",
-      "id": "root_index_google_gemini",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_google_gemini"
     },
     {
       "label": "Retrieval-Augmented Generation (RAG)",
@@ -1194,8 +727,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "retrieval-augmented generation (rag)",
-      "id": "root_index_rag",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_rag"
     },
     {
       "label": "Supabase",
@@ -1208,8 +740,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "supabase",
-      "id": "root_index_supabase",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_supabase"
     },
     {
       "label": "Next.js",
@@ -1222,8 +753,7 @@
       "contributor": null,
       "community": 1,
       "norm_label": "next.js",
-      "id": "root_index_nextjs",
-      "community_name": "Portfolio Projects & Stack"
+      "id": "root_index_nextjs"
     },
     {
       "label": "Dam koto bot",
@@ -1236,8 +766,7 @@
       "contributor": null,
       "community": 15,
       "norm_label": "dam koto bot",
-      "id": "transcript_damkoto_dam_koto_bot",
-      "community_name": "Project Transcripts"
+      "id": "transcript_damkoto_dam_koto_bot"
     },
     {
       "label": "AI Freelancers Market Research",
@@ -1250,8 +779,7 @@
       "contributor": null,
       "community": 18,
       "norm_label": "ai freelancers market research",
-      "id": "firecrawl_ai_freelancers_ai_freelancers_file",
-      "community_name": "Freelancers Data File"
+      "id": "firecrawl_ai_freelancers_ai_freelancers_file"
     },
     {
       "label": "Upwork",
@@ -1262,10 +790,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "upwork",
-      "id": "firecrawl_ai_freelancers_upwork",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_upwork"
     },
     {
       "label": "Jobbers.io",
@@ -1276,10 +803,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "jobbers.io",
-      "id": "firecrawl_ai_freelancers_jobbers_io",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_jobbers_io"
     },
     {
       "label": "Freelancer.com",
@@ -1292,8 +818,7 @@
       "contributor": null,
       "community": 5,
       "norm_label": "freelancer.com",
-      "id": "firecrawl_ai_freelancers_freelancer_com",
-      "community_name": "Freelancer Adoption Stats"
+      "id": "firecrawl_ai_freelancers_freelancer_com"
     },
     {
       "label": "GitHub Copilot",
@@ -1306,8 +831,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "github copilot",
-      "id": "firecrawl_ai_freelancers_github_copilot",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_github_copilot"
     },
     {
       "label": "Cursor",
@@ -1320,8 +844,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "cursor",
-      "id": "firecrawl_ai_freelancers_cursor",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_cursor"
     },
     {
       "label": "ChatGPT",
@@ -1334,8 +857,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "chatgpt",
-      "id": "firecrawl_ai_freelancers_chatgpt",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_chatgpt"
     },
     {
       "label": "Claude (Anthropic)",
@@ -1348,8 +870,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "claude (anthropic)",
-      "id": "firecrawl_ai_freelancers_claude",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_claude"
     },
     {
       "label": "Junie (JetBrains AI)",
@@ -1362,8 +883,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "junie (jetbrains ai)",
-      "id": "firecrawl_ai_freelancers_junie",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_junie"
     },
     {
       "label": "PhpStorm",
@@ -1376,8 +896,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "phpstorm",
-      "id": "firecrawl_ai_freelancers_phpstorm",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_phpstorm"
     },
     {
       "label": "n8n",
@@ -1390,8 +909,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "n8n",
-      "id": "firecrawl_ai_freelancers_n8n",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_n8n"
     },
     {
       "label": "Make (formerly Integromat)",
@@ -1404,8 +922,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "make (formerly integromat)",
-      "id": "firecrawl_ai_freelancers_make",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_make"
     },
     {
       "label": "Zapier",
@@ -1418,8 +935,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "zapier",
-      "id": "firecrawl_ai_freelancers_zapier",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_zapier"
     },
     {
       "label": "Lindy",
@@ -1432,8 +948,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "lindy",
-      "id": "firecrawl_ai_freelancers_lindy",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_lindy"
     },
     {
       "label": "FreshBooks",
@@ -1446,8 +961,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "freshbooks",
-      "id": "firecrawl_ai_freelancers_freshbooks",
-      "community_name": "Freelance Automation Tools"
+      "id": "firecrawl_ai_freelancers_freshbooks"
     },
     {
       "label": "QuickBooks",
@@ -1460,8 +974,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "quickbooks",
-      "id": "firecrawl_ai_freelancers_quickbooks",
-      "community_name": "Freelance Automation Tools"
+      "id": "firecrawl_ai_freelancers_quickbooks"
     },
     {
       "label": "Xero",
@@ -1474,8 +987,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "xero",
-      "id": "firecrawl_ai_freelancers_xero",
-      "community_name": "Freelance Automation Tools"
+      "id": "firecrawl_ai_freelancers_xero"
     },
     {
       "label": "Notion",
@@ -1488,8 +1000,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "notion",
-      "id": "firecrawl_ai_freelancers_notion",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_notion"
     },
     {
       "label": "Asana",
@@ -1502,8 +1013,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "asana",
-      "id": "firecrawl_ai_freelancers_asana",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_asana"
     },
     {
       "label": "Trello",
@@ -1516,8 +1026,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "trello",
-      "id": "firecrawl_ai_freelancers_trello",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_trello"
     },
     {
       "label": "ClickUp",
@@ -1530,8 +1039,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "clickup",
-      "id": "firecrawl_ai_freelancers_clickup",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_clickup"
     },
     {
       "label": "Linear",
@@ -1544,8 +1052,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "linear",
-      "id": "firecrawl_ai_freelancers_linear",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_linear"
     },
     {
       "label": "Calendly",
@@ -1558,8 +1065,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "calendly",
-      "id": "firecrawl_ai_freelancers_calendly",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_calendly"
     },
     {
       "label": "Otter.ai",
@@ -1572,8 +1078,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "otter.ai",
-      "id": "firecrawl_ai_freelancers_otter_ai",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_otter_ai"
     },
     {
       "label": "Fireflies.ai",
@@ -1586,8 +1091,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "fireflies.ai",
-      "id": "firecrawl_ai_freelancers_fireflies_ai",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_fireflies_ai"
     },
     {
       "label": "Granola",
@@ -1600,8 +1104,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "granola",
-      "id": "firecrawl_ai_freelancers_granola",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_granola"
     },
     {
       "label": "Laracasts",
@@ -1614,8 +1117,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "laracasts",
-      "id": "firecrawl_ai_freelancers_laracasts",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_laracasts"
     },
     {
       "label": "Tailwind (company)",
@@ -1628,8 +1130,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "tailwind (company)",
-      "id": "firecrawl_ai_freelancers_tailwind",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_tailwind"
     },
     {
       "label": "Laravel",
@@ -1642,8 +1143,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "laravel",
-      "id": "firecrawl_ai_freelancers_laravel",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_laravel"
     },
     {
       "label": "Upwork Research Institute",
@@ -1656,8 +1156,7 @@
       "contributor": null,
       "community": 12,
       "norm_label": "upwork research institute",
-      "id": "firecrawl_ai_freelancers_upwork_research_institute",
-      "community_name": "Upwork Research Insights"
+      "id": "firecrawl_ai_freelancers_upwork_research_institute"
     },
     {
       "label": "Stack Overflow Developer Survey 2025",
@@ -1670,8 +1169,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "stack overflow developer survey 2025",
-      "id": "firecrawl_ai_freelancers_stack_overflow_developer_survey",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_stack_overflow_developer_survey"
     },
     {
       "label": "Ashley Allen (freelance developer)",
@@ -1684,8 +1182,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ashley allen (freelance developer)",
-      "id": "firecrawl_ai_freelancers_ashley_allen",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_ashley_allen"
     },
     {
       "label": "Jenessa Stark (freelancer/content creator)",
@@ -1698,8 +1195,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "jenessa stark (freelancer/content creator)",
-      "id": "firecrawl_ai_freelancers_jenessa_stark",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_jenessa_stark"
     },
     {
       "label": "Liam Ottley (YouTube creator)",
@@ -1712,8 +1208,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "liam ottley (youtube creator)",
-      "id": "firecrawl_ai_freelancers_liam_ottley",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_liam_ottley"
     },
     {
       "label": "AI Agent",
@@ -1726,8 +1221,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai agent",
-      "id": "firecrawl_ai_freelancers_ai_agent",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_ai_agent"
     },
     {
       "label": "AI Tool",
@@ -1740,8 +1234,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai tool",
-      "id": "firecrawl_ai_freelancers_ai_tool",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_ai_tool"
     },
     {
       "label": "Freelance Business Automation",
@@ -1752,10 +1245,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "freelance business automation",
-      "id": "firecrawl_ai_freelancers_freelance_automation",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_freelance_automation"
     },
     {
       "label": "Value-Based Pricing",
@@ -1768,8 +1260,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "value-based pricing",
-      "id": "firecrawl_ai_freelancers_value_based_pricing",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_value_based_pricing"
     },
     {
       "label": "Hourly Pricing Model",
@@ -1782,8 +1273,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "hourly pricing model",
-      "id": "firecrawl_ai_freelancers_hourly_pricing",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_hourly_pricing"
     },
     {
       "label": "Fixed-Price Project Model",
@@ -1796,8 +1286,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "fixed-price project model",
-      "id": "firecrawl_ai_freelancers_fixed_price_model",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_fixed_price_model"
     },
     {
       "label": "Commission-Free Freelance Platform",
@@ -1808,10 +1297,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "commission-free freelance platform",
-      "id": "firecrawl_ai_freelancers_commission_free_platform",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_commission_free_platform"
     },
     {
       "label": "Developer as Code Reviewer (vs Writer)",
@@ -1824,8 +1312,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "developer as code reviewer (vs writer)",
-      "id": "firecrawl_ai_freelancers_code_reviewer_role",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_code_reviewer_role"
     },
     {
       "label": "AI Automation Stack for Freelancers",
@@ -1838,8 +1325,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "ai automation stack for freelancers",
-      "id": "firecrawl_ai_freelancers_ai_automation_stack",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_ai_automation_stack"
     },
     {
       "label": "Client Acquisition Automation",
@@ -1852,8 +1338,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "client acquisition automation",
-      "id": "firecrawl_ai_freelancers_client_acquisition_automation",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_client_acquisition_automation"
     },
     {
       "label": "Proposal Writing Automation",
@@ -1864,10 +1349,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "proposal writing automation",
-      "id": "firecrawl_ai_freelancers_proposal_automation",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_proposal_automation"
     },
     {
       "label": "Financial Management Automation",
@@ -1880,8 +1364,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "financial management automation",
-      "id": "firecrawl_ai_freelancers_financial_automation",
-      "community_name": "Freelance Automation Tools"
+      "id": "firecrawl_ai_freelancers_financial_automation"
     },
     {
       "label": "Project Management Automation",
@@ -1894,8 +1377,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "project management automation",
-      "id": "firecrawl_ai_freelancers_project_mgmt_automation",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_project_mgmt_automation"
     },
     {
       "label": "Content Marketing Automation",
@@ -1906,10 +1388,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "content marketing automation",
-      "id": "firecrawl_ai_freelancers_content_marketing_automation",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_content_marketing_automation"
     },
     {
       "label": "Contract Management Automation",
@@ -1920,10 +1401,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "contract management automation",
-      "id": "firecrawl_ai_freelancers_contract_management_automation",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_contract_management_automation"
     },
     {
       "label": "Scope Creep Detection",
@@ -1936,8 +1416,7 @@
       "contributor": null,
       "community": 3,
       "norm_label": "scope creep detection",
-      "id": "firecrawl_ai_freelancers_scope_creep_detection",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_scope_creep_detection"
     },
     {
       "label": "AI-Enabled Niche Specialization",
@@ -1950,8 +1429,7 @@
       "contributor": null,
       "community": 5,
       "norm_label": "ai-enabled niche specialization",
-      "id": "firecrawl_ai_freelancers_niche_specialization",
-      "community_name": "Freelancer Adoption Stats"
+      "id": "firecrawl_ai_freelancers_niche_specialization"
     },
     {
       "label": "Personal Brand Building for Freelancers",
@@ -1962,10 +1440,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "personal brand building for freelancers",
-      "id": "firecrawl_ai_freelancers_personal_brand_building",
-      "community_name": "Productivity & Meeting Tools"
+      "id": "firecrawl_ai_freelancers_personal_brand_building"
     },
     {
       "label": "AI Hallucination Problem",
@@ -1978,8 +1455,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai hallucination problem",
-      "id": "firecrawl_ai_freelancers_ai_hallucination",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_ai_hallucination"
     },
     {
       "label": "Generative AI Adoption by Freelancers",
@@ -1992,8 +1468,7 @@
       "contributor": null,
       "community": 5,
       "norm_label": "generative ai adoption by freelancers",
-      "id": "firecrawl_ai_freelancers_generative_ai_adoption",
-      "community_name": "Freelancer Adoption Stats"
+      "id": "firecrawl_ai_freelancers_generative_ai_adoption"
     },
     {
       "label": "AI-Driven Layoffs",
@@ -2006,8 +1481,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai-driven layoffs",
-      "id": "firecrawl_ai_freelancers_ai_layoffs",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_ai_layoffs"
     },
     {
       "label": "Workflow Orchestration Platform",
@@ -2020,8 +1494,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "workflow orchestration platform",
-      "id": "firecrawl_ai_freelancers_workflow_orchestration",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_workflow_orchestration"
     },
     {
       "label": "Hostinger",
@@ -2034,8 +1507,7 @@
       "contributor": null,
       "community": 4,
       "norm_label": "hostinger",
-      "id": "firecrawl_ai_freelancers_hostinger",
-      "community_name": "AI Automation Agencies"
+      "id": "firecrawl_ai_freelancers_hostinger"
     },
     {
       "label": "Medium (publishing platform)",
@@ -2048,8 +1520,7 @@
       "contributor": null,
       "community": 19,
       "norm_label": "medium (publishing platform)",
-      "id": "firecrawl_ai_freelancers_medium",
-      "community_name": "Medium Content"
+      "id": "firecrawl_ai_freelancers_medium"
     },
     {
       "label": "Reddit r/ClaudeCode",
@@ -2062,8 +1533,7 @@
       "contributor": null,
       "community": 20,
       "norm_label": "reddit r/claudecode",
-      "id": "firecrawl_ai_freelancers_reddit_claudecode",
-      "community_name": "Reddit Community"
+      "id": "firecrawl_ai_freelancers_reddit_claudecode"
     },
     {
       "label": "YouTube",
@@ -2076,8 +1546,7 @@
       "contributor": null,
       "community": 21,
       "norm_label": "youtube",
-      "id": "firecrawl_ai_freelancers_youtube",
-      "community_name": "YouTube Channel"
+      "id": "firecrawl_ai_freelancers_youtube"
     },
     {
       "label": "Figma",
@@ -2090,8 +1559,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "figma",
-      "id": "firecrawl_ai_freelancers_figma",
-      "community_name": "Freelance Automation Tools"
+      "id": "firecrawl_ai_freelancers_figma"
     },
     {
       "label": "Battle Ready Laravel (book)",
@@ -2104,8 +1572,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "battle ready laravel (book)",
-      "id": "firecrawl_ai_freelancers_battle_ready_laravel",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_battle_ready_laravel"
     },
     {
       "label": "Consuming APIs in Laravel (book)",
@@ -2118,8 +1585,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "consuming apis in laravel (book)",
-      "id": "firecrawl_ai_freelancers_consuming_apis_laravel",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_consuming_apis_laravel"
     },
     {
       "label": "The Web Dev's Guide to Freelancing (book)",
@@ -2132,8 +1598,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "the web dev's guide to freelancing (book)",
-      "id": "firecrawl_ai_freelancers_web_dev_guide_freelancing",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_web_dev_guide_freelancing"
     },
     {
       "label": "Intuit Assist (QuickBooks AI)",
@@ -2146,8 +1611,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "intuit assist (quickbooks ai)",
-      "id": "firecrawl_ai_freelancers_intuit_assist",
-      "community_name": "Freelance Automation Tools"
+      "id": "firecrawl_ai_freelancers_intuit_assist"
     },
     {
       "label": "JAX (Xero AI)",
@@ -2160,8 +1624,7 @@
       "contributor": null,
       "community": 2,
       "norm_label": "jax (xero ai)",
-      "id": "firecrawl_ai_freelancers_xero_jax",
-      "community_name": "Freelance Automation Tools"
+      "id": "firecrawl_ai_freelancers_xero_jax"
     },
     {
       "label": "AI Cannot Replace Developers",
@@ -2174,8 +1637,7 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai cannot replace developers",
-      "id": "firecrawl_ai_freelancers_ai_developer_replacement",
-      "community_name": "AI Freelancer Landscape"
+      "id": "firecrawl_ai_freelancers_ai_developer_replacement"
     },
     {
       "label": "AI Saves ~8 hrs/week for Freelancers",
@@ -2188,8 +1650,7 @@
       "contributor": null,
       "community": 12,
       "norm_label": "ai saves ~8 hrs/week for freelancers",
-      "id": "firecrawl_ai_freelancers_eight_hours_saved",
-      "community_name": "Upwork Research Insights"
+      "id": "firecrawl_ai_freelancers_eight_hours_saved"
     },
     {
       "label": "40% Higher Hourly Earnings with AI",
@@ -2202,8 +1663,7 @@
       "contributor": null,
       "community": 12,
       "norm_label": "40% higher hourly earnings with ai",
-      "id": "firecrawl_ai_freelancers_40pct_higher_earnings",
-      "community_name": "Upwork Research Insights"
+      "id": "firecrawl_ai_freelancers_40pct_higher_earnings"
     },
     {
       "label": "75% of Freelancers Use Generative AI",
@@ -2216,8 +1676,7 @@
       "contributor": null,
       "community": 5,
       "norm_label": "75% of freelancers use generative ai",
-      "id": "firecrawl_ai_freelancers_75pct_freelancers_use_ai",
-      "community_name": "Freelancer Adoption Stats"
+      "id": "firecrawl_ai_freelancers_75pct_freelancers_use_ai"
     },
     {
       "label": "90% of AI Adopters Report Skill Acceleration",
@@ -2230,663 +1689,10 @@
       "author": null,
       "community": 5,
       "norm_label": "90% of ai adopters report skill acceleration",
-      "id": "firecrawl_ai_freelancers_90pct_skill_acceleration",
-      "community_name": "Freelancer Adoption Stats"
+      "id": "firecrawl_ai_freelancers_90pct_skill_acceleration"
     }
   ],
   "links": [
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "mcp",
-      "target": "mcp_json_playwright"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "mcp",
-      "target": "mcp_mcp_server_playwright"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "context": "command",
-      "_origin": "ast",
-      "source": "mcp_mcp_server_playwright",
-      "target": "mcp_command_npx"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "context": "package",
-      "_origin": "ast",
-      "source": "mcp_mcp_server_playwright",
-      "target": "mcp_package_playwright_mcp"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "context": "command",
-      "source": "mcp_json_playwright",
-      "target": "mcp_command_npx"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L747",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_activateeasteregg",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L298",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_clearprojecthidetimeout",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L760",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_createconfetti",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L521",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_executecommand",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L554",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_getscrolltargettop",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L437",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializecommandpalette",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L660",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializecontactform",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L584",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializedarkmodetoggle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L714",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializeeasteregg",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L597",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializehovereffects",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L252",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializenavigation",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L640",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializenavscroll",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L56",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializeparticles",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L316",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializeprojectfiltering",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L164",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializescrolleffects",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L382",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializeshowmore",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L140",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializetextanimations",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L29",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializetheme",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L560",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_revealprojectcard",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L305",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_scheduleprojecthide",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L544",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_scrolltosection",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L37",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_toggletheme",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L236",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_updateprogressbar",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L536",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_executecommand",
-      "target": "script_toggletheme",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "indirect_call",
-      "context": "argument",
-      "confidence": "INFERRED",
-      "source_file": "script.js",
-      "source_location": "L589",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializedarkmodetoggle",
-      "target": "script_toggletheme",
-      "confidence_score": 0.5
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L269",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializenavigation",
-      "target": "script_getscrolltargettop",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L264",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializenavigation",
-      "target": "script_revealprojectcard",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L339",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializeprojectfiltering",
-      "target": "script_clearprojecthidetimeout",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L563",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_revealprojectcard",
-      "target": "script_clearprojecthidetimeout",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L306",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_scheduleprojecthide",
-      "target": "script_clearprojecthidetimeout",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L345",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializeprojectfiltering",
-      "target": "script_scheduleprojecthide",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L459",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializecommandpalette",
-      "target": "script_executecommand",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L527",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_executecommand",
-      "target": "script_scrolltosection",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L548",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_scrolltosection",
-      "target": "script_getscrolltargettop",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L735",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializeeasteregg",
-      "target": "script_activateeasteregg",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L750",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_activateeasteregg",
-      "target": "script_createconfetti",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "vercel.json",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "vercel",
-      "target": "vercel_headers"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents",
-      "target": "agents_agents_md",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_architecture",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L44",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_command_palette",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_development",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L48",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_graphify",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_overview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L38",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_project_filtering",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L34",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_theming",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude",
-      "target": "claude_claude_md"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L19",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude_claude_md",
-      "target": "claude_architecture"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L44",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude_claude_md",
-      "target": "claude_command_palette"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude_claude_md",
-      "target": "claude_development"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L48",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude_claude_md",
-      "target": "claude_graphify"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude_claude_md",
-      "target": "claude_overview"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L38",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude_claude_md",
-      "target": "claude_project_filtering"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "CLAUDE.md",
-      "source_location": "L34",
-      "weight": 1.0,
-      "_origin": "ast",
-      "confidence_score": 1.0,
-      "source": "claude_claude_md",
-      "target": "claude_theming"
-    },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
@@ -2906,6 +1712,86 @@
       "confidence_score": 1.0,
       "source": "claude_settings_hooks",
       "target": "claude_settings_hooks_pretooluse"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "claude",
+      "target": "claude_claude_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_command_palette",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L48",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_project_filtering",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_theming",
+      "confidence_score": 1.0
     },
     {
       "relation": "conceptually_related_to",
@@ -3006,6 +1892,37 @@
       "confidence_score": 1.0,
       "source": "firecrawl_ai_vs_traditional_data",
       "target": "firecrawl_ai_vs_traditional_data_web"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".mcp.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "mcp",
+      "target": "mcp_json_playwright"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".mcp.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "context": "command",
+      "source": "mcp_json_playwright",
+      "target": "mcp_command_npx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "vercel.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "vercel",
+      "target": "vercel_headers"
     },
     {
       "relation": "implements",
@@ -4119,5 +3036,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "143cf67b57e8a11f096a98f293eef466b7e70fbd"
+  "built_at_commit": "cc0608df5693b8780978df6016e4262f08709d7d"
 }

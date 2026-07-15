@@ -529,143 +529,6 @@ body {
 }
 
 /* ==========================================================================
-   Services Section
-   ========================================================================== */
-
-.services-section {
-  background: linear-gradient(180deg, rgba(27, 42, 74, 0.03) 0%, rgba(196, 112, 75, 0.03) 100%);
-}
-
-[data-theme="dark"] .services-section {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(196, 112, 75, 0.06) 100%);
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 2rem;
-}
-
-.service-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 14px;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.service-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-sm);
-  transform: translateY(-2px);
-}
-
-.service-card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.service-kicker {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.service-price {
-  display: none;
-}
-
-[data-theme="dark"] .service-price {
-  color: var(--text-dark);
-}
-
-.service-title {
-  font-family: var(--font-heading);
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1.15;
-}
-
-.service-description {
-  color: var(--gray-medium);
-  line-height: 1.7;
-}
-
-.service-list {
-  list-style: none;
-  display: grid;
-  gap: 0.85rem;
-}
-
-.service-list li {
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-.service-list li::before {
-  content: '';
-  position: absolute;
-  top: 0.72rem;
-  left: 0;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 999px;
-  background: var(--accent);
-  transform: translateY(-50%);
-}
-
-.service-meta {
-  margin-top: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-color);
-  font-size: 0.92rem;
-  color: var(--gray-medium);
-}
-
-.service-proof {
-  color: var(--primary);
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.service-proof:hover {
-  color: var(--accent);
-}
-
-[data-theme="dark"] .service-proof {
-  color: var(--text-dark);
-}
-
-[data-theme="dark"] .service-proof:hover {
-  color: var(--accent);
-}
-
-.service-cta {
-  width: 100%;
-}
-
-.services-note {
-  margin: 2rem auto 0;
-  max-width: 720px;
-  text-align: center;
-  color: var(--gray-medium);
-  font-size: 0.95rem;
-}
-
-/* ==========================================================================
    Projects Section
    ========================================================================== */
 
@@ -1528,7 +1391,6 @@ body {
     padding: 80px 0;
   }
   
-  .services-grid,
   .projects-grid,
   .video-grid {
     grid-template-columns: 1fr;
@@ -1599,26 +1461,11 @@ body {
     width: 100%;
   }
   
-  .services-grid,
   .projects-grid,
   .video-grid {
     grid-template-columns: 1fr;
   }
 
-  .service-card {
-    padding: 1.5rem;
-  }
-
-  .service-card-header,
-  .service-meta {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .service-title {
-    font-size: 1.55rem;
-  }
-  
   .dark-mode-toggle {
     right: 20px;
     top: 20px;

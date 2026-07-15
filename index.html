@@ -34,7 +34,6 @@
       </div>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#hero" class="nav-link">Home</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -78,7 +77,7 @@
           
           
           <div class="hero-cta">
-            <a href="#services" class="btn btn-primary">View Services</a>
+            <a href="#projects" class="btn btn-primary">View Projects</a>
             <a href="#contact" class="btn btn-secondary">Start a Project</a>
           </div>
 
@@ -107,101 +106,6 @@
             <img src="assets/profile-photo.jpg" alt="Fahmid Hasan" class="profile-image">
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="section services-section" aria-labelledby="services-heading">
-      <div class="container">
-        <header class="section-header">
-          <h2 id="services-heading" class="section-title">Services & Pricing</h2>
-          <p class="section-subtitle">Fixed-price packages for startups and small businesses that need AI automation, support systems, insight dashboards, or lightweight product builds.</p>
-        </header>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-card-header">
-              <p class="service-kicker">Workflow · n8n / Make</p>
-              <div class="service-price">$599</div>
-            </div>
-            <h3 class="service-title">AI Workflow Automation</h3>
-            <p class="service-description">Build one practical automation using n8n or Make that removes repetitive work — lead follow-up, notifications, data sync — so your team never touches it again.</p>
-            <ul class="service-list">
-              <li>1 end-to-end workflow (n8n or Make)</li>
-              <li>Up to 3 app integrations (e.g. Gmail, Sheets, Slack, Notion)</li>
-              <li>Handoff video and documentation</li>
-              <li>7-day post-launch bug-fix support</li>
-            </ul>
-            <div class="service-meta">
-              <span>Timeline: 7-10 days</span>
-              <span>Proof: <a href="#project-cold-outreach" class="service-proof">Cold outreach automation</a></span>
-            </div>
-            <a href="#contact" class="btn btn-primary service-cta" data-service="AI Workflow Automation">Book This Package</a>
-          </article>
-
-          <article class="service-card">
-            <div class="service-card-header">
-              <p class="service-kicker">Chatbot · RAG</p>
-              <div class="service-price">$799</div>
-            </div>
-            <h3 class="service-title">AI Support Chatbot</h3>
-            <p class="service-description">Deploy a customer-facing chatbot that answers questions from your own knowledge base, captures leads, and hands off to a human when needed — live in under two weeks.</p>
-            <ul class="service-list">
-              <li>RAG setup trained on your docs, PDFs, or web pages</li>
-              <li>Website embed or WhatsApp / Telegram channel</li>
-              <li>Lead capture or human-escalation workflow</li>
-              <li>7-day post-launch bug-fix support</li>
-            </ul>
-            <div class="service-meta">
-              <span>Timeline: 10-14 days</span>
-              <span>Proof: <a href="#project-damkoto" class="service-proof">DamKoto Bot</a> + <a href="#project-plantdoc" class="service-proof">PlantDoc</a></span>
-            </div>
-            <a href="#contact" class="btn btn-primary service-cta" data-service="AI Support Chatbot">Book This Package</a>
-          </article>
-
-          <article class="service-card">
-            <div class="service-card-header">
-              <p class="service-kicker">Analytics · Looker / Web</p>
-              <div class="service-price">$449</div>
-            </div>
-            <h3 class="service-title">Data Dashboard & Insight Pack</h3>
-            <p class="service-description">Turn your spreadsheets or app exports into a clear, shareable dashboard built in Google Looker Studio or as a custom web page — with a written insight summary on delivery.</p>
-            <ul class="service-list">
-              <li>KPI definition and reporting logic</li>
-              <li>Up to 2 data sources connected</li>
-              <li>1 decision-focused dashboard (Looker Studio or custom web)</li>
-              <li>Written insight summary + walkthrough video</li>
-            </ul>
-            <div class="service-meta">
-              <span>Timeline: 7-10 days</span>
-              <span>Proof: <a href="#project-choropleth" class="service-proof">Interactive dashboard work</a></span>
-            </div>
-            <a href="#contact" class="btn btn-primary service-cta" data-service="Data Dashboard & Insight Pack">Book This Package</a>
-          </article>
-
-          <article class="service-card">
-            <div class="service-card-header">
-              <p class="service-kicker">MVP · Full-Stack + AI</p>
-              <div class="service-price">$1,499</div>
-            </div>
-            <h3 class="service-title">Lean AI MVP / Internal Tool</h3>
-            <p class="service-description">Get a complete, deployed web app with authentication, a core AI workflow, and a clean UI — built to validate your idea or replace an internal manual process.</p>
-            <ul class="service-list">
-              <li>Full-stack web app (Next.js + Supabase or equivalent)</li>
-              <li>Authentication and role-based access</li>
-              <li>1 core AI workflow (LLM, RAG, or automation)</li>
-              <li>Admin or reporting view + deployment on Vercel / Railway</li>
-              <li>1 round of revision included</li>
-            </ul>
-            <div class="service-meta">
-              <span>Timeline: 3-4 weeks</span>
-              <span aria-hidden="true">&nbsp;</span>
-            </div>
-            <a href="#contact" class="btn btn-primary service-cta" data-service="Lean AI MVP / Internal Tool">Book This Package</a>
-          </article>
-        </div>
-
-        <p class="services-note">Fixed package pricing for the defined scope above. Hosting, API, and third-party SaaS costs are billed separately if needed.</p>
       </div>
     </section>
 
@@ -452,18 +356,6 @@
               </div>
 
               <div class="form-group">
-                <label for="contact-service">Service interested in</label>
-                <select id="contact-service" name="service">
-                  <option value="">Select a package</option>
-                  <option value="AI Workflow Automation">AI Workflow Automation</option>
-                  <option value="AI Support Chatbot">AI Support Chatbot</option>
-                  <option value="Data Dashboard &amp; Insight Pack">Data Dashboard &amp; Insight Pack</option>
-                  <option value="Lean AI MVP / Internal Tool">Lean AI MVP / Internal Tool</option>
-                  <option value="Custom scope">Custom scope</option>
-                </select>
-              </div>
-
-              <div class="form-group">
                 <label for="contact-message">Message</label>
                 <textarea id="contact-message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
               </div>
@@ -539,7 +431,6 @@
         <input type="text" id="commandInput" placeholder="Type a command or search..." aria-label="Command input">
         <ul id="commandList" class="command-list" role="listbox">
           <li data-action="home" role="option">Home</li>
-          <li data-action="services" role="option">Services</li>
           <li data-action="projects" role="option">Projects</li>
           <li data-action="contact" role="option">Contact</li>
           <li data-action="dark-mode" role="option">Toggle Dark Mode</li>
