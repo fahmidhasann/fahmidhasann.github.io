@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize all components
   initializeTheme();
   initializeParticles();
-  initializeTextAnimations();
   initializeScrollEffects();
   initializeNavigation();
   initializeProjectFiltering();
@@ -130,30 +129,6 @@ function initializeParticles() {
         }
       },
       retina_detect: true
-    });
-  }
-}
-
-/**
- * Initialize the typed text animation
- */
-function initializeTextAnimations() {
-  if (typeof Typed !== 'undefined') {
-    new Typed('.typed-text', {
-      strings: [
-        'AI Automation for SMBs',
-        'AI Chatbots',
-        'Dashboards and AI Tools'
-      ],
-      typeSpeed: 45,
-      backSpeed: 25,
-      loop: true,
-      backDelay: 3000,
-      startDelay: 1500,
-      showCursor: true,
-      cursorChar: '|',
-      autoInsertCss: true,
-      smartBackspace: true
     });
   }
 }

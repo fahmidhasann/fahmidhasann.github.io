@@ -27,7 +27,6 @@ All site logic lives in three files:
 **External dependencies** are loaded via CDN (no local install needed):
 - `particles.js` — hero background animation
 - `GSAP` + `ScrollTrigger` — scroll-triggered card animations
-- `Typed.js` — hero typing animation
 - `Font Awesome` — icons
 - `Google Fonts` — Cormorant Garamond (headings), Inter (body)
 
