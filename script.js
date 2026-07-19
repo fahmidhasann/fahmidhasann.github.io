@@ -1,815 +1,672 @@
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Initialize all components
+/* Portfolio interactions: progressively enhanced; content remains usable without JS/CDNs. */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+const modalState = { active: null, opener: null, locks: new Set(), inerted: [] };
+
+document.addEventListener('DOMContentLoaded', () => {
   initializeTheme();
-  initializeParticles();
-  initializeScrollEffects();
   initializeNavigation();
   initializeProjectFiltering();
   initializeShowMore();
   initializeCommandPalette();
-  initializeDarkModeToggle();
-  initializeHoverEffects();
+  initializeThemeToggle();
+  initializeVideoPopup();
   initializeNavScroll();
   initializeContactForm();
   initializeEasterEgg();
-  
-  // Add scroll event listener for progress bar
-  window.addEventListener('scroll', updateProgressBar);
+  initializeParticles();
+  initializeScrollEffects();
+  updateProgressBar();
+  window.addEventListener('scroll', updateProgressBar, { passive: true });
+  document.documentElement.classList.add('js-ready');
 });
 
-/* ==========================================================================
-   Theme Functions
-   ========================================================================== */
-
-/**
- * Initialize the theme based on localStorage or default to light
- */
-function initializeTheme() {
-  const savedTheme = localStorage.getItem('theme') || 'light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
+function motionReduced() {
+  return prefersReducedMotion.matches;
 }
 
-/**
- * Toggle between light and dark themes
- */
-function toggleTheme() {
-  const currentTheme = document.documentElement.getAttribute('data-theme');
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-  
-  const toggleButton = document.querySelector('.dark-mode-toggle');
-  if (toggleButton) {
-    toggleButton.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+function smoothBehavior() {
+  return motionReduced() ? 'auto' : 'smooth';
+}
+
+/* --------------------------------------------------------------------------
+   Shared accessibility helpers
+   -------------------------------------------------------------------------- */
+
+function getFocusable(container) {
+  return Array.from(container.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )).filter(el => !el.hidden && el.getClientRects().length > 0);
+}
+
+function lockPage(key) {
+  modalState.locks.add(key);
+  document.body.classList.add('scroll-locked');
+  document.body.style.overflow = 'hidden';
+}
+
+function unlockPage(key) {
+  modalState.locks.delete(key);
+  if (!modalState.locks.size) {
+    document.body.classList.remove('scroll-locked');
+    document.body.style.removeProperty('overflow');
   }
 }
 
-/* ==========================================================================
-   Animation & Visual Effects
-   ========================================================================== */
-
-/**
- * Initialize the particle background effect
- */
-function initializeParticles() {
-  if (typeof particlesJS !== 'undefined') {
-    particlesJS('particles-js', {
-      particles: {
-        number: {
-          value: 60,
-          density: {
-            enable: true,
-            value_area: 900
-          }
-        },
-        color: {
-          value: "#ffffff"
-        },
-        shape: {
-          type: "circle",
-          stroke: {
-            width: 0,
-            color: "#000000"
-          }
-        },
-        opacity: {
-          value: 0.45,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 0.5,
-            opacity_min: 0.15,
-            sync: false
-          }
-        },
-        size: {
-          value: 2.5,
-          random: true,
-          anim: {
-            enable: false
-          }
-        },
-        line_linked: {
-          enable: true,
-          distance: 160,
-          color: "#ffffff",
-          opacity: 0.2,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 0.5,
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          bounce: false
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: true,
-            mode: "grab"
-          },
-          onclick: {
-            enable: false
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 140,
-            line_linked: {
-              opacity: 0.5
-            }
-          }
-        }
-      },
-      retina_detect: true
-    });
-  }
-}
-
-/**
- * Initialize scroll-triggered animations
- */
-function initializeScrollEffects() {
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-    
-    gsap.utils.toArray('.project-card').forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top bottom-=50',
-          toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: i * 0.08
-      });
-    });
-
-    gsap.utils.toArray('.video-card').forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top bottom-=50',
-          toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: i * 0.08
-      });
-    });
-
-    gsap.utils.toArray('.contact-card').forEach((card, i) => {
-      gsap.from(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: 'top bottom-=50',
-          toggleActions: 'play none none reverse'
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: i * 0.08
-      });
-    });
-  } else {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-    
-    document.querySelectorAll('.project-card, .video-card, .contact-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(30px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-  }
-}
-
-/**
- * Update the progress bar based on scroll position
- */
-function updateProgressBar() {
-  const progressBar = document.querySelector('.progress-bar');
-  if (!progressBar) return;
-  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const scrolled = (winScroll / height) * 100;
-  progressBar.style.width = scrolled + '%';
-}
-
-/* ==========================================================================
-   Navigation Functions
-   ========================================================================== */
-
-/**
- * Initialize smooth scrolling navigation
- */
-function initializeNavigation() {
-  // Handle all anchor links with hash
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        if (targetElement.classList.contains('project-card')) {
-          revealProjectCard(targetElement);
-        }
-
-        requestAnimationFrame(() => {
-          window.scrollTo({
-            top: getScrollTargetTop(targetElement),
-            behavior: 'smooth'
-          });
-        });
-        
-        // Close mobile menu if open
-        const navMenu = document.getElementById('navMenu');
-        if (navMenu && navMenu.classList.contains('active')) {
-          navMenu.classList.remove('active');
-        }
-      }
-    });
-  });
-  
-  // Handle mobile navigation toggle
-  const navToggle = document.getElementById('navToggle');
-  const navMenu = document.getElementById('navMenu');
-  
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
-    });
-  }
-}
-
-/* ==========================================================================
-   Project Functions
-   ========================================================================== */
-
-function clearProjectHideTimeout(projectCard) {
-  if (!projectCard || !projectCard._hideTimeoutId) return;
-
-  clearTimeout(projectCard._hideTimeoutId);
-  projectCard._hideTimeoutId = null;
-}
-
-function scheduleProjectHide(projectCard) {
-  clearProjectHideTimeout(projectCard);
-  projectCard._hideTimeoutId = window.setTimeout(() => {
-    projectCard.style.display = 'none';
-    projectCard._hideTimeoutId = null;
-  }, 300);
-}
-
-/**
- * Initialize project filtering functionality
- */
-function initializeProjectFiltering() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-  const VISIBLE_COUNT = 3;
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-      const showMoreBtn = document.getElementById('projectsShowMore');
-
-      // Collect cards that match the filter
-      const matchingCards = [];
-      projectCards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          matchingCards.push(card);
-        }
-      });
-
-      // Apply visibility based on filter match and show-more state
-      projectCards.forEach(card => {
-        clearProjectHideTimeout(card);
-        const matches = filter === 'all' || card.getAttribute('data-category') === filter;
-        if (!matches) {
-          card.classList.remove('hidden-card');
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(20px)';
-          scheduleProjectHide(card);
-        } else {
-          card.style.display = 'block';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 10);
-        }
-      });
-
-      // Reset show-more state for the new filtered set
-      if (showMoreBtn) {
-        if (matchingCards.length > VISIBLE_COUNT) {
-          matchingCards.forEach((card, i) => {
-            if (i >= VISIBLE_COUNT) {
-              card.classList.add('hidden-card');
-            } else {
-              card.classList.remove('hidden-card');
-            }
-          });
-          showMoreBtn.setAttribute('aria-expanded', 'false');
-          const label = showMoreBtn.querySelector('.show-more-label');
-          if (label) label.textContent = 'Show More Projects';
-          showMoreBtn.style.display = '';
-        } else {
-          matchingCards.forEach(card => card.classList.remove('hidden-card'));
-          showMoreBtn.style.display = 'none';
-        }
-      }
-    });
+function setPageInert(exceptions) {
+  clearPageInert();
+  Array.from(document.body.children).forEach(child => {
+    if (exceptions.includes(child) || child.tagName === 'SCRIPT' || child.tagName === 'STYLE') return;
+    const wasInert = child.inert;
+    const ariaHidden = child.getAttribute('aria-hidden');
+    child.inert = true;
+    child.setAttribute('aria-hidden', 'true');
+    modalState.inerted.push({ child, wasInert, ariaHidden });
   });
 }
 
-/**
- * Show/hide items beyond the initial visible count with a toggle button.
- * Works independently for projects and videos.
- */
-function initializeShowMore() {
-  const VISIBLE_COUNT = 3;
+function clearPageInert() {
+  modalState.inerted.forEach(({ child, wasInert, ariaHidden }) => {
+    child.inert = wasInert;
+    if (ariaHidden === null) child.removeAttribute('aria-hidden');
+    else child.setAttribute('aria-hidden', ariaHidden);
+  });
+  modalState.inerted = [];
+}
 
-  function setup(gridId, btnId) {
-    const grid = document.getElementById(gridId);
-    const btn = document.getElementById(btnId);
-    if (!grid || !btn) return;
+function openDialog(dialog, opener, extras = []) {
+  if (!dialog) return;
+  if (modalState.active && modalState.active !== dialog) closeDialog(modalState.active);
+  modalState.active = dialog;
+  modalState.opener = opener || document.activeElement;
+  dialog.hidden = false;
+  dialog.classList.add('active', 'visible');
+  dialog.removeAttribute('aria-hidden');
+  dialog.setAttribute('aria-modal', 'true');
+  lockPage('dialog');
+  setPageInert([dialog, ...extras]);
+  const initialFocus = dialog.querySelector('[data-dialog-initial-focus]') || getFocusable(dialog)[0] || dialog;
+  initialFocus.focus({ preventScroll: true });
+  window.requestAnimationFrame(() => {
+    initialFocus.focus({ preventScroll: true });
+    if (document.activeElement !== initialFocus) {
+      window.setTimeout(() => initialFocus.focus({ preventScroll: true }), 50);
+    }
+  });
+}
 
-    // Mark cards beyond the initial count as hidden
-    const allItems = Array.from(grid.children);
-    allItems.forEach((item, i) => {
-      if (i >= VISIBLE_COUNT) {
-        item.classList.add('hidden-card');
-      }
-    });
+function closeDialog(dialog) {
+  if (!dialog || modalState.active !== dialog) return;
+  const opener = modalState.opener;
+  dialog.classList.remove('active', 'visible');
+  dialog.setAttribute('aria-hidden', 'true');
+  dialog.hidden = true;
+  clearPageInert();
+  unlockPage('dialog');
+  modalState.active = null;
+  modalState.opener = null;
+  if (opener && document.contains(opener)) window.requestAnimationFrame(() => opener.focus());
+}
 
-    // Only show the button when there are more items than VISIBLE_COUNT
-    if (allItems.length <= VISIBLE_COUNT) {
-      btn.style.display = 'none';
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    if (modalState.active) {
+      event.preventDefault();
+      closeActiveDialog();
       return;
     }
-
-    btn.addEventListener('click', () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-
-      const label = btn.querySelector('.show-more-label');
-      const isProjects = gridId === 'projectsGrid';
-
-      if (isExpanded) {
-        // Collapse: hide cards beyond visible count
-        allItems.forEach((item, i) => {
-          if (i >= VISIBLE_COUNT) item.classList.add('hidden-card');
-        });
-        btn.setAttribute('aria-expanded', 'false');
-        if (label) label.textContent = isProjects ? 'Show More Projects' : 'Show More Videos';
-      } else {
-        // Expand: show all cards
-        allItems.forEach(item => item.classList.remove('hidden-card'));
-        btn.setAttribute('aria-expanded', 'true');
-        if (label) label.textContent = isProjects ? 'Show Less Projects' : 'Show Less Videos';
-      }
-    });
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu && navMenu.classList.contains('active')) closeMobileMenu();
   }
 
-  setup('projectsGrid', 'projectsShowMore');
-  setup('videosGrid', 'videosShowMore');
+  if (event.key !== 'Tab' || !modalState.active) return;
+  const focusable = getFocusable(modalState.active);
+  if (!focusable.length) {
+    event.preventDefault();
+    modalState.active.focus();
+    return;
+  }
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
+  }
+});
+
+function closeActiveDialog() {
+  const dialog = modalState.active;
+  if (!dialog) return;
+  if (dialog.id === 'videoPopup') closeVideoPopup();
+  else if (dialog.id === 'commandPalette') closeCommandPalette();
+  else closeDialog(dialog);
 }
 
-/* ==========================================================================
-   Command Palette Functions
-   ========================================================================== */
+function setItemFocusable(item, enabled) {
+  item.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(control => {
+    if (enabled) {
+      if (control.dataset.previousTabindex !== undefined) {
+        if (control.dataset.previousTabindex) control.setAttribute('tabindex', control.dataset.previousTabindex);
+        else control.removeAttribute('tabindex');
+        delete control.dataset.previousTabindex;
+      }
+    } else if (control.dataset.previousTabindex === undefined) {
+      control.dataset.previousTabindex = control.getAttribute('tabindex') || '';
+      control.setAttribute('tabindex', '-1');
+    }
+  });
+}
 
-/**
- * Initialize the command palette functionality
- */
-function initializeCommandPalette() {
-  const commandPalette = document.getElementById('commandPalette');
-  const commandInput = document.getElementById('commandInput');
-  const commandList = document.getElementById('commandList');
-  if (!commandPalette || !commandInput || !commandList) return;
-  
-  document.addEventListener('keydown', (e) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
-      e.preventDefault();
-      commandPalette.classList.toggle('active');
-      if (commandPalette.classList.contains('active')) {
-        commandInput.focus();
+function setItemVisible(item, visible) {
+  item.classList.toggle('hidden-card', !visible);
+  item.setAttribute('aria-hidden', String(!visible));
+  setItemFocusable(item, visible);
+}
+
+/* --------------------------------------------------------------------------
+   Theme and visual effects
+   -------------------------------------------------------------------------- */
+
+function initializeTheme() {
+  const savedTheme = localStorage.getItem('theme');
+  const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+}
+
+function toggleTheme() {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  updateThemeToggle(theme);
+}
+
+function updateThemeToggle(theme = document.documentElement.getAttribute('data-theme')) {
+  const toggle = document.getElementById('themeToggle') || document.querySelector('.dark-mode-toggle');
+  if (!toggle) return;
+  const isDark = theme === 'dark';
+  toggle.setAttribute('aria-pressed', String(isDark));
+  toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+  const icon = toggle.querySelector('i');
+  if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+function initializeThemeToggle() {
+  let toggle = document.getElementById('themeToggle') || document.querySelector('.dark-mode-toggle');
+  if (!toggle) {
+    toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.id = 'themeToggle';
+    toggle.className = 'dark-mode-toggle';
+    toggle.innerHTML = '<i aria-hidden="true"></i>';
+    document.body.appendChild(toggle);
+  }
+  if (toggle.dataset.themeReady) return;
+  toggle.dataset.themeReady = 'true';
+  toggle.addEventListener('click', toggleTheme);
+  updateThemeToggle();
+}
+
+function initializeParticles() {
+  if (motionReduced() || typeof particlesJS === 'undefined' || !document.getElementById('particles-js')) return;
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: window.innerWidth < 768 ? 24 : 44, density: { enable: true, value_area: 900 } },
+      color: { value: '#ffffff' }, shape: { type: 'circle' },
+      opacity: { value: 0.35, random: true }, size: { value: 2.2, random: true },
+      line_linked: { enable: true, distance: 160, color: '#ffffff', opacity: 0.16, width: 1 },
+      move: { enable: true, speed: 0.45, random: true, out_mode: 'out' }
+    },
+    interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, resize: true }, modes: { grab: { distance: 140, line_linked: { opacity: 0.35 } } } },
+    retina_detect: true
+  });
+}
+
+function initializeScrollEffects() {
+  const items = document.querySelectorAll('.project-card, .video-card, .contact-card, .section-header');
+  if (!items.length || motionReduced()) return;
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray(items).forEach((item, index) => gsap.from(item, {
+      scrollTrigger: { trigger: item, start: 'top 88%', once: true },
+      y: 18, opacity: 0, duration: 0.62, delay: index % 3 * 0.07, ease: 'power2.out'
+    }));
+    return;
+  }
+  if (!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-revealed');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -32px' });
+  items.forEach(item => observer.observe(item));
+}
+
+function updateProgressBar() {
+  const bar = document.querySelector('.progress-bar');
+  if (!bar) return;
+  const height = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = height > 0 ? Math.min(100, Math.max(0, window.scrollY / height * 100)) : 0;
+  bar.style.width = `${progress}%`;
+  bar.setAttribute('aria-valuenow', String(Math.round(progress)));
+  bar.setAttribute('aria-valuemin', '0');
+  bar.setAttribute('aria-valuemax', '100');
+}
+
+/* --------------------------------------------------------------------------
+   Navigation
+   -------------------------------------------------------------------------- */
+
+function openMobileMenu() {
+  const menu = document.getElementById('navMenu');
+  const toggle = document.getElementById('navToggle');
+  if (!menu || !toggle) return;
+  menu.classList.add('active');
+  toggle.classList.add('active');
+  toggle.setAttribute('aria-expanded', 'true');
+  const backdrop = document.getElementById('navBackdrop');
+  if (backdrop) {
+    backdrop.hidden = false;
+    backdrop.classList.add('active', 'visible');
+  }
+  toggle.setAttribute('aria-label', 'Close navigation menu');
+  lockPage('menu');
+}
+
+function closeMobileMenu({ restoreFocus = false } = {}) {
+  const menu = document.getElementById('navMenu');
+  const toggle = document.getElementById('navToggle');
+  if (!menu || !toggle) return;
+  menu.classList.remove('active');
+  toggle.classList.remove('active');
+  toggle.setAttribute('aria-expanded', 'false');
+  const backdrop = document.getElementById('navBackdrop');
+  if (backdrop) {
+    backdrop.classList.remove('active', 'visible');
+    backdrop.hidden = true;
+  }
+  toggle.setAttribute('aria-label', 'Open navigation menu');
+  unlockPage('menu');
+  if (restoreFocus) toggle.focus();
+}
+
+function initializeNavigation() {
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  const navBackdrop = document.getElementById('navBackdrop');
+  if (navToggle && navMenu) {
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-controls', 'navMenu');
+    navToggle.addEventListener('click', () => navMenu.classList.contains('active') ? closeMobileMenu({ restoreFocus: true }) : openMobileMenu());
+    navToggle.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        navToggle.click();
       }
-    }
-    
-    if (e.key === 'Escape') {
-      commandPalette.classList.remove('active');
-    }
-  });
-  
-  commandList.addEventListener('click', (e) => {
-    if (e.target.tagName === 'LI') {
-      executeCommand(e.target.getAttribute('data-action'));
-    }
-  });
-  
-  commandInput.addEventListener('keydown', (e) => {
-    const activeElement = commandList.querySelector('.active');
-    let newActiveElement;
-    
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        if (activeElement) {
-          newActiveElement = activeElement.nextElementSibling || commandList.firstElementChild;
-          activeElement.classList.remove('active');
-        } else {
-          newActiveElement = commandList.firstElementChild;
-        }
-        if (newActiveElement) {
-          newActiveElement.classList.add('active');
-        }
-        break;
-        
-      case 'ArrowUp':
-        e.preventDefault();
-        if (activeElement) {
-          newActiveElement = activeElement.previousElementSibling || commandList.lastElementChild;
-          activeElement.classList.remove('active');
-        } else {
-          newActiveElement = commandList.lastElementChild;
-        }
-        if (newActiveElement) {
-          newActiveElement.classList.add('active');
-        }
-        break;
-        
-      case 'Enter':
-        e.preventDefault();
-        if (activeElement) {
-          executeCommand(activeElement.getAttribute('data-action'));
-        }
-        break;
-    }
-  });
-  
-  commandInput.addEventListener('input', () => {
-    const filter = commandInput.value.toLowerCase();
-    const commands = commandList.querySelectorAll('li');
-    
-    commands.forEach(command => {
-      const text = command.textContent.toLowerCase();
-      if (text.includes(filter)) {
-        command.style.display = 'block';
-      } else {
-        command.style.display = 'none';
-      }
+    });
+    if (navBackdrop) navBackdrop.addEventListener('click', () => closeMobileMenu({ restoreFocus: true }));
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', event => {
+      const targetId = anchor.getAttribute('href');
+      if (!targetId || targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (!target) return;
+      event.preventDefault();
+      if (target.classList.contains('project-card')) revealProjectCard(target);
+      window.requestAnimationFrame(() => window.scrollTo({ top: getScrollTargetTop(target), behavior: smoothBehavior() }));
+      closeMobileMenu();
     });
   });
 }
 
-/**
- * Execute a command from the command palette
- */
-function executeCommand(action) {
-  const commandPalette = document.getElementById('commandPalette');
-  commandPalette.classList.remove('active');
-  
-  switch (action) {
-    case 'home':
-      scrollToSection('hero');
-      break;
-    case 'projects':
-      scrollToSection('projects');
-      break;
-    case 'videos':
-    case 'creative':
-      scrollToSection('videos');
-      break;
-    case 'contact':
-      scrollToSection('contact');
-      break;
-    case 'dark-mode':
-      toggleTheme();
-      break;
-  }
+function getScrollTargetTop(target) {
+  return Math.max(target.getBoundingClientRect().top + window.scrollY - 80, 0);
 }
 
-/**
- * Scroll to a specific section
- */
 function scrollToSection(sectionId) {
-  const targetElement = document.getElementById(sectionId);
-  if (targetElement) {
-    window.scrollTo({
-      top: getScrollTargetTop(targetElement),
-      behavior: 'smooth'
-    });
-  }
+  const target = document.getElementById(sectionId);
+  if (target) window.scrollTo({ top: getScrollTargetTop(target), behavior: smoothBehavior() });
 }
 
-function getScrollTargetTop(targetElement) {
-  const NAV_OFFSET = 80;
-  const top = targetElement.getBoundingClientRect().top + window.scrollY;
-  return Math.max(top - NAV_OFFSET, 0);
-}
-
-function revealProjectCard(projectCard) {
-  if (!projectCard || !projectCard.classList.contains('project-card')) return;
-
-  clearProjectHideTimeout(projectCard);
-
-  const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
-  const showMoreBtn = document.getElementById('projectsShowMore');
-
-  if (allFilterBtn && !allFilterBtn.classList.contains('active')) {
-    allFilterBtn.click();
-  }
-
-  if (projectCard.classList.contains('hidden-card') && showMoreBtn && showMoreBtn.getAttribute('aria-expanded') !== 'true') {
-    showMoreBtn.click();
-  }
-}
-
-/* ==========================================================================
-   UI Components
-   ========================================================================== */
-
-/**
- * Initialize the dark mode toggle button
- */
-function initializeDarkModeToggle() {
-  const toggleButton = document.createElement('button');
-  toggleButton.innerHTML = document.documentElement.getAttribute('data-theme') === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-  toggleButton.classList.add('dark-mode-toggle');
-  toggleButton.setAttribute('aria-label', 'Toggle dark mode');
-  toggleButton.addEventListener('click', toggleTheme);
-
-  document.body.appendChild(toggleButton);
-}
-
-/**
- * Initialize hover effects (3D effects removed for cleaner aesthetic)
- */
-function initializeHoverEffects() {
-  const backdrop = document.getElementById('videoPopupBackdrop');
-  const popup = document.getElementById('videoPopup');
-  const popupPlayer = document.getElementById('videoPopupPlayer');
-  const popupTitle = document.getElementById('videoPopupTitle');
-  const closeBtn = document.getElementById('videoPopupClose');
-  if (!backdrop || !popup || !popupPlayer) return;
-
-  function showPopup(card) {
-    const src = card.dataset.video;
-    const title = card.dataset.title || '';
-    if (!src) return;
-    if (popupPlayer.src !== new URL(src, location.href).href) {
-      popupPlayer.src = src;
-    }
-    popupTitle.textContent = title;
-    backdrop.classList.add('visible');
-    popup.classList.add('visible');
-    popupPlayer.currentTime = 0;
-    popupPlayer.play();
-  }
-
-  function hidePopup() {
-    backdrop.classList.remove('visible');
-    popup.classList.remove('visible');
-    popupPlayer.pause();
-  }
-
-  // Open on "Watch Demo" button click
-  document.querySelectorAll('.btn-demo').forEach(btn => {
-    const card = btn.closest('.project-card[data-video]');
-    if (card) btn.addEventListener('click', () => showPopup(card));
-  });
-
-  // Close on backdrop click, close button, or Escape
-  backdrop.addEventListener('click', hidePopup);
-  if (closeBtn) closeBtn.addEventListener('click', hidePopup);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') hidePopup(); });
-}
-
-/**
- * Add scroll-aware styling to navigation
- */
 function initializeNavScroll() {
   const nav = document.querySelector('.compact-nav');
-  if (!nav) return;
-
   const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  function handleScroll() {
-    if (window.scrollY > 100) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-
-    // Scroll spy: update active nav link
-    let currentSectionId = '';
-    const scrollPosition = window.scrollY + 120;
-
+  const links = document.querySelectorAll('.nav-link');
+  if (!nav) return;
+  const update = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+    const position = window.scrollY + 130;
+    let current = '';
     sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      if (scrollPosition >= top && scrollPosition < top + height) {
-        currentSectionId = section.getAttribute('id');
-      }
+      if (position >= section.offsetTop && position < section.offsetTop + section.offsetHeight) current = section.id;
     });
-
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href === '#' + currentSectionId) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
+    links.forEach(link => {
+      const active = link.getAttribute('href') === `#${current}`;
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
     });
-  }
-
-  window.addEventListener('scroll', handleScroll);
-  handleScroll();
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
-/* ==========================================================================
-   Easter Egg Functions
-   ========================================================================== */
+/* --------------------------------------------------------------------------
+   Project filtering and disclosure
+   -------------------------------------------------------------------------- */
 
-/**
- * Initialize the contact form with Web3Forms submission
- */
+function initializeProjectFiltering() {
+  const buttons = Array.from(document.querySelectorAll('.filter-btn'));
+  const cards = Array.from(document.querySelectorAll('.project-card'));
+  const status = document.getElementById('projectsFilterStatus') || document.getElementById('projectFilterStatus');
+  const showMore = document.getElementById('projectsShowMore');
+  const visibleCount = 3;
+  if (!buttons.length || !cards.length) return;
+
+  const apply = (filter, { expand = null, reset = false } = {}) => {
+    const matching = cards.filter(card => filter === 'all' || card.dataset.category === filter);
+    const currentExpanded = showMore && showMore.getAttribute('aria-expanded') === 'true';
+    const isExpanded = reset ? false : (expand === null ? currentExpanded : expand);
+    buttons.forEach(button => {
+      const selected = button.dataset.filter === filter;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+    cards.forEach(card => {
+      const index = matching.indexOf(card);
+      setItemVisible(card, index >= 0 && (isExpanded || index < visibleCount));
+    });
+    if (showMore) {
+      const hasMore = matching.length > visibleCount;
+      showMore.hidden = !hasMore;
+      showMore.style.display = hasMore ? '' : 'none';
+      if (!hasMore) showMore.setAttribute('aria-expanded', 'true');
+      else showMore.setAttribute('aria-expanded', String(isExpanded));
+      const label = showMore.querySelector('.show-more-label');
+      if (label) label.textContent = isExpanded && hasMore ? 'Show Less Projects' : 'Show More Projects';
+    }
+    if (status) {
+      const shownCount = matching.filter(card => !card.classList.contains('hidden-card')).length;
+      status.textContent = `${shownCount} of ${matching.length} ${matching.length === 1 ? 'project' : 'projects'} shown`;
+    }
+    window.__portfolioProjectFilter = { filter, matching, apply };
+  };
+
+  buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.filter, { reset: true })));
+  apply((buttons.find(button => button.classList.contains('active')) || buttons[0]).dataset.filter);
+}
+
+function initializeShowMore() {
+  const visibleCount = 3;
+  const setupVideos = () => {
+    const grid = document.getElementById('videosGrid');
+    const button = document.getElementById('videosShowMore');
+    const container = document.getElementById('videosShowMoreContainer');
+    if (!grid || !button) return;
+    const items = Array.from(grid.children);
+    const hasMore = items.length > visibleCount;
+    if (container) container.hidden = !hasMore;
+    button.hidden = !hasMore;
+    button.style.display = hasMore ? '' : 'none';
+    if (!hasMore) return;
+    items.forEach((item, index) => setItemVisible(item, index < visibleCount));
+    button.setAttribute('aria-expanded', 'false');
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      if (expanded && items.slice(visibleCount).some(item => item.contains(document.activeElement))) button.focus();
+      items.forEach((item, index) => setItemVisible(item, !expanded || index < visibleCount));
+      button.setAttribute('aria-expanded', String(!expanded));
+      const label = button.querySelector('.show-more-label');
+      if (label) label.textContent = expanded ? 'Show More Videos' : 'Show Less Videos';
+    });
+  };
+
+  const projectButton = document.getElementById('projectsShowMore');
+  if (projectButton) projectButton.addEventListener('click', () => {
+    const state = window.__portfolioProjectFilter;
+    if (!state) return;
+    const expanded = projectButton.getAttribute('aria-expanded') === 'true';
+    if (expanded && state.matching.slice(visibleCount).some(card => card.contains(document.activeElement))) projectButton.focus();
+    state.apply(state.filter, { expand: !expanded });
+  });
+  setupVideos();
+}
+
+function revealProjectCard(card) {
+  const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+  if (allButton && !allButton.classList.contains('active')) allButton.click();
+  const state = window.__portfolioProjectFilter;
+  if (state && state.matching.includes(card)) state.apply(state.filter, { expand: true });
+}
+
+/* --------------------------------------------------------------------------
+   Dialogs
+   -------------------------------------------------------------------------- */
+
+function initializeCommandPalette() {
+  const palette = document.getElementById('commandPalette');
+  const input = document.getElementById('commandInput');
+  const list = document.getElementById('commandList');
+  if (!palette || !input || !list) return;
+  const closeButton = document.getElementById('commandPaletteClose');
+  palette.hidden = true;
+  input.setAttribute('data-dialog-initial-focus', '');
+  palette.setAttribute('aria-hidden', 'true');
+  Array.from(list.children).forEach(item => item.setAttribute('aria-selected', 'false'));
+
+  const open = opener => {
+    input.value = '';
+    Array.from(list.children).forEach(item => {
+      item.style.display = '';
+      item.classList.remove('active');
+      item.setAttribute('aria-selected', 'false');
+    });
+    openDialog(palette, opener);
+  };
+  window.openCommandPalette = open;
+  document.addEventListener('keydown', event => {
+    if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+      event.preventDefault();
+      modalState.active === palette ? closeCommandPalette() : open(document.activeElement);
+    }
+  });
+  palette.addEventListener('click', event => { if (event.target === palette) closeCommandPalette(); });
+  if (closeButton) closeButton.addEventListener('click', closeCommandPalette);
+  list.addEventListener('click', event => {
+    const command = event.target.closest('li[data-action]');
+    if (command) executeCommand(command.dataset.action);
+  });
+  const setActive = item => {
+    Array.from(list.children).forEach(command => {
+      const active = command === item;
+      command.classList.toggle('active', active);
+      command.setAttribute('aria-selected', String(active));
+    });
+    input.setAttribute('aria-activedescendant', item ? item.id : '');
+  };
+  input.addEventListener('input', () => {
+    const query = input.value.trim().toLowerCase();
+    const visible = Array.from(list.children).filter(item => {
+      const matches = item.textContent.toLowerCase().includes(query);
+      item.style.display = matches ? '' : 'none';
+      if (!matches) item.classList.remove('active');
+      return matches;
+    });
+    setActive(visible[0] || null);
+  });
+  input.addEventListener('keydown', event => {
+    const visible = Array.from(list.children).filter(item => item.style.display !== 'none');
+    const current = list.querySelector('.active');
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (!visible.length) return;
+      const index = visible.indexOf(current);
+      const next = event.key === 'ArrowDown' ? visible[(index + 1 + visible.length) % visible.length] : visible[(index - 1 + visible.length) % visible.length];
+      setActive(next);
+      next.scrollIntoView({ block: 'nearest' });
+    } else if (event.key === 'Enter') {
+      const active = list.querySelector('.active') || visible[0];
+      if (active) {
+        event.preventDefault();
+        executeCommand(active.dataset.action);
+      }
+    }
+  });
+}
+
+function closeCommandPalette() {
+  const palette = document.getElementById('commandPalette');
+  if (palette) closeDialog(palette);
+}
+
+function executeCommand(action) {
+  closeCommandPalette();
+  if (action === 'dark-mode') toggleTheme();
+  else if (action === 'videos' || action === 'creative') scrollToSection('videos');
+  else scrollToSection(action);
+}
+
+function initializeVideoPopup() {
+  const backdrop = document.getElementById('videoPopupBackdrop');
+  const popup = document.getElementById('videoPopup');
+  const player = document.getElementById('videoPopupPlayer');
+  const title = document.getElementById('videoPopupTitle');
+  const close = document.getElementById('videoPopupClose');
+  if (!backdrop || !popup || !player) return;
+  backdrop.hidden = true;
+  popup.hidden = true;
+  popup.setAttribute('aria-hidden', 'true');
+  popup.setAttribute('aria-modal', 'true');
+  backdrop.setAttribute('aria-hidden', 'true');
+  document.querySelectorAll('.btn-demo').forEach(button => {
+    const card = button.closest('.project-card[data-video]');
+    if (!card) return;
+    button.addEventListener('click', () => openVideoPopup(card, button));
+  });
+  backdrop.addEventListener('click', closeVideoPopup);
+  if (close) close.addEventListener('click', closeVideoPopup);
+}
+
+function openVideoPopup(card, opener) {
+  const popup = document.getElementById('videoPopup');
+  const backdrop = document.getElementById('videoPopupBackdrop');
+  const player = document.getElementById('videoPopupPlayer');
+  const title = document.getElementById('videoPopupTitle');
+  const src = card.dataset.video;
+  if (!popup || !backdrop || !player || !src) return;
+  if (title) title.textContent = card.dataset.title || '';
+  player.src = src;
+  player.load();
+  backdrop.hidden = false;
+  backdrop.classList.add('active', 'visible');
+  openDialog(popup, opener, [backdrop]);
+  if (!motionReduced()) player.play().catch(() => {});
+}
+
+function closeVideoPopup() {
+  const popup = document.getElementById('videoPopup');
+  const backdrop = document.getElementById('videoPopupBackdrop');
+  const player = document.getElementById('videoPopupPlayer');
+  if (!popup) return;
+  if (player) {
+    player.pause();
+    player.removeAttribute('src');
+    player.load();
+  }
+  if (backdrop) {
+    backdrop.classList.remove('active', 'visible');
+    backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.hidden = true;
+  }
+  closeDialog(popup);
+}
+
+/* --------------------------------------------------------------------------
+   Form and easter egg
+   -------------------------------------------------------------------------- */
+
 function initializeContactForm() {
   const form = document.getElementById('contactForm');
   const result = document.getElementById('formResult');
   if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector('.contact-submit');
-    const btnText = submitBtn.querySelector('.btn-text');
-    const btnIcon = submitBtn.querySelector('.fa-paper-plane');
-    const btnLoading = submitBtn.querySelector('.btn-loading');
-
-    // Loading state
-    btnText.style.display = 'none';
-    btnIcon.style.display = 'none';
-    btnLoading.style.display = 'inline';
-    submitBtn.disabled = true;
-
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const button = form.querySelector('.contact-submit');
+    if (!button || button.disabled) return;
+    const text = button.querySelector('.btn-text');
+    const icon = button.querySelector('.fa-paper-plane');
+    const loading = button.querySelector('.btn-loading');
+    form.setAttribute('aria-busy', 'true');
+    button.disabled = true;
+    if (text) { text.hidden = true; text.style.display = 'none'; }
+    if (icon) { icon.hidden = true; icon.style.display = 'none'; }
+    if (loading) { loading.hidden = false; loading.style.display = 'inline'; }
+    if (result) {
+      result.setAttribute('role', 'status');
+      result.textContent = 'Sending your message…';
+      result.className = 'form-result';
+    }
     try {
-      const formData = new FormData(form);
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData
-      });
+      const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
       const data = await response.json();
-
-      if (data.success) {
-        result.textContent = 'Message sent! I\'ll get back to you soon.';
+      if (!response.ok || !data.success) throw new Error(data.message || 'Submission failed');
+      if (result) {
+        result.setAttribute('role', 'status');
+        result.textContent = "Message sent! I'll get back to you soon.";
         result.className = 'form-result success';
-        form.reset();
-      } else {
-        throw new Error(data.message || 'Submission failed');
       }
+      form.reset();
     } catch {
-      result.textContent = 'Failed to send message. Please try emailing me directly.';
-      result.className = 'form-result error';
+      if (result) {
+        result.setAttribute('role', 'alert');
+        result.textContent = 'Failed to send message. Please try emailing me directly.';
+        result.className = 'form-result error';
+      }
     } finally {
-      btnText.style.display = 'inline';
-      btnIcon.style.display = 'inline';
-      btnLoading.style.display = 'none';
-      submitBtn.disabled = false;
-
-      setTimeout(() => {
-        result.textContent = '';
-        result.className = 'form-result';
-      }, 5000);
+      form.setAttribute('aria-busy', 'false');
+      button.disabled = false;
+      if (text) { text.hidden = false; text.style.removeProperty('display'); }
+      if (icon) { icon.hidden = false; icon.style.removeProperty('display'); }
+      if (loading) { loading.hidden = true; loading.style.display = 'none'; }
     }
   });
 }
 
-/**
- * Initialize the Konami code easter egg
- */
 function initializeEasterEgg() {
-  const konamiCode = [
-    'ArrowUp',
-    'ArrowUp',
-    'ArrowDown',
-    'ArrowDown',
-    'ArrowLeft',
-    'ArrowRight',
-    'ArrowLeft',
-    'ArrowRight',
-    'KeyB',
-    'KeyA'
-  ];
-  
-  let konamiIndex = 0;
-  
-  document.addEventListener('keydown', (e) => {
-    if (e.code === konamiCode[konamiIndex]) {
-      konamiIndex++;
-      
-      if (konamiIndex === konamiCode.length) {
-        activateEasterEgg();
-        konamiIndex = 0;
-      }
-    } else {
-      konamiIndex = 0;
+  const code = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+  let index = 0;
+  document.addEventListener('keydown', event => {
+    index = event.code === code[index] ? index + 1 : 0;
+    if (index === code.length) {
+      index = 0;
+      activateEasterEgg();
     }
   });
 }
 
-/**
- * Activate the easter egg effect
- */
 function activateEasterEgg() {
-  const body = document.body;
-  body.classList.add('konami-activated');
+  if (motionReduced()) return;
+  document.body.classList.add('konami-activated');
   createConfetti();
-  
-  setTimeout(() => {
-    body.classList.remove('konami-activated');
-  }, 5000);
+  window.setTimeout(() => document.body.classList.remove('konami-activated'), 5000);
 }
 
-/**
- * Create confetti effect for the easter egg
- */
 function createConfetti() {
-  const confettiContainer = document.createElement('div');
-  confettiContainer.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-  `;
-  
-  document.body.appendChild(confettiContainer);
-  
-  for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement('div');
-    confetti.style.cssText = `
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: hsl(${Math.random() * 360}, 100%, 50%);
-      top: -10px;
-      left: ${Math.random() * 100}%;
-      opacity: ${Math.random() * 0.5 + 0.5};
-      transform: rotate(${Math.random() * 360}deg);
-      animation: confetti-fall ${Math.random() * 3 + 2}s linear forwards;
-    `;
-    
-    confettiContainer.appendChild(confetti);
+  const container = document.createElement('div');
+  container.setAttribute('aria-hidden', 'true');
+  container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;';
+  document.body.appendChild(container);
+  for (let index = 0; index < 100; index += 1) {
+    const piece = document.createElement('div');
+    piece.style.cssText = `position:absolute;width:10px;height:10px;background:hsl(${Math.random() * 360} 100% 50%);top:-10px;left:${Math.random() * 100}%;opacity:${Math.random() * .5 + .5};animation:confetti-fall ${Math.random() * 3 + 2}s linear forwards;`;
+    container.appendChild(piece);
   }
-  
   const style = document.createElement('style');
-  style.textContent = `
-    @keyframes confetti-fall {
-      0% {
-        transform: translateY(0) rotate(0deg);
-      }
-      100% {
-        transform: translateY(100vh) rotate(720deg);
-      }
-    }
-  `;
-  
+  style.textContent = '@keyframes confetti-fall{to{transform:translateY(100vh) rotate(720deg)}}';
   document.head.appendChild(style);
-  
-  setTimeout(() => {
-    confettiContainer.remove();
-    style.remove();
-  }, 5000);
+  window.setTimeout(() => { container.remove(); style.remove(); }, 5000);
 }
