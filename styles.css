@@ -208,6 +208,8 @@ a { color: inherit; }
 .show-more-container { display: flex; justify-content: center; margin-top: clamp(2rem, 4vw, 3rem); }
 .btn-show-more { display: inline-flex; align-items: center; justify-content: center; gap: .55rem; min-height: 2.8rem; padding: .55rem 1rem; color: var(--navy); border: 1px solid currentColor; border-radius: var(--radius-sm); background: transparent; font-size: .78rem; font-weight: 700; cursor: pointer; transition: color var(--fast) ease, background var(--fast) ease, transform var(--fast) var(--ease-out); }
 .btn-show-more:hover { color: var(--on-navy); background: var(--navy); transform: translateY(-1px); }
+[data-theme='dark'] .btn-show-more { color: var(--ink); border-color: var(--line); }
+[data-theme='dark'] .btn-show-more:hover { color: var(--navy-deep); background: var(--ink); border-color: var(--ink); }
 .btn-show-more i { transition: transform var(--fast) ease; }
 .btn-show-more[aria-expanded='true'] i { transform: rotate(180deg); }
 .project-card.hidden-card, .video-card-link.hidden-card { display: none !important; }

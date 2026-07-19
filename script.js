@@ -228,6 +228,10 @@ function initializeScrollEffects() {
   if (!items.length || motionReduced()) return;
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
+    // Mobile browser chrome changes viewport height as scrolling settles. Avoid
+    // ScrollTrigger refreshes that can pull the page back to a recalculated point.
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
     gsap.utils.toArray(items).forEach((item, index) => gsap.from(item, {
       scrollTrigger: { trigger: item, start: 'top 88%', once: true },
       y: 18, opacity: 0, duration: 0.62, delay: index % 3 * 0.07, ease: 'power2.out'
