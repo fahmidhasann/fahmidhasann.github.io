@@ -504,6 +504,10 @@ function executeCommand(action) {
     case 'projects':
       scrollToSection('projects');
       break;
+    case 'videos':
+    case 'creative':
+      scrollToSection('videos');
+      break;
     case 'contact':
       scrollToSection('contact');
       break;
@@ -616,13 +620,40 @@ function initializeNavScroll() {
   const nav = document.querySelector('.compact-nav');
   if (!nav) return;
 
-  window.addEventListener('scroll', function() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function handleScroll() {
     if (window.scrollY > 100) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
     }
-  });
+
+    // Scroll spy: update active nav link
+    let currentSectionId = '';
+    const scrollPosition = window.scrollY + 120;
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPosition >= top && scrollPosition < top + height) {
+        currentSectionId = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === '#' + currentSectionId) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
 }
 
 /* ==========================================================================
