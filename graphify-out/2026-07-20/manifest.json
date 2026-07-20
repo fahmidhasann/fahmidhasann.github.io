@@ -1,18 +1,18 @@
 {
   "script.js": {
-    "mtime": 1784499959.1739376,
-    "ast_hash": "0fc324838135afbacbf170a3094d38d5",
+    "mtime": 1784130449.6798065,
+    "ast_hash": "9822ed95e9ea6f5f498098f9651a15a7",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1784455624.852578,
-    "ast_hash": "7df3803c28bc848440e148738f9578bf",
+    "mtime": 1780921768.6394541,
+    "ast_hash": "5ae13f0a5bc6cd08675ca254dec96b4b",
     "semantic_hash": ""
   },
   "assets/profile-photo.jpg": {
-    "mtime": 1784456241.62,
-    "ast_hash": "afd5c6e8cefebcd0f38fa3f96d774d46",
-    "semantic_hash": ""
+    "mtime": 1780920225.762786,
+    "ast_hash": "56f8686257ea33b11ebae4623f0051a5",
+    "semantic_hash": "56f8686257ea33b11ebae4623f0051a5"
   },
   "assets/project_3.jpg": {
     "mtime": 1780920225.76707,
@@ -115,8 +115,8 @@
     "semantic_hash": "698035f601718c9eb4f2cc1e23fa8463"
   },
   "index.html": {
-    "mtime": 1784534501.8321574,
-    "ast_hash": "7e5694bea966b8353331caf0c3471992",
+    "mtime": 1784130449.680203,
+    "ast_hash": "969d8874af467ef00cf83f741fdc2c9a",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -130,23 +130,8 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1784455631.5134099,
-    "ast_hash": "0c73e5ddd06df27d848d8b780da4c67a",
-    "semantic_hash": ""
-  },
-  "assets/Project/damkoto-python-thumbnail.png": {
-    "mtime": 1784374012.0507507,
-    "ast_hash": "c76e8f1bc8226e60814d0b557a13eb06",
-    "semantic_hash": ""
-  },
-  "assets/profile-hero-portrait.jpg": {
-    "mtime": 1784497284.7195852,
-    "ast_hash": "542af6272bb3dd980e7a5bd413c85f4f",
-    "semantic_hash": ""
-  },
-  "assets/profile-hero-v2.webp": {
-    "mtime": 1784494716.4034023,
-    "ast_hash": "8449b8ab2f0a33c3f14c696477d97405",
+    "mtime": 1784129989.2112298,
+    "ast_hash": "d0efcf362f26fc9f380f3463fc5ab3e2",
     "semantic_hash": ""
   }
 }

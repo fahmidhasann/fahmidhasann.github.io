@@ -1,22 +1,23 @@
-# Graph Report - fahmidhasann.github.io  (2026-07-20)
+# Graph Report - fahmidhasann.github.io  (2026-07-15)
 
 ## Corpus Check
-- 11 files · ~249,336 words
+- 11 files · ~202,541 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 190 nodes · 228 edges · 29 communities (15 shown, 14 thin omitted)
-- Extraction: 95% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.68)
+- 173 nodes · 181 edges · 30 communities (16 shown, 14 thin omitted)
+- Extraction: 94% EXTRACTED · 5% INFERRED · 1% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.7)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `788946db`
+- Built from commit: `143cf67b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - AI Freelancer Landscape
 - Portfolio Projects & Stack
+- Freelance Automation Tools
 - Productivity & Meeting Tools
 - AI Automation Agencies
 - Freelancer Adoption Stats
@@ -49,13 +50,13 @@
 1. `Ashley Allen (freelance developer)` - 15 edges
 2. `Project Management Automation` - 11 edges
 3. `Freelance Business Automation` - 8 edges
-4. `openDialog()` - 7 edges
-5. `closeDialog()` - 7 edges
-6. `motionReduced()` - 6 edges
-7. `initializeNavigation()` - 6 edges
-8. `Projects Section` - 6 edges
-9. `closeCommandPalette()` - 5 edges
-10. `executeCommand()` - 5 edges
+4. `Projects Section` - 6 edges
+5. `AI Agent` - 5 edges
+6. `AI Automation Stack for Freelancers` - 5 edges
+7. `Financial Management Automation` - 5 edges
+8. `clearProjectHideTimeout()` - 4 edges
+9. `executeCommand()` - 4 edges
+10. `Services Section` - 4 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Service: AI Workflow Automation ($599)` --conceptually_related_to--> `Traditional Structured Workflow`  [INFERRED]
@@ -68,7 +69,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (29 total, 14 thin omitted)
+## Communities (30 total, 14 thin omitted)
 
 ### Community 0 - "AI Freelancer Landscape"
 Cohesion: 0.11
@@ -78,9 +79,13 @@ Nodes (24): AI Agent, AI Cannot Replace Developers, AI Hallucination Problem, AI
 Cohesion: 0.12
 Nodes (22): Agentic Workflow Concept, AI Agents vs Traditional Automation, AI Agents vs Traditional Dev Tools, Traditional Structured Workflow, Google Gemini AI, Groq LLM, n8n Workflow Automation Tool, Next.js (+14 more)
 
+### Community 2 - "Freelance Automation Tools"
+Cohesion: 0.29
+Nodes (7): Figma, Financial Management Automation, FreshBooks, Intuit Assist (QuickBooks AI), QuickBooks, Xero, JAX (Xero AI)
+
 ### Community 3 - "Productivity & Meeting Tools"
-Cohesion: 0.08
-Nodes (26): Asana, Calendly, ClickUp, Commission-Free Freelance Platform, Content Marketing Automation, Contract Management Automation, Figma, Financial Management Automation (+18 more)
+Cohesion: 0.11
+Nodes (19): Asana, Calendly, ClickUp, Commission-Free Freelance Platform, Content Marketing Automation, Contract Management Automation, Fireflies.ai, Freelance Business Automation (+11 more)
 
 ### Community 4 - "AI Automation Agencies"
 Cohesion: 0.36
@@ -107,8 +112,8 @@ Cohesion: 0.50
 Nodes (3): data, web, success
 
 ### Community 10 - "Agentic Workflow Concepts"
-Cohesion: 0.10
-Nodes (36): activateEasterEgg(), clearPageInert(), closeActiveDialog(), closeCommandPalette(), closeDialog(), closeMobileMenu(), closeVideoPopup(), createConfetti() (+28 more)
+Cohesion: 0.13
+Nodes (14): activateEasterEgg(), clearProjectHideTimeout(), createConfetti(), executeCommand(), getScrollTargetTop(), initializeCommandPalette(), initializeDarkModeToggle(), initializeEasterEgg() (+6 more)
 
 ### Community 12 - "Upwork Research Insights"
 Cohesion: 0.67
@@ -135,7 +140,7 @@ Nodes (7): Architecture, Command Palette, Development, graphify, Overview, Proje
   graphify-out/transcripts/Dam koto bot.txt · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **74 isolated node(s):** `@playwright/mcp`, `prefersReducedMotion`, `modalState`, `headers`, `Overview` (+69 more)
+- **72 isolated node(s):** `@playwright/mcp`, `headers`, `Overview`, `Development`, `Architecture` (+67 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -144,15 +149,15 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **What is the exact relationship between `AI-Powered Lead Generation & Cold Outreach Transcript` and `Dam koto bot`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
-- **Why does `Freelance Business Automation` connect `Productivity & Meeting Tools` to `AI Freelancer Landscape`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+- **Why does `Freelance Business Automation` connect `Productivity & Meeting Tools` to `AI Freelancer Landscape`, `Freelance Automation Tools`, `AI Automation Agencies`?**
+  _High betweenness centrality (0.074) - this node is a cross-community bridge._
 - **Why does `AI Agent` connect `AI Freelancer Landscape` to `Productivity & Meeting Tools`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **What connects `@playwright/mcp`, `prefersReducedMotion`, `modalState` to the rest of the system?**
-  _74 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+- **What connects `@playwright/mcp`, `headers`, `Overview` to the rest of the system?**
+  _72 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**
   _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._
 - **Should `Portfolio Projects & Stack` be split into smaller, more focused modules?**
   _Cohesion score 0.12121212121212122 - nodes in this community are weakly interconnected._
 - **Should `Productivity & Meeting Tools` be split into smaller, more focused modules?**
-  _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._

@@ -71,164 +71,10 @@
       "norm_label": "script.js"
     },
     {
-      "label": "prefersReducedMotion",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L2",
-      "_origin": "ast",
-      "id": "script_prefersreducedmotion",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "prefersreducedmotion"
-    },
-    {
-      "label": "modalState",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "script_modalstate",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "modalstate"
-    },
-    {
-      "label": "motionReduced()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L23",
-      "_origin": "ast",
-      "id": "script_motionreduced",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "motionreduced()"
-    },
-    {
-      "label": "smoothBehavior()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L27",
-      "_origin": "ast",
-      "id": "script_smoothbehavior",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "smoothbehavior()"
-    },
-    {
-      "label": "getFocusable()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L35",
-      "_origin": "ast",
-      "id": "script_getfocusable",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "getfocusable()"
-    },
-    {
-      "label": "lockPage()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L41",
-      "_origin": "ast",
-      "id": "script_lockpage",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "lockpage()"
-    },
-    {
-      "label": "unlockPage()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "script_unlockpage",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "unlockpage()"
-    },
-    {
-      "label": "setPageInert()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L55",
-      "_origin": "ast",
-      "id": "script_setpageinert",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "setpageinert()"
-    },
-    {
-      "label": "clearPageInert()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L67",
-      "_origin": "ast",
-      "id": "script_clearpageinert",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "clearpageinert()"
-    },
-    {
-      "label": "openDialog()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L76",
-      "_origin": "ast",
-      "id": "script_opendialog",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "opendialog()"
-    },
-    {
-      "label": "closeDialog()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L97",
-      "_origin": "ast",
-      "id": "script_closedialog",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "closedialog()"
-    },
-    {
-      "label": "closeActiveDialog()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L139",
-      "_origin": "ast",
-      "id": "script_closeactivedialog",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "closeactivedialog()"
-    },
-    {
-      "label": "setItemFocusable()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L147",
-      "_origin": "ast",
-      "id": "script_setitemfocusable",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "setitemfocusable()"
-    },
-    {
-      "label": "setItemVisible()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L162",
-      "_origin": "ast",
-      "id": "script_setitemvisible",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "setitemvisible()"
-    },
-    {
       "label": "initializeTheme()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L172",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "script_initializetheme",
       "community": 10,
@@ -239,7 +85,7 @@
       "label": "toggleTheme()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L178",
+      "source_location": "L37",
       "_origin": "ast",
       "id": "script_toggletheme",
       "community": 10,
@@ -247,32 +93,10 @@
       "norm_label": "toggletheme()"
     },
     {
-      "label": "updateThemeToggle()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L185",
-      "_origin": "ast",
-      "id": "script_updatethemetoggle",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "updatethemetoggle()"
-    },
-    {
-      "label": "initializeThemeToggle()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L195",
-      "_origin": "ast",
-      "id": "script_initializethemetoggle",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializethemetoggle()"
-    },
-    {
       "label": "initializeParticles()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L211",
+      "source_location": "L56",
       "_origin": "ast",
       "id": "script_initializeparticles",
       "community": 10,
@@ -280,10 +104,21 @@
       "norm_label": "initializeparticles()"
     },
     {
+      "label": "initializeTextAnimations()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L140",
+      "_origin": "ast",
+      "id": "script_initializetextanimations",
+      "community": 10,
+      "community_name": "Agentic Workflow Concepts",
+      "norm_label": "initializetextanimations()"
+    },
+    {
       "label": "initializeScrollEffects()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L226",
+      "source_location": "L164",
       "_origin": "ast",
       "id": "script_initializescrolleffects",
       "community": 10,
@@ -294,7 +129,7 @@
       "label": "updateProgressBar()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L252",
+      "source_location": "L236",
       "_origin": "ast",
       "id": "script_updateprogressbar",
       "community": 10,
@@ -302,32 +137,10 @@
       "norm_label": "updateprogressbar()"
     },
     {
-      "label": "openMobileMenu()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L267",
-      "_origin": "ast",
-      "id": "script_openmobilemenu",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "openmobilemenu()"
-    },
-    {
-      "label": "closeMobileMenu()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L283",
-      "_origin": "ast",
-      "id": "script_closemobilemenu",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "closemobilemenu()"
-    },
-    {
       "label": "initializeNavigation()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L300",
+      "source_location": "L252",
       "_origin": "ast",
       "id": "script_initializenavigation",
       "community": 10,
@@ -335,43 +148,32 @@
       "norm_label": "initializenavigation()"
     },
     {
-      "label": "getScrollTargetTop()",
+      "label": "clearProjectHideTimeout()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L330",
+      "source_location": "L298",
       "_origin": "ast",
-      "id": "script_getscrolltargettop",
+      "id": "script_clearprojecthidetimeout",
       "community": 10,
       "community_name": "Agentic Workflow Concepts",
-      "norm_label": "getscrolltargettop()"
+      "norm_label": "clearprojecthidetimeout()"
     },
     {
-      "label": "scrollToSection()",
+      "label": "scheduleProjectHide()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L334",
+      "source_location": "L305",
       "_origin": "ast",
-      "id": "script_scrolltosection",
+      "id": "script_scheduleprojecthide",
       "community": 10,
       "community_name": "Agentic Workflow Concepts",
-      "norm_label": "scrolltosection()"
-    },
-    {
-      "label": "initializeNavScroll()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L339",
-      "_origin": "ast",
-      "id": "script_initializenavscroll",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializenavscroll()"
+      "norm_label": "scheduleprojecthide()"
     },
     {
       "label": "initializeProjectFiltering()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L366",
+      "source_location": "L316",
       "_origin": "ast",
       "id": "script_initializeprojectfiltering",
       "community": 10,
@@ -382,7 +184,7 @@
       "label": "initializeShowMore()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L407",
+      "source_location": "L382",
       "_origin": "ast",
       "id": "script_initializeshowmore",
       "community": 10,
@@ -390,21 +192,10 @@
       "norm_label": "initializeshowmore()"
     },
     {
-      "label": "revealProjectCard()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L443",
-      "_origin": "ast",
-      "id": "script_revealprojectcard",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "revealprojectcard()"
-    },
-    {
       "label": "initializeCommandPalette()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L454",
+      "source_location": "L437",
       "_origin": "ast",
       "id": "script_initializecommandpalette",
       "community": 10,
@@ -412,21 +203,10 @@
       "norm_label": "initializecommandpalette()"
     },
     {
-      "label": "closeCommandPalette()",
-      "file_type": "code",
-      "source_file": "script.js",
-      "source_location": "L525",
-      "_origin": "ast",
-      "id": "script_closecommandpalette",
-      "community": 10,
-      "community_name": "Agentic Workflow Concepts",
-      "norm_label": "closecommandpalette()"
-    },
-    {
       "label": "executeCommand()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L530",
+      "source_location": "L521",
       "_origin": "ast",
       "id": "script_executecommand",
       "community": 10,
@@ -434,43 +214,76 @@
       "norm_label": "executecommand()"
     },
     {
-      "label": "initializeVideoPopup()",
+      "label": "scrollToSection()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L537",
+      "source_location": "L544",
       "_origin": "ast",
-      "id": "script_initializevideopopup",
+      "id": "script_scrolltosection",
       "community": 10,
       "community_name": "Agentic Workflow Concepts",
-      "norm_label": "initializevideopopup()"
+      "norm_label": "scrolltosection()"
     },
     {
-      "label": "openVideoPopup()",
+      "label": "getScrollTargetTop()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L558",
+      "source_location": "L554",
       "_origin": "ast",
-      "id": "script_openvideopopup",
+      "id": "script_getscrolltargettop",
       "community": 10,
       "community_name": "Agentic Workflow Concepts",
-      "norm_label": "openvideopopup()"
+      "norm_label": "getscrolltargettop()"
     },
     {
-      "label": "closeVideoPopup()",
+      "label": "revealProjectCard()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L574",
+      "source_location": "L560",
       "_origin": "ast",
-      "id": "script_closevideopopup",
+      "id": "script_revealprojectcard",
       "community": 10,
       "community_name": "Agentic Workflow Concepts",
-      "norm_label": "closevideopopup()"
+      "norm_label": "revealprojectcard()"
+    },
+    {
+      "label": "initializeDarkModeToggle()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L584",
+      "_origin": "ast",
+      "id": "script_initializedarkmodetoggle",
+      "community": 10,
+      "community_name": "Agentic Workflow Concepts",
+      "norm_label": "initializedarkmodetoggle()"
+    },
+    {
+      "label": "initializeHoverEffects()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L597",
+      "_origin": "ast",
+      "id": "script_initializehovereffects",
+      "community": 10,
+      "community_name": "Agentic Workflow Concepts",
+      "norm_label": "initializehovereffects()"
+    },
+    {
+      "label": "initializeNavScroll()",
+      "file_type": "code",
+      "source_file": "script.js",
+      "source_location": "L640",
+      "_origin": "ast",
+      "id": "script_initializenavscroll",
+      "community": 10,
+      "community_name": "Agentic Workflow Concepts",
+      "norm_label": "initializenavscroll()"
     },
     {
       "label": "initializeContactForm()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L596",
+      "source_location": "L660",
       "_origin": "ast",
       "id": "script_initializecontactform",
       "community": 10,
@@ -481,7 +294,7 @@
       "label": "initializeEasterEgg()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L643",
+      "source_location": "L714",
       "_origin": "ast",
       "id": "script_initializeeasteregg",
       "community": 10,
@@ -492,7 +305,7 @@
       "label": "activateEasterEgg()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L655",
+      "source_location": "L747",
       "_origin": "ast",
       "id": "script_activateeasteregg",
       "community": 10,
@@ -503,7 +316,7 @@
       "label": "createConfetti()",
       "file_type": "code",
       "source_file": "script.js",
-      "source_location": "L662",
+      "source_location": "L760",
       "_origin": "ast",
       "id": "script_createconfetti",
       "community": 10,
@@ -591,7 +404,7 @@
       "label": "Theming",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L33",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "agents_theming",
       "community": 29,
@@ -602,7 +415,7 @@
       "label": "Project Filtering",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L37",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "agents_project_filtering",
       "community": 29,
@@ -613,7 +426,7 @@
       "label": "Command Palette",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L43",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "agents_command_palette",
       "community": 29,
@@ -624,7 +437,7 @@
       "label": "graphify",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L47",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "agents_graphify",
       "community": 29,
@@ -690,7 +503,7 @@
       "label": "Theming",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L33",
+      "source_location": "L34",
       "_origin": "ast",
       "id": "claude_theming",
       "community": 17,
@@ -701,7 +514,7 @@
       "label": "Project Filtering",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L37",
+      "source_location": "L38",
       "_origin": "ast",
       "id": "claude_project_filtering",
       "community": 17,
@@ -712,7 +525,7 @@
       "label": "Command Palette",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L43",
+      "source_location": "L44",
       "_origin": "ast",
       "id": "claude_command_palette",
       "community": 17,
@@ -723,7 +536,7 @@
       "label": "graphify",
       "file_type": "document",
       "source_file": "CLAUDE.md",
-      "source_location": "L47",
+      "source_location": "L48",
       "_origin": "ast",
       "id": "claude_graphify",
       "community": 17,
@@ -737,8 +550,8 @@
       "source_location": "L1",
       "community": 11,
       "norm_label": "settings.json",
-      "community_name": "Claude Dev Settings",
-      "id": "claude_settings"
+      "id": "claude_settings",
+      "community_name": "Claude Dev Settings"
     },
     {
       "label": "hooks",
@@ -747,8 +560,8 @@
       "source_location": "L2",
       "community": 11,
       "norm_label": "hooks",
-      "community_name": "Claude Dev Settings",
-      "id": "claude_settings_hooks"
+      "id": "claude_settings_hooks",
+      "community_name": "Claude Dev Settings"
     },
     {
       "label": "PreToolUse",
@@ -757,8 +570,8 @@
       "source_location": "L3",
       "community": 11,
       "norm_label": "pretooluse",
-      "community_name": "Claude Dev Settings",
-      "id": "claude_settings_hooks_pretooluse"
+      "id": "claude_settings_hooks_pretooluse",
+      "community_name": "Claude Dev Settings"
     },
     {
       "label": "AI-Powered Lead Generation & Cold Outreach Transcript",
@@ -771,8 +584,8 @@
       "contributor": null,
       "community": 15,
       "norm_label": "ai-powered lead generation & cold outreach transcript",
-      "community_name": "Project Transcripts",
-      "id": "transcript_ai_lead_gen"
+      "id": "transcript_ai_lead_gen",
+      "community_name": "Project Transcripts"
     },
     {
       "label": "Dam Koto Bot Transcript",
@@ -785,8 +598,8 @@
       "contributor": null,
       "community": 28,
       "norm_label": "dam koto bot transcript",
-      "community_name": "DamKoto Transcript",
-      "id": "transcript_damkoto_bot"
+      "id": "transcript_damkoto_bot",
+      "community_name": "DamKoto Transcript"
     },
     {
       "label": "Portfolio Website",
@@ -799,8 +612,8 @@
       "contributor": null,
       "community": 22,
       "norm_label": "portfolio website",
-      "community_name": "Portfolio Profile",
-      "id": "profilephoto_portfolio_website"
+      "id": "profilephoto_portfolio_website",
+      "community_name": "Portfolio Profile"
     },
     {
       "label": "ai-agencies.json",
@@ -809,8 +622,8 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "ai-agencies.json",
-      "community_name": "AI Agency Web Data",
-      "id": "firecrawl_ai_agencies"
+      "id": "firecrawl_ai_agencies",
+      "community_name": "AI Agency Web Data"
     },
     {
       "label": "success",
@@ -819,8 +632,8 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "success",
-      "community_name": "AI Agency Web Data",
-      "id": "firecrawl_ai_agencies_success"
+      "id": "firecrawl_ai_agencies_success",
+      "community_name": "AI Agency Web Data"
     },
     {
       "label": "data",
@@ -829,8 +642,8 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "data",
-      "community_name": "AI Agency Web Data",
-      "id": "firecrawl_ai_agencies_data"
+      "id": "firecrawl_ai_agencies_data",
+      "community_name": "AI Agency Web Data"
     },
     {
       "label": "web",
@@ -839,8 +652,8 @@
       "source_location": "L1",
       "community": 6,
       "norm_label": "web",
-      "community_name": "AI Agency Web Data",
-      "id": "firecrawl_ai_agencies_data_web"
+      "id": "firecrawl_ai_agencies_data_web",
+      "community_name": "AI Agency Web Data"
     },
     {
       "label": "ai-freelancers.json",
@@ -849,8 +662,8 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "ai-freelancers.json",
-      "community_name": "AI Freelancers Dataset",
-      "id": "firecrawl_ai_freelancers"
+      "id": "firecrawl_ai_freelancers",
+      "community_name": "AI Freelancers Dataset"
     },
     {
       "label": "success",
@@ -859,8 +672,8 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "success",
-      "community_name": "AI Freelancers Dataset",
-      "id": "firecrawl_ai_freelancers_success"
+      "id": "firecrawl_ai_freelancers_success",
+      "community_name": "AI Freelancers Dataset"
     },
     {
       "label": "data",
@@ -869,8 +682,8 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "data",
-      "community_name": "AI Freelancers Dataset",
-      "id": "firecrawl_ai_freelancers_data"
+      "id": "firecrawl_ai_freelancers_data",
+      "community_name": "AI Freelancers Dataset"
     },
     {
       "label": "web",
@@ -879,8 +692,8 @@
       "source_location": "L1",
       "community": 8,
       "norm_label": "web",
-      "community_name": "AI Freelancers Dataset",
-      "id": "firecrawl_ai_freelancers_data_web"
+      "id": "firecrawl_ai_freelancers_data_web",
+      "community_name": "AI Freelancers Dataset"
     },
     {
       "label": "ai-vs-traditional.json",
@@ -889,8 +702,8 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "ai-vs-traditional.json",
-      "community_name": "AI vs Traditional Automation",
-      "id": "firecrawl_ai_vs_traditional"
+      "id": "firecrawl_ai_vs_traditional",
+      "community_name": "AI vs Traditional Automation"
     },
     {
       "label": "success",
@@ -899,8 +712,8 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "success",
-      "community_name": "AI vs Traditional Automation",
-      "id": "firecrawl_ai_vs_traditional_success"
+      "id": "firecrawl_ai_vs_traditional_success",
+      "community_name": "AI vs Traditional Automation"
     },
     {
       "label": "data",
@@ -909,8 +722,8 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "data",
-      "community_name": "AI vs Traditional Automation",
-      "id": "firecrawl_ai_vs_traditional_data"
+      "id": "firecrawl_ai_vs_traditional_data",
+      "community_name": "AI vs Traditional Automation"
     },
     {
       "label": "web",
@@ -919,8 +732,8 @@
       "source_location": "L1",
       "community": 9,
       "norm_label": "web",
-      "community_name": "AI vs Traditional Automation",
-      "id": "firecrawl_ai_vs_traditional_data_web"
+      "id": "firecrawl_ai_vs_traditional_data_web",
+      "community_name": "AI vs Traditional Automation"
     },
     {
       "label": "Hero Section",
@@ -933,8 +746,8 @@
       "contributor": null,
       "community": 25,
       "norm_label": "hero section",
-      "community_name": "Hero Section",
-      "id": "root_index_hero_section"
+      "id": "root_index_hero_section",
+      "community_name": "Hero Section"
     },
     {
       "label": "Services Section",
@@ -947,8 +760,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "services section",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_services_section"
+      "id": "root_index_services_section",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Projects Section",
@@ -961,8 +774,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "projects section",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_projects_section"
+      "id": "root_index_projects_section",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Contact Section",
@@ -975,8 +788,8 @@
       "contributor": null,
       "community": 23,
       "norm_label": "contact section",
-      "community_name": "Contact Section",
-      "id": "root_index_contact_section"
+      "id": "root_index_contact_section",
+      "community_name": "Contact Section"
     },
     {
       "label": "Videos Section",
@@ -989,8 +802,8 @@
       "contributor": null,
       "community": 27,
       "norm_label": "videos section",
-      "community_name": "Videos Section",
-      "id": "root_index_videos_section"
+      "id": "root_index_videos_section",
+      "community_name": "Videos Section"
     },
     {
       "label": "Video Demo Popup",
@@ -1003,8 +816,8 @@
       "contributor": null,
       "community": 26,
       "norm_label": "video demo popup",
-      "community_name": "Video Popup",
-      "id": "root_index_video_popup"
+      "id": "root_index_video_popup",
+      "community_name": "Video Popup"
     },
     {
       "label": "Project: Chashi Bondhu",
@@ -1017,8 +830,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: chashi bondhu",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_project_chashi_bondhu"
+      "id": "root_index_project_chashi_bondhu",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Project: VocabFlow",
@@ -1031,8 +844,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: vocabflow",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_project_vocabflow"
+      "id": "root_index_project_vocabflow",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Project: AI-Powered Cold Outreach Automation",
@@ -1045,8 +858,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: ai-powered cold outreach automation",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_project_cold_outreach"
+      "id": "root_index_project_cold_outreach",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Project: DamKoto Bot",
@@ -1059,8 +872,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: damkoto bot",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_project_damkoto"
+      "id": "root_index_project_damkoto",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Project: PlantDoc RAG ChatBot",
@@ -1073,8 +886,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: plantdoc rag chatbot",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_project_plantdoc"
+      "id": "root_index_project_plantdoc",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Project: Interactive Bangladesh Choropleth Map",
@@ -1087,8 +900,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "project: interactive bangladesh choropleth map",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_project_choropleth"
+      "id": "root_index_project_choropleth",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Service: AI Workflow Automation ($599)",
@@ -1101,8 +914,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: ai workflow automation ($599)",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_service_workflow_automation"
+      "id": "root_index_service_workflow_automation",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Service: AI Support Chatbot ($799)",
@@ -1115,8 +928,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: ai support chatbot ($799)",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_service_chatbot"
+      "id": "root_index_service_chatbot",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Service: Data Dashboard & Insight Pack ($449)",
@@ -1129,8 +942,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: data dashboard & insight pack ($449)",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_service_dashboard"
+      "id": "root_index_service_dashboard",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Service: Lean AI MVP / Internal Tool ($1499)",
@@ -1143,8 +956,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "service: lean ai mvp / internal tool ($1499)",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_service_mvp"
+      "id": "root_index_service_mvp",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Fahmid Hasan Taohid",
@@ -1157,8 +970,8 @@
       "contributor": null,
       "community": 24,
       "norm_label": "fahmid hasan taohid",
-      "community_name": "Portfolio Owner",
-      "id": "root_index_fahmid_hasan"
+      "id": "root_index_fahmid_hasan",
+      "community_name": "Portfolio Owner"
     },
     {
       "label": "Security Headers Configuration",
@@ -1171,8 +984,8 @@
       "contributor": null,
       "community": 14,
       "norm_label": "security headers configuration",
-      "community_name": "Vercel Security Headers",
-      "id": "vercel_json_security_headers"
+      "id": "vercel_json_security_headers",
+      "community_name": "Vercel Security Headers"
     },
     {
       "label": "Asset Cache Control (1yr immutable)",
@@ -1185,8 +998,8 @@
       "contributor": null,
       "community": 14,
       "norm_label": "asset cache control (1yr immutable)",
-      "community_name": "Vercel Security Headers",
-      "id": "vercel_json_cache_control"
+      "id": "vercel_json_cache_control",
+      "community_name": "Vercel Security Headers"
     },
     {
       "label": "X-Frame-Options: SAMEORIGIN",
@@ -1199,8 +1012,8 @@
       "contributor": null,
       "community": 14,
       "norm_label": "x-frame-options: sameorigin",
-      "community_name": "Vercel Security Headers",
-      "id": "vercel_json_x_frame_options"
+      "id": "vercel_json_x_frame_options",
+      "community_name": "Vercel Security Headers"
     },
     {
       "label": "Playwright MCP Server",
@@ -1213,8 +1026,8 @@
       "contributor": null,
       "community": 13,
       "norm_label": "playwright mcp server",
-      "community_name": "MCP & Playwright Config",
-      "id": "mcp_json_playwright"
+      "id": "mcp_json_playwright",
+      "community_name": "MCP & Playwright Config"
     },
     {
       "label": "AI Agencies Web Search Dataset",
@@ -1227,8 +1040,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "ai agencies web search dataset",
-      "community_name": "No-Code Web Builders",
-      "id": "firecrawl_ai_agencies_web_search"
+      "id": "firecrawl_ai_agencies_web_search",
+      "community_name": "No-Code Web Builders"
     },
     {
       "label": "Framer AI Website Builder",
@@ -1241,8 +1054,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "framer ai website builder",
-      "community_name": "No-Code Web Builders",
-      "id": "firecrawl_ai_agencies_framer"
+      "id": "firecrawl_ai_agencies_framer",
+      "community_name": "No-Code Web Builders"
     },
     {
       "label": "Webflow AI Website Builder",
@@ -1255,8 +1068,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "webflow ai website builder",
-      "community_name": "No-Code Web Builders",
-      "id": "firecrawl_ai_agencies_webflow"
+      "id": "firecrawl_ai_agencies_webflow",
+      "community_name": "No-Code Web Builders"
     },
     {
       "label": "Lovable + GitHub + Vercel Stack",
@@ -1269,8 +1082,8 @@
       "contributor": null,
       "community": 7,
       "norm_label": "lovable + github + vercel stack",
-      "community_name": "No-Code Web Builders",
-      "id": "firecrawl_ai_agencies_lovable_stack"
+      "id": "firecrawl_ai_agencies_lovable_stack",
+      "community_name": "No-Code Web Builders"
     },
     {
       "label": "AI Agents vs Traditional Automation",
@@ -1283,8 +1096,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "ai agents vs traditional automation",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "firecrawl_ai_vs_traditional_ai_agents"
+      "id": "firecrawl_ai_vs_traditional_ai_agents",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Agentic Workflow Concept",
@@ -1297,8 +1110,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "agentic workflow concept",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "firecrawl_ai_vs_traditional_agentic_workflow"
+      "id": "firecrawl_ai_vs_traditional_agentic_workflow",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Traditional Structured Workflow",
@@ -1311,8 +1124,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "traditional structured workflow",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "firecrawl_ai_vs_traditional_traditional_workflow"
+      "id": "firecrawl_ai_vs_traditional_traditional_workflow",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "AI Agents vs Traditional Dev Tools",
@@ -1325,8 +1138,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "ai agents vs traditional dev tools",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "firecrawl_ai_vs_traditional_dev_tools"
+      "id": "firecrawl_ai_vs_traditional_dev_tools",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "n8n Workflow Automation Tool",
@@ -1339,8 +1152,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "n8n workflow automation tool",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_n8n"
+      "id": "root_index_n8n",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Groq LLM",
@@ -1353,8 +1166,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "groq llm",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_groq_llm"
+      "id": "root_index_groq_llm",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Google Gemini AI",
@@ -1367,8 +1180,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "google gemini ai",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_google_gemini"
+      "id": "root_index_google_gemini",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Retrieval-Augmented Generation (RAG)",
@@ -1381,8 +1194,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "retrieval-augmented generation (rag)",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_rag"
+      "id": "root_index_rag",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Supabase",
@@ -1395,8 +1208,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "supabase",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_supabase"
+      "id": "root_index_supabase",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Next.js",
@@ -1409,8 +1222,8 @@
       "contributor": null,
       "community": 1,
       "norm_label": "next.js",
-      "community_name": "Portfolio Projects & Stack",
-      "id": "root_index_nextjs"
+      "id": "root_index_nextjs",
+      "community_name": "Portfolio Projects & Stack"
     },
     {
       "label": "Dam koto bot",
@@ -1423,8 +1236,8 @@
       "contributor": null,
       "community": 15,
       "norm_label": "dam koto bot",
-      "community_name": "Project Transcripts",
-      "id": "transcript_damkoto_dam_koto_bot"
+      "id": "transcript_damkoto_dam_koto_bot",
+      "community_name": "Project Transcripts"
     },
     {
       "label": "AI Freelancers Market Research",
@@ -1437,8 +1250,8 @@
       "contributor": null,
       "community": 18,
       "norm_label": "ai freelancers market research",
-      "community_name": "Freelancers Data File",
-      "id": "firecrawl_ai_freelancers_ai_freelancers_file"
+      "id": "firecrawl_ai_freelancers_ai_freelancers_file",
+      "community_name": "Freelancers Data File"
     },
     {
       "label": "Upwork",
@@ -1451,8 +1264,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "upwork",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_upwork"
+      "id": "firecrawl_ai_freelancers_upwork",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Jobbers.io",
@@ -1465,8 +1278,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "jobbers.io",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_jobbers_io"
+      "id": "firecrawl_ai_freelancers_jobbers_io",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Freelancer.com",
@@ -1479,8 +1292,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "freelancer.com",
-      "community_name": "Freelancer Adoption Stats",
-      "id": "firecrawl_ai_freelancers_freelancer_com"
+      "id": "firecrawl_ai_freelancers_freelancer_com",
+      "community_name": "Freelancer Adoption Stats"
     },
     {
       "label": "GitHub Copilot",
@@ -1493,8 +1306,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "github copilot",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_github_copilot"
+      "id": "firecrawl_ai_freelancers_github_copilot",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Cursor",
@@ -1507,8 +1320,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "cursor",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_cursor"
+      "id": "firecrawl_ai_freelancers_cursor",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "ChatGPT",
@@ -1521,8 +1334,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "chatgpt",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_chatgpt"
+      "id": "firecrawl_ai_freelancers_chatgpt",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Claude (Anthropic)",
@@ -1535,8 +1348,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "claude (anthropic)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_claude"
+      "id": "firecrawl_ai_freelancers_claude",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Junie (JetBrains AI)",
@@ -1549,8 +1362,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "junie (jetbrains ai)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_junie"
+      "id": "firecrawl_ai_freelancers_junie",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "PhpStorm",
@@ -1563,8 +1376,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "phpstorm",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_phpstorm"
+      "id": "firecrawl_ai_freelancers_phpstorm",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "n8n",
@@ -1577,8 +1390,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "n8n",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_n8n"
+      "id": "firecrawl_ai_freelancers_n8n",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "Make (formerly Integromat)",
@@ -1591,8 +1404,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "make (formerly integromat)",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_make"
+      "id": "firecrawl_ai_freelancers_make",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "Zapier",
@@ -1605,8 +1418,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "zapier",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_zapier"
+      "id": "firecrawl_ai_freelancers_zapier",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "Lindy",
@@ -1619,8 +1432,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "lindy",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_lindy"
+      "id": "firecrawl_ai_freelancers_lindy",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "FreshBooks",
@@ -1631,10 +1444,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "freshbooks",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_freshbooks"
+      "id": "firecrawl_ai_freelancers_freshbooks",
+      "community_name": "Freelance Automation Tools"
     },
     {
       "label": "QuickBooks",
@@ -1645,10 +1458,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "quickbooks",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_quickbooks"
+      "id": "firecrawl_ai_freelancers_quickbooks",
+      "community_name": "Freelance Automation Tools"
     },
     {
       "label": "Xero",
@@ -1659,10 +1472,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "xero",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_xero"
+      "id": "firecrawl_ai_freelancers_xero",
+      "community_name": "Freelance Automation Tools"
     },
     {
       "label": "Notion",
@@ -1675,8 +1488,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "notion",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_notion"
+      "id": "firecrawl_ai_freelancers_notion",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Asana",
@@ -1689,8 +1502,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "asana",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_asana"
+      "id": "firecrawl_ai_freelancers_asana",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Trello",
@@ -1703,8 +1516,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "trello",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_trello"
+      "id": "firecrawl_ai_freelancers_trello",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "ClickUp",
@@ -1717,8 +1530,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "clickup",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_clickup"
+      "id": "firecrawl_ai_freelancers_clickup",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Linear",
@@ -1731,8 +1544,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "linear",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_linear"
+      "id": "firecrawl_ai_freelancers_linear",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Calendly",
@@ -1745,8 +1558,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "calendly",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_calendly"
+      "id": "firecrawl_ai_freelancers_calendly",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Otter.ai",
@@ -1759,8 +1572,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "otter.ai",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_otter_ai"
+      "id": "firecrawl_ai_freelancers_otter_ai",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Fireflies.ai",
@@ -1773,8 +1586,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "fireflies.ai",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_fireflies_ai"
+      "id": "firecrawl_ai_freelancers_fireflies_ai",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Granola",
@@ -1787,8 +1600,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "granola",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_granola"
+      "id": "firecrawl_ai_freelancers_granola",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Laracasts",
@@ -1801,8 +1614,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "laracasts",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_laracasts"
+      "id": "firecrawl_ai_freelancers_laracasts",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Tailwind (company)",
@@ -1815,8 +1628,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "tailwind (company)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_tailwind"
+      "id": "firecrawl_ai_freelancers_tailwind",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Laravel",
@@ -1829,8 +1642,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "laravel",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_laravel"
+      "id": "firecrawl_ai_freelancers_laravel",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Upwork Research Institute",
@@ -1843,8 +1656,8 @@
       "contributor": null,
       "community": 12,
       "norm_label": "upwork research institute",
-      "community_name": "Upwork Research Insights",
-      "id": "firecrawl_ai_freelancers_upwork_research_institute"
+      "id": "firecrawl_ai_freelancers_upwork_research_institute",
+      "community_name": "Upwork Research Insights"
     },
     {
       "label": "Stack Overflow Developer Survey 2025",
@@ -1857,8 +1670,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "stack overflow developer survey 2025",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_stack_overflow_developer_survey"
+      "id": "firecrawl_ai_freelancers_stack_overflow_developer_survey",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Ashley Allen (freelance developer)",
@@ -1871,8 +1684,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ashley allen (freelance developer)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_ashley_allen"
+      "id": "firecrawl_ai_freelancers_ashley_allen",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Jenessa Stark (freelancer/content creator)",
@@ -1885,8 +1698,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "jenessa stark (freelancer/content creator)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_jenessa_stark"
+      "id": "firecrawl_ai_freelancers_jenessa_stark",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Liam Ottley (YouTube creator)",
@@ -1899,8 +1712,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "liam ottley (youtube creator)",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_liam_ottley"
+      "id": "firecrawl_ai_freelancers_liam_ottley",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "AI Agent",
@@ -1913,8 +1726,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai agent",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_ai_agent"
+      "id": "firecrawl_ai_freelancers_ai_agent",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "AI Tool",
@@ -1927,8 +1740,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai tool",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_ai_tool"
+      "id": "firecrawl_ai_freelancers_ai_tool",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Freelance Business Automation",
@@ -1941,8 +1754,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "freelance business automation",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_freelance_automation"
+      "id": "firecrawl_ai_freelancers_freelance_automation",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Value-Based Pricing",
@@ -1955,8 +1768,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "value-based pricing",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_value_based_pricing"
+      "id": "firecrawl_ai_freelancers_value_based_pricing",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Hourly Pricing Model",
@@ -1969,8 +1782,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "hourly pricing model",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_hourly_pricing"
+      "id": "firecrawl_ai_freelancers_hourly_pricing",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Fixed-Price Project Model",
@@ -1983,8 +1796,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "fixed-price project model",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_fixed_price_model"
+      "id": "firecrawl_ai_freelancers_fixed_price_model",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Commission-Free Freelance Platform",
@@ -1997,8 +1810,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "commission-free freelance platform",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_commission_free_platform"
+      "id": "firecrawl_ai_freelancers_commission_free_platform",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Developer as Code Reviewer (vs Writer)",
@@ -2011,8 +1824,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "developer as code reviewer (vs writer)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_code_reviewer_role"
+      "id": "firecrawl_ai_freelancers_code_reviewer_role",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "AI Automation Stack for Freelancers",
@@ -2025,8 +1838,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "ai automation stack for freelancers",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_ai_automation_stack"
+      "id": "firecrawl_ai_freelancers_ai_automation_stack",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "Client Acquisition Automation",
@@ -2039,8 +1852,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "client acquisition automation",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_client_acquisition_automation"
+      "id": "firecrawl_ai_freelancers_client_acquisition_automation",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "Proposal Writing Automation",
@@ -2053,8 +1866,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "proposal writing automation",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_proposal_automation"
+      "id": "firecrawl_ai_freelancers_proposal_automation",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Financial Management Automation",
@@ -2065,10 +1878,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "financial management automation",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_financial_automation"
+      "id": "firecrawl_ai_freelancers_financial_automation",
+      "community_name": "Freelance Automation Tools"
     },
     {
       "label": "Project Management Automation",
@@ -2081,8 +1894,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "project management automation",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_project_mgmt_automation"
+      "id": "firecrawl_ai_freelancers_project_mgmt_automation",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Content Marketing Automation",
@@ -2095,8 +1908,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "content marketing automation",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_content_marketing_automation"
+      "id": "firecrawl_ai_freelancers_content_marketing_automation",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Contract Management Automation",
@@ -2109,8 +1922,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "contract management automation",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_contract_management_automation"
+      "id": "firecrawl_ai_freelancers_contract_management_automation",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "Scope Creep Detection",
@@ -2123,8 +1936,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "scope creep detection",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_scope_creep_detection"
+      "id": "firecrawl_ai_freelancers_scope_creep_detection",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "AI-Enabled Niche Specialization",
@@ -2137,8 +1950,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "ai-enabled niche specialization",
-      "community_name": "Freelancer Adoption Stats",
-      "id": "firecrawl_ai_freelancers_niche_specialization"
+      "id": "firecrawl_ai_freelancers_niche_specialization",
+      "community_name": "Freelancer Adoption Stats"
     },
     {
       "label": "Personal Brand Building for Freelancers",
@@ -2151,8 +1964,8 @@
       "contributor": null,
       "community": 3,
       "norm_label": "personal brand building for freelancers",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_personal_brand_building"
+      "id": "firecrawl_ai_freelancers_personal_brand_building",
+      "community_name": "Productivity & Meeting Tools"
     },
     {
       "label": "AI Hallucination Problem",
@@ -2165,8 +1978,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai hallucination problem",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_ai_hallucination"
+      "id": "firecrawl_ai_freelancers_ai_hallucination",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Generative AI Adoption by Freelancers",
@@ -2179,8 +1992,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "generative ai adoption by freelancers",
-      "community_name": "Freelancer Adoption Stats",
-      "id": "firecrawl_ai_freelancers_generative_ai_adoption"
+      "id": "firecrawl_ai_freelancers_generative_ai_adoption",
+      "community_name": "Freelancer Adoption Stats"
     },
     {
       "label": "AI-Driven Layoffs",
@@ -2193,8 +2006,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai-driven layoffs",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_ai_layoffs"
+      "id": "firecrawl_ai_freelancers_ai_layoffs",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Workflow Orchestration Platform",
@@ -2207,8 +2020,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "workflow orchestration platform",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_workflow_orchestration"
+      "id": "firecrawl_ai_freelancers_workflow_orchestration",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "Hostinger",
@@ -2221,8 +2034,8 @@
       "contributor": null,
       "community": 4,
       "norm_label": "hostinger",
-      "community_name": "AI Automation Agencies",
-      "id": "firecrawl_ai_freelancers_hostinger"
+      "id": "firecrawl_ai_freelancers_hostinger",
+      "community_name": "AI Automation Agencies"
     },
     {
       "label": "Medium (publishing platform)",
@@ -2235,8 +2048,8 @@
       "contributor": null,
       "community": 19,
       "norm_label": "medium (publishing platform)",
-      "community_name": "Medium Content",
-      "id": "firecrawl_ai_freelancers_medium"
+      "id": "firecrawl_ai_freelancers_medium",
+      "community_name": "Medium Content"
     },
     {
       "label": "Reddit r/ClaudeCode",
@@ -2249,8 +2062,8 @@
       "contributor": null,
       "community": 20,
       "norm_label": "reddit r/claudecode",
-      "community_name": "Reddit Community",
-      "id": "firecrawl_ai_freelancers_reddit_claudecode"
+      "id": "firecrawl_ai_freelancers_reddit_claudecode",
+      "community_name": "Reddit Community"
     },
     {
       "label": "YouTube",
@@ -2263,8 +2076,8 @@
       "contributor": null,
       "community": 21,
       "norm_label": "youtube",
-      "community_name": "YouTube Channel",
-      "id": "firecrawl_ai_freelancers_youtube"
+      "id": "firecrawl_ai_freelancers_youtube",
+      "community_name": "YouTube Channel"
     },
     {
       "label": "Figma",
@@ -2275,10 +2088,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "figma",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_figma"
+      "id": "firecrawl_ai_freelancers_figma",
+      "community_name": "Freelance Automation Tools"
     },
     {
       "label": "Battle Ready Laravel (book)",
@@ -2291,8 +2104,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "battle ready laravel (book)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_battle_ready_laravel"
+      "id": "firecrawl_ai_freelancers_battle_ready_laravel",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Consuming APIs in Laravel (book)",
@@ -2305,8 +2118,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "consuming apis in laravel (book)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_consuming_apis_laravel"
+      "id": "firecrawl_ai_freelancers_consuming_apis_laravel",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "The Web Dev's Guide to Freelancing (book)",
@@ -2319,8 +2132,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "the web dev's guide to freelancing (book)",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_web_dev_guide_freelancing"
+      "id": "firecrawl_ai_freelancers_web_dev_guide_freelancing",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "Intuit Assist (QuickBooks AI)",
@@ -2331,10 +2144,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "intuit assist (quickbooks ai)",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_intuit_assist"
+      "id": "firecrawl_ai_freelancers_intuit_assist",
+      "community_name": "Freelance Automation Tools"
     },
     {
       "label": "JAX (Xero AI)",
@@ -2345,10 +2158,10 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 2,
       "norm_label": "jax (xero ai)",
-      "community_name": "Productivity & Meeting Tools",
-      "id": "firecrawl_ai_freelancers_xero_jax"
+      "id": "firecrawl_ai_freelancers_xero_jax",
+      "community_name": "Freelance Automation Tools"
     },
     {
       "label": "AI Cannot Replace Developers",
@@ -2361,8 +2174,8 @@
       "contributor": null,
       "community": 0,
       "norm_label": "ai cannot replace developers",
-      "community_name": "AI Freelancer Landscape",
-      "id": "firecrawl_ai_freelancers_ai_developer_replacement"
+      "id": "firecrawl_ai_freelancers_ai_developer_replacement",
+      "community_name": "AI Freelancer Landscape"
     },
     {
       "label": "AI Saves ~8 hrs/week for Freelancers",
@@ -2375,8 +2188,8 @@
       "contributor": null,
       "community": 12,
       "norm_label": "ai saves ~8 hrs/week for freelancers",
-      "community_name": "Upwork Research Insights",
-      "id": "firecrawl_ai_freelancers_eight_hours_saved"
+      "id": "firecrawl_ai_freelancers_eight_hours_saved",
+      "community_name": "Upwork Research Insights"
     },
     {
       "label": "40% Higher Hourly Earnings with AI",
@@ -2389,8 +2202,8 @@
       "contributor": null,
       "community": 12,
       "norm_label": "40% higher hourly earnings with ai",
-      "community_name": "Upwork Research Insights",
-      "id": "firecrawl_ai_freelancers_40pct_higher_earnings"
+      "id": "firecrawl_ai_freelancers_40pct_higher_earnings",
+      "community_name": "Upwork Research Insights"
     },
     {
       "label": "75% of Freelancers Use Generative AI",
@@ -2403,8 +2216,8 @@
       "contributor": null,
       "community": 5,
       "norm_label": "75% of freelancers use generative ai",
-      "community_name": "Freelancer Adoption Stats",
-      "id": "firecrawl_ai_freelancers_75pct_freelancers_use_ai"
+      "id": "firecrawl_ai_freelancers_75pct_freelancers_use_ai",
+      "community_name": "Freelancer Adoption Stats"
     },
     {
       "label": "90% of AI Adopters Report Skill Acceleration",
@@ -2417,8 +2230,8 @@
       "author": null,
       "community": 5,
       "norm_label": "90% of ai adopters report skill acceleration",
-      "community_name": "Freelancer Adoption Stats",
-      "id": "firecrawl_ai_freelancers_90pct_skill_acceleration"
+      "id": "firecrawl_ai_freelancers_90pct_skill_acceleration",
+      "community_name": "Freelancer Adoption Stats"
     }
   ],
   "links": [
@@ -2482,7 +2295,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L655",
+      "source_location": "L747",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
@@ -2493,73 +2306,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L67",
+      "source_location": "L298",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
-      "target": "script_clearpageinert",
+      "target": "script_clearprojecthidetimeout",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L139",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_closeactivedialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L525",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_closecommandpalette",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L97",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_closedialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L283",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_closemobilemenu",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L574",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_closevideopopup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L662",
+      "source_location": "L760",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
@@ -2570,7 +2328,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L530",
+      "source_location": "L521",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
@@ -2581,18 +2339,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L35",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_getfocusable",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L330",
+      "source_location": "L554",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
@@ -2603,7 +2350,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L454",
+      "source_location": "L437",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
@@ -2614,7 +2361,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L596",
+      "source_location": "L660",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
@@ -2625,7 +2372,18 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L643",
+      "source_location": "L584",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "script",
+      "target": "script_initializedarkmodetoggle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L714",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
@@ -2636,264 +2394,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L300",
+      "source_location": "L597",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
-      "target": "script_initializenavigation",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L339",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializenavscroll",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L211",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializeparticles",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L366",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializeprojectfiltering",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L226",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializescrolleffects",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L407",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializeshowmore",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L172",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializetheme",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L195",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializethemetoggle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L537",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_initializevideopopup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L41",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_lockpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_modalstate",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L23",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_motionreduced",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L76",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_opendialog",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L267",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_openmobilemenu",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L558",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_openvideopopup",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L2",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_prefersreducedmotion",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L443",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_revealprojectcard",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L334",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_scrolltosection",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L147",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_setitemfocusable",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L162",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_setitemvisible",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L55",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_setpageinert",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L27",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_smoothbehavior",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L178",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_toggletheme",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L47",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script",
-      "target": "script_unlockpage",
+      "target": "script_initializehovereffects",
       "confidence_score": 1.0
     },
     {
@@ -2904,306 +2409,139 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
-      "target": "script_updateprogressbar",
+      "target": "script_initializenavigation",
       "confidence_score": 1.0
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L185",
+      "source_location": "L640",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script",
-      "target": "script_updatethemetoggle",
+      "target": "script_initializenavscroll",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L656",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_activateeasteregg",
-      "target": "script_motionreduced",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L212",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializeparticles",
-      "target": "script_motionreduced",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L228",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializescrolleffects",
-      "target": "script_motionreduced",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L571",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_openvideopopup",
-      "target": "script_motionreduced",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L28",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_smoothbehavior",
-      "target": "script_motionreduced",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L324",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializenavigation",
-      "target": "script_smoothbehavior",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L336",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_scrolltosection",
-      "target": "script_smoothbehavior",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L87",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_opendialog",
-      "target": "script_getfocusable",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L85",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_opendialog",
-      "target": "script_lockpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L280",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_openmobilemenu",
-      "target": "script_lockpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L104",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_closedialog",
-      "target": "script_unlockpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L296",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_closemobilemenu",
-      "target": "script_unlockpage",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L86",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_opendialog",
-      "target": "script_setpageinert",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
       "source_location": "L56",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_setpageinert",
-      "target": "script_clearpageinert",
+      "source": "script",
+      "target": "script_initializeparticles",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L103",
+      "source_location": "L316",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_closedialog",
-      "target": "script_clearpageinert",
+      "source": "script",
+      "target": "script_initializeprojectfiltering",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L472",
+      "source_location": "L164",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_initializecommandpalette",
-      "target": "script_opendialog",
+      "source": "script",
+      "target": "script_initializescrolleffects",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L78",
+      "source_location": "L382",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_opendialog",
-      "target": "script_closedialog",
+      "source": "script",
+      "target": "script_initializeshowmore",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L570",
+      "source_location": "L140",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_openvideopopup",
-      "target": "script_opendialog",
+      "source": "script",
+      "target": "script_initializetextanimations",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L144",
+      "source_location": "L29",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_closeactivedialog",
-      "target": "script_closedialog",
+      "source": "script",
+      "target": "script_initializetheme",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L527",
+      "source_location": "L560",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_closecommandpalette",
-      "target": "script_closedialog",
+      "source": "script",
+      "target": "script_revealprojectcard",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L589",
+      "source_location": "L305",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_closevideopopup",
-      "target": "script_closedialog",
+      "source": "script",
+      "target": "script_scheduleprojecthide",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L143",
+      "source_location": "L544",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_closeactivedialog",
-      "target": "script_closecommandpalette",
+      "source": "script",
+      "target": "script_scrolltosection",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L142",
+      "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_closeactivedialog",
-      "target": "script_closevideopopup",
+      "source": "script",
+      "target": "script_toggletheme",
       "confidence_score": 1.0
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L165",
+      "source_location": "L236",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_setitemvisible",
-      "target": "script_setitemfocusable",
+      "source": "script",
+      "target": "script_updateprogressbar",
       "confidence_score": 1.0
     },
     {
@@ -3211,31 +2549,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L385",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializeprojectfiltering",
-      "target": "script_setitemvisible",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L420",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializeshowmore",
-      "target": "script_setitemvisible",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L532",
+      "source_location": "L536",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script_executecommand",
@@ -3247,10 +2561,10 @@
       "context": "argument",
       "confidence": "INFERRED",
       "source_file": "script.js",
-      "source_location": "L207",
+      "source_location": "L589",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_initializethemetoggle",
+      "source": "script_initializedarkmodetoggle",
       "target": "script_toggletheme",
       "confidence_score": 0.5
     },
@@ -3259,55 +2573,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L182",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_toggletheme",
-      "target": "script_updatethemetoggle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L208",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializethemetoggle",
-      "target": "script_updatethemetoggle",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L307",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializenavigation",
-      "target": "script_openmobilemenu",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L307",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializenavigation",
-      "target": "script_closemobilemenu",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L324",
+      "source_location": "L269",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script_initializenavigation",
@@ -3319,7 +2585,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L323",
+      "source_location": "L264",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script_initializenavigation",
@@ -3331,11 +2597,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L336",
+      "source_location": "L339",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_scrolltosection",
-      "target": "script_getscrolltargettop",
+      "source": "script_initializeprojectfiltering",
+      "target": "script_clearprojecthidetimeout",
       "confidence_score": 1.0
     },
     {
@@ -3343,11 +2609,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L533",
+      "source_location": "L563",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_executecommand",
-      "target": "script_scrolltosection",
+      "source": "script_revealprojectcard",
+      "target": "script_clearprojecthidetimeout",
       "confidence_score": 1.0
     },
     {
@@ -3355,11 +2621,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L478",
+      "source_location": "L306",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "script_initializecommandpalette",
-      "target": "script_closecommandpalette",
+      "source": "script_scheduleprojecthide",
+      "target": "script_clearprojecthidetimeout",
       "confidence_score": 1.0
     },
     {
@@ -3367,7 +2633,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L485",
+      "source_location": "L345",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "script_initializeprojectfiltering",
+      "target": "script_scheduleprojecthide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L459",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script_initializecommandpalette",
@@ -3379,35 +2657,11 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L531",
+      "source_location": "L527",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script_executecommand",
-      "target": "script_closecommandpalette",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "indirect_call",
-      "context": "argument",
-      "confidence": "INFERRED",
-      "source_file": "script.js",
-      "source_location": "L554",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializevideopopup",
-      "target": "script_closevideopopup",
-      "confidence_score": 0.5
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "script.js",
-      "source_location": "L552",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "script_initializevideopopup",
-      "target": "script_openvideopopup",
+      "target": "script_scrolltosection",
       "confidence_score": 1.0
     },
     {
@@ -3415,7 +2669,19 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L650",
+      "source_location": "L548",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "script_scrolltosection",
+      "target": "script_getscrolltargettop",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "script.js",
+      "source_location": "L735",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script_initializeeasteregg",
@@ -3427,7 +2693,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "script.js",
-      "source_location": "L658",
+      "source_location": "L750",
       "weight": 1.0,
       "_origin": "ast",
       "source": "script_activateeasteregg",
@@ -3441,9 +2707,9 @@
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "vercel",
-      "target": "vercel_headers",
-      "confidence_score": 1.0
+      "target": "vercel_headers"
     },
     {
       "relation": "contains",
@@ -3471,7 +2737,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTS.md",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agents_agents_md",
@@ -3493,7 +2759,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTS.md",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agents_agents_md",
@@ -3515,7 +2781,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTS.md",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agents_agents_md",
@@ -3526,7 +2792,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "AGENTS.md",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
       "source": "agents_agents_md",
@@ -3540,9 +2806,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_claude_md",
-      "confidence_score": 1.0
+      "target": "claude_claude_md"
     },
     {
       "relation": "contains",
@@ -3551,20 +2817,20 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_architecture",
-      "confidence_score": 1.0
+      "target": "claude_architecture"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_command_palette",
-      "confidence_score": 1.0
+      "target": "claude_command_palette"
     },
     {
       "relation": "contains",
@@ -3573,20 +2839,20 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_development",
-      "confidence_score": 1.0
+      "target": "claude_development"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_graphify",
-      "confidence_score": 1.0
+      "target": "claude_graphify"
     },
     {
       "relation": "contains",
@@ -3595,31 +2861,31 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_overview",
-      "confidence_score": 1.0
+      "target": "claude_overview"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
-      "source_location": "L37",
+      "source_location": "L38",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_project_filtering",
-      "confidence_score": 1.0
+      "target": "claude_project_filtering"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
-      "source_location": "L33",
+      "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
+      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_theming",
-      "confidence_score": 1.0
+      "target": "claude_theming"
     },
     {
       "relation": "contains",
@@ -4853,5 +4119,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "788946dbe6b15e36ed12edc46b12a63fc2394055"
+  "built_at_commit": "143cf67b57e8a11f096a98f293eef466b7e70fbd"
 }
