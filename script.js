@@ -4,21 +4,32 @@ const modalState = { active: null, opener: null, locks: new Set(), inerted: [] }
 const CARD_FADE_MS = 280;
 
 document.addEventListener('DOMContentLoaded', () => {
-  initializeTheme();
+  const runInit = (name, fn) => {
+    try {
+      fn();
+    } catch (error) {
+      console.error(`[portfolio] ${name} failed`, error);
+    }
+  };
+
+  runInit('initializeTheme', initializeTheme);
   document.documentElement.classList.add('js-ready');
-  initializeNavigation();
-  initializeProjectFiltering();
-  initializeShowMore();
-  initializeCommandPalette();
-  initializeThemeToggle();
-  initializeVideoPopup();
-  initializeNavScroll();
-  initializeContactForm();
-  initializeEasterEgg();
-  initializeParticles();
-  initializeHeroEntrance();
-  initializeScrollEffects();
-  updateProgressBar();
+  // Failsafe so a broken enhancer never leaves the hero permanently invisible.
+  window.setTimeout(() => document.documentElement.classList.add('hero-entered'), 2000);
+
+  runInit('initializeNavigation', initializeNavigation);
+  runInit('initializeProjectFiltering', initializeProjectFiltering);
+  runInit('initializeShowMore', initializeShowMore);
+  runInit('initializeCommandPalette', initializeCommandPalette);
+  runInit('initializeThemeToggle', initializeThemeToggle);
+  runInit('initializeVideoPopup', initializeVideoPopup);
+  runInit('initializeNavScroll', initializeNavScroll);
+  runInit('initializeContactForm', initializeContactForm);
+  runInit('initializeEasterEgg', initializeEasterEgg);
+  runInit('initializeParticles', initializeParticles);
+  runInit('initializeHeroEntrance', initializeHeroEntrance);
+  runInit('initializeScrollEffects', initializeScrollEffects);
+  runInit('updateProgressBar', updateProgressBar);
   window.addEventListener('scroll', updateProgressBar, { passive: true });
 });
 
@@ -117,7 +128,7 @@ document.addEventListener('keydown', event => {
       return;
     }
     const navMenu = document.getElementById('navMenu');
-    if (navMenu && navMenu.classList.contains('active')) closeMobileMenu();
+    if (navMenu && navMenu.classList.contains('active')) closeMobileMenu({ restoreFocus: true });
   }
 
   if (event.key !== 'Tab' || !modalState.active) return;
@@ -419,11 +430,14 @@ function initializeNavigation() {
 }
 
 function getScrollTargetTop(target) {
-  return Math.max(target.getBoundingClientRect().top + window.scrollY - 80, 0);
+  const nav = document.querySelector('.compact-nav');
+  const offset = nav ? Math.ceil(nav.getBoundingClientRect().height) + 16 : 80;
+  return Math.max(target.getBoundingClientRect().top + window.scrollY - offset, 0);
 }
 
 function scrollToSection(sectionId) {
-  const target = document.getElementById(sectionId);
+  const resolvedId = sectionId === 'home' ? 'hero' : sectionId;
+  const target = document.getElementById(resolvedId);
   if (target) window.scrollTo({ top: getScrollTargetTop(target), behavior: smoothBehavior() });
 }
 
@@ -477,8 +491,10 @@ function initializeProjectFiltering() {
     });
     if (showMore) {
       const hasMore = matching.length > visibleCount;
+      const showMoreContainer = showMore.closest('.show-more-container');
       showMore.hidden = !hasMore;
       showMore.style.display = hasMore ? '' : 'none';
+      if (showMoreContainer) showMoreContainer.hidden = !hasMore;
       if (!hasMore) showMore.setAttribute('aria-expanded', 'true');
       else showMore.setAttribute('aria-expanded', String(isExpanded));
       const label = showMore.querySelector('.show-more-label');
@@ -493,6 +509,15 @@ function initializeProjectFiltering() {
 
   buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.filter, { reset: true })));
   apply((buttons.find(button => button.classList.contains('active')) || buttons[0]).dataset.filter, { instant: true });
+
+  const hashId = (location.hash || '').slice(1);
+  const hashCard = hashId ? document.getElementById(hashId) : null;
+  if (hashCard && hashCard.classList.contains('project-card')) {
+    revealProjectCard(hashCard);
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: getScrollTargetTop(hashCard), behavior: 'auto' });
+    });
+  }
 }
 
 function initializeShowMore() {
@@ -609,7 +634,14 @@ function initializeCommandPalette() {
       event.preventDefault();
       if (!visible.length) return;
       const index = visible.indexOf(current);
-      const next = event.key === 'ArrowDown' ? visible[(index + 1 + visible.length) % visible.length] : visible[(index - 1 + visible.length) % visible.length];
+      let next;
+      if (index < 0) {
+        next = event.key === 'ArrowDown' ? visible[0] : visible[visible.length - 1];
+      } else {
+        next = event.key === 'ArrowDown'
+          ? visible[(index + 1) % visible.length]
+          : visible[(index - 1 + visible.length) % visible.length];
+      }
       setActive(next);
       next.scrollIntoView({ block: 'nearest' });
     } else if (event.key === 'Enter') {
