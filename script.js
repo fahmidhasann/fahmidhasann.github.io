@@ -1,9 +1,11 @@
 /* Portfolio interactions: progressively enhanced; content remains usable without JS/CDNs. */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const modalState = { active: null, opener: null, locks: new Set(), inerted: [] };
+const CARD_FADE_MS = 280;
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeTheme();
+  document.documentElement.classList.add('js-ready');
   initializeNavigation();
   initializeProjectFiltering();
   initializeShowMore();
@@ -14,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeContactForm();
   initializeEasterEgg();
   initializeParticles();
+  initializeHeroEntrance();
   initializeScrollEffects();
   updateProgressBar();
   window.addEventListener('scroll', updateProgressBar, { passive: true });
-  document.documentElement.classList.add('js-ready');
 });
 
 function motionReduced() {
@@ -159,10 +161,42 @@ function setItemFocusable(item, enabled) {
   });
 }
 
-function setItemVisible(item, visible) {
-  item.classList.toggle('hidden-card', !visible);
-  item.setAttribute('aria-hidden', String(!visible));
-  setItemFocusable(item, visible);
+function setItemVisible(item, visible, { instant = false } = {}) {
+  if (item._fadeTimer) {
+    window.clearTimeout(item._fadeTimer);
+    item._fadeTimer = null;
+  }
+
+  const skipMotion = instant || motionReduced();
+
+  if (visible) {
+    const wasHidden = item.classList.contains('hidden-card');
+    item.classList.remove('hidden-card');
+    item.setAttribute('aria-hidden', 'false');
+    setItemFocusable(item, true);
+    if (skipMotion || !wasHidden) {
+      item.classList.remove('is-fading');
+      return;
+    }
+    item.classList.add('is-fading');
+    void item.offsetWidth;
+    window.requestAnimationFrame(() => item.classList.remove('is-fading'));
+    return;
+  }
+
+  item.setAttribute('aria-hidden', 'true');
+  setItemFocusable(item, false);
+  if (skipMotion || item.classList.contains('hidden-card')) {
+    item.classList.add('hidden-card');
+    item.classList.remove('is-fading');
+    return;
+  }
+  item.classList.add('is-fading');
+  item._fadeTimer = window.setTimeout(() => {
+    item.classList.add('hidden-card');
+    item.classList.remove('is-fading');
+    item._fadeTimer = null;
+  }, CARD_FADE_MS);
 }
 
 /* --------------------------------------------------------------------------
@@ -179,17 +213,33 @@ function toggleTheme() {
   const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
-  updateThemeToggle(theme);
+  updateThemeToggle(theme, { animate: true });
 }
 
-function updateThemeToggle(theme = document.documentElement.getAttribute('data-theme')) {
+function updateThemeToggle(theme = document.documentElement.getAttribute('data-theme'), { animate = false } = {}) {
   const toggle = document.getElementById('themeToggle') || document.querySelector('.dark-mode-toggle');
   if (!toggle) return;
   const isDark = theme === 'dark';
   toggle.setAttribute('aria-pressed', String(isDark));
   toggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
   const icon = toggle.querySelector('i');
-  if (icon) icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+  if (!icon) return;
+
+  const applyIcon = () => {
+    icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+  };
+
+  if (!animate || motionReduced()) {
+    toggle.classList.remove('is-toggling');
+    applyIcon();
+    return;
+  }
+
+  toggle.classList.add('is-toggling');
+  window.setTimeout(() => {
+    applyIcon();
+    toggle.classList.remove('is-toggling');
+  }, 90);
 }
 
 function initializeThemeToggle() {
@@ -223,22 +273,41 @@ function initializeParticles() {
   });
 }
 
-function initializeScrollEffects() {
-  const items = document.querySelectorAll('.project-card, .video-card, .contact-card, .section-header');
-  if (!items.length || motionReduced()) return;
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-    // Mobile browser chrome changes viewport height as scrolling settles. Avoid
-    // ScrollTrigger refreshes that can pull the page back to a recalculated point.
-    ScrollTrigger.config({ ignoreMobileResize: true });
-    if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
-    gsap.utils.toArray(items).forEach((item, index) => gsap.from(item, {
-      scrollTrigger: { trigger: item, start: 'top 88%', once: true },
-      y: 18, opacity: 0, duration: 0.62, delay: index % 3 * 0.07, ease: 'power2.out'
-    }));
+function initializeHeroEntrance() {
+  const root = document.documentElement;
+  const chars = Array.from(document.querySelectorAll('.name-char'));
+  const cascade = Array.from(document.querySelectorAll('.hero-entrance'));
+
+  if (motionReduced()) {
+    root.classList.add('hero-entered');
     return;
   }
-  if (!('IntersectionObserver' in window)) return;
+
+  chars.forEach((char, index) => {
+    char.style.transitionDelay = `${index * 45}ms`;
+  });
+  cascade.forEach((el, index) => {
+    el.style.transitionDelay = `${chars.length * 45 + 80 + index * 100}ms`;
+  });
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => root.classList.add('hero-entered'));
+  });
+
+  const clearDelays = () => {
+    chars.forEach(char => { char.style.transitionDelay = ''; });
+    cascade.forEach(el => { el.style.transitionDelay = ''; });
+  };
+  const longest = chars.length * 45 + 80 + Math.max(cascade.length - 1, 0) * 100 + 600;
+  window.setTimeout(clearDelays, longest);
+}
+
+function observeRevealItems(items) {
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(item => item.classList.add('is-revealed'));
+    return;
+  }
+  items.forEach(item => item.classList.add('will-reveal'));
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -247,6 +316,28 @@ function initializeScrollEffects() {
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -32px' });
   items.forEach(item => observer.observe(item));
+}
+
+function initializeScrollEffects() {
+  const items = Array.from(document.querySelectorAll('.project-card, .video-card, .contact-card, .section-header'));
+  if (!items.length || motionReduced()) return;
+
+  const coarsePointer = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  const gsapReady = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+
+  if (gsapReady && !coarsePointer) {
+    gsap.registerPlugin(ScrollTrigger);
+    // Mobile browser chrome changes viewport height as scrolling settles. Avoid
+    // ScrollTrigger refreshes that can pull the page back to a recalculated point.
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    gsap.utils.toArray(items).forEach((item, index) => gsap.from(item, {
+      scrollTrigger: { trigger: item, start: 'top 88%', once: true },
+      y: 18, opacity: 0, duration: 0.62, delay: index % 3 * 0.07, ease: 'power2.out'
+    }));
+    return;
+  }
+
+  observeRevealItems(items);
 }
 
 function updateProgressBar() {
@@ -371,7 +462,7 @@ function initializeProjectFiltering() {
   const visibleCount = 3;
   if (!buttons.length || !cards.length) return;
 
-  const apply = (filter, { expand = null, reset = false } = {}) => {
+  const apply = (filter, { expand = null, reset = false, instant = false } = {}) => {
     const matching = cards.filter(card => filter === 'all' || card.dataset.category === filter);
     const currentExpanded = showMore && showMore.getAttribute('aria-expanded') === 'true';
     const isExpanded = reset ? false : (expand === null ? currentExpanded : expand);
@@ -382,7 +473,7 @@ function initializeProjectFiltering() {
     });
     cards.forEach(card => {
       const index = matching.indexOf(card);
-      setItemVisible(card, index >= 0 && (isExpanded || index < visibleCount));
+      setItemVisible(card, index >= 0 && (isExpanded || index < visibleCount), { instant });
     });
     if (showMore) {
       const hasMore = matching.length > visibleCount;
@@ -394,14 +485,14 @@ function initializeProjectFiltering() {
       if (label) label.textContent = isExpanded && hasMore ? 'Show Less Projects' : 'Show More Projects';
     }
     if (status) {
-      const shownCount = matching.filter(card => !card.classList.contains('hidden-card')).length;
-      status.textContent = `${shownCount} of ${matching.length} ${matching.length === 1 ? 'project' : 'projects'} shown`;
+      const intended = matching.filter((_, index) => isExpanded || index < visibleCount).length;
+      status.textContent = `${intended} of ${matching.length} ${matching.length === 1 ? 'project' : 'projects'} shown`;
     }
     window.__portfolioProjectFilter = { filter, matching, apply };
   };
 
   buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.filter, { reset: true })));
-  apply((buttons.find(button => button.classList.contains('active')) || buttons[0]).dataset.filter);
+  apply((buttons.find(button => button.classList.contains('active')) || buttons[0]).dataset.filter, { instant: true });
 }
 
 function initializeShowMore() {
@@ -417,7 +508,7 @@ function initializeShowMore() {
     button.hidden = !hasMore;
     button.style.display = hasMore ? '' : 'none';
     if (!hasMore) return;
-    items.forEach((item, index) => setItemVisible(item, index < visibleCount));
+    items.forEach((item, index) => setItemVisible(item, index < visibleCount, { instant: true }));
     button.setAttribute('aria-expanded', 'false');
     button.addEventListener('click', () => {
       const expanded = button.getAttribute('aria-expanded') === 'true';
@@ -457,6 +548,15 @@ function initializeCommandPalette() {
   const list = document.getElementById('commandList');
   if (!palette || !input || !list) return;
   const closeButton = document.getElementById('commandPaletteClose');
+  const metaKbd = palette.querySelector('.command-kbd-meta');
+  if (metaKbd) {
+    const isApple = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || '');
+    metaKbd.textContent = isApple ? '⌘' : 'Ctrl';
+    if (!isApple) {
+      const footer = palette.querySelector('.command-palette-footer');
+      if (footer) footer.innerHTML = '<span>Press</span> <kbd>Ctrl</kbd><kbd>K</kbd>';
+    }
+  }
   palette.hidden = true;
   input.setAttribute('data-dialog-initial-focus', '');
   palette.setAttribute('aria-hidden', 'true');
