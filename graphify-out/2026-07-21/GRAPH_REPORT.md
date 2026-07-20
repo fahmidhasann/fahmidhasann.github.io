@@ -1,16 +1,16 @@
-# Graph Report - fahmidhasann.github.io  (2026-07-20)
+# Graph Report - fahmidhasann.github.io  (2026-07-21)
 
 ## Corpus Check
-- 11 files · ~249,336 words
+- 11 files · ~228,726 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 190 nodes · 228 edges · 29 communities (15 shown, 14 thin omitted)
+- 192 nodes · 234 edges · 29 communities (15 shown, 14 thin omitted)
 - Extraction: 95% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.68)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `788946db`
+- Built from commit: `d2061a53`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,14 +48,14 @@
 ## God Nodes (most connected - your core abstractions)
 1. `Ashley Allen (freelance developer)` - 15 edges
 2. `Project Management Automation` - 11 edges
-3. `Freelance Business Automation` - 8 edges
-4. `openDialog()` - 7 edges
-5. `closeDialog()` - 7 edges
-6. `motionReduced()` - 6 edges
+3. `motionReduced()` - 9 edges
+4. `Freelance Business Automation` - 8 edges
+5. `openDialog()` - 7 edges
+6. `closeDialog()` - 7 edges
 7. `initializeNavigation()` - 6 edges
 8. `Projects Section` - 6 edges
-9. `closeCommandPalette()` - 5 edges
-10. `executeCommand()` - 5 edges
+9. `setItemVisible()` - 5 edges
+10. `closeCommandPalette()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Service: AI Workflow Automation ($599)` --conceptually_related_to--> `Traditional Structured Workflow`  [INFERRED]
@@ -108,7 +108,7 @@ Nodes (3): data, web, success
 
 ### Community 10 - "Agentic Workflow Concepts"
 Cohesion: 0.10
-Nodes (36): activateEasterEgg(), clearPageInert(), closeActiveDialog(), closeCommandPalette(), closeDialog(), closeMobileMenu(), closeVideoPopup(), createConfetti() (+28 more)
+Nodes (38): activateEasterEgg(), clearPageInert(), closeActiveDialog(), closeCommandPalette(), closeDialog(), closeMobileMenu(), closeVideoPopup(), createConfetti() (+30 more)
 
 ### Community 12 - "Upwork Research Insights"
 Cohesion: 0.67
@@ -145,9 +145,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **What is the exact relationship between `AI-Powered Lead Generation & Cold Outreach Transcript` and `Dam koto bot`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
 - **Why does `Freelance Business Automation` connect `Productivity & Meeting Tools` to `AI Freelancer Landscape`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.061) - this node is a cross-community bridge._
+  _High betweenness centrality (0.060) - this node is a cross-community bridge._
 - **Why does `AI Agent` connect `AI Freelancer Landscape` to `Productivity & Meeting Tools`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
+  _High betweenness centrality (0.042) - this node is a cross-community bridge._
 - **What connects `@playwright/mcp`, `prefersReducedMotion`, `modalState` to the rest of the system?**
   _74 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**

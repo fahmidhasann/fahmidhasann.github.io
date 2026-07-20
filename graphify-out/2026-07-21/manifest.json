@@ -1,17 +1,12 @@
 {
   "script.js": {
-    "mtime": 1784499959.1739376,
-    "ast_hash": "0fc324838135afbacbf170a3094d38d5",
+    "mtime": 1784576093.604359,
+    "ast_hash": "10bcd61f4851189851a02862ea9e69b7",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
     "mtime": 1784455624.852578,
     "ast_hash": "7df3803c28bc848440e148738f9578bf",
-    "semantic_hash": ""
-  },
-  "assets/profile-photo.jpg": {
-    "mtime": 1784456241.62,
-    "ast_hash": "afd5c6e8cefebcd0f38fa3f96d774d46",
     "semantic_hash": ""
   },
   "assets/project_3.jpg": {
@@ -115,8 +110,8 @@
     "semantic_hash": "698035f601718c9eb4f2cc1e23fa8463"
   },
   "index.html": {
-    "mtime": 1784534501.8321574,
-    "ast_hash": "7e5694bea966b8353331caf0c3471992",
+    "mtime": 1784576030.6454208,
+    "ast_hash": "355ba892e531380f9df86482f61c2dea",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -142,11 +137,6 @@
   "assets/profile-hero-portrait.jpg": {
     "mtime": 1784497284.7195852,
     "ast_hash": "542af6272bb3dd980e7a5bd413c85f4f",
-    "semantic_hash": ""
-  },
-  "assets/profile-hero-v2.webp": {
-    "mtime": 1784494716.4034023,
-    "ast_hash": "8449b8ab2f0a33c3f14c696477d97405",
     "semantic_hash": ""
   }
 }
