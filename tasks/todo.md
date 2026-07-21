@@ -1,17 +1,18 @@
-# Responsive card polish across devices
+# Fix mobile layout overflow
 
-- [x] Even out Projects & Research cards (description clamp, tablet/phone spacing)
-- [x] Restyle Personal Projects as stacked 16:9 media cards at ≤900px
-- [x] Cap tablet reels; phone horizontal scroll-snap; radius/hidden-card polish
-- [x] Screenshot desktop/tablet/phone (+ dark) and fix any remaining issues
-- [x] Run graphify update .
+- [x] Add min-width:0 on container/creative ancestors; overflow-x on html+body
+- [x] Contain ≤680px .reel-grid as true horizontal scroller without expanding page width
+- [x] Bump .section scroll-margin-top to clear sticky mobile nav
+- [x] Light hero hardening (min-width:0 / max-width:100%)
+- [x] Verify phone/tablet/desktop; graphify update .
 
 ## Review
 
-CSS-only polish in `styles.css`:
+CSS-only fix in `styles.css` for iPhone left-squeeze + clipped reels:
 
-- **Projects:** descriptions clamped to 3 lines → equal card heights in a row; tablet 2-col spacing/title tweaks; `object-position: center` on media
-- **Personal films:** desktop keeps cinematic side-by-side rows; ≤900 becomes stacked 16:9 media cards with surface border (no more ~94px thumbs)
-- **Client reels:** tablet capped at `max-width: 32rem`; ≤680 uses horizontal scroll-snap (~11rem cards) with client label + description restored; radii use design tokens; `.reel-card.hidden-card` supported
+- **Containment:** `overflow-x: clip` on `html` + `body`; `min-width: 0` on `.container`, `.creative-subsections`, `.creative-subsection`
+- **Phone reels (≤680px):** `.reel-grid` constrained to `width/max-width: 100%` + `min-width: 0` with `overscroll-behavior-x: contain` so fixed-width cards scroll inside the scroller instead of expanding document width
+- **Sticky nav:** `.section` scroll-margin raised to `5.75rem` (desktop) / `5.5rem` (≤760px)
+- **Hero:** `.hero-content` / `.hero-text` get `min-width: 0` and `max-width: 100%`
 
-Verified via local server metrics: desktop equal project heights (537px), tablet stacked thumbs ~705×396 + capped reel grid, phone scroll-snap carousel + 1-col projects.
+Verified at 390px: `scrollWidth === clientWidth` (no page overflow), hero fills viewport, reel `scrollWidth > clientWidth` with third-card peek. At 768px: capped 3-col grid, no overflow.

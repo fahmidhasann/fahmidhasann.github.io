@@ -1,7 +1,7 @@
 # Graph Report - fahmidhasann.github.io  (2026-07-21)
 
 ## Corpus Check
-- 12 files · ~234,324 words
+- 12 files · ~234,383 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0b366d07`
+- Built from commit: `f5e106ee`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -131,7 +131,7 @@ Nodes (8): Architecture, Command Palette, Creative Work, Development, graphify, 
   graphify-out/transcripts/Dam koto bot.txt · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **69 isolated node(s):** `Overview`, `Development`, `Architecture`, `Theming`, `Project Filtering` (+64 more)
+- **69 isolated node(s):** `@playwright/mcp`, `prefersReducedMotion`, `modalState`, `headers`, `Overview` (+64 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -144,7 +144,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.075) - this node is a cross-community bridge._
 - **Why does `AI Agent` connect `AI Freelancer Landscape` to `AI Automation Agencies`?**
   _High betweenness centrality (0.053) - this node is a cross-community bridge._
-- **What connects `Overview`, `Development`, `Architecture` to the rest of the system?**
+- **What connects `@playwright/mcp`, `prefersReducedMotion`, `modalState` to the rest of the system?**
   _69 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**
   _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._

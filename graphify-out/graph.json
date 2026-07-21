@@ -775,15 +775,15 @@
       "norm_label": "todo.md"
     },
     {
-      "label": "Responsive card polish across devices",
+      "label": "Fix mobile layout overflow",
       "file_type": "document",
       "source_file": "tasks/todo.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "tasks_todo_responsive_card_polish_across_devices",
+      "id": "tasks_todo_fix_mobile_layout_overflow",
       "community": 2,
       "community_name": "openDialog",
-      "norm_label": "responsive card polish across devices"
+      "norm_label": "fix mobile layout overflow"
     },
     {
       "label": "Review",
@@ -3464,7 +3464,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "tasks_todo",
-      "target": "tasks_todo_responsive_card_polish_across_devices",
+      "target": "tasks_todo_fix_mobile_layout_overflow",
       "confidence_score": 1.0
     },
     {
@@ -3474,7 +3474,7 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "tasks_todo_responsive_card_polish_across_devices",
+      "source": "tasks_todo_fix_mobile_layout_overflow",
       "target": "tasks_todo_review",
       "confidence_score": 1.0
     },
@@ -4460,5 +4460,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f5e106ee9a4e2c581461d9f6f6f69325db5f0bae"
+  "built_at_commit": "90c7aea0459ab1f879e6564ce30eb8e13c3391bc"
 }

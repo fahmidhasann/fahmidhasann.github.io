@@ -4,114 +4,60 @@
   "graph": {},
   "nodes": [
     {
-      "label": "AGENTS.md",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
+      "label": ".mcp.json",
+      "file_type": "code",
+      "source_file": ".mcp.json",
       "source_location": "L1",
+      "metadata": {
+        "mcp_kind": "mcp_config_file"
+      },
       "_origin": "ast",
-      "id": "agents",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "agents.md"
+      "id": "mcp",
+      "community": 13,
+      "community_name": "MCP & Playwright Config",
+      "norm_label": ".mcp.json"
     },
     {
-      "label": "AGENTS.md",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
+      "label": "playwright",
+      "file_type": "code",
+      "source_file": ".mcp.json",
       "source_location": "L1",
+      "metadata": {
+        "mcp_kind": "mcp_server"
+      },
       "_origin": "ast",
-      "id": "agents_agents_md",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "agents.md"
+      "id": "mcp_mcp_server_playwright",
+      "community": 13,
+      "community_name": "MCP & Playwright Config",
+      "norm_label": "playwright"
     },
     {
-      "label": "Overview",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L5",
+      "label": "npx",
+      "file_type": "code",
+      "source_file": ".mcp.json",
+      "source_location": "L1",
+      "metadata": {
+        "mcp_kind": "mcp_command"
+      },
       "_origin": "ast",
-      "id": "agents_overview",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "overview"
+      "id": "mcp_command_npx",
+      "community": 13,
+      "community_name": "MCP & Playwright Config",
+      "norm_label": "npx"
     },
     {
-      "label": "Development",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L9",
+      "label": "@playwright/mcp",
+      "file_type": "code",
+      "source_file": ".mcp.json",
+      "source_location": "L1",
+      "metadata": {
+        "mcp_kind": "mcp_package"
+      },
       "_origin": "ast",
-      "id": "agents_development",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "development"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "agents_architecture",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "architecture"
-    },
-    {
-      "label": "Theming",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "agents_theming",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "theming"
-    },
-    {
-      "label": "Project Filtering",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "id": "agents_project_filtering",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "project filtering"
-    },
-    {
-      "label": "Creative Work",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L43",
-      "_origin": "ast",
-      "id": "agents_creative_work",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "creative work"
-    },
-    {
-      "label": "Command Palette",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "agents_command_palette",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "command palette"
-    },
-    {
-      "label": "graphify",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L55",
-      "_origin": "ast",
-      "id": "agents_graphify",
-      "community": 29,
-      "community_name": "AGENTS.md",
-      "norm_label": "graphify"
+      "id": "mcp_package_playwright_mcp",
+      "community": 13,
+      "community_name": "MCP & Playwright Config",
+      "norm_label": "@playwright/mcp"
     },
     {
       "label": "script.js",
@@ -587,6 +533,237 @@
       "norm_label": "createconfetti()"
     },
     {
+      "label": "vercel.json",
+      "file_type": "code",
+      "source_file": "vercel.json",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "vercel",
+      "community": 16,
+      "community_name": "Vercel Deployment",
+      "norm_label": "vercel.json"
+    },
+    {
+      "label": "headers",
+      "file_type": "code",
+      "source_file": "vercel.json",
+      "source_location": "L2",
+      "_origin": "ast",
+      "id": "vercel_headers",
+      "community": 16,
+      "community_name": "Vercel Deployment",
+      "norm_label": "headers"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "AGENTS.md",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "agents_agents_md",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "agents.md"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "agents_overview",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "overview"
+    },
+    {
+      "label": "Development",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "agents_development",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "development"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "agents_architecture",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "architecture"
+    },
+    {
+      "label": "Theming",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "agents_theming",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "theming"
+    },
+    {
+      "label": "Project Filtering",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "agents_project_filtering",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "project filtering"
+    },
+    {
+      "label": "Creative Work",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "agents_creative_work",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "creative work"
+    },
+    {
+      "label": "Command Palette",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "agents_command_palette",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "command palette"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L55",
+      "_origin": "ast",
+      "id": "agents_graphify",
+      "community": 29,
+      "community_name": "AGENTS.md",
+      "norm_label": "graphify"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "claude",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "claude_claude_md",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "Overview",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "claude_overview",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "overview"
+    },
+    {
+      "label": "Development",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "claude_development",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "development"
+    },
+    {
+      "label": "Architecture",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "claude_architecture",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "architecture"
+    },
+    {
+      "label": "Theming",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "claude_theming",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "theming"
+    },
+    {
+      "label": "Project Filtering",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "claude_project_filtering",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "project filtering"
+    },
+    {
+      "label": "Command Palette",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "claude_command_palette",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "command palette"
+    },
+    {
+      "label": "graphify",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L47",
+      "_origin": "ast",
+      "id": "claude_graphify",
+      "community": 17,
+      "community_name": "Graphify Watch Hook",
+      "norm_label": "graphify"
+    },
+    {
       "label": "todo.md",
       "file_type": "document",
       "source_file": "tasks/todo.md",
@@ -598,203 +775,26 @@
       "norm_label": "todo.md"
     },
     {
-      "label": "Creative Work: Personal + Client split",
+      "label": "Responsive card polish across devices",
       "file_type": "document",
       "source_file": "tasks/todo.md",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "tasks_todo_creative_work_personal_client_split",
+      "id": "tasks_todo_responsive_card_polish_across_devices",
       "community": 2,
       "community_name": "openDialog",
-      "norm_label": "creative work: personal + client split"
+      "norm_label": "responsive card polish across devices"
     },
     {
       "label": "Review",
       "file_type": "document",
       "source_file": "tasks/todo.md",
-      "source_location": "L10",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "tasks_todo_review",
       "community": 2,
       "community_name": "openDialog",
       "norm_label": "review"
-    },
-    {
-      "label": ".mcp.json",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_config_file"
-      },
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": ".mcp.json",
-      "id": "mcp"
-    },
-    {
-      "label": "playwright",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_server"
-      },
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": "playwright",
-      "id": "mcp_mcp_server_playwright"
-    },
-    {
-      "label": "npx",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_command"
-      },
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": "npx",
-      "id": "mcp_command_npx"
-    },
-    {
-      "label": "@playwright/mcp",
-      "file_type": "code",
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "metadata": {
-        "mcp_kind": "mcp_package"
-      },
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "MCP & Playwright Config",
-      "norm_label": "@playwright/mcp",
-      "id": "mcp_package_playwright_mcp"
-    },
-    {
-      "label": "vercel.json",
-      "file_type": "code",
-      "source_file": "vercel.json",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Vercel Deployment",
-      "norm_label": "vercel.json",
-      "id": "vercel"
-    },
-    {
-      "label": "headers",
-      "file_type": "code",
-      "source_file": "vercel.json",
-      "source_location": "L2",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "Vercel Deployment",
-      "norm_label": "headers",
-      "id": "vercel_headers"
-    },
-    {
-      "label": "CLAUDE.md",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "claude.md",
-      "id": "claude"
-    },
-    {
-      "label": "CLAUDE.md",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "claude.md",
-      "id": "claude_claude_md"
-    },
-    {
-      "label": "Overview",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L5",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "overview",
-      "id": "claude_overview"
-    },
-    {
-      "label": "Development",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L9",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "development",
-      "id": "claude_development"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L19",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "architecture",
-      "id": "claude_architecture"
-    },
-    {
-      "label": "Theming",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L33",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "theming",
-      "id": "claude_theming"
-    },
-    {
-      "label": "Project Filtering",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L37",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "project filtering",
-      "id": "claude_project_filtering"
-    },
-    {
-      "label": "Command Palette",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L43",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "command palette",
-      "id": "claude_command_palette"
-    },
-    {
-      "label": "graphify",
-      "file_type": "document",
-      "source_file": "CLAUDE.md",
-      "source_location": "L47",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "Graphify Watch Hook",
-      "norm_label": "graphify",
-      "id": "claude_graphify"
     },
     {
       "label": "settings.json",
@@ -2155,101 +2155,58 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
+      "confidence_score": 1.0,
+      "source_file": ".mcp.json",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "mcp",
+      "target": "mcp_json_playwright"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".mcp.json",
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "source": "agents",
-      "target": "agents_agents_md",
-      "confidence_score": 1.0
+      "source": "mcp",
+      "target": "mcp_mcp_server_playwright"
     },
     {
-      "relation": "contains",
+      "relation": "references",
       "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L19",
+      "confidence_score": 1.0,
+      "source_file": ".mcp.json",
+      "source_location": "L1",
       "weight": 1.0,
+      "context": "command",
       "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_architecture",
-      "confidence_score": 1.0
+      "source": "mcp_mcp_server_playwright",
+      "target": "mcp_command_npx"
     },
     {
-      "relation": "contains",
+      "relation": "references",
       "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L51",
+      "confidence_score": 1.0,
+      "source_file": ".mcp.json",
+      "source_location": "L1",
       "weight": 1.0,
+      "context": "package",
       "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_command_palette",
-      "confidence_score": 1.0
+      "source": "mcp_mcp_server_playwright",
+      "target": "mcp_package_playwright_mcp"
     },
     {
-      "relation": "contains",
+      "relation": "references",
       "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L43",
+      "confidence_score": 1.0,
+      "source_file": ".mcp.json",
+      "source_location": "L1",
       "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_creative_work",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L9",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_development",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L55",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_graphify",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L5",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_overview",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L37",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_project_filtering",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L33",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "agents_agents_md",
-      "target": "agents_theming",
-      "confidence_score": 1.0
+      "context": "command",
+      "source": "mcp_json_playwright",
+      "target": "mcp_command_npx"
     },
     {
       "relation": "contains",
@@ -3304,91 +3261,112 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "tasks/todo.md",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tasks_todo",
-      "target": "tasks_todo_creative_work_personal_client_split",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "tasks/todo.md",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "tasks_todo_creative_work_personal_client_split",
-      "target": "tasks_todo_review",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "mcp",
-      "target": "mcp_json_playwright"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "mcp",
-      "target": "mcp_mcp_server_playwright"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "context": "command",
-      "_origin": "ast",
-      "source": "mcp_mcp_server_playwright",
-      "target": "mcp_command_npx"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "context": "package",
-      "_origin": "ast",
-      "source": "mcp_mcp_server_playwright",
-      "target": "mcp_package_playwright_mcp"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".mcp.json",
-      "source_location": "L1",
-      "weight": 1.0,
-      "context": "command",
-      "source": "mcp_json_playwright",
-      "target": "mcp_command_npx"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "vercel.json",
       "source_location": "L2",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "vercel",
-      "target": "vercel_headers"
+      "target": "vercel_headers",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents",
+      "target": "agents_agents_md",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_command_palette",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L43",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_creative_work",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_development",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_graphify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_overview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_project_filtering",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "AGENTS.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "agents_agents_md",
+      "target": "agents_theming",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3397,9 +3375,9 @@
       "source_location": "L1",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude",
-      "target": "claude_claude_md"
+      "target": "claude_claude_md",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3408,9 +3386,9 @@
       "source_location": "L19",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_architecture"
+      "target": "claude_architecture",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3419,9 +3397,9 @@
       "source_location": "L43",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_command_palette"
+      "target": "claude_command_palette",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3430,9 +3408,9 @@
       "source_location": "L9",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_development"
+      "target": "claude_development",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3441,9 +3419,9 @@
       "source_location": "L47",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_graphify"
+      "target": "claude_graphify",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3452,9 +3430,9 @@
       "source_location": "L5",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_overview"
+      "target": "claude_overview",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3463,9 +3441,9 @@
       "source_location": "L37",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_project_filtering"
+      "target": "claude_project_filtering",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3474,9 +3452,31 @@
       "source_location": "L33",
       "weight": 1.0,
       "_origin": "ast",
-      "confidence_score": 1.0,
       "source": "claude_claude_md",
-      "target": "claude_theming"
+      "target": "claude_theming",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tasks/todo.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tasks_todo",
+      "target": "tasks_todo_responsive_card_polish_across_devices",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tasks/todo.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "tasks_todo_responsive_card_polish_across_devices",
+      "target": "tasks_todo_review",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4460,5 +4460,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0b366d0779ffbc74ec73669ef79f3dd3ec1dbc30"
+  "built_at_commit": "f5e106ee9a4e2c581461d9f6f6f69325db5f0bae"
 }
