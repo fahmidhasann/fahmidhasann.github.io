@@ -36,8 +36,8 @@ CSS variables are defined at the `:root` level and overridden via `[data-theme="
 
 ## Project Filtering
 
-Projects in the HTML have `data-category` attributes (`ai`, `web`, `data`). The filter buttons in `script.js` toggle visibility by matching this attribute. Adding a new project requires:
-1. Adding the card to the `#projects` grid in `index.html` with the correct `data-category`
+Projects in the HTML have `data-category` attributes (`ai`, `automation`, `data`). The filter buttons in `script.js` toggle visibility by matching this attribute. Matching cards live in a horizontal peek carousel (`#projectsGrid`); filtering resets the track to the start. Adding a new project requires:
+1. Adding the card to the `#projectsGrid` carousel track in `index.html` with the correct `data-category`
 2. No JS changes needed unless adding a new category
 
 ## Command Palette

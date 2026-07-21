@@ -36,17 +36,17 @@ CSS variables are defined at the `:root` level and overridden via `[data-theme="
 
 ## Project Filtering
 
-Projects in the HTML have `data-category` attributes (`ai`, `web`, `data`). The filter buttons in `script.js` toggle visibility by matching this attribute. Adding a new project requires:
-1. Adding the card to the `#projects` grid in `index.html` with the correct `data-category`
+Projects in the HTML have `data-category` attributes (`ai`, `automation`, `data`). The filter buttons in `script.js` toggle visibility by matching this attribute. Matching cards live in a horizontal peek carousel (`#projectsGrid`); filtering resets the track to the start. Adding a new project requires:
+1. Adding the card to the `#projectsGrid` carousel track in `index.html` with the correct `data-category`
 2. No JS changes needed unless adding a new category
 
 ## Creative Work
 
-The `#videos` section has two subsections in `index.html`:
-- **Personal Projects** — `#personalVideosGrid`
-- **Client Projects** — `#clientVideosGrid`
+The `#videos` section has two subsections in `index.html`, each in its own peek carousel:
+- **Personal Projects** — `#personalVideosGrid` (`.video-grid` / `.video-card-link`)
+- **Client Projects** — `#clientVideosGrid` (`.reel-grid` / `.reel-card`)
 
-Add new video cards to the matching grid. Client reel thumbnails live under `assets/client/`. Client projects use `.reel-grid` / `.reel-card` (portrait phone frames in a row); personal projects keep the wide `.video-grid` / `.video-card` layout. Both grids use `data-video-grid` so show-more logic in `script.js` applies automatically when a grid exceeds 3 items.
+Add new video cards to the matching track. Client reel thumbnails live under `assets/client/`. Carousel chrome (edge fades, prev/next arrows, keyboard) is initialized by `initializeCarousels()` for every `[data-carousel]` shell.
 
 ## Command Palette
 

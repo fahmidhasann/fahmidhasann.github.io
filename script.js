@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.setTimeout(() => document.documentElement.classList.add('hero-entered'), 2000);
 
   runInit('initializeNavigation', initializeNavigation);
+  runInit('initializeCarousels', initializeCarousels);
   runInit('initializeProjectFiltering', initializeProjectFiltering);
-  runInit('initializeShowMore', initializeShowMore);
   runInit('initializeCommandPalette', initializeCommandPalette);
   runInit('initializeThemeToggle', initializeThemeToggle);
   runInit('initializeVideoPopup', initializeVideoPopup);
@@ -468,46 +468,120 @@ function initializeNavScroll() {
    Project filtering and disclosure
    -------------------------------------------------------------------------- */
 
+function initializeCarousels() {
+  const carousels = Array.from(document.querySelectorAll('[data-carousel]'));
+  if (!carousels.length) return;
+
+  const getStep = (track) => {
+    const item = Array.from(track.children).find(child => !child.classList.contains('hidden-card') && child.offsetParent !== null);
+    if (!item) return Math.max(track.clientWidth * 0.8, 240);
+    const styles = window.getComputedStyle(track);
+    const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
+    return item.getBoundingClientRect().width + gap;
+  };
+
+  const updateChrome = (carousel, track, prevBtn, nextBtn) => {
+    const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+    const left = track.scrollLeft;
+    const epsilon = 2;
+    const canPrev = left > epsilon;
+    const canNext = left < maxScroll - epsilon;
+    carousel.dataset.canScrollPrev = String(canPrev);
+    carousel.dataset.canScrollNext = String(canNext);
+    if (prevBtn) prevBtn.disabled = !canPrev;
+    if (nextBtn) nextBtn.disabled = !canNext;
+  };
+
+  const scrollByDir = (track, direction) => {
+    track.scrollBy({ left: getStep(track) * direction, behavior: smoothBehavior() });
+  };
+
+  carousels.forEach(carousel => {
+    const track = carousel.querySelector('.carousel-track');
+    const prevBtn = carousel.querySelector('.carousel-btn-prev');
+    const nextBtn = carousel.querySelector('.carousel-btn-next');
+    if (!track) return;
+
+    let rafId = 0;
+    const scheduleUpdate = () => {
+      if (rafId) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = 0;
+        updateChrome(carousel, track, prevBtn, nextBtn);
+      });
+    };
+
+    if (prevBtn) prevBtn.addEventListener('click', () => scrollByDir(track, -1));
+    if (nextBtn) nextBtn.addEventListener('click', () => scrollByDir(track, 1));
+
+    track.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        scrollByDir(track, -1);
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        scrollByDir(track, 1);
+      }
+    });
+
+    track.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    if (typeof ResizeObserver !== 'undefined') {
+      const observer = new ResizeObserver(scheduleUpdate);
+      observer.observe(track);
+    }
+
+    carousel.__portfolioUpdateCarousel = () => updateChrome(carousel, track, prevBtn, nextBtn);
+    carousel.__portfolioResetCarousel = () => {
+      track.scrollTo({ left: 0, behavior: smoothBehavior() });
+      updateChrome(carousel, track, prevBtn, nextBtn);
+    };
+
+    updateChrome(carousel, track, prevBtn, nextBtn);
+  });
+}
+
 function initializeProjectFiltering() {
   const buttons = Array.from(document.querySelectorAll('.filter-btn'));
   const cards = Array.from(document.querySelectorAll('.project-card'));
   const status = document.getElementById('projectsFilterStatus') || document.getElementById('projectFilterStatus');
-  const showMore = document.getElementById('projectsShowMore');
-  const visibleCount = 3;
+  const projectsGrid = document.getElementById('projectsGrid');
+  const projectsCarousel = projectsGrid && projectsGrid.closest('[data-carousel]');
   if (!buttons.length || !cards.length) return;
 
-  const apply = (filter, { expand = null, reset = false, instant = false } = {}) => {
+  const apply = (filter, { instant = false } = {}) => {
     const matching = cards.filter(card => filter === 'all' || card.dataset.category === filter);
-    const currentExpanded = showMore && showMore.getAttribute('aria-expanded') === 'true';
-    const isExpanded = reset ? false : (expand === null ? currentExpanded : expand);
     buttons.forEach(button => {
       const selected = button.dataset.filter === filter;
       button.classList.toggle('active', selected);
       button.setAttribute('aria-pressed', String(selected));
     });
     cards.forEach(card => {
-      const index = matching.indexOf(card);
-      setItemVisible(card, index >= 0 && (isExpanded || index < visibleCount), { instant });
+      setItemVisible(card, matching.includes(card), { instant });
     });
-    if (showMore) {
-      const hasMore = matching.length > visibleCount;
-      const showMoreContainer = showMore.closest('.show-more-container');
-      showMore.hidden = !hasMore;
-      showMore.style.display = hasMore ? '' : 'none';
-      if (showMoreContainer) showMoreContainer.hidden = !hasMore;
-      if (!hasMore) showMore.setAttribute('aria-expanded', 'true');
-      else showMore.setAttribute('aria-expanded', String(isExpanded));
-      const label = showMore.querySelector('.show-more-label');
-      if (label) label.textContent = isExpanded && hasMore ? 'Show Less Projects' : 'Show More Projects';
-    }
     if (status) {
-      const intended = matching.filter((_, index) => isExpanded || index < visibleCount).length;
-      status.textContent = `${intended} of ${matching.length} ${matching.length === 1 ? 'project' : 'projects'} shown`;
+      status.textContent = `${matching.length} ${matching.length === 1 ? 'project' : 'projects'} shown`;
+    }
+    if (projectsCarousel && typeof projectsCarousel.__portfolioUpdateCarousel === 'function') {
+      if (projectsGrid) {
+        projectsGrid.scrollTo({ left: 0, behavior: 'auto' });
+        projectsGrid.scrollLeft = 0;
+      }
+      projectsCarousel.__portfolioUpdateCarousel();
+      if (!instant) {
+        window.setTimeout(() => {
+          if (typeof projectsCarousel.__portfolioUpdateCarousel === 'function') {
+            projectsCarousel.__portfolioUpdateCarousel();
+          }
+        }, CARD_FADE_MS + 20);
+      }
+    } else if (projectsGrid) {
+      projectsGrid.scrollLeft = 0;
     }
     window.__portfolioProjectFilter = { filter, matching, apply };
   };
 
-  buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.filter, { reset: true })));
+  buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.filter)));
   apply((buttons.find(button => button.classList.contains('active')) || buttons[0]).dataset.filter, { instant: true });
 
   const hashId = (location.hash || '').slice(1);
@@ -520,31 +594,17 @@ function initializeProjectFiltering() {
   }
 }
 
-function initializeShowMore() {
-  const visibleCount = 3;
-  const setupVideoGrid = (grid) => {
-    if (!grid) return;
-    const items = Array.from(grid.children);
-    if (items.length <= visibleCount) return;
-    items.forEach((item, index) => setItemVisible(item, index < visibleCount, { instant: true }));
-  };
-
-  const projectButton = document.getElementById('projectsShowMore');
-  if (projectButton) projectButton.addEventListener('click', () => {
-    const state = window.__portfolioProjectFilter;
-    if (!state) return;
-    const expanded = projectButton.getAttribute('aria-expanded') === 'true';
-    if (expanded && state.matching.slice(visibleCount).some(card => card.contains(document.activeElement))) projectButton.focus();
-    state.apply(state.filter, { expand: !expanded });
-  });
-  document.querySelectorAll('[data-video-grid]').forEach(setupVideoGrid);
-}
-
 function revealProjectCard(card) {
-  const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-  if (allButton && !allButton.classList.contains('active')) allButton.click();
   const state = window.__portfolioProjectFilter;
-  if (state && state.matching.includes(card)) state.apply(state.filter, { expand: true });
+  if (state) {
+    if (state.filter !== 'all') state.apply('all', { instant: true });
+  } else {
+    const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+    if (allButton && !allButton.classList.contains('active')) allButton.click();
+  }
+  if (typeof card.scrollIntoView === 'function') {
+    card.scrollIntoView({ behavior: 'auto', inline: 'nearest', block: 'nearest' });
+  }
 }
 
 /* --------------------------------------------------------------------------

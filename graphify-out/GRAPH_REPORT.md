@@ -1,16 +1,16 @@
 # Graph Report - fahmidhasann.github.io  (2026-07-21)
 
 ## Corpus Check
-- 12 files · ~234,288 words
+- 12 files · ~234,596 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 172 nodes · 214 edges · 25 communities (16 shown, 9 thin omitted)
+- 172 nodes · 215 edges · 25 communities (16 shown, 9 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.69)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `90c7aea0`
+- Built from commit: `3e98f05b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,10 +48,10 @@
 4. `Freelance Business Automation` - 8 edges
 5. `openDialog()` - 7 edges
 6. `closeDialog()` - 7 edges
-7. `initializeNavigation()` - 6 edges
-8. `setItemVisible()` - 5 edges
-9. `closeCommandPalette()` - 5 edges
-10. `executeCommand()` - 5 edges
+7. `smoothBehavior()` - 6 edges
+8. `initializeNavigation()` - 6 edges
+9. `initializeProjectFiltering()` - 5 edges
+10. `closeCommandPalette()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Dam koto bot` --conceptually_related_to--> `AI-Powered Lead Generation & Cold Outreach Transcript`  [AMBIGUOUS]
@@ -149,4 +149,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**
   _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._
 - **Should `Agentic Workflow Concepts` be split into smaller, more focused modules?**
-  _Cohesion score 0.10077519379844961 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10188261351052048 - nodes in this community are weakly interconnected._
