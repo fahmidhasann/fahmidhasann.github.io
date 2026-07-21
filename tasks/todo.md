@@ -1,12 +1,17 @@
-# Creative Work: Personal + Client split
+# Responsive card polish across devices
 
-- [x] Download local thumbnails for 3 client Facebook reels
-- [x] Restructure `#videos` into Personal Projects + Client Projects subsections
-- [x] Add 3 client video cards (Snigdho running reels) with titles, copy, links
-- [x] Style subsection headings to match existing creative work UI
-- [x] Update show-more JS if needed for multiple grids
-- [x] Verify layout locally / spot-check markup
+- [x] Even out Projects & Research cards (description clamp, tablet/phone spacing)
+- [x] Restyle Personal Projects as stacked 16:9 media cards at ≤900px
+- [x] Cap tablet reels; phone horizontal scroll-snap; radius/hidden-card polish
+- [x] Screenshot desktop/tablet/phone (+ dark) and fix any remaining issues
+- [x] Run graphify update .
 
 ## Review
 
-Creative Work now has Personal (existing 3 films) and Client (3 Facebook reels for Sajjad Hossain Snigdho). Thumbnails saved under `assets/client/`. Nav label remains "Creative Work".
+CSS-only polish in `styles.css`:
+
+- **Projects:** descriptions clamped to 3 lines → equal card heights in a row; tablet 2-col spacing/title tweaks; `object-position: center` on media
+- **Personal films:** desktop keeps cinematic side-by-side rows; ≤900 becomes stacked 16:9 media cards with surface border (no more ~94px thumbs)
+- **Client reels:** tablet capped at `max-width: 32rem`; ≤680 uses horizontal scroll-snap (~11rem cards) with client label + description restored; radii use design tokens; `.reel-card.hidden-card` supported
+
+Verified via local server metrics: desktop equal project heights (537px), tablet stacked thumbs ~705×396 + capped reel grid, phone scroll-snap carousel + 1-col projects.
