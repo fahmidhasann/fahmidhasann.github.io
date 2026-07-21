@@ -330,7 +330,7 @@ function observeRevealItems(items) {
 }
 
 function initializeScrollEffects() {
-  const items = Array.from(document.querySelectorAll('.project-card, .video-card, .contact-card, .section-header'));
+  const items = Array.from(document.querySelectorAll('.project-card, .video-card, .reel-card, .contact-card, .section-header'));
   if (!items.length || motionReduced()) return;
 
   const coarsePointer = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
@@ -522,27 +522,11 @@ function initializeProjectFiltering() {
 
 function initializeShowMore() {
   const visibleCount = 3;
-  const setupVideos = () => {
-    const grid = document.getElementById('videosGrid');
-    const button = document.getElementById('videosShowMore');
-    const container = document.getElementById('videosShowMoreContainer');
-    if (!grid || !button) return;
+  const setupVideoGrid = (grid) => {
+    if (!grid) return;
     const items = Array.from(grid.children);
-    const hasMore = items.length > visibleCount;
-    if (container) container.hidden = !hasMore;
-    button.hidden = !hasMore;
-    button.style.display = hasMore ? '' : 'none';
-    if (!hasMore) return;
+    if (items.length <= visibleCount) return;
     items.forEach((item, index) => setItemVisible(item, index < visibleCount, { instant: true }));
-    button.setAttribute('aria-expanded', 'false');
-    button.addEventListener('click', () => {
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      if (expanded && items.slice(visibleCount).some(item => item.contains(document.activeElement))) button.focus();
-      items.forEach((item, index) => setItemVisible(item, !expanded || index < visibleCount));
-      button.setAttribute('aria-expanded', String(!expanded));
-      const label = button.querySelector('.show-more-label');
-      if (label) label.textContent = expanded ? 'Show More Videos' : 'Show Less Videos';
-    });
   };
 
   const projectButton = document.getElementById('projectsShowMore');
@@ -553,7 +537,7 @@ function initializeShowMore() {
     if (expanded && state.matching.slice(visibleCount).some(card => card.contains(document.activeElement))) projectButton.focus();
     state.apply(state.filter, { expand: !expanded });
   });
-  setupVideos();
+  document.querySelectorAll('[data-video-grid]').forEach(setupVideoGrid);
 }
 
 function revealProjectCard(card) {

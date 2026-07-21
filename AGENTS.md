@@ -40,6 +40,14 @@ Projects in the HTML have `data-category` attributes (`ai`, `web`, `data`). The 
 1. Adding the card to the `#projects` grid in `index.html` with the correct `data-category`
 2. No JS changes needed unless adding a new category
 
+## Creative Work
+
+The `#videos` section has two subsections in `index.html`:
+- **Personal Projects** — `#personalVideosGrid`
+- **Client Projects** — `#clientVideosGrid`
+
+Add new video cards to the matching grid. Client reel thumbnails live under `assets/client/`. Client projects use `.reel-grid` / `.reel-card` (portrait phone frames in a row); personal projects keep the wide `.video-grid` / `.video-card` layout. Both grids use `data-video-grid` so show-more logic in `script.js` applies automatically when a grid exceeds 3 items.
+
 ## Command Palette
 
 Accessible via `Cmd+K` / `Ctrl+K`. Commands are defined as an array in `script.js` inside `initializeCommandPalette()`. Add new navigation targets there.
