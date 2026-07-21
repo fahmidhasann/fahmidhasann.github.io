@@ -1,7 +1,7 @@
 {
   "script.js": {
-    "mtime": 1784645837.42402,
-    "ast_hash": "4dda5c3528ba4030f131e48e74b14642",
+    "mtime": 1784646016.8221776,
+    "ast_hash": "d5f92b2c2c2262379245b01903d80535",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -110,8 +110,8 @@
     "semantic_hash": "698035f601718c9eb4f2cc1e23fa8463"
   },
   "index.html": {
-    "mtime": 1784645718.3807168,
-    "ast_hash": "58e052274609861335311fc683ee05dd",
+    "mtime": 1784647453.1303456,
+    "ast_hash": "45409868878b1c41855b1c5a713ed409",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -157,6 +157,16 @@
   "assets/client/reel_438344139340070.jpg": {
     "mtime": 1784630754.9916239,
     "ast_hash": "745378064c1ac5dee1191354d4b6edcd",
+    "semantic_hash": ""
+  },
+  "assets/client/reel_1470923473890560.jpg": {
+    "mtime": 1784646605.8123431,
+    "ast_hash": "436680569cb53ebcc801899d83e6ac3b",
+    "semantic_hash": ""
+  },
+  "assets/client/reel_624648880582291.jpg": {
+    "mtime": 1784646605.8531036,
+    "ast_hash": "f880c5a10a18b65cd93899a0f25cbb63",
     "semantic_hash": ""
   }
 }

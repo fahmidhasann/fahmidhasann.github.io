@@ -1,16 +1,16 @@
 # Graph Report - fahmidhasann.github.io  (2026-07-21)
 
 ## Corpus Check
-- 12 files · ~234,596 words
+- 12 files · ~234,593 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 172 nodes · 215 edges · 25 communities (16 shown, 9 thin omitted)
+- 172 nodes · 214 edges · 25 communities (16 shown, 9 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.69)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3e98f05b`
+- Built from commit: `4168da3d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -48,10 +48,10 @@
 4. `Freelance Business Automation` - 8 edges
 5. `openDialog()` - 7 edges
 6. `closeDialog()` - 7 edges
-7. `smoothBehavior()` - 6 edges
-8. `initializeNavigation()` - 6 edges
-9. `initializeProjectFiltering()` - 5 edges
-10. `closeCommandPalette()` - 5 edges
+7. `initializeNavigation()` - 6 edges
+8. `smoothBehavior()` - 5 edges
+9. `closeCommandPalette()` - 5 edges
+10. `executeCommand()` - 5 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Dam koto bot` --conceptually_related_to--> `AI-Powered Lead Generation & Cold Outreach Transcript`  [AMBIGUOUS]
@@ -131,7 +131,7 @@ Nodes (8): Architecture, Command Palette, Creative Work, Development, graphify, 
   graphify-out/transcripts/Dam koto bot.txt · relation: conceptually_related_to
 
 ## Knowledge Gaps
-- **69 isolated node(s):** `@playwright/mcp`, `prefersReducedMotion`, `modalState`, `headers`, `Overview` (+64 more)
+- **69 isolated node(s):** `Overview`, `Development`, `Architecture`, `Theming`, `Project Filtering` (+64 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -144,9 +144,9 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.075) - this node is a cross-community bridge._
 - **Why does `AI Agent` connect `AI Freelancer Landscape` to `AI Automation Agencies`?**
   _High betweenness centrality (0.053) - this node is a cross-community bridge._
-- **What connects `@playwright/mcp`, `prefersReducedMotion`, `modalState` to the rest of the system?**
+- **What connects `Overview`, `Development`, `Architecture` to the rest of the system?**
   _69 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**
   _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._
 - **Should `Agentic Workflow Concepts` be split into smaller, more focused modules?**
-  _Cohesion score 0.10188261351052048 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10077519379844961 - nodes in this community are weakly interconnected._
