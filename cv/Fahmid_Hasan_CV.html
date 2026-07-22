@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahmid Hasan Taohid — CV</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      font-size: 9.5pt;
+      line-height: 1.4;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      max-height: 297mm;
+      padding: 14mm 16mm 12mm;
+      margin: 0 auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 2px solid #1a1a1a;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .name {
+      font-size: 26pt;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      color: #111;
+    }
+
+    .headline {
+      margin-top: 4px;
+      font-size: 10.5pt;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .contact-row {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      font-size: 8.5pt;
+      color: #333;
+    }
+
+    .contact-row a {
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #111;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 3px;
+      margin-bottom: 7px;
+    }
+
+    .summary {
+      font-size: 9.5pt;
+      color: #222;
+      text-align: justify;
+    }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 6px;
+    }
+
+    .edu-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 9.5pt;
+    }
+
+    .item-sub {
+      font-size: 9pt;
+      color: #333;
+    }
+
+    .item-meta {
+      font-size: 8.5pt;
+      color: #555;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    /* Projects */
+    .project {
+      margin-bottom: 6.5px;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-name {
+      font-weight: 700;
+      font-size: 9.5pt;
+    }
+
+    .project-tags {
+      font-size: 8pt;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .project p {
+      font-size: 8.8pt;
+      color: #222;
+      margin-top: 1px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 3px 10px;
+      font-size: 8.8pt;
+    }
+
+    .skill-label {
+      font-weight: 700;
+      color: #111;
+    }
+
+    .skill-value {
+      color: #222;
+    }
+
+    /* Two column for education + creative if needed */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 18px;
+    }
+
+    .creative-list {
+      list-style: none;
+      font-size: 8.8pt;
+      color: #222;
+    }
+
+    .creative-list li {
+      margin-bottom: 3px;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .creative-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #555;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 6px;
+      border-top: 1px solid #ddd;
+      font-size: 7.5pt;
+      color: #777;
+      text-align: center;
+    }
+
+    @media screen {
+      body {
+        background: #e8e8e8;
+        padding: 24px 0;
+      }
+
+      .page {
+        background: #fff;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1 class="name">Fahmid Hasan Taohid</h1>
+      <p class="headline">Self-Taught AI Builder &amp; Visual Storyteller | Agriculture Graduate</p>
+      <div class="contact-row">
+        <span>fahmidhasantaohid@gmail.com</span>
+        <span>+880 1732-021592</span>
+        <a href="https://fahmidhasann.github.io/">fahmidhasann.github.io</a>
+        <a href="https://github.com/fahmidhasann">github.com/fahmidhasann</a>
+        <a href="https://www.linkedin.com/in/fahmid-hasan-taohid/">linkedin.com/in/fahmid-hasan-taohid</a>
+      </div>
+    </header>
+
+    <section>
+      <h2 class="section-title">Profile</h2>
+      <p class="summary">
+        Agriculture graduate turned self-taught technologist, building practical AI tools for automation,
+        customer support, and agri-tech. Comfortable shipping end-to-end products — from Python RAG systems
+        and LLM workflows to web apps and data visualizations — with a parallel practice in videography and
+        photography for client storytelling.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="section-title">Education</h2>
+      <div class="edu-item">
+        <div class="item-head">
+          <div>
+            <div class="item-title">Bachelor’s Degree in Agriculture</div>
+            <div class="item-sub">Bangladesh Agricultural University (BAU)</div>
+          </div>
+          <div class="item-meta">Graduate</div>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="item-head">
+          <div>
+            <div class="item-title">SSC &amp; HSC</div>
+            <div class="item-sub">Savar Cantonment Public School and College</div>
+          </div>
+          <div class="item-meta">Secondary &amp; Higher Secondary</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Selected Projects</h2>
+
+      <div class="project">
+        <div class="item-head">
+          <div class="project-name">Chashi Bondhu — Crop Disease Identifier</div>
+          <div class="project-tags">React · TypeScript · Gemini AI</div>
+        </div>
+        <p>AI tool that analyzes crop images to identify diseases and recommend treatments in Bengali and English — bridging agriculture domain knowledge with modern multimodal AI.</p>
+      </div>
+
+      <div class="project">
+        <div class="item-head">
+          <div class="project-name">PlantDoc RAG ChatBot</div>
+          <div class="project-tags">Python · Streamlit · ChromaDB</div>
+        </div>
+        <p>Document Q&amp;A chatbot using Retrieval-Augmented Generation with specialized agricultural models for plant pathology guidance.</p>
+      </div>
+
+      <div class="project">
+        <div class="item-head">
+          <div class="project-name">Dam Koto Bot — Python RAG Assistant</div>
+          <div class="project-tags">Python · FastAPI · ChromaDB · Docker</div>
+        </div>
+        <p>Multilingual (Bangla / Banglish / English) e-commerce support bot with catalog search, vector RAG for policies, and OpenRouter LLM orchestration.</p>
+      </div>
+
+      <div class="project">
+        <div class="item-head">
+          <div class="project-name">DamKoto Bot — Multilingual AI Support (Automation)</div>
+          <div class="project-tags">n8n · Gemini · Vector Store</div>
+        </div>
+        <p>Hands-free customer support workflow: language detection, live product lookup, inventory checks, and policy answers via an AI agent pipeline.</p>
+      </div>
+
+      <div class="project">
+        <div class="item-head">
+          <div class="project-name">AI-Powered Cold Outreach Automation</div>
+          <div class="project-tags">n8n · Groq · Gmail · Sheets</div>
+        </div>
+        <p>B2B outreach pipeline that scrapes lead sites, drafts personalized emails with an LLM, sends via Gmail, and logs status in Google Sheets.</p>
+      </div>
+
+      <div class="project">
+        <div class="item-head">
+          <div class="project-name">VocabFlow — AI Vocabulary Learning</div>
+          <div class="project-tags">Next.js · TypeScript · Groq · Supabase</div>
+        </div>
+        <p>Spaced-repetition vocabulary platform with LLM-powered usage maps; shipped as a PWA and native mobile app via Capacitor.</p>
+      </div>
+
+      <div class="project">
+        <div class="item-head">
+          <div class="project-name">Interactive Bangladesh Choropleth Map</div>
+          <div class="project-tags">Leaflet.js · D3.js · JavaScript</div>
+        </div>
+        <p>Interactive district-level map for exploring educational statistics across all 64 districts of Bangladesh.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-label">AI &amp; ML</div>
+        <div class="skill-value">RAG, LLMs (Gemini, Groq, OpenRouter), ChromaDB, Bangla NLP, prompt workflows</div>
+        <div class="skill-label">Automation</div>
+        <div class="skill-value">n8n, Gmail / Google Sheets integrations, AI agents, lead outreach pipelines</div>
+        <div class="skill-label">Engineering</div>
+        <div class="skill-value">Python, FastAPI, SQLAlchemy, Docker, React, TypeScript, Next.js, Streamlit</div>
+        <div class="skill-label">Data &amp; Viz</div>
+        <div class="skill-value">JavaScript, Leaflet.js, D3.js, interactive mapping</div>
+        <div class="skill-label">Creative</div>
+        <div class="skill-value">Videography, photography, short-form storytelling for personal &amp; client work</div>
+        <div class="skill-label">Languages</div>
+        <div class="skill-value">Bengali, English (professional working proficiency)</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Creative Work</h2>
+      <div class="two-col">
+        <ul class="creative-list">
+          <li><strong>Personal films:</strong> BAU campus film, short film “Bivrom”, “Algorithm of Life”</li>
+          <li><strong>Client videography:</strong> fitness &amp; running content series for Sajjad Hossain Snigdho</li>
+        </ul>
+        <ul class="creative-list">
+          <li>Visual storytelling through motion, mood, and frame composition</li>
+          <li>Available for focused client projects with clear outcomes</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      Portfolio · github.com/fahmidhasann · fahmidhasann.github.io
+    </footer>
+  </div>
+</body>
+</html>
