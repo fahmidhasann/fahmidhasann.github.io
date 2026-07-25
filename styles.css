@@ -28,7 +28,6 @@
   --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --ease-out: cubic-bezier(.22, 1, .36, 1);
-  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
   --fast: 180ms;
   --normal: 320ms;
   --space-section: clamp(4.5rem, 8vw, 8rem);
@@ -104,7 +103,10 @@ a { color: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; white-space: nowrap; clip-path: inset(50%); border: 0; }
 .honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+/* The skip link moves focus here. Outlining the whole page would be noise, so
+   mark the landing point with a rule under the sticky nav instead. */
 #main-content:focus { outline: none; }
+#main-content:focus-visible { outline: none; box-shadow: inset 0 3px 0 0 var(--focus); }
 
 /* Keyboard bypass: visible only while focused. */
 .skip-link {
@@ -599,6 +601,7 @@ a { color: inherit; }
 .command-palette-close { display: grid; place-items: center; width: 2.25rem; height: 2.25rem; margin: .65rem .65rem -.25rem auto; padding: 0; color: var(--muted); border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; transition: color var(--fast) ease, border-color var(--fast) ease, background var(--fast) ease; }
 .command-palette-close:hover { color: var(--on-accent); border-color: var(--accent); background: var(--accent); }
 #commandInput { width: 100%; min-height: 4.1rem; padding: 1rem 1.2rem; color: var(--ink); border: 0; border-bottom: 1px solid var(--line); outline: none; background: transparent; font-size: 1rem; }
+#commandInput:focus-visible { border-bottom-color: var(--accent); box-shadow: inset 0 -2px 0 0 var(--accent); }
 .command-list { max-height: min(55vh, 26rem); margin: 0; padding: .45rem; overflow: auto; list-style: none; }
 .command-list li { padding: .8rem .9rem; border-radius: .4rem; color: var(--ink); font-size: .88rem; cursor: pointer; transition: color var(--fast) ease, background var(--fast) ease; }
 .command-list li:hover, .command-list li.active { color: var(--accent-strong); background: var(--accent-soft); }

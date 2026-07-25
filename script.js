@@ -940,6 +940,9 @@
     // The dialog is labelled by this heading, so it must never be empty.
     if (title) title.textContent = card.dataset.title || card.querySelector('.project-title')?.textContent || 'Project demo';
     player.src = src;
+    // Show the card's own thumbnail instead of a black frame while the file buffers.
+    const thumbnail = card.querySelector('.project-image img');
+    if (thumbnail) player.poster = thumbnail.currentSrc || thumbnail.src;
     player.load();
     backdrop.hidden = false;
     backdrop.classList.add('active', 'visible');
@@ -954,6 +957,7 @@
     if (player) {
       player.pause();
       player.removeAttribute('src');
+      player.removeAttribute('poster');
       player.load();
     }
     if (backdrop) {
