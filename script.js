@@ -231,7 +231,7 @@ function toggleTheme() {
 }
 
 function updateThemeToggle(theme = document.documentElement.getAttribute('data-theme'), { animate = false } = {}) {
-  const toggle = document.getElementById('themeToggle') || document.querySelector('.dark-mode-toggle');
+  const toggle = document.getElementById('themeToggle');
   if (!toggle) return;
   const isDark = theme === 'dark';
   toggle.setAttribute('aria-pressed', String(isDark));
@@ -257,16 +257,8 @@ function updateThemeToggle(theme = document.documentElement.getAttribute('data-t
 }
 
 function initializeThemeToggle() {
-  let toggle = document.getElementById('themeToggle') || document.querySelector('.dark-mode-toggle');
-  if (!toggle) {
-    toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.id = 'themeToggle';
-    toggle.className = 'dark-mode-toggle';
-    toggle.innerHTML = '<i aria-hidden="true"></i>';
-    document.body.appendChild(toggle);
-  }
-  if (toggle.dataset.themeReady) return;
+  const toggle = document.getElementById('themeToggle');
+  if (!toggle || toggle.dataset.themeReady) return;
   toggle.dataset.themeReady = 'true';
   toggle.addEventListener('click', toggleTheme);
   updateThemeToggle();
@@ -598,10 +590,6 @@ function initializeCarousels() {
     }
 
     carousel.__portfolioUpdateCarousel = () => updateChrome(carousel, track, prevBtn, nextBtn);
-    carousel.__portfolioResetCarousel = () => {
-      track.scrollTo({ left: 0, behavior: smoothBehavior() });
-      updateChrome(carousel, track, prevBtn, nextBtn);
-    };
 
     updateChrome(carousel, track, prevBtn, nextBtn);
   });
@@ -610,7 +598,7 @@ function initializeCarousels() {
 function initializeProjectFiltering() {
   const buttons = Array.from(document.querySelectorAll('.filter-btn'));
   const cards = Array.from(document.querySelectorAll('.project-card'));
-  const status = document.getElementById('projectsFilterStatus') || document.getElementById('projectFilterStatus');
+  const status = document.getElementById('projectsFilterStatus');
   const projectsGrid = document.getElementById('projectsGrid');
   const projectsCarousel = projectsGrid && projectsGrid.closest('[data-carousel]');
   if (!buttons.length || !cards.length) return;
@@ -706,7 +694,6 @@ function initializeCommandPalette() {
     });
     openDialog(palette, opener);
   };
-  window.openCommandPalette = open;
   document.addEventListener('keydown', event => {
     if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
       event.preventDefault();
@@ -780,7 +767,6 @@ function initializeVideoPopup() {
   const backdrop = document.getElementById('videoPopupBackdrop');
   const popup = document.getElementById('videoPopup');
   const player = document.getElementById('videoPopupPlayer');
-  const title = document.getElementById('videoPopupTitle');
   const close = document.getElementById('videoPopupClose');
   if (!backdrop || !popup || !player) return;
   backdrop.hidden = true;
@@ -896,9 +882,7 @@ function initializeEasterEgg() {
 
 function activateEasterEgg() {
   if (motionReduced()) return;
-  document.body.classList.add('konami-activated');
   createConfetti();
-  window.setTimeout(() => document.body.classList.remove('konami-activated'), 5000);
 }
 
 function createConfetti() {
