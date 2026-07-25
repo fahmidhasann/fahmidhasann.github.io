@@ -1,7 +1,25 @@
 /* Portfolio interactions: progressively enhanced; content remains usable without JS/CDNs. */
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const modalState = { active: null, opener: null, locks: new Set(), inerted: [] };
+const modalState = { active: null, opener: null, locks: new Set(), inerted: [], focusFrame: 0, focusTimer: 0 };
+
+/** How long a filtered-out card fades before it is pulled out of the layout. */
 const CARD_FADE_MS = 280;
+/** Last-resort reveal of the hero if an enhancer throws before it can run. */
+const HERO_FAILSAFE_MS = 2000;
+/** Stagger between hero name characters, then between the blocks below it. */
+const HERO_CHAR_STAGGER_MS = 45;
+const HERO_BLOCK_STAGGER_MS = 100;
+const HERO_BLOCK_LEAD_MS = 80;
+const HERO_CASCADE_TAIL_MS = 600;
+/** Matches the theme icon's swap animation, so the glyph changes while hidden. */
+const THEME_ICON_SWAP_MS = 90;
+/** Retry delay when a browser ignores the first focus call on a fresh dialog. */
+const DIALOG_FOCUS_RETRY_MS = 50;
+/** Confetti burst for the konami easter egg. */
+const CONFETTI_PIECES = 100;
+const CONFETTI_LIFETIME_MS = 5000;
+/** Web3Forms endpoint backing the contact form. */
+const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
 
 document.addEventListener('DOMContentLoaded', () => {
   const runInit = (name, fn) => {
@@ -14,8 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   runInit('initializeTheme', initializeTheme);
   document.documentElement.classList.add('js-ready');
-  // Failsafe so a broken enhancer never leaves the hero permanently invisible.
-  window.setTimeout(() => document.documentElement.classList.add('hero-entered'), 2000);
+  window.setTimeout(() => document.documentElement.classList.add('hero-entered'), HERO_FAILSAFE_MS);
 
   runInit('initializeNavigation', initializeNavigation);
   runInit('initializeCarousels', initializeCarousels);
@@ -31,8 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
   runInit('initializeParticles', initializeParticles);
   runInit('initializeHeroEntrance', initializeHeroEntrance);
   runInit('initializeScrollEffects', initializeScrollEffects);
-  runInit('updateProgressBar', updateProgressBar);
-  window.addEventListener('scroll', updateProgressBar, { passive: true });
+  runInit('initializeProgressBar', initializeProgressBar);
 });
 
 function motionReduced() {
@@ -42,6 +58,44 @@ function motionReduced() {
 function smoothBehavior() {
   return motionReduced() ? 'auto' : 'smooth';
 }
+
+/* --------------------------------------------------------------------------
+   Coalesced scroll and resize dispatch
+
+   Several features react to the same scroll or resize stream. Each one gets a
+   subscription here instead of its own listener, so the page does at most one
+   batch of layout reads per animation frame.
+   -------------------------------------------------------------------------- */
+
+function createFrameDispatcher(eventName) {
+  const subscribers = new Set();
+  let frame = 0;
+
+  const flush = () => {
+    frame = 0;
+    subscribers.forEach(subscriber => {
+      try {
+        subscriber();
+      } catch (error) {
+        console.error(`[portfolio] ${eventName} subscriber failed`, error);
+      }
+    });
+  };
+
+  const schedule = () => {
+    if (frame) return;
+    frame = window.requestAnimationFrame(flush);
+  };
+
+  return subscriber => {
+    if (!subscribers.size) window.addEventListener(eventName, schedule, { passive: true });
+    subscribers.add(subscriber);
+    subscriber();
+  };
+}
+
+const onScroll = createFrameDispatcher('scroll');
+const onResize = createFrameDispatcher('resize');
 
 /* --------------------------------------------------------------------------
    Shared accessibility helpers
@@ -88,9 +142,26 @@ function clearPageInert() {
   modalState.inerted = [];
 }
 
+/**
+ * Cancels focus attempts that openDialog scheduled for later. Without this a
+ * retry can land after the dialog has already closed and steal focus away from
+ * whatever the user moved on to.
+ */
+function cancelPendingDialogFocus() {
+  if (modalState.focusFrame) {
+    window.cancelAnimationFrame(modalState.focusFrame);
+    modalState.focusFrame = 0;
+  }
+  if (modalState.focusTimer) {
+    window.clearTimeout(modalState.focusTimer);
+    modalState.focusTimer = 0;
+  }
+}
+
 function openDialog(dialog, opener, extras = []) {
   if (!dialog) return;
   if (modalState.active && modalState.active !== dialog) closeDialog(modalState.active);
+  cancelPendingDialogFocus();
   modalState.active = dialog;
   modalState.opener = opener || document.activeElement;
   dialog.hidden = false;
@@ -101,17 +172,23 @@ function openDialog(dialog, opener, extras = []) {
   setPageInert([dialog, ...extras]);
   const initialFocus = dialog.querySelector('[data-dialog-initial-focus]') || getFocusable(dialog)[0] || dialog;
   initialFocus.focus({ preventScroll: true });
-  window.requestAnimationFrame(() => {
+  // Some browsers drop focus on an element that was hidden a moment ago, so
+  // retry once the dialog has been painted, and once more shortly after.
+  modalState.focusFrame = window.requestAnimationFrame(() => {
+    modalState.focusFrame = 0;
     initialFocus.focus({ preventScroll: true });
-    if (document.activeElement !== initialFocus) {
-      window.setTimeout(() => initialFocus.focus({ preventScroll: true }), 50);
-    }
+    if (document.activeElement === initialFocus) return;
+    modalState.focusTimer = window.setTimeout(() => {
+      modalState.focusTimer = 0;
+      initialFocus.focus({ preventScroll: true });
+    }, DIALOG_FOCUS_RETRY_MS);
   });
 }
 
 function closeDialog(dialog) {
   if (!dialog || modalState.active !== dialog) return;
   const opener = modalState.opener;
+  cancelPendingDialogFocus();
   dialog.classList.remove('active', 'visible');
   dialog.setAttribute('aria-hidden', 'true');
   dialog.hidden = true;
@@ -214,11 +291,35 @@ function setItemVisible(item, visible, { instant = false } = {}) {
 }
 
 /* --------------------------------------------------------------------------
+   Preference storage
+
+   Touching localStorage throws outright in some privacy modes, so every read
+   and write goes through these helpers and degrades to "no preference saved".
+   -------------------------------------------------------------------------- */
+
+function readPreference(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writePreference(key, value) {
+  try {
+    localStorage.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Theme and visual effects
    -------------------------------------------------------------------------- */
 
 function initializeTheme() {
-  const savedTheme = localStorage.getItem('theme');
+  const savedTheme = readPreference('theme');
   const theme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', theme);
 }
@@ -226,7 +327,7 @@ function initializeTheme() {
 function toggleTheme() {
   const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
+  writePreference('theme', theme);
   updateThemeToggle(theme, { animate: true });
 }
 
@@ -253,7 +354,7 @@ function updateThemeToggle(theme = document.documentElement.getAttribute('data-t
   window.setTimeout(() => {
     applyIcon();
     toggle.classList.remove('is-toggling');
-  }, 90);
+  }, THEME_ICON_SWAP_MS);
 }
 
 function initializeThemeToggle() {
@@ -266,9 +367,7 @@ function initializeThemeToggle() {
 
 function rememberEdition(edition) {
   if (edition !== 'classic' && edition !== 'terminal') return false;
-  try {
-    localStorage.setItem('portfolioEdition', edition);
-  } catch { /* private mode / blocked storage */ }
+  writePreference('portfolioEdition', edition);
   return true;
 }
 
@@ -304,10 +403,7 @@ function initializeEditionChooser() {
   const dialog = document.getElementById('editionChooser');
   if (!dialog) return;
 
-  let saved = null;
-  try {
-    saved = localStorage.getItem('portfolioEdition');
-  } catch { /* private mode / blocked storage */ }
+  const saved = readPreference('portfolioEdition');
   if (saved === 'classic' || saved === 'terminal') return;
 
   const chooseClassic = () => closeEditionChooser();
@@ -352,23 +448,26 @@ function initializeHeroEntrance() {
     return;
   }
 
+  const cascadeStart = chars.length * HERO_CHAR_STAGGER_MS + HERO_BLOCK_LEAD_MS;
   chars.forEach((char, index) => {
-    char.style.transitionDelay = `${index * 45}ms`;
+    char.style.transitionDelay = `${index * HERO_CHAR_STAGGER_MS}ms`;
   });
   cascade.forEach((el, index) => {
-    el.style.transitionDelay = `${chars.length * 45 + 80 + index * 100}ms`;
+    el.style.transitionDelay = `${cascadeStart + index * HERO_BLOCK_STAGGER_MS}ms`;
   });
 
   window.requestAnimationFrame(() => {
     window.requestAnimationFrame(() => root.classList.add('hero-entered'));
   });
 
+  // Inline delays are only needed for the one-off entrance; clearing them keeps
+  // later state changes (theme, filtering) from inheriting a stagger.
   const clearDelays = () => {
     chars.forEach(char => { char.style.transitionDelay = ''; });
     cascade.forEach(el => { el.style.transitionDelay = ''; });
   };
-  const longest = chars.length * 45 + 80 + Math.max(cascade.length - 1, 0) * 100 + 600;
-  window.setTimeout(clearDelays, longest);
+  const lastBlockDelay = Math.max(cascade.length - 1, 0) * HERO_BLOCK_STAGGER_MS;
+  window.setTimeout(clearDelays, cascadeStart + lastBlockDelay + HERO_CASCADE_TAIL_MS);
 }
 
 function observeRevealItems(items) {
@@ -409,15 +508,14 @@ function initializeScrollEffects() {
   observeRevealItems(items);
 }
 
-function updateProgressBar() {
+function initializeProgressBar() {
   const bar = document.querySelector('.progress-bar');
   if (!bar) return;
-  const height = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = height > 0 ? Math.min(100, Math.max(0, window.scrollY / height * 100)) : 0;
-  bar.style.width = `${progress}%`;
-  bar.setAttribute('aria-valuenow', String(Math.round(progress)));
-  bar.setAttribute('aria-valuemin', '0');
-  bar.setAttribute('aria-valuemax', '100');
+  onScroll(() => {
+    const height = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = height > 0 ? Math.min(100, Math.max(0, window.scrollY / height * 100)) : 0;
+    bar.style.width = `${progress}%`;
+  });
 }
 
 /* --------------------------------------------------------------------------
@@ -514,12 +612,11 @@ function initializeNavScroll() {
     links.forEach(link => {
       const active = link.getAttribute('href') === `#${current}`;
       link.classList.toggle('active', active);
-      if (active) link.setAttribute('aria-current', 'page');
+      if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
   };
-  window.addEventListener('scroll', update, { passive: true });
-  update();
+  onScroll(update);
 }
 
 /* --------------------------------------------------------------------------
@@ -583,10 +680,9 @@ function initializeCarousels() {
     });
 
     track.addEventListener('scroll', scheduleUpdate, { passive: true });
-    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    onResize(scheduleUpdate);
     if (typeof ResizeObserver !== 'undefined') {
-      const observer = new ResizeObserver(scheduleUpdate);
-      observer.observe(track);
+      new ResizeObserver(scheduleUpdate).observe(track);
     }
 
     carousel.__portfolioUpdateCarousel = () => updateChrome(carousel, track, prevBtn, nextBtn);
@@ -665,6 +761,16 @@ function revealProjectCard(card) {
    Dialogs
    -------------------------------------------------------------------------- */
 
+/**
+ * Whether the visitor is on an Apple platform, which decides whether the
+ * palette advertises the Command or the Control key. navigator.platform is
+ * deprecated, so the modern hint is preferred where it exists.
+ */
+function isApplePlatform() {
+  const hint = navigator.userAgentData?.platform || navigator.platform || navigator.userAgent || '';
+  return /mac|iphone|ipad|ipod/i.test(hint);
+}
+
 function initializeCommandPalette() {
   const palette = document.getElementById('commandPalette');
   const input = document.getElementById('commandInput');
@@ -673,7 +779,7 @@ function initializeCommandPalette() {
   const closeButton = document.getElementById('commandPaletteClose');
   const metaKbd = palette.querySelector('.command-kbd-meta');
   if (metaKbd) {
-    const isApple = /Mac|iPhone|iPad|iPod/i.test(navigator.platform || navigator.userAgent || '');
+    const isApple = isApplePlatform();
     metaKbd.textContent = isApple ? '⌘' : 'Ctrl';
     if (!isApple) {
       const footer = palette.querySelector('.command-palette-footer');
@@ -685,10 +791,13 @@ function initializeCommandPalette() {
   palette.setAttribute('aria-hidden', 'true');
   Array.from(list.children).forEach(item => item.setAttribute('aria-selected', 'false'));
 
+  const commands = Array.from(list.children);
+  const visibleCommands = () => commands.filter(item => !item.hidden);
+
   const open = opener => {
     input.value = '';
-    Array.from(list.children).forEach(item => {
-      item.style.display = '';
+    commands.forEach(item => {
+      item.hidden = false;
       item.classList.remove('active');
       item.setAttribute('aria-selected', 'false');
     });
@@ -707,7 +816,7 @@ function initializeCommandPalette() {
     if (command) executeCommand(command.dataset.action);
   });
   const setActive = item => {
-    Array.from(list.children).forEach(command => {
+    commands.forEach(command => {
       const active = command === item;
       command.classList.toggle('active', active);
       command.setAttribute('aria-selected', String(active));
@@ -716,16 +825,15 @@ function initializeCommandPalette() {
   };
   input.addEventListener('input', () => {
     const query = input.value.trim().toLowerCase();
-    const visible = Array.from(list.children).filter(item => {
+    commands.forEach(item => {
       const matches = item.textContent.toLowerCase().includes(query);
-      item.style.display = matches ? '' : 'none';
+      item.hidden = !matches;
       if (!matches) item.classList.remove('active');
-      return matches;
     });
-    setActive(visible[0] || null);
+    setActive(visibleCommands()[0] || null);
   });
   input.addEventListener('keydown', event => {
-    const visible = Array.from(list.children).filter(item => item.style.display !== 'none');
+    const visible = visibleCommands();
     const current = list.querySelector('.active');
     if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
       event.preventDefault();
@@ -763,12 +871,21 @@ function executeCommand(action) {
   else scrollToSection(action);
 }
 
+/** Populated by initializeVideoPopup so the open/close paths do not re-query the DOM. */
+const videoPopupRefs = { popup: null, backdrop: null, player: null, title: null };
+
 function initializeVideoPopup() {
   const backdrop = document.getElementById('videoPopupBackdrop');
   const popup = document.getElementById('videoPopup');
   const player = document.getElementById('videoPopupPlayer');
   const close = document.getElementById('videoPopupClose');
   if (!backdrop || !popup || !player) return;
+
+  videoPopupRefs.popup = popup;
+  videoPopupRefs.backdrop = backdrop;
+  videoPopupRefs.player = player;
+  videoPopupRefs.title = document.getElementById('videoPopupTitle');
+
   backdrop.hidden = true;
   popup.hidden = true;
   popup.setAttribute('aria-hidden', 'true');
@@ -784,10 +901,7 @@ function initializeVideoPopup() {
 }
 
 function openVideoPopup(card, opener) {
-  const popup = document.getElementById('videoPopup');
-  const backdrop = document.getElementById('videoPopupBackdrop');
-  const player = document.getElementById('videoPopupPlayer');
-  const title = document.getElementById('videoPopupTitle');
+  const { popup, backdrop, player, title } = videoPopupRefs;
   const src = card.dataset.video;
   if (!popup || !backdrop || !player || !src) return;
   if (title) title.textContent = card.dataset.title || '';
@@ -796,13 +910,12 @@ function openVideoPopup(card, opener) {
   backdrop.hidden = false;
   backdrop.classList.add('active', 'visible');
   openDialog(popup, opener, [backdrop]);
+  // Autoplay is a nicety: browsers may refuse it, and the controls still work.
   if (!motionReduced()) player.play().catch(() => {});
 }
 
 function closeVideoPopup() {
-  const popup = document.getElementById('videoPopup');
-  const backdrop = document.getElementById('videoPopupBackdrop');
-  const player = document.getElementById('videoPopupPlayer');
+  const { popup, backdrop, player } = videoPopupRefs;
   if (!popup) return;
   if (player) {
     player.pause();
@@ -829,41 +942,34 @@ function initializeContactForm() {
     event.preventDefault();
     const button = form.querySelector('.contact-submit');
     if (!button || button.disabled) return;
-    const text = button.querySelector('.btn-text');
-    const icon = button.querySelector('.fa-paper-plane');
+    const idleParts = [button.querySelector('.btn-text'), button.querySelector('.fa-paper-plane')];
     const loading = button.querySelector('.btn-loading');
-    form.setAttribute('aria-busy', 'true');
-    button.disabled = true;
-    if (text) { text.hidden = true; text.style.display = 'none'; }
-    if (icon) { icon.hidden = true; icon.style.display = 'none'; }
-    if (loading) { loading.hidden = false; loading.style.display = 'inline'; }
-    if (result) {
-      result.setAttribute('role', 'status');
-      result.textContent = 'Sending your message…';
-      result.className = 'form-result';
-    }
+    const setBusy = busy => {
+      form.setAttribute('aria-busy', String(busy));
+      button.disabled = busy;
+      idleParts.forEach(part => { if (part) part.hidden = busy; });
+      if (loading) loading.hidden = !busy;
+    };
+    const announce = (message, state) => {
+      if (!result) return;
+      result.setAttribute('role', state === 'error' ? 'alert' : 'status');
+      result.textContent = message;
+      result.className = state ? `form-result ${state}` : 'form-result';
+    };
+
+    setBusy(true);
+    announce('Sending your message…');
     try {
-      const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+      const response = await fetch(CONTACT_ENDPOINT, { method: 'POST', body: new FormData(form) });
       const data = await response.json();
       if (!response.ok || !data.success) throw new Error(data.message || 'Submission failed');
-      if (result) {
-        result.setAttribute('role', 'status');
-        result.textContent = "Message sent! I'll get back to you soon.";
-        result.className = 'form-result success';
-      }
+      announce("Message sent! I'll get back to you soon.", 'success');
       form.reset();
-    } catch {
-      if (result) {
-        result.setAttribute('role', 'alert');
-        result.textContent = 'Failed to send message. Please try emailing me directly.';
-        result.className = 'form-result error';
-      }
+    } catch (error) {
+      console.error('[portfolio] contact form submission failed', error);
+      announce('Failed to send message. Please try emailing me directly.', 'error');
     } finally {
-      form.setAttribute('aria-busy', 'false');
-      button.disabled = false;
-      if (text) { text.hidden = false; text.style.removeProperty('display'); }
-      if (icon) { icon.hidden = false; icon.style.removeProperty('display'); }
-      if (loading) { loading.hidden = true; loading.style.display = 'none'; }
+      setBusy(false);
     }
   });
 }
@@ -885,18 +991,25 @@ function activateEasterEgg() {
   createConfetti();
 }
 
+/**
+ * Builds the confetti burst. Appearance lives in styles.css; only the random
+ * per-piece values are set here, as custom properties.
+ */
 function createConfetti() {
-  const container = document.createElement('div');
-  container.setAttribute('aria-hidden', 'true');
-  container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;';
-  document.body.appendChild(container);
-  for (let index = 0; index < 100; index += 1) {
+  const layer = document.createElement('div');
+  layer.className = 'confetti-layer';
+  layer.setAttribute('aria-hidden', 'true');
+
+  for (let index = 0; index < CONFETTI_PIECES; index += 1) {
     const piece = document.createElement('div');
-    piece.style.cssText = `position:absolute;width:10px;height:10px;background:hsl(${Math.random() * 360} 100% 50%);top:-10px;left:${Math.random() * 100}%;opacity:${Math.random() * .5 + .5};animation:confetti-fall ${Math.random() * 3 + 2}s linear forwards;`;
-    container.appendChild(piece);
+    piece.className = 'confetti-piece';
+    piece.style.setProperty('--confetti-x', `${(Math.random() * 100).toFixed(2)}%`);
+    piece.style.setProperty('--confetti-hue', String(Math.round(Math.random() * 360)));
+    piece.style.setProperty('--confetti-opacity', (Math.random() * 0.5 + 0.5).toFixed(2));
+    piece.style.setProperty('--confetti-duration', `${(Math.random() * 3 + 2).toFixed(2)}s`);
+    layer.appendChild(piece);
   }
-  const style = document.createElement('style');
-  style.textContent = '@keyframes confetti-fall{to{transform:translateY(100vh) rotate(720deg)}}';
-  document.head.appendChild(style);
-  window.setTimeout(() => { container.remove(); style.remove(); }, 5000);
+
+  document.body.appendChild(layer);
+  window.setTimeout(() => layer.remove(), CONFETTI_LIFETIME_MS);
 }

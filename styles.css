@@ -631,6 +631,19 @@ a { color: inherit; }
 .video-popup-close:hover { color: #fff; border-color: var(--accent); background: var(--accent); }
 .video-popup video { width: 100%; max-height: 68vh; background: #000; object-fit: contain; }
 
+/* Konami easter egg ------------------------------------------------------- */
+.confetti-layer { position: fixed; inset: 0; z-index: 9999; pointer-events: none; }
+.confetti-piece {
+  position: absolute; top: -10px; left: var(--confetti-x, 50%);
+  width: 10px; height: 10px;
+  background: hsl(var(--confetti-hue, 0) 100% 50%);
+  opacity: var(--confetti-opacity, 1);
+  animation: confetti-fall var(--confetti-duration, 3s) linear forwards;
+}
+@keyframes confetti-fall {
+  to { transform: translateY(100vh) rotate(720deg); }
+}
+
 /* Responsive -------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .project-card {

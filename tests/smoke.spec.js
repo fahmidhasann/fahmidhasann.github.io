@@ -196,7 +196,44 @@ test.describe('classic edition', () => {
     const sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
     for (const key of sequence) await page.keyboard.press(key);
 
-    await expect.poll(() => page.evaluate(() => document.querySelectorAll('body > div[aria-hidden="true"]').length)).toBeGreaterThan(0);
+    await expect(page.locator('.confetti-layer')).toBeAttached();
+    await expect(page.locator('.confetti-piece')).toHaveCount(100);
+  });
+
+  test('a successful contact submission confirms and clears the form', async ({ page }) => {
+    await visit(page, '/');
+    await page.route('**/api.web3forms.com/submit', route =>
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ success: true }) })
+    );
+
+    await page.fill('#contact-name', 'Ada Lovelace');
+    await page.fill('#contact-email', 'ada@example.com');
+    await page.fill('#contact-message', 'Hello there.');
+    await page.locator('.contact-submit').click();
+
+    const result = page.locator('#formResult');
+    await expect(result).toHaveText(/Message sent/);
+    await expect(result).toHaveClass(/success/);
+    await expect(page.locator('#contact-name')).toHaveValue('');
+    await expect(page.locator('.contact-submit')).toBeEnabled();
+    await expect(page.locator('.btn-loading')).toBeHidden();
+    await expect(page.locator('.btn-text')).toBeVisible();
+  });
+
+  test('a failed contact submission explains the problem and keeps the draft', async ({ page }) => {
+    await visit(page, '/');
+    await page.route('**/api.web3forms.com/submit', route => route.abort());
+
+    await page.fill('#contact-name', 'Ada Lovelace');
+    await page.fill('#contact-email', 'ada@example.com');
+    await page.fill('#contact-message', 'Hello there.');
+    await page.locator('.contact-submit').click();
+
+    const result = page.locator('#formResult');
+    await expect(result).toHaveText(/Failed to send/);
+    await expect(result).toHaveAttribute('role', 'alert');
+    await expect(page.locator('#contact-message')).toHaveValue('Hello there.');
+    await expect(page.locator('.contact-submit')).toBeEnabled();
   });
 });
 
