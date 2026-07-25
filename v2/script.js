@@ -89,16 +89,30 @@ function syncThemeButton(theme) {
   dom.themeToggle?.setAttribute('aria-pressed', String(theme === 'dark'));
 }
 
+function rememberEdition(edition) {
+  if (edition !== 'classic' && edition !== 'terminal') return false;
+  try {
+    localStorage.setItem('portfolioEdition', edition);
+  } catch { /* private mode */ }
+  return true;
+}
+
+function goClassic() {
+  rememberEdition('classic');
+  window.location.assign('/');
+}
+
 function initEditionSwitch() {
   document.querySelectorAll('.edition-switch[data-edition]').forEach(link => {
     if (link.dataset.editionReady) return;
     link.dataset.editionReady = 'true';
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (event) => {
       const edition = link.dataset.edition;
-      if (edition !== 'classic' && edition !== 'terminal') return;
-      try {
-        localStorage.setItem('portfolioEdition', edition);
-      } catch { /* private mode */ }
+      if (!rememberEdition(edition)) return;
+      // Save first, then navigate ourselves so the preference always sticks
+      // even if something else interrupts the default link behaviour.
+      event.preventDefault();
+      window.location.assign(link.href);
     });
   });
 }
@@ -547,6 +561,15 @@ const COMMANDS = {
       });
       printGap();
       printLine('tab completes · ↑ ↓ walks history · ⌘K or ctrl+K focuses the prompt', 'is-dim');
+      printLine('tip: type classic (or click [← classic] top-right) to leave this edition', 'is-dim');
+    }
+  },
+
+  classic: {
+    summary: 'open the classic portfolio edition',
+    run() {
+      printLine('switching to classic edition...', 'is-ok');
+      goClassic();
     }
   },
 
@@ -946,6 +969,7 @@ function initBootSequence() {
     `> loading projects (${projects}) ................ [ ok ]`,
     `> loading creative work (${films}) ........... [ ok ]`,
     '> starting shell ...................... [ ok ]',
+    '> tip: type classic to leave terminal edition',
     'ready.'
   ];
 

@@ -41,11 +41,13 @@
           <a href="#contact" class="navlink" data-section="contact">~/contact</a>
         </nav>
         <span class="titlebar-progress" id="scrollProgress" aria-hidden="true">[··············]   0%</span>
-        <a href="/" class="edition-switch" data-edition="classic" aria-label="Switch to classic edition">[classic]</a>
-        <button class="themebtn" id="themeToggle" type="button" aria-pressed="true">
-          <span aria-hidden="true">[</span><span class="themebtn-label" id="themeLabel">dark</span><span aria-hidden="true">]</span>
-          <span class="sr-only">Toggle colour theme</span>
-        </button>
+        <div class="titlebar-actions">
+          <a href="/" class="edition-switch" data-edition="classic" aria-label="Switch to classic edition">[← classic]</a>
+          <button class="themebtn" id="themeToggle" type="button" aria-pressed="true">
+            <span aria-hidden="true">[</span><span class="themebtn-label" id="themeLabel">dark</span><span aria-hidden="true">]</span>
+            <span class="sr-only">Toggle colour theme</span>
+          </button>
+        </div>
       </header>
 
       <!-- Live command prompt -->

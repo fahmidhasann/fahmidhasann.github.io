@@ -274,12 +274,15 @@ function initializeEditionSwitch() {
   document.querySelectorAll('.edition-switch[data-edition]').forEach(link => {
     if (link.dataset.editionReady) return;
     link.dataset.editionReady = 'true';
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (event) => {
       const edition = link.dataset.edition;
       if (edition !== 'classic' && edition !== 'terminal') return;
       try {
         localStorage.setItem('portfolioEdition', edition);
       } catch { /* private mode / blocked storage */ }
+      // Save first, then navigate ourselves so the preference always sticks.
+      event.preventDefault();
+      window.location.assign(link.href);
     });
   });
 }
