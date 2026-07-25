@@ -1,182 +1,232 @@
 {
   "script.js": {
-    "mtime": 1784992321.9123302,
-    "ast_hash": "5855227ae56019a630185b5646a5e2e5",
+    "mtime": 1785013417.6076863,
+    "ast_hash": "a205d34389f53e02eba5726f0aed1c99",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1784645842.3344007,
-    "ast_hash": "1cbcae2750450c08c35e183892e8583a",
+    "mtime": 1785011085.763844,
+    "ast_hash": "8582f70faff2ba765493ac473e60a793",
     "semantic_hash": ""
   },
   "assets/project_3.jpg": {
-    "mtime": 1780920225.76707,
+    "mtime": 1784927419.4645696,
     "ast_hash": "4fccab63eade43d0464b6da67f2b22d2",
     "semantic_hash": "4fccab63eade43d0464b6da67f2b22d2"
   },
   "assets/project_2.jpg": {
-    "mtime": 1780920225.7667956,
+    "mtime": 1784927419.4605653,
     "ast_hash": "320edd40e2a4688f012c8e76a2822e3d",
     "semantic_hash": "320edd40e2a4688f012c8e76a2822e3d"
   },
   "assets/project_1.jpg": {
-    "mtime": 1780920225.762978,
+    "mtime": 1784927419.4605653,
     "ast_hash": "563791313bfe81357b2853e3b2a156e1",
     "semantic_hash": "563791313bfe81357b2853e3b2a156e1"
   },
   "assets/Project/bd-choropleth-map.jpeg": {
-    "mtime": 1780920225.7581701,
+    "mtime": 1784927419.4405441,
     "ast_hash": "f67fffaf0a8c79dbf48449b05bd6229a",
     "semantic_hash": "f67fffaf0a8c79dbf48449b05bd6229a"
   },
   "assets/Project/plantdoc-chatbot.jpeg": {
-    "mtime": 1780920225.7617402,
+    "mtime": 1784927419.4525568,
     "ast_hash": "6c628011116f33861f9b58bb9eb5bd45",
     "semantic_hash": "6c628011116f33861f9b58bb9eb5bd45"
   },
   "assets/Project/drug-discovery.jpeg": {
-    "mtime": 1780920225.7610772,
+    "mtime": 1784927419.4485526,
     "ast_hash": "c014f5a30b0dc11d28d02b426b4ea440",
     "semantic_hash": "c014f5a30b0dc11d28d02b426b4ea440"
   },
   "assets/Project/chashi-bondhu.jpeg": {
-    "mtime": 1780920225.7586365,
+    "mtime": 1784927419.4405441,
     "ast_hash": "a3f1b577c7dacb23c428f784776cfec3",
     "semantic_hash": "a3f1b577c7dacb23c428f784776cfec3"
   },
   "assets/Project/crop-yield-analysis.jpeg": {
-    "mtime": 1780920225.75995,
+    "mtime": 1784927419.4445484,
     "ast_hash": "790a6dac9abb408322baa48f925cb05a",
     "semantic_hash": "790a6dac9abb408322baa48f925cb05a"
   },
   "assets/Project/damkoto-bot-thumbnail.jpeg": {
-    "mtime": 1780920225.7605903,
+    "mtime": 1784927419.4445484,
     "ast_hash": "fbe87038fde75361952c4db238bb6788",
     "semantic_hash": "fbe87038fde75361952c4db238bb6788"
   },
   "assets/Project/vocabflow-thumbnail.png": {
-    "mtime": 1780920225.7622097,
+    "mtime": 1784927419.4525568,
     "ast_hash": "94f353f3035168320df890ca2927ccee",
     "semantic_hash": "94f353f3035168320df890ca2927ccee"
   },
   "assets/Project/potato-disease-detector.jpeg": {
-    "mtime": 1780920225.7620866,
+    "mtime": 1784927419.4525568,
     "ast_hash": "d8cc2adcdca9a2152dce025dccbb1f5f",
     "semantic_hash": "d8cc2adcdca9a2152dce025dccbb1f5f"
   },
   "assets/Project/cold-outreach-thumbnail.jpeg": {
-    "mtime": 1780920225.7595532,
+    "mtime": 1784927419.4445484,
     "ast_hash": "b522af3ff05c15597ff5cf468fd5eb6d",
     "semantic_hash": "b522af3ff05c15597ff5cf468fd5eb6d"
   },
   "assets/Project/Al-Powered Lead Generation & Cold Outreach.mp4": {
-    "mtime": 1780920225.735201,
+    "mtime": 1784927419.3684676,
     "ast_hash": "a71b4bae0c72a491c5e82de6fb3f4bd9",
     "semantic_hash": "a71b4bae0c72a491c5e82de6fb3f4bd9"
   },
   "assets/Project/Dam koto bot.mp4": {
-    "mtime": 1780920225.7576954,
+    "mtime": 1784927419.4405441,
     "ast_hash": "964a0a84b0469177f4e6db0b633927f5",
     "semantic_hash": "964a0a84b0469177f4e6db0b633927f5"
   },
   ".claude/settings.json": {
-    "mtime": 1780921768.639656,
+    "mtime": 1784927419.340438,
     "ast_hash": "87f0d903477984d0587a02f8fe185263",
     "semantic_hash": ""
   },
   ".firecrawl/ai-agencies.json": {
-    "mtime": 1780920225.726713,
+    "mtime": 1784927419.340438,
     "ast_hash": "eaa0e207f54d01e159e14e76286b743a",
     "semantic_hash": "eaa0e207f54d01e159e14e76286b743a"
   },
   ".firecrawl/ai-freelancers.json": {
-    "mtime": 1780920225.7281857,
+    "mtime": 1784927419.3444421,
     "ast_hash": "f28eca4282890b4a8f74208182fad54e",
     "semantic_hash": "f28eca4282890b4a8f74208182fad54e"
   },
   ".firecrawl/ai-vs-traditional.json": {
-    "mtime": 1780920225.7284591,
+    "mtime": 1784927419.3444421,
     "ast_hash": "c87409f2042e3dc791ec3f1e7060fdd8",
     "semantic_hash": "c87409f2042e3dc791ec3f1e7060fdd8"
   },
   ".mcp.json": {
-    "mtime": 1780920225.7286584,
+    "mtime": 1784927419.3444421,
     "ast_hash": "9814a54f87dd9972e85d6fae6fbd5e85",
     "semantic_hash": "9814a54f87dd9972e85d6fae6fbd5e85"
   },
   "vercel.json": {
-    "mtime": 1780920225.7706861,
-    "ast_hash": "698035f601718c9eb4f2cc1e23fa8463",
-    "semantic_hash": "698035f601718c9eb4f2cc1e23fa8463"
-  },
-  "index.html": {
-    "mtime": 1784992309.122959,
-    "ast_hash": "d1ed15d3fb5f35b109d99845c9cb2793",
+    "mtime": 1785012299.1215937,
+    "ast_hash": "a7c758bbe22029a8c54a5baed540d6b8",
     "semantic_hash": ""
   },
-  ".claude/settings.local.json": {
-    "mtime": 1780985716.1985612,
-    "ast_hash": "f15c54b91eab76789952f8eba46cc7c3",
+  "index.html": {
+    "mtime": 1785013427.351675,
+    "ast_hash": "f191e581c1968f3dc27f68812d63290b",
     "semantic_hash": ""
   },
   ".codex/hooks.json": {
-    "mtime": 1784129989.2120645,
+    "mtime": 1784927419.340438,
     "ast_hash": "9022294730aa0f2f31926dcd590c07f4",
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1784645837.4240177,
-    "ast_hash": "086a36550724a0a2a3ef9e3989a62276",
+    "mtime": 1785013744.2033346,
+    "ast_hash": "ad78a7dcff093eb8287690dfdf083eb8",
     "semantic_hash": ""
   },
   "assets/Project/damkoto-python-thumbnail.png": {
-    "mtime": 1784374012.0507507,
+    "mtime": 1784927419.4485526,
     "ast_hash": "c76e8f1bc8226e60814d0b557a13eb06",
     "semantic_hash": ""
   },
   "assets/profile-hero-portrait.jpg": {
-    "mtime": 1784497284.7195852,
+    "mtime": 1784927419.4605653,
     "ast_hash": "542af6272bb3dd980e7a5bd413c85f4f",
     "semantic_hash": ""
   },
   "tasks/todo.md": {
-    "mtime": 1784958445.218854,
+    "mtime": 1784927419.3444421,
     "ast_hash": "2c4178f0a431cc8ed98818d3299e58a9",
     "semantic_hash": ""
   },
   "assets/client/reel_1042219817454072.jpg": {
-    "mtime": 1784630757.9818158,
+    "mtime": 1784927419.4525568,
     "ast_hash": "9242e7198ed3bade5c1f9f1c3a6704e5",
     "semantic_hash": ""
   },
   "assets/client/reel_1245324753666981.jpg": {
-    "mtime": 1784630756.4911935,
+    "mtime": 1784927419.4525568,
     "ast_hash": "6f0fa182816aeefda0a7731a57de0a44",
     "semantic_hash": ""
   },
   "assets/client/reel_438344139340070.jpg": {
-    "mtime": 1784630754.9916239,
+    "mtime": 1784927419.4525568,
     "ast_hash": "745378064c1ac5dee1191354d4b6edcd",
     "semantic_hash": ""
   },
   "assets/client/reel_1470923473890560.jpg": {
-    "mtime": 1784646605.8123431,
+    "mtime": 1784927419.4525568,
     "ast_hash": "436680569cb53ebcc801899d83e6ac3b",
     "semantic_hash": ""
   },
   "assets/client/reel_624648880582291.jpg": {
-    "mtime": 1784646605.8531036,
+    "mtime": 1784927419.4525568,
     "ast_hash": "f880c5a10a18b65cd93899a0f25cbb63",
     "semantic_hash": ""
   },
   "v2/script.js": {
-    "mtime": 1784992328.4155843,
-    "ast_hash": "778304d0eccb87ec17cd9fce9da1667e",
+    "mtime": 1785013367.5677438,
+    "ast_hash": "f121c03c9bd0cf130a4acaef456331d0",
     "semantic_hash": ""
   },
   "v2/index.html": {
-    "mtime": 1784992322.5827055,
-    "ast_hash": "d0131de24579f8b9a439fee1862a339c",
+    "mtime": 1785013457.3516412,
+    "ast_hash": "40a5327ee9d663d911a571e90d8ed033",
+    "semantic_hash": ""
+  },
+  ".htmlvalidate.json": {
+    "mtime": 1785011235.25581,
+    "ast_hash": "49e7c686767c4c21921c7450da75d61b",
+    "semantic_hash": ""
+  },
+  ".stylelintrc.json": {
+    "mtime": 1785012571.2009733,
+    "ast_hash": "a6849c6f3b6faf3302c13de3d29aacdf",
+    "semantic_hash": ""
+  },
+  "eslint.config.js": {
+    "mtime": 1785013690.9553895,
+    "ast_hash": "2e4f5fd28270a01688fb5778fa3fbded",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1785013696.9313834,
+    "ast_hash": "ce59b5a622dc2a8a733de49b8785e4b6",
+    "semantic_hash": ""
+  },
+  "playwright.config.js": {
+    "mtime": 1785010730.7564366,
+    "ast_hash": "f1948227040e7b7df1644465d473cb13",
+    "semantic_hash": ""
+  },
+  "tests/csp.spec.js": {
+    "mtime": 1785012393.3094044,
+    "ast_hash": "f7a96d3185850220eac7a4f3de5e1fb6",
+    "semantic_hash": ""
+  },
+  "tests/smoke.spec.js": {
+    "mtime": 1785013552.755536,
+    "ast_hash": "bc6d806f45e65e6c90978ab01366d36d",
+    "semantic_hash": ""
+  },
+  "tests/visual-check.mjs": {
+    "mtime": 1785013642.8514397,
+    "ast_hash": "a8bdf82a6507defae4034fc69b297e8c",
+    "semantic_hash": ""
+  },
+  ".github/workflows/quality.yml": {
+    "mtime": 1785012711.332691,
+    "ast_hash": "bf12e084776305f3ce9ac5908e848cbe",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1785013714.0073657,
+    "ast_hash": "726e4abbfd2d49c90e27a5223d7ade00",
+    "semantic_hash": ""
+  },
+  "robots.txt": {
+    "mtime": 1785012393.3494043,
+    "ast_hash": "4274f31ca991707a8a68103b85857f7d",
     "semantic_hash": ""
   }
 }
