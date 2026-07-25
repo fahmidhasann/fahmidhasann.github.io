@@ -801,28 +801,46 @@ button, input, textarea {
    Creative work
    -------------------------------------------------------------------------- */
 
+.subblock { min-width: 0; }
 .subblock + .subblock { margin-top: clamp(2.25rem, 5vw, 3.5rem); }
+.subblock .carousel { margin-top: 1.25rem; }
 
-.filmlist {
-  margin-top: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 1.5rem;
+.filmlist,
+.reellist { min-width: 0; }
+
+.filmlist.carousel-track { gap: clamp(1rem, 2vw, 1.35rem); }
+.reellist.carousel-track {
+  justify-content: flex-start;
+  gap: clamp(.85rem, 2vw, 1.25rem);
 }
 
-.film, .reel { display: block; text-decoration: none; color: inherit; }
-.film:focus-visible, .reel:focus-visible { outline-offset: 4px; }
+.film,
+.reel {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  scroll-snap-align: start;
+}
+.film:focus-visible,
+.reel:focus-visible { outline-offset: 4px; }
+
+.film {
+  flex: 0 0 min(20.5rem, 78vw);
+  width: min(20.5rem, 78vw);
+  max-width: none;
+  min-width: min(16.5rem, 78vw);
+}
+
+.reel {
+  flex: 0 0 min(9.75rem, 42vw);
+  width: min(9.75rem, 42vw);
+  max-width: none;
+  min-width: min(8.25rem, 38vw);
+}
 
 .film-text { margin-top: .6rem; }
 .film-title { font-size: .9375rem; font-weight: 500; color: var(--fg-bright); }
 .film-desc { margin-top: .25rem; color: var(--fg-dim); font-size: .8125rem; }
-
-.reellist {
-  margin-top: 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
-  gap: 1.25rem;
-}
 
 .reel-client {
   margin-top: .5rem;
@@ -1055,6 +1073,15 @@ body.locked { overflow: hidden; }
     flex-basis: min(18.5rem, 82vw);
     width: min(18.5rem, 82vw);
   }
+  .film {
+    flex-basis: min(18.5rem, 82vw);
+    width: min(18.5rem, 82vw);
+  }
+  .reel {
+    flex-basis: min(9rem, 46vw);
+    width: min(9rem, 46vw);
+    min-width: min(7.75rem, 42vw);
+  }
   /* Fixed-width labels force awkward wrapping on narrow screens. */
   .kv dt { width: auto; }
   .titlebar-name, .titlebar-buttons { display: none; }
@@ -1062,7 +1089,6 @@ body.locked { overflow: hidden; }
 }
 
 @media (max-width: 30rem) {
-  .reellist { grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); }
   .promptkbd { display: none; }
 }
 
