@@ -28,6 +28,13 @@ async function visit(page, path, { edition = 'classic', theme = 'light' } = {}) 
   await page.goto(path);
 }
 
+/** Types a command into the terminal edition's prompt and runs it. */
+async function runCommand(page, command) {
+  const prompt = page.locator('#prompt');
+  await prompt.fill(command);
+  await prompt.press('Enter');
+}
+
 /** Fails the test if the page logged an uncaught error or a console error. */
 function watchForErrors(page) {
   const errors = [];
@@ -318,5 +325,114 @@ test.describe('terminal edition', () => {
 
     await expect(page).toHaveURL(/\/$/);
     expect(await page.evaluate(key => window.localStorage.getItem(key), EDITION_KEY)).toBe('classic');
+  });
+
+  test('skip link is the first tab stop and moves focus to the first section', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal' });
+    await page.keyboard.press('Tab');
+
+    const skipLink = page.locator('.skip-link');
+    await expect(skipLink).toBeFocused();
+
+    await skipLink.press('Enter');
+    await expect(page.locator('#home')).toBeFocused();
+  });
+
+  test('the prompt runs a command and echoes it into the console', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal' });
+    const console_ = page.locator('#console');
+    await expect(console_).toBeHidden();
+
+    await runCommand(page, 'help');
+    await expect(console_).toBeVisible();
+    await expect(page.locator('#consoleLines')).toContainText('available commands');
+    await expect(page.locator('.console-line.is-echo').last()).toHaveText(/help$/);
+  });
+
+  test('an unknown command reports itself instead of failing silently', async ({ page }) => {
+    const errors = watchForErrors(page);
+    await visit(page, '/v2/', { edition: 'terminal' });
+
+    await runCommand(page, 'nonsense');
+    await expect(page.locator('.console-line.is-err')).toContainText('command not found: nonsense');
+    expect(errors).toEqual([]);
+  });
+
+  test('Tab completes a command and the up arrow recalls history', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal' });
+    const prompt = page.locator('#prompt');
+
+    await prompt.fill('neo');
+    await prompt.press('Tab');
+    await expect(prompt).toHaveValue('neofetch');
+
+    await prompt.press('Enter');
+    await expect(prompt).toHaveValue('');
+    await prompt.press('ArrowUp');
+    await expect(prompt).toHaveValue('neofetch');
+  });
+
+  test('the filter command narrows the cards and matches the flag buttons', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal' });
+
+    await runCommand(page, 'filter ai');
+    await expect(page.locator('.proj:not([hidden])')).toHaveCount(4);
+    await expect(page.locator('.flag[data-filter="ai"]')).toHaveAttribute('aria-pressed', 'true');
+    await expect(page.locator('#activeFlagEcho')).toHaveText('--filter=ai');
+  });
+
+  test('the theme command switches themes and clear empties the console', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal', theme: 'dark' });
+
+    await runCommand(page, 'theme light');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+    await expect(page.locator('#themeLabel')).toHaveText('light');
+
+    await runCommand(page, 'clear');
+    await expect(page.locator('#console')).toBeHidden();
+    await expect(page.locator('.console-line')).toHaveCount(0);
+  });
+
+  test('demo popup plays a project video and cleans up on Escape', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal' });
+    const popup = page.locator('#videoPopup');
+
+    await page.locator('.proj[data-slug="cold-outreach"] .btn-demo').click();
+    await expect(popup).toBeVisible();
+    await expect(page.locator('#videoPopupClose')).toBeFocused();
+
+    await page.keyboard.press('Escape');
+    await expect(popup).toBeHidden();
+    expect(await page.locator('#videoPopupPlayer').getAttribute('src')).toBeNull();
+  });
+
+  test('carousel arrows scroll the track and update their disabled state', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal' });
+    const carousel = page.locator('#projects [data-carousel]');
+    const track = page.locator('#projectsList');
+    const next = carousel.locator('.carousel-btn-next');
+    const prev = carousel.locator('.carousel-btn-prev');
+
+    await expect(prev).toBeDisabled();
+    await next.click();
+    await expect.poll(() => track.evaluate(el => el.scrollLeft)).toBeGreaterThan(0);
+    await expect(prev).toBeEnabled();
+  });
+
+  test('a successful contact submission confirms and clears the form', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal' });
+    await page.route('**/api.web3forms.com/submit', route =>
+      route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ success: true }) })
+    );
+
+    await page.fill('#contact-name', 'Ada Lovelace');
+    await page.fill('#contact-email', 'ada@example.com');
+    await page.fill('#contact-message', 'Hello there.');
+    await page.locator('.contact-submit').click();
+
+    const result = page.locator('#formResult');
+    await expect(result).toHaveText(/message sent/);
+    await expect(page.locator('#contact-name')).toHaveValue('');
+    await expect(page.locator('.contact-submit')).toBeEnabled();
   });
 });
