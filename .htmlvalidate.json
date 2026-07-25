@@ -1,0 +1,10 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "void-style": "off",
+    "attribute-boolean-style": "off",
+    "aria-label-misuse": ["error", { "allowAnyNamable": true }],
+    "prefer-native-element": ["error", { "exclude": ["listbox"] }],
+    "require-sri": ["error", { "target": "crossorigin" }]
+  }
+}
