@@ -30,6 +30,19 @@
   --prompt-h: 2.9rem;
   --gap-block: clamp(2.75rem, 6vw, 4.75rem);
   --ease: cubic-bezier(.2, .8, .3, 1);
+
+  /* Stacking order, lowest to highest. Use these instead of ad-hoc numbers. */
+  --z-card-detail: 1;
+  --z-card-overlay: 2;
+  --z-carousel-button: 3;
+  --z-console: 40;
+  --z-promptbar: 41;
+  --z-titlebar: 42;
+  --z-crt: 90;
+  --z-matrix: 95;
+  --z-video-popup: 120;
+  --z-boot: 200;
+  --z-skip-link: 300;
 }
 
 [data-theme='light'] {
@@ -108,7 +121,7 @@ button, input, textarea {
   position: absolute;
   top: -3rem;
   left: var(--pad);
-  z-index: 300;
+  z-index: var(--z-skip-link);
   padding: .5rem .9rem;
   background: var(--bg-raised);
   border: 1px solid var(--accent);
@@ -125,7 +138,7 @@ button, input, textarea {
 .crt {
   position: fixed;
   inset: 0;
-  z-index: 90;
+  z-index: var(--z-crt);
   pointer-events: none;
   background:
     repeating-linear-gradient(to bottom,
@@ -161,7 +174,7 @@ button, input, textarea {
 .titlebar {
   position: sticky;
   top: 0;
-  z-index: 42;
+  z-index: var(--z-titlebar);
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -285,7 +298,7 @@ button, input, textarea {
 .promptbar {
   position: sticky;
   top: var(--bar-h);
-  z-index: 41;
+  z-index: var(--z-promptbar);
   display: flex;
   align-items: center;
   gap: .6ch;
@@ -312,7 +325,7 @@ button, input, textarea {
   color: var(--fg-bright);
   caret-color: var(--accent);
   position: relative;
-  z-index: 1;
+  z-index: var(--z-card-detail);
 }
 .promptfield input::placeholder { color: var(--fg-faint); }
 .promptfield input:focus { outline: none; }
@@ -353,7 +366,7 @@ button, input, textarea {
 .console {
   position: sticky;
   top: calc(var(--bar-h) + var(--prompt-h));
-  z-index: 40;
+  z-index: var(--z-console);
   padding: .7rem var(--pad);
   background: var(--bg-inset);
   border-bottom: 1px solid var(--line-strong);
@@ -380,7 +393,7 @@ button, input, textarea {
 }
 .console-clear:hover { color: var(--accent); border-color: var(--accent); }
 
-.console-line { white-space: pre-wrap; word-break: break-word; }
+.console-line { white-space: pre-wrap; overflow-wrap: break-word; }
 .console-line.is-echo { color: var(--fg-bright); }
 .console-line.is-out { color: var(--fg); }
 .console-line.is-dim { color: var(--fg-dim); }
@@ -407,7 +420,7 @@ button, input, textarea {
   margin-bottom: 1.75rem;
   color: var(--fg-bright);
   font-size: .8125rem;
-  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .cmd .ps1 { margin-inline-end: .6ch; }
 .cmd-flag { color: var(--accent); }
@@ -532,7 +545,7 @@ button, input, textarea {
   border: 0 solid var(--accent);
   opacity: .55;
   transition: opacity .2s var(--ease);
-  z-index: 2;
+  z-index: var(--z-card-overlay);
 }
 .asciiframe-media::before {
   top: -1px; left: -1px;
@@ -557,7 +570,7 @@ button, input, textarea {
 .playmark {
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: var(--z-card-detail);
   display: grid;
   place-content: center;
   color: var(--accent);
@@ -654,7 +667,7 @@ button, input, textarea {
   position: absolute;
   top: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: var(--z-card-overlay);
   width: clamp(1rem, 3.5vw, 2.25rem);
   pointer-events: none;
   opacity: 0;
@@ -948,14 +961,14 @@ button, input, textarea {
 .vp-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 120;
+  z-index: var(--z-video-popup);
   background: rgba(2, 6, 3, .82);
 }
 [data-theme='light'] .vp-backdrop { background: rgba(30, 34, 30, .68); }
 
 .vp {
   position: fixed;
-  z-index: 121;
+  z-index: calc(var(--z-video-popup) + 1);
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: min(56rem, calc(100vw - 2rem));
@@ -1008,7 +1021,7 @@ body.locked { overflow: hidden; }
 .boot {
   position: fixed;
   inset: 0;
-  z-index: 200;
+  z-index: var(--z-boot);
   padding: clamp(1.25rem, 5vw, 3rem);
   background: var(--bg);
   color: var(--accent);
@@ -1032,7 +1045,7 @@ body.locked { overflow: hidden; }
 .matrix {
   position: fixed;
   inset: 0;
-  z-index: 95;
+  z-index: var(--z-matrix);
   pointer-events: none;
   opacity: .38;
 }
@@ -1082,7 +1095,7 @@ body.locked { overflow: hidden; }
   .carousel-btn {
     position: absolute;
     top: 50%;
-    z-index: 3;
+    z-index: var(--z-carousel-button);
     transform: translateY(-50%);
   }
   .carousel-btn:hover:not(:disabled) { transform: translateY(-50%); }
