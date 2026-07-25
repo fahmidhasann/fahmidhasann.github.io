@@ -45,27 +45,33 @@ npm run test:install   # downloads the Chromium build Playwright needs
 
 Then:
 
-| Command             | What it does                                          |
-| ------------------- | ----------------------------------------------------- |
-| `npm run lint`      | Runs all three linters below.                          |
-| `npm run lint:js`   | ESLint over the site scripts and tests.                |
-| `npm run lint:css`  | Stylelint over both stylesheets.                       |
-| `npm run lint:html` | html-validate over both editions' markup.              |
-| `npm test`          | Playwright smoke tests against a local static server.  |
+| Command               | What it does                                                     |
+| --------------------- | ---------------------------------------------------------------- |
+| `npm run lint`        | Runs all three linters below.                                     |
+| `npm run lint:js`     | ESLint over the site scripts and tests.                           |
+| `npm run lint:css`    | Stylelint over both stylesheets.                                  |
+| `npm run lint:html`   | html-validate over both editions' markup.                         |
+| `npm test`            | Playwright smoke tests against a local static server.             |
+| `npm run screenshots` | Full-page captures of both editions in both themes, for eyeballing. |
+
+`npm run screenshots` needs a server already running (`npm start` in another
+terminal) and writes to `test-results/visual/`.
 
 `npm run lint` and `npm test` also run in CI on every push and pull request
-(see `.github/workflows/ci.yml`).
+(see `.github/workflows/quality.yml`).
 
 ## Layout
 
 ```
-index.html          Classic edition markup
-styles.css          Classic edition styles
-script.js           Classic edition behaviour
-v2/                 Terminal edition (same three-file structure)
-assets/             Images and demo videos shared by both editions
-tests/smoke.spec.js Playwright smoke tests covering both editions
-vercel.json         Security headers and asset caching
+index.html            Classic edition markup
+styles.css            Classic edition styles
+script.js             Classic edition behaviour
+v2/                   Terminal edition (same three-file structure)
+assets/               Images and demo videos shared by both editions
+tests/smoke.spec.js   Playwright smoke tests covering both editions
+tests/csp.spec.js     Loads both editions under the production CSP
+tests/visual-check.mjs Screenshot capture for manual review
+vercel.json           Security headers and asset caching
 ```
 
 ## Deployment

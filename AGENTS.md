@@ -24,8 +24,11 @@ npm install            # once
 npm run test:install   # once, downloads Chromium for Playwright
 npm run lint           # ESLint + Stylelint + html-validate
 npm test               # Playwright smoke tests for both editions
+npm run screenshots    # optional: full-page captures for eyeballing a visual change
 ```
-Both commands run in CI (`.github/workflows/ci.yml`). Run them before committing. When you change behaviour, add or update a test in `tests/smoke.spec.js`.
+Both commands run in CI (`.github/workflows/quality.yml`). Run them before committing. When you change behaviour, add or update a test in `tests/smoke.spec.js`.
+
+Two things about the terminal edition's tests: its boot animation plays once per session and covers the page, so the `visit()` helper seeds `sessionStorage` to skip it — pass `{ boot: true }` when you actually want to test it. `npm run screenshots` scrolls the whole page before capturing, because cards animate in on scroll and would otherwise come out blank.
 
 **Deployment**: Pushing to `main` on GitHub triggers Vercel deployment automatically. Security headers and asset caching are configured in `vercel.json`.
 
@@ -35,7 +38,14 @@ Each edition is three files:
 
 - [index.html](index.html) — Single-page markup with all sections (hero, projects, videos, contact, command palette)
 - [styles.css](styles.css) — All styles using CSS custom properties for theming
-- [script.js](script.js) — All interactivity, wrapped in an IIFE and initialized via a sequence of `initialize*()` functions called on `DOMContentLoaded`. Each initializer runs inside a `runInit()` wrapper so one failure cannot take down the rest of the page.
+- [script.js](script.js) — All interactivity, wrapped in an IIFE and initialized via a sequence of `initialize*()` functions called on `DOMContentLoaded`. Each initializer runs inside a `runInit()` wrapper so one failure cannot take down the rest of the page. `v2/script.js` follows the same shape with shorter `init*()` names and a `boot()` wrapper.
+
+Patterns both scripts share, and that new code should follow:
+
+- **Scroll and resize work goes through `onScroll()` / `onResize()`**, not a fresh `addEventListener`. They batch every subscriber into one animation frame.
+- **Storage goes through the preference helpers** (`readPreference`/`writePreference`, or `readStored`/`writeStored` in v2). Touching `localStorage` directly throws in some privacy modes.
+- **Anything that covers the page calls `setPageInert()`** and pairs it with `clearPageInert()` on the way out. A Tab trap alone still leaves the background reachable by pointer and screen reader.
+- **Per-element state lives in a `WeakMap`**, not as a custom property on the DOM node — see `carouselControllers`.
 
 **External dependencies** are loaded via CDN (no local install needed):
 - `particles.js` — hero background animation
@@ -53,7 +63,9 @@ The `Content-Security-Policy` in `vercel.json` also allowlists the CDN hosts —
 
 ## Theming
 
-CSS variables are defined at the `:root` level and overridden via `[data-theme="dark"]` on the `<html>` element. Theme preference is persisted in `localStorage`. When adding new components, always use the existing CSS variables rather than hardcoded colors — including the `--z-*` stacking scale near the top of `styles.css` instead of ad-hoc `z-index` numbers.
+CSS variables are defined at the `:root` level and overridden via `[data-theme="dark"]` on the `<html>` element (the terminal edition inverts this: dark is its default and `[data-theme="light"]` is the override). Theme preference is shared between the editions under the `theme` key in `localStorage`.
+
+When adding new components, always use the existing CSS variables rather than hardcoded colors — including the `--z-*` stacking scale near the top of each stylesheet instead of ad-hoc `z-index` numbers.
 
 ## Project Filtering
 

@@ -36,7 +36,7 @@ export default [
   },
   {
     name: 'tooling',
-    files: ['*.config.js', 'tests/**/*.js'],
+    files: ['*.config.js', 'tests/**/*.{js,mjs}'],
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: 'module',
