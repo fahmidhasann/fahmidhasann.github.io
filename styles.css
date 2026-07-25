@@ -108,8 +108,19 @@ a { color: inherit; }
 .section-title { color: var(--ink-strong); font-family: var(--font-heading); font-size: clamp(2.5rem, 4.4vw, 3.6rem); font-weight: 600; line-height: .95; letter-spacing: -.035em; }
 .section-title::after { content: ''; display: block; width: 2.8rem; height: 2px; margin: 1.05rem auto 0; background: var(--accent); }
 .section-subtitle { max-width: 39rem; margin: 1.25rem auto 0; color: var(--muted); font-size: clamp(.95rem, 1.5vw, 1.06rem); line-height: 1.75; }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; white-space: nowrap; clip: rect(0, 0, 0, 0); border: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; white-space: nowrap; clip-path: inset(50%); border: 0; }
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+#main-content:focus { outline: none; }
+
+/* Keyboard bypass: visible only while focused. */
+.skip-link {
+  position: absolute; top: -3.5rem; left: var(--gutter); z-index: 2700;
+  padding: .6rem 1rem; color: var(--on-navy); border-radius: var(--radius-sm);
+  background: var(--navy); font-size: .85rem; font-weight: 600; text-decoration: none;
+  transition: top var(--fast) var(--ease-out);
+}
+.skip-link:focus-visible { top: .75rem; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; min-height: 2.9rem;

@@ -49,6 +49,18 @@ test.describe('classic edition', () => {
     expect(errors).toEqual([]);
   });
 
+  test('skip link is the first tab stop and moves focus to main content', async ({ page }) => {
+    await visit(page, '/');
+    await page.keyboard.press('Tab');
+
+    const skipLink = page.locator('.skip-link');
+    await expect(skipLink).toBeFocused();
+    await expect(skipLink).toBeInViewport();
+
+    await skipLink.press('Enter');
+    await expect(page.locator('#main-content')).toBeFocused();
+  });
+
   test('theme toggle flips the theme and remembers it', async ({ page }) => {
     await visit(page, '/');
     const html = page.locator('html');
@@ -160,10 +172,42 @@ test.describe('classic edition', () => {
     await expect(menu).toHaveClass(/active/);
     await expect(toggle).toHaveAttribute('aria-expanded', 'true');
 
+    // Everything outside the navigation is inert while the menu covers the page.
+    await expect(page.locator('main')).toHaveJSProperty('inert', true);
+
+    // Tabbing all the way round must stay inside the navigation.
+    for (let step = 0; step < 12; step += 1) {
+      await page.keyboard.press('Tab');
+      const insideNav = await page.evaluate(() =>
+        Boolean(document.activeElement?.closest('.compact-nav'))
+      );
+      expect(insideNav).toBe(true);
+    }
+
     await page.keyboard.press('Escape');
     await expect(menu).not.toHaveClass(/active/);
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');
     await expect(toggle).toBeFocused();
+    await expect(page.locator('main')).toHaveJSProperty('inert', false);
+  });
+
+  test('opening a dialog over the mobile menu leaves a consistent focus state', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await visit(page, '/');
+
+    await page.locator('#navToggle').click();
+    await expect(page.locator('#navMenu')).toHaveClass(/active/);
+
+    await page.keyboard.press('ControlOrMeta+k');
+    await expect(page.locator('#commandPalette')).toBeVisible();
+    await expect(page.locator('#navMenu')).not.toHaveClass(/active/);
+    await expect(page.locator('#commandInput')).toHaveAttribute('aria-expanded', 'true');
+
+    await page.keyboard.press('Escape');
+    await expect(page.locator('#commandPalette')).toBeHidden();
+    await expect(page.locator('#commandInput')).toHaveAttribute('aria-expanded', 'false');
+    await expect(page.locator('main')).toHaveJSProperty('inert', false);
+    await expect(page.locator('body')).not.toHaveClass(/scroll-locked/);
   });
 
   test('in-page navigation scrolls to the requested section', async ({ page }) => {

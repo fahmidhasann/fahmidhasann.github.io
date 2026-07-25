@@ -164,6 +164,8 @@
   function openDialog(dialog, opener, extras = []) {
     if (!dialog) return;
     if (modalState.active && modalState.active !== dialog) closeDialog(modalState.active);
+    // Only one overlay may own the inert state at a time.
+    closeMobileMenu();
     cancelPendingDialogFocus();
     modalState.active = dialog;
     modalState.opener = opener || document.activeElement;
@@ -209,15 +211,19 @@
         closeActiveDialog();
         return;
       }
-      const navMenu = document.getElementById('navMenu');
-      if (navMenu && navMenu.classList.contains('active')) closeMobileMenu({ restoreFocus: true });
+      if (isMobileMenuOpen()) closeMobileMenu({ restoreFocus: true });
     }
 
-    if (event.key !== 'Tab' || !modalState.active) return;
-    const focusable = getFocusable(modalState.active);
+    if (event.key !== 'Tab') return;
+    // The open dialog wins; otherwise the mobile menu covers the page and owns
+    // the tab order the same way.
+    const container = modalState.active || (isMobileMenuOpen() ? document.querySelector('.compact-nav') : null);
+    if (!container) return;
+
+    const focusable = getFocusable(container);
     if (!focusable.length) {
       event.preventDefault();
-      modalState.active.focus();
+      container.focus();
       return;
     }
     const first = focusable[0];
@@ -525,9 +531,15 @@
      Navigation
      -------------------------------------------------------------------------- */
 
+  function isMobileMenuOpen() {
+    const menu = document.getElementById('navMenu');
+    return Boolean(menu && menu.classList.contains('active'));
+  }
+
   function openMobileMenu() {
     const menu = document.getElementById('navMenu');
     const toggle = document.getElementById('navToggle');
+    const nav = document.querySelector('.compact-nav');
     if (!menu || !toggle) return;
     menu.classList.add('active');
     toggle.classList.add('active');
@@ -539,12 +551,16 @@
     }
     toggle.setAttribute('aria-label', 'Close navigation menu');
     lockPage('menu');
+    // The open menu covers the page, so the content behind it should not be
+    // reachable by keyboard or exposed to screen readers.
+    if (nav) setPageInert([nav, backdrop].filter(Boolean));
   }
 
   function closeMobileMenu({ restoreFocus = false } = {}) {
     const menu = document.getElementById('navMenu');
     const toggle = document.getElementById('navToggle');
     if (!menu || !toggle) return;
+    const wasOpen = menu.classList.contains('active');
     menu.classList.remove('active');
     toggle.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
@@ -555,6 +571,9 @@
     }
     toggle.setAttribute('aria-label', 'Open navigation menu');
     unlockPage('menu');
+    // A dialog opening over the menu takes ownership of the inert state, so
+    // only release it here when nothing else is holding it.
+    if (wasOpen && !modalState.active) clearPageInert();
     if (restoreFocus) toggle.focus();
   }
 
@@ -584,6 +603,8 @@
         if (target.classList.contains('project-card')) revealProjectCard(target);
         window.requestAnimationFrame(() => window.scrollTo({ top: getScrollTargetTop(target), behavior: smoothBehavior() }));
         closeMobileMenu();
+        // A skip link has to move focus, not just the viewport.
+        if (anchor.classList.contains('skip-link')) target.focus({ preventScroll: true });
       });
     });
   }
@@ -804,6 +825,7 @@
         item.classList.remove('active');
         item.setAttribute('aria-selected', 'false');
       });
+      input.setAttribute('aria-expanded', 'true');
       openDialog(palette, opener);
     };
     document.addEventListener('keydown', event => {
@@ -864,7 +886,10 @@
 
   function closeCommandPalette() {
     const palette = document.getElementById('commandPalette');
-    if (palette) closeDialog(palette);
+    if (!palette) return;
+    const input = document.getElementById('commandInput');
+    if (input) input.setAttribute('aria-expanded', 'false');
+    closeDialog(palette);
   }
 
   function executeCommand(action) {
