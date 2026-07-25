@@ -110,8 +110,8 @@
     "semantic_hash": "698035f601718c9eb4f2cc1e23fa8463"
   },
   "index.html": {
-    "mtime": 1784647453.1303456,
-    "ast_hash": "45409868878b1c41855b1c5a713ed409",
+    "mtime": 1784954699.8285098,
+    "ast_hash": "4f337e2f22f5504d419987adf994aa2f",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -140,7 +140,7 @@
     "semantic_hash": ""
   },
   "tasks/todo.md": {
-    "mtime": 1784643119.0903478,
+    "mtime": 1784954606.7517395,
     "ast_hash": "caca510d114147c0d8f96f70cab91fe5",
     "semantic_hash": ""
   },
