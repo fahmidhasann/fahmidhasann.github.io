@@ -19,6 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="styles.css">
+    <!-- [html-validate-disable-next require-sri -- Google Fonts serves different CSS per user agent, so a fixed hash cannot match] -->
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   </head>
   <body>
@@ -445,7 +446,7 @@
               <form id="contactForm" class="tform" aria-busy="false">
                 <input type="hidden" name="access_key" value="756aa2fa-77ba-4671-9ba7-2161b61c8c11">
                 <input type="hidden" name="subject" value="New message from portfolio">
-                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
+                <input type="checkbox" class="honeypot" name="botcheck" tabindex="-1" aria-hidden="true">
 
                 <div class="tform-row">
                   <div class="tfield">

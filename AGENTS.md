@@ -49,6 +49,8 @@ curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
 ```
 The `Content-Security-Policy` in `vercel.json` also allowlists the CDN hosts — add any new host there too.
 
+**Inline scripts are allowlisted by hash**, not by `'unsafe-inline'`. If you edit the inline `<script>` in either `index.html` or `v2/index.html`, its `sha256-` entry in `script-src` must be regenerated. `tests/csp.spec.js` fails with the correct replacement hash in the message, and also loads both editions under the real policy to catch violations.
+
 ## Theming
 
 CSS variables are defined at the `:root` level and overridden via `[data-theme="dark"]` on the `<html>` element. Theme preference is persisted in `localStorage`. When adding new components, always use the existing CSS variables rather than hardcoded colors — including the `--z-*` stacking scale near the top of `styles.css` instead of ad-hoc `z-index` numbers.

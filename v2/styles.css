@@ -102,6 +102,8 @@ button, input, textarea {
   border: 0;
 }
 
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
+
 .skip-link {
   position: absolute;
   top: -3rem;
