@@ -167,8 +167,10 @@ a { color: inherit; }
 .hero-name { display: flex; flex-wrap: wrap; color: var(--on-navy); font-family: var(--font-heading); font-size: clamp(3.6rem, 8vw, 7.35rem); font-weight: 600; line-height: .81; letter-spacing: -.06em; }
 .name-char { display: inline-block; will-change: transform, opacity; }
 .name-char.space { width: .22em; }
-.hero-description { max-width: 38rem; margin-top: clamp(1.45rem, 3vw, 2rem); color: color-mix(in srgb, var(--on-navy) 85%, transparent); font-size: clamp(.96rem, 1.35vw, 1.08rem); line-height: 1.8; }
-.hero-description + .hero-description { margin-top: .7rem; font-family: var(--font-heading); font-size: clamp(1.1rem, 2vw, 1.4rem); font-style: italic; line-height: 1.3; }
+.hero-description { max-width: 38rem; margin-top: clamp(1.45rem, 3vw, 2rem); color: color-mix(in srgb, var(--on-navy) 92%, transparent); font-size: clamp(.96rem, 1.35vw, 1.08rem); line-height: 1.8; }
+.hero-invite { max-width: 38rem; margin-top: 1.15rem; padding-left: .95rem; color: var(--on-navy); border-left: 2px solid var(--accent); font-family: var(--font-body); font-size: clamp(1.02rem, 1.45vw, 1.12rem); font-weight: 500; line-height: 1.55; }
+.hero-invite a { color: inherit; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 75%, transparent); text-decoration-thickness: 1.5px; text-underline-offset: .18em; transition: color var(--fast) ease, text-decoration-color var(--fast) ease; }
+.hero-invite a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 .hero-cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.8rem; }
 .social-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .65rem; }
 .social-links.hero-social { justify-content: flex-start; margin-top: 1.4rem; }
@@ -721,7 +723,7 @@ a { color: inherit; }
   .hero-image.mobile-first, .hero-image:not(.desktop-only) { display: grid; grid-row: 1; }
   .hero-text { grid-row: 2; margin-inline: auto; }
   .hero-name, .hero-cta, .social-links.hero-social { justify-content: center; }
-  .hero-description { margin-inline: auto; }
+  .hero-description, .hero-invite { margin-inline: auto; text-align: left; }
   .profile-frame { width: min(68vw, 19rem); min-width: 0; box-shadow: var(--shadow-lg); }
   .section { padding-block: clamp(4.1rem, 11vw, 5.4rem); }
   .contact-content { grid-template-columns: 1fr; }
