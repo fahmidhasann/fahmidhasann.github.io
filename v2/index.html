@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Terminal edition of Fahmid Hasan's portfolio — AI automation, applied machine learning, and visual storytelling.">
+    <title>fahmid@portfolio: ~</title>
+    <link rel="icon" type="image/jpeg" href="../assets/profile-hero-portrait.jpg">
+    <script>
+      (() => {
+        // Phosphor dark is the signature look here, so it wins unless the
+        // visitor has already picked a theme (shared with the classic site).
+        let savedTheme = null;
+        try { savedTheme = localStorage.getItem('theme'); } catch { savedTheme = null; }
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <a class="skip-link" href="#home">Skip to content</a>
+    <div class="crt" aria-hidden="true"></div>
+
+    <div class="term">
+      <!-- Fake window chrome -->
+      <header class="titlebar">
+        <span class="titlebar-buttons" aria-hidden="true">
+          <span class="tb-dot tb-close"></span>
+          <span class="tb-dot tb-min"></span>
+          <span class="tb-dot tb-max"></span>
+        </span>
+        <span class="titlebar-name" aria-hidden="true">fahmid@portfolio: ~<span class="caret"></span></span>
+        <nav class="titlebar-nav" aria-label="Main navigation">
+          <a href="#home" class="navlink" data-section="home">~/home</a>
+          <a href="#projects" class="navlink" data-section="projects">~/projects</a>
+          <a href="#creative" class="navlink" data-section="creative">~/creative</a>
+          <a href="#contact" class="navlink" data-section="contact">~/contact</a>
+        </nav>
+        <span class="titlebar-progress" id="scrollProgress" aria-hidden="true">[··············]   0%</span>
+        <button class="themebtn" id="themeToggle" type="button" aria-pressed="true">
+          <span aria-hidden="true">[</span><span class="themebtn-label" id="themeLabel">dark</span><span aria-hidden="true">]</span>
+          <span class="sr-only">Toggle colour theme</span>
+        </button>
+      </header>
+
+      <!-- Live command prompt -->
+      <div class="promptbar">
+        <label class="sr-only" for="prompt">Type a command</label>
+        <span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span>
+        <span class="promptfield">
+          <span class="ghost" aria-hidden="true"><span class="ghost-typed"></span><span class="ghost-rest"></span></span>
+          <input id="prompt" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="type 'help' and press enter" aria-describedby="promptHint">
+        </span>
+        <kbd class="promptkbd" aria-hidden="true">⌘K</kbd>
+      </div>
+      <p id="promptHint" class="sr-only">Optional command line. Everything it can do is also available through the links and buttons on the page.</p>
+      <div class="console" id="console" hidden>
+        <div class="console-lines" id="consoleLines" role="log" aria-live="polite" aria-label="Command output"></div>
+        <button class="console-clear" id="consoleClear" type="button">[ clear ]</button>
+      </div>
+
+      <main class="term-body">
+        <!-- ================= HOME ================= -->
+        <section id="home" class="block" aria-labelledby="home-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> whoami</p>
+
+          <div class="out hero">
+            <div class="hero-main">
+              <h1 id="home-heading" class="hero-name">
+                <span class="sr-only">Fahmid Hasan</span>
+                <pre class="banner" aria-hidden="true">█████   ███   █   █  █   █  █████  ████ 
+█      █   █  █   █  ██ ██    █    █   █
+████   █████  █████  █ █ █    █    █   █
+█      █   █  █   █  █   █    █    █   █
+█      █   █  █   █  █   █  █████  ████ 
+
+█   █   ███   █████   ███   █   █
+█   █  █   █  █      █   █  ██  █
+█████  █████  █████  █████  █ █ █
+█   █  █   █      █  █   █  █  ██
+█   █  █   █  █████  █   █  █   █</pre>
+                <span class="hero-name-fallback" aria-hidden="true">FAHMID HASAN</span>
+              </h1>
+
+              <dl class="kv" aria-label="Profile summary">
+                <div class="kv-row"><dt>role</dt><dd>builder · AI automation · visual storytelling</dd></div>
+                <div class="kv-row"><dt>focus</dt><dd>AI agents, RAG systems, workflow automation</dd></div>
+                <div class="kv-row"><dt>also</dt><dd>videography, photography, short films</dd></div>
+                <div class="kv-row"><dt>status</dt><dd><span class="ok">available for client work</span></dd></div>
+              </dl>
+
+              <p class="cmd cmd-inline"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> cat about.txt</p>
+              <p class="prose">In the age of rapid AI advancement, I consider myself a humble student driven by deep curiosity and self-directed learning, despite coming from a completely non-technical background. I love building and doing creative work.</p>
+              <p class="prose">If you want to implement AI solutions into your business or day-to-day work to boost productivity and save time, <a href="#contact" class="tlink">feel free to reach out</a>.</p>
+
+              <div class="actions">
+                <a href="#projects" class="tbtn tbtn-primary">./view-projects</a>
+                <a href="#contact" class="tbtn">./start-a-project</a>
+              </div>
+
+              <ul class="sociallist" aria-label="Social profiles">
+                <li><a href="https://www.linkedin.com/in/fahmid-hasan-taohid/" target="_blank" rel="noopener noreferrer" class="tlink">[linkedin]</a></li>
+                <li><a href="https://github.com/fahmidhasann" target="_blank" rel="noopener noreferrer" class="tlink">[github]</a></li>
+                <li><a href="https://www.instagram.com/fahmid_hasann/" target="_blank" rel="noopener noreferrer" class="tlink">[instagram]</a></li>
+                <li><a href="https://www.facebook.com/fahmiddhasann" target="_blank" rel="noopener noreferrer" class="tlink">[facebook]</a></li>
+              </ul>
+            </div>
+
+            <figure class="asciiframe hero-portrait">
+              <div class="asciiframe-media">
+                <img src="../assets/profile-hero-portrait.jpg" alt="Fahmid Hasan" width="2268" height="3024" fetchpriority="high" decoding="async">
+              </div>
+              <figcaption class="asciiframe-cap">└─ profile-hero-portrait.jpg</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- ================= PROJECTS ================= -->
+        <section id="projects" class="block" aria-labelledby="projects-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls -la ~/projects <span class="cmd-flag" id="activeFlagEcho">--filter=all</span></p>
+
+          <div class="out">
+            <h2 id="projects-heading" class="blocktitle">Projects &amp; Research</h2>
+
+            <div class="filters" role="group" aria-label="Filter projects">
+              <button class="flag active" data-filter="all" aria-pressed="true" aria-controls="projectsList">--all</button>
+              <button class="flag" data-filter="ai" aria-pressed="false" aria-controls="projectsList">--ai</button>
+              <button class="flag" data-filter="automation" aria-pressed="false" aria-controls="projectsList">--automation</button>
+              <button class="flag" data-filter="data" aria-pressed="false" aria-controls="projectsList">--data</button>
+            </div>
+            <p id="projectsFilterStatus" class="sr-only" role="status" aria-live="polite"></p>
+
+            <p class="lscount" aria-hidden="true">total <span id="projectsTotal">7</span></p>
+
+            <div class="carousel" data-carousel>
+              <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous projects" disabled>‹</button>
+              <div class="carousel-viewport">
+                <div class="projlist carousel-track" id="projectsList" role="region" aria-roledescription="carousel" aria-label="Projects" tabindex="0">
+                  <!-- 1 -->
+                  <article class="proj reveal" id="project-cold-outreach" data-category="automation" data-slug="cold-outreach" data-video="../assets/Project/Al-Powered Lead Generation &amp; Cold Outreach.mp4" data-title="AI-Powered Cold Outreach Automation">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  automation  <span class="proj-file">cold-outreach.md</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/Project/cold-outreach-thumbnail.jpeg" alt="AI-Powered Cold Outreach Automation" width="2832" height="1262" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap">└─ cold-outreach-thumbnail.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">AI-Powered Cold Outreach Automation</h3>
+                      <p class="proj-desc">An automated B2B outreach pipeline that scrapes lead websites, uses Groq LLM to generate personalized cold emails, sends them via Gmail, and updates lead status in Google Sheets — fully hands-free.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>n8n</li><li>Google Sheets</li><li>Groq (LLaMA 3.3)</li><li>Gmail</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <button class="tbtn btn-demo" type="button" aria-label="Watch demo for AI-Powered Cold Outreach Automation">./watch-demo</button>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- 2 -->
+                  <article class="proj reveal" id="project-damkoto-python" data-category="ai" data-slug="damkoto-python">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">dam-koto-bot.py</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/Project/damkoto-python-thumbnail.png" alt="Dam Koto Bot — Python RAG Assistant" width="1376" height="768" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap">└─ damkoto-python-thumbnail.png</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">Dam Koto Bot — Python RAG Assistant</h3>
+                      <p class="proj-desc">A modular Python-based AI smartphone price assistant and customer support chatbot for Bangladeshi e-commerce. Features natural language query parsing (Bangla, Banglish &amp; English), SQLite product catalog search, ChromaDB vector RAG for policy FAQs, FastAPI REST API, and OpenRouter LLM orchestration.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>Python</li><li>FastAPI</li><li>OpenRouter / Gemma</li><li>ChromaDB RAG</li><li>SQLAlchemy</li><li>Docker</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://huggingface.co/spaces/fahmidhasan/dam-koto-bot" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- 3 -->
+                  <article class="proj reveal" id="project-chashi-bondhu" data-category="ai" data-slug="chashi-bondhu">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">chashi-bondhu.tsx</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/Project/chashi-bondhu.jpeg" alt="Chashi Bondhu - Crop Disease Identifier" width="1280" height="853" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap">└─ chashi-bondhu.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">Chashi Bondhu — Crop Disease Identifier</h3>
+                      <p class="proj-desc">An AI-powered tool that uses Google's Gemini AI to analyze images of crops and identify diseases, providing treatment recommendations in both Bengali and English.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>React</li><li>TypeScript</li><li>Gemini AI</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://github.com/fahmidhasann/Chashi-Bondhu" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
+                        <a href="https://huggingface.co/spaces/fahmidhasan/chashi-bondh" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- 4 -->
+                  <article class="proj reveal" id="project-damkoto" data-category="automation" data-slug="damkoto-bot" data-video="../assets/Project/Dam koto bot.mp4" data-title="DamKoto Bot — Multilingual AI Customer Support">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  automation  <span class="proj-file">damkoto-bot.json</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/Project/damkoto-bot-thumbnail.jpeg" alt="DamKoto Bot — Multilingual AI Customer Support" width="2838" height="1482" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap">└─ damkoto-bot-thumbnail.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">DamKoto Bot — Multilingual AI Support</h3>
+                      <p class="proj-desc">An AI-powered customer support automation that responds fluently in Bangla, Banglish, or English by detecting and matching the user's language. Searches a live product catalog by brand, price range, or model, checks inventory status, and answers questions about delivery, payment, and return policies using a vector-based knowledge base.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>n8n</li><li>Google Gemini</li><li>AI Agent</li><li>Vector Store</li><li>Bangla NLP</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <button class="tbtn btn-demo" type="button" aria-label="Watch demo for DamKoto Bot">./watch-demo</button>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- 5 -->
+                  <article class="proj reveal" id="project-plantdoc" data-category="ai" data-slug="plantdoc">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">plantdoc-rag.py</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/Project/plantdoc-chatbot.jpeg" alt="PlantDoc RAG ChatBot" width="1280" height="853" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap">└─ plantdoc-chatbot.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">PlantDoc RAG ChatBot</h3>
+                      <p class="proj-desc">An AI-powered document Q&amp;A chatbot using Retrieval-Augmented Generation with specialized agricultural models.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>Python</li><li>Streamlit</li><li>ChromaDB</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
+                        <a href="https://huggingface.co/spaces/fahmidhasan/plant-pathology-expert" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- 6 -->
+                  <article class="proj reveal" id="project-vocabflow" data-category="ai" data-slug="vocabflow">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">vocabflow.ts</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/Project/vocabflow-thumbnail.png" alt="VocabFlow - AI-Powered Vocabulary Learning Platform" width="512" height="512" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap">└─ vocabflow-thumbnail.png</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">VocabFlow — AI Vocabulary Learning</h3>
+                      <p class="proj-desc">A cloud-connected vocabulary learning platform combining the SM-2 spaced repetition algorithm with Groq LLM-powered semantic usage maps. Deployed as a Next.js PWA and native iOS/Android app via Capacitor.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>Next.js 14</li><li>TypeScript</li><li>Groq LLM</li><li>Supabase</li><li>Capacitor</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://vocabflow-alpha.vercel.app/words" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                      </div>
+                    </div>
+                  </article>
+
+                  <!-- 7 -->
+                  <article class="proj reveal" id="project-choropleth" data-category="data" data-slug="bd-choropleth">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  data        <span class="proj-file">bd-choropleth.js</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/Project/bd-choropleth-map.jpeg" alt="Interactive Bangladesh Choropleth Map" width="1280" height="853" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap">└─ bd-choropleth-map.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">Interactive Bangladesh Choropleth Map</h3>
+                      <p class="proj-desc">An interactive web-based choropleth map visualization tool for exploring educational statistics across all 64 districts of Bangladesh.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>Leaflet.js</li><li>D3.js</li><li>JavaScript</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://github.com/fahmidhasann/Interactive-BD-Choropleth" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
+                        <a href="https://fahmidhasann.github.io/Interactive-BD-Choropleth/" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next projects">›</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CREATIVE ================= -->
+        <section id="creative" class="block" aria-labelledby="creative-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls ~/creative</p>
+
+          <div class="out">
+            <h2 id="creative-heading" class="blocktitle">Creative Work</h2>
+            <p class="prose dim">Personal films and client videography — storytelling through motion, mood, and frame.</p>
+
+            <div class="subblock" aria-labelledby="personal-heading">
+              <p class="cmd cmd-inline"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls ~/creative/personal</p>
+              <h3 id="personal-heading" class="subtitle">Personal Projects</h3>
+
+              <div class="filmlist">
+                <a href="https://www.facebook.com/watch/?v=769200925475489" target="_blank" rel="noopener noreferrer" class="film reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media wide">
+                      <img src="../assets/project_1.jpg" alt="BAU - The Way You've Never Seen It" width="1280" height="720" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ bau-showcase.mp4</figcaption>
+                  </figure>
+                  <div class="film-text">
+                    <h4 class="film-title">BAU - The Way You've Never Seen It</h4>
+                    <p class="film-desc">Bangladesh Agricultural University showcased like never before.</p>
+                  </div>
+                </a>
+
+                <a href="https://www.facebook.com/fahmiddhasann/videos/2089556841420087" target="_blank" rel="noopener noreferrer" class="film reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media wide">
+                      <img src="../assets/project_2.jpg" alt="Bivrom - A Short Film" width="1179" height="657" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ bivrom.mp4</figcaption>
+                  </figure>
+                  <div class="film-text">
+                    <h4 class="film-title">"Bivrom" - A Short Film</h4>
+                    <p class="film-desc">A cinematic exploration of life's complexities and choices.</p>
+                  </div>
+                </a>
+
+                <a href="https://www.facebook.com/fahmiddhasann/videos/1470028527301962" target="_blank" rel="noopener noreferrer" class="film reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media wide">
+                      <img src="../assets/project_3.jpg" alt="Algorithm of Life" width="1920" height="1080" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ algorithm-of-life.mp4</figcaption>
+                  </figure>
+                  <div class="film-text">
+                    <h4 class="film-title">Algorithm of Life</h4>
+                    <p class="film-desc">Your choices define your life's algorithm.</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="subblock" aria-labelledby="client-heading">
+              <p class="cmd cmd-inline"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls ~/creative/client</p>
+              <h3 id="client-heading" class="subtitle">Client Projects</h3>
+
+              <div class="reellist">
+                <a href="https://www.facebook.com/reel/1042219817454072" target="_blank" rel="noopener noreferrer" class="reel reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media tall">
+                      <img src="../assets/client/reel_1042219817454072.jpg" alt="Built Different. Move Different." width="432" height="768" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ reel_01.mp4</figcaption>
+                  </figure>
+                  <p class="reel-client">Sajjad Hossain Snigdho</p>
+                  <h4 class="reel-title">Built Different. Move Different.</h4>
+                </a>
+
+                <a href="https://www.facebook.com/reel/438344139340070" target="_blank" rel="noopener noreferrer" class="reel reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media tall">
+                      <img src="../assets/client/reel_438344139340070.jpg" alt="One Run at a Time" width="540" height="960" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ reel_02.mp4</figcaption>
+                  </figure>
+                  <p class="reel-client">Sajjad Hossain Snigdho</p>
+                  <h4 class="reel-title">One Run at a Time</h4>
+                </a>
+
+                <a href="https://www.facebook.com/reel/624648880582291" target="_blank" rel="noopener noreferrer" class="reel reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media tall">
+                      <img src="../assets/client/reel_624648880582291.jpg" alt="Before You Run to Lose Weight" width="432" height="768" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ reel_03.mp4</figcaption>
+                  </figure>
+                  <p class="reel-client">Sajjad Hossain Snigdho</p>
+                  <h4 class="reel-title">Before You Run to Lose Weight</h4>
+                </a>
+
+                <a href="https://www.facebook.com/reel/1245324753666981" target="_blank" rel="noopener noreferrer" class="reel reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media tall">
+                      <img src="../assets/client/reel_1245324753666981.jpg" alt="For New Runners" width="540" height="960" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ reel_04.mp4</figcaption>
+                  </figure>
+                  <p class="reel-client">Sajjad Hossain Snigdho</p>
+                  <h4 class="reel-title">For New Runners</h4>
+                </a>
+
+                <a href="https://www.facebook.com/reel/1470923473890560" target="_blank" rel="noopener noreferrer" class="reel reveal">
+                  <figure class="asciiframe">
+                    <div class="asciiframe-media tall">
+                      <img src="../assets/client/reel_1470923473890560.jpg" alt="Heart Rate Zones" width="540" height="960" loading="lazy" decoding="async">
+                      <span class="playmark" aria-hidden="true">▶</span>
+                    </div>
+                    <figcaption class="asciiframe-cap">└─ reel_05.mp4</figcaption>
+                  </figure>
+                  <p class="reel-client">Sajjad Hossain Snigdho</p>
+                  <h4 class="reel-title">Heart Rate Zones</h4>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= CONTACT ================= -->
+        <section id="contact" class="block" aria-labelledby="contact-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> mail -s "new project" fahmid</p>
+
+          <div class="out contact">
+            <div class="contact-main">
+              <h2 id="contact-heading" class="blocktitle">Let's Connect</h2>
+              <p class="prose dim">Tell me what you want to build, automate, or improve. I usually work best on focused scopes with clear business outcomes.</p>
+
+              <form id="contactForm" class="tform" aria-busy="false">
+                <input type="hidden" name="access_key" value="756aa2fa-77ba-4671-9ba7-2161b61c8c11">
+                <input type="hidden" name="subject" value="New message from portfolio">
+                <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
+
+                <div class="tform-row">
+                  <div class="tfield">
+                    <label for="contact-name">name<span class="req" aria-hidden="true">*</span></label>
+                    <input type="text" id="contact-name" name="name" placeholder="your name" required>
+                  </div>
+                  <div class="tfield">
+                    <label for="contact-email">email<span class="req" aria-hidden="true">*</span></label>
+                    <input type="email" id="contact-email" name="email" placeholder="you@company.com" required>
+                  </div>
+                </div>
+
+                <div class="tfield">
+                  <label for="contact-company">company</label>
+                  <input type="text" id="contact-company" name="company" placeholder="your company">
+                </div>
+
+                <div class="tfield">
+                  <label for="contact-message">message<span class="req" aria-hidden="true">*</span></label>
+                  <textarea id="contact-message" name="message" rows="6" placeholder="tell me about your project..." required></textarea>
+                </div>
+
+                <button type="submit" class="tbtn tbtn-primary tbtn-submit contact-submit">
+                  <span class="btn-text">./send-message</span>
+                  <span class="btn-loading" hidden>sending<span class="caret" aria-hidden="true"></span></span>
+                </button>
+
+                <p id="formResult" class="formresult" role="status" aria-live="polite"></p>
+              </form>
+            </div>
+
+            <aside class="contact-side" aria-label="Direct contact">
+              <p class="cmd cmd-inline"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> cat contact.txt</p>
+              <dl class="kv">
+                <div class="kv-row"><dt>email</dt><dd><a href="mailto:fahmidhasantaohid@gmail.com" class="tlink">fahmidhasantaohid@gmail.com</a></dd></div>
+                <div class="kv-row"><dt>whatsapp</dt><dd><a href="https://wa.me/8801732021592" target="_blank" rel="noopener noreferrer" class="tlink">+880 1732 021592</a></dd></div>
+                <div class="kv-row"><dt>reply</dt><dd>usually within 24h</dd></div>
+              </dl>
+
+              <ul class="sociallist" aria-label="Social profiles">
+                <li><a href="https://www.linkedin.com/in/fahmid-hasan-taohid/" target="_blank" rel="noopener noreferrer" class="tlink">[linkedin]</a></li>
+                <li><a href="https://github.com/fahmidhasann" target="_blank" rel="noopener noreferrer" class="tlink">[github]</a></li>
+                <li><a href="https://www.instagram.com/fahmid_hasann/" target="_blank" rel="noopener noreferrer" class="tlink">[instagram]</a></li>
+                <li><a href="https://www.facebook.com/fahmiddhasann" target="_blank" rel="noopener noreferrer" class="tlink">[facebook]</a></li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="termfooter" role="contentinfo">
+        <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> uptime</p>
+        <div class="out footer-out">
+          <p>Fahmid Hasan Taohid — <span class="ok">available for client work</span></p>
+          <p class="dim">© 2026 Fahmid Hasan. All rights reserved.</p>
+          <p><a href="../" class="tlink">← switch to the classic design</a></p>
+        </div>
+        <p class="cmd footer-end"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> <span class="caret"></span></p>
+      </footer>
+    </div>
+
+    <!-- Video demo window -->
+    <div class="vp-backdrop" id="videoPopupBackdrop" hidden></div>
+    <div class="vp" id="videoPopup" role="dialog" aria-modal="true" aria-labelledby="videoPopupTitle" hidden>
+      <div class="vp-bar">
+        <span class="vp-badge" aria-hidden="true">▶ playing</span>
+        <h2 class="vp-title" id="videoPopupTitle"></h2>
+        <button class="vp-close" id="videoPopupClose" type="button" aria-label="Close demo">[ x ]</button>
+      </div>
+      <video id="videoPopupPlayer" muted loop playsinline preload="none" controls></video>
+    </div>
+
+    <script defer src="script.js"></script>
+  </body>
+</html>
