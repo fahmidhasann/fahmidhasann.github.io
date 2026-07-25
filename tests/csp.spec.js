@@ -21,10 +21,19 @@ const policy = vercelConfig.headers
   .flatMap(entry => entry.headers)
   .find(header => header.key === 'Content-Security-Policy')?.value;
 
-/** Every inline <script> in a page, in document order. */
+/**
+ * Every executable inline <script> in a page. Data blocks such as
+ * type="application/ld+json" are skipped: browsers never run them, so
+ * script-src does not apply to them.
+ */
 function inlineScripts(htmlPath) {
   const html = readFileSync(join(repoRoot, htmlPath), 'utf8');
-  return [...html.matchAll(/<script(?![^>]*\ssrc=)[^>]*>([\s\S]*?)<\/script>/g)].map(match => match[1]);
+  return [...html.matchAll(/<script(?![^>]*\ssrc=)([^>]*)>([\s\S]*?)<\/script>/g)]
+    .filter(([, attributes]) => {
+      const type = /\stype\s*=\s*["']([^"']+)["']/.exec(attributes)?.[1];
+      return !type || /^(module|text\/javascript|application\/javascript)$/i.test(type);
+    })
+    .map(match => match[2]);
 }
 
 function cspHash(source) {
