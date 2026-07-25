@@ -1,28 +1,51 @@
 # AGENTS.md
 
-This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
+This file is the single source of truth for coding agents working in this repository. `CLAUDE.md` points here.
 
 ## Overview
 
-This is a static portfolio website with no build process. It's a single-page application using plain HTML, CSS, and JavaScript — no frameworks, no package manager, no compilation step.
+This is a static portfolio website with no build process — plain HTML, CSS, and JavaScript, no frameworks and no compilation step. It ships two editions of the same content:
+
+- **Classic** at `/` — `index.html`, `styles.css`, `script.js`
+- **Terminal** at `/v2/` — `v2/index.html`, `v2/styles.css`, `v2/script.js`
+
+Visitors choose an edition on first visit; the choice is stored in `localStorage` under `portfolioEdition` and both editions redirect accordingly.
 
 ## Development
 
-**To preview locally**, open `index.html` directly in a browser or use any static file server:
+**To preview locally**, use any static file server:
 ```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
+npm start   # or: python3 -m http.server 4173
 ```
+
+**Quality gates.** npm is used for development tooling only and is kept out of the deployment by `.vercelignore`:
+```bash
+npm install            # once
+npm run test:install   # once, downloads Chromium for Playwright
+npm run lint           # ESLint + Stylelint + html-validate
+npm test               # Playwright smoke tests for both editions
+npm run screenshots    # optional: full-page captures for eyeballing a visual change
+```
+Both commands run in CI (`.github/workflows/quality.yml`). Run them before committing. When you change behaviour, add or update a test in `tests/smoke.spec.js`.
+
+Two things about the terminal edition's tests: its boot animation plays once per session and covers the page, so the `visit()` helper seeds `sessionStorage` to skip it — pass `{ boot: true }` when you actually want to test it. `npm run screenshots` scrolls the whole page before capturing, because cards animate in on scroll and would otherwise come out blank.
 
 **Deployment**: Pushing to `main` on GitHub triggers Vercel deployment automatically. Security headers and asset caching are configured in `vercel.json`.
 
 ## Architecture
 
-All site logic lives in three files:
+Each edition is three files:
 
 - [index.html](index.html) — Single-page markup with all sections (hero, projects, videos, contact, command palette)
 - [styles.css](styles.css) — All styles using CSS custom properties for theming
-- [script.js](script.js) — All interactivity, initialized via a sequence of `initialize*()` functions called on `DOMContentLoaded`
+- [script.js](script.js) — All interactivity, wrapped in an IIFE and initialized via a sequence of `initialize*()` functions called on `DOMContentLoaded`. Each initializer runs inside a `runInit()` wrapper so one failure cannot take down the rest of the page. `v2/script.js` follows the same shape with shorter `init*()` names and a `boot()` wrapper.
+
+Patterns both scripts share, and that new code should follow:
+
+- **Scroll and resize work goes through `onScroll()` / `onResize()`**, not a fresh `addEventListener`. They batch every subscriber into one animation frame.
+- **Storage goes through the preference helpers** (`readPreference`/`writePreference`, or `readStored`/`writeStored` in v2). Touching `localStorage` directly throws in some privacy modes.
+- **Anything that covers the page calls `setPageInert()`** and pairs it with `clearPageInert()` on the way out. A Tab trap alone still leaves the background reachable by pointer and screen reader.
+- **Per-element state lives in a `WeakMap`**, not as a custom property on the DOM node — see `carouselControllers`.
 
 **External dependencies** are loaded via CDN (no local install needed):
 - `particles.js` — hero background animation
@@ -30,9 +53,19 @@ All site logic lives in three files:
 - `Font Awesome` — icons
 - `Google Fonts` — Cormorant Garamond (headings), Inter (body)
 
+CDN `<script>` and `<link rel="stylesheet">` tags carry `integrity` + `crossorigin` attributes. **If you change a CDN URL or version, you must regenerate its Subresource Integrity hash**, otherwise the browser will refuse to load it:
+```bash
+curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
+```
+The `Content-Security-Policy` in `vercel.json` also allowlists the CDN hosts — add any new host there too.
+
+**Inline scripts are allowlisted by hash**, not by `'unsafe-inline'`. If you edit the inline `<script>` in either `index.html` or `v2/index.html`, its `sha256-` entry in `script-src` must be regenerated. `tests/csp.spec.js` fails with the correct replacement hash in the message, and also loads both editions under the real policy to catch violations.
+
 ## Theming
 
-CSS variables are defined at the `:root` level and overridden via `[data-theme="dark"]` on the `<html>` element. Theme preference is persisted in `localStorage`. When adding new components, always use the existing CSS variables rather than hardcoded colors.
+CSS variables are defined at the `:root` level and overridden via `[data-theme="dark"]` on the `<html>` element (the terminal edition inverts this: dark is its default and `[data-theme="light"]` is the override). Theme preference is shared between the editions under the `theme` key in `localStorage`.
+
+When adding new components, always use the existing CSS variables rather than hardcoded colors — including the `--z-*` stacking scale near the top of each stylesheet instead of ad-hoc `z-index` numbers.
 
 ## Project Filtering
 

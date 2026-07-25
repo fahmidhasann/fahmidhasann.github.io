@@ -1,0 +1,7 @@
+# The terminal edition at /v2/ is an alternate presentation of the same content.
+# It is kept out of search results by its own noindex meta tag rather than by a
+# Disallow rule here, because a crawler has to fetch the page to see that tag.
+User-agent: *
+Allow: /
+
+Sitemap: https://fahmidhasann.github.io/sitemap.xml

@@ -1,0 +1,42 @@
+{
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": ["node_modules/**", "graphify-out/**"],
+  "rules": {
+    "no-descending-specificity": null,
+    "alpha-value-notation": null,
+    "color-function-notation": null,
+    "custom-property-empty-line-before": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "comment-empty-line-before": null,
+
+    "declaration-block-single-line-max-declarations": null,
+    "color-function-alias-notation": null,
+    "value-keyword-case": null,
+
+    "media-feature-range-notation": "prefix",
+    "selector-id-pattern": "^[a-zA-Z][a-zA-Z0-9-]*$",
+    "selector-class-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": [
+          "backdrop-filter",
+          "-webkit-backdrop-filter",
+          "box-orient",
+          "line-clamp",
+          "text-size-adjust",
+          "-webkit-text-size-adjust"
+        ]
+      }
+    ],
+
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": ["overflow"]
+      }
+    ]
+  }
+}
