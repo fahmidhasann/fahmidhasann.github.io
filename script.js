@@ -932,7 +932,8 @@
     const { popup, backdrop, player, title } = videoPopupRefs;
     const src = card.dataset.video;
     if (!popup || !backdrop || !player || !src) return;
-    if (title) title.textContent = card.dataset.title || '';
+    // The dialog is labelled by this heading, so it must never be empty.
+    if (title) title.textContent = card.dataset.title || card.querySelector('.project-title')?.textContent || 'Project demo';
     player.src = src;
     player.load();
     backdrop.hidden = false;
