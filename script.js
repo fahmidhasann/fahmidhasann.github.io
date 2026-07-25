@@ -7,6 +7,8 @@
 
   /** How long a filtered-out card fades before it is pulled out of the layout. */
   const CARD_FADE_MS = 280;
+  /** Slack on top of the fade, for the browser to settle the new track width. */
+  const FILTER_RELAYOUT_MS = 20;
   /** Last-resort reveal of the hero if an enhancer throws before it can run. */
   const HERO_FAILSAFE_MS = 2000;
   /** Stagger between hero name characters, then between the blocks below it. */
@@ -647,6 +649,10 @@
      Project filtering and disclosure
      -------------------------------------------------------------------------- */
 
+  // Keyed by the carousel shell so filtering can refresh a carousel it does not
+  // own, without hanging custom properties off the DOM node.
+  const carouselControllers = new WeakMap();
+
   function initializeCarousels() {
     const carousels = Array.from(document.querySelectorAll('[data-carousel]'));
     if (!carousels.length) return;
@@ -709,7 +715,9 @@
         new ResizeObserver(scheduleUpdate).observe(track);
       }
 
-      carousel.__portfolioUpdateCarousel = () => updateChrome(carousel, track, prevBtn, nextBtn);
+      carouselControllers.set(carousel, {
+        update: () => updateChrome(carousel, track, prevBtn, nextBtn)
+      });
 
       updateChrome(carousel, track, prevBtn, nextBtn);
     });
@@ -736,19 +744,16 @@
       if (status) {
         status.textContent = `${matching.length} ${matching.length === 1 ? 'project' : 'projects'} shown`;
       }
-      if (projectsCarousel && typeof projectsCarousel.__portfolioUpdateCarousel === 'function') {
+      const carousel = projectsCarousel && carouselControllers.get(projectsCarousel);
+      if (carousel) {
         if (projectsGrid) {
           projectsGrid.scrollTo({ left: 0, behavior: 'auto' });
           projectsGrid.scrollLeft = 0;
         }
-        projectsCarousel.__portfolioUpdateCarousel();
-        if (!instant) {
-          window.setTimeout(() => {
-            if (typeof projectsCarousel.__portfolioUpdateCarousel === 'function') {
-              projectsCarousel.__portfolioUpdateCarousel();
-            }
-          }, CARD_FADE_MS + 20);
-        }
+        carousel.update();
+        // Cards fade out before they stop taking up space, so measure again once
+        // the transition has finished and the track has its final width.
+        if (!instant) window.setTimeout(carousel.update, CARD_FADE_MS + FILTER_RELAYOUT_MS);
       } else if (projectsGrid) {
         projectsGrid.scrollLeft = 0;
       }
