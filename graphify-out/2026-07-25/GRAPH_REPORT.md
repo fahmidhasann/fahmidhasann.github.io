@@ -1,16 +1,16 @@
 # Graph Report - fahmidhasann.github.io  (2026-07-25)
 
 ## Corpus Check
-- 13 files · ~243,552 words
+- 13 files · ~243,428 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 224 nodes · 307 edges · 25 communities (16 shown, 9 thin omitted)
+- 222 nodes · 305 edges · 25 communities (16 shown, 9 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1e42f441`
+- Built from commit: `992d740d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -141,9 +141,9 @@ _Questions this graph is uniquely positioned to answer:_
 - **What is the exact relationship between `AI-Powered Lead Generation & Cold Outreach Transcript` and `Dam koto bot`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
 - **Why does `Freelance Business Automation` connect `Productivity & Meeting Tools` to `AI Freelancer Landscape`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.044) - this node is a cross-community bridge._
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Why does `AI Agent` connect `AI Freelancer Landscape` to `Productivity & Meeting Tools`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.031) - this node is a cross-community bridge._
+  _High betweenness centrality (0.032) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `initPrompt()` (e.g. with `clearGhost()` and `updateGhost()`) actually correct?**
   _`initPrompt()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `@playwright/mcp`, `prefersReducedMotion`, `modalState` to the rest of the system?**

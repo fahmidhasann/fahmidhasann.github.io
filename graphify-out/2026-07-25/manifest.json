@@ -1,7 +1,7 @@
 {
   "script.js": {
-    "mtime": 1784959106.3391318,
-    "ast_hash": "f99e93ba825d11882159ef07a632b1dd",
+    "mtime": 1784646016.8221776,
+    "ast_hash": "d5f92b2c2c2262379245b01903d80535",
     "semantic_hash": ""
   },
   "CLAUDE.md": {
@@ -110,8 +110,8 @@
     "semantic_hash": "698035f601718c9eb4f2cc1e23fa8463"
   },
   "index.html": {
-    "mtime": 1784959096.7535985,
-    "ast_hash": "a65e4e54761ad2b7da7fa42b335faa41",
+    "mtime": 1784954968.2834249,
+    "ast_hash": "3443e2e716ab9bed07fe8579ea7e6687",
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
@@ -170,13 +170,13 @@
     "semantic_hash": ""
   },
   "v2/script.js": {
-    "mtime": 1784959117.5448072,
-    "ast_hash": "309abcdae160290f766b3486f3eb967c",
+    "mtime": 1784958318.953307,
+    "ast_hash": "2053215a27ebe254554207f3373fc6bf",
     "semantic_hash": ""
   },
   "v2/index.html": {
-    "mtime": 1784959111.0692308,
-    "ast_hash": "44235e92872360ec866a7e9586cdab21",
+    "mtime": 1784958688.6960502,
+    "ast_hash": "6a604600b38e61ddc8261b08cce67a75",
     "semantic_hash": ""
   }
 }
