@@ -1,0 +1,30 @@
+# Keep the Vercel deployment to the static site only.
+#
+# Excluding package.json and the lockfile also keeps Vercel's install step from
+# running: the site has no build process, so the files below are uploaded and
+# served exactly as they are in the repository.
+
+# Dev tooling
+package.json
+package-lock.json
+node_modules
+eslint.config.js
+.stylelintrc.json
+.htmlvalidate.json
+playwright.config.js
+tests
+test-results
+playwright-report
+
+# Repo tooling and notes
+.github
+.claude
+.codex
+.firecrawl
+.mcp.json
+.editorconfig
+graphify-out
+tasks
+AGENTS.md
+CLAUDE.md
+README.md

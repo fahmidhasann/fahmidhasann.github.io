@@ -1,3 +1,19 @@
+# macOS
 .DS_Store
+._*
+
+# Editors
+.idea/
+*.swp
+
+# Deployment
 .vercel
 .env*.local
+
+# Dev tooling (this site ships as plain static files; npm is only for linting/tests)
+node_modules/
+npm-debug.log*
+test-results/
+playwright-report/
+blob-report/
+.playwright/

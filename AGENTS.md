@@ -1,28 +1,41 @@
 # AGENTS.md
 
-This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
+This file is the single source of truth for coding agents working in this repository. `CLAUDE.md` points here.
 
 ## Overview
 
-This is a static portfolio website with no build process. It's a single-page application using plain HTML, CSS, and JavaScript — no frameworks, no package manager, no compilation step.
+This is a static portfolio website with no build process — plain HTML, CSS, and JavaScript, no frameworks and no compilation step. It ships two editions of the same content:
+
+- **Classic** at `/` — `index.html`, `styles.css`, `script.js`
+- **Terminal** at `/v2/` — `v2/index.html`, `v2/styles.css`, `v2/script.js`
+
+Visitors choose an edition on first visit; the choice is stored in `localStorage` under `portfolioEdition` and both editions redirect accordingly.
 
 ## Development
 
-**To preview locally**, open `index.html` directly in a browser or use any static file server:
+**To preview locally**, use any static file server:
 ```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
+npm start   # or: python3 -m http.server 4173
 ```
+
+**Quality gates.** npm is used for development tooling only and is kept out of the deployment by `.vercelignore`:
+```bash
+npm install            # once
+npm run test:install   # once, downloads Chromium for Playwright
+npm run lint           # ESLint + Stylelint + html-validate
+npm test               # Playwright smoke tests for both editions
+```
+Both commands run in CI (`.github/workflows/ci.yml`). Run them before committing. When you change behaviour, add or update a test in `tests/smoke.spec.js`.
 
 **Deployment**: Pushing to `main` on GitHub triggers Vercel deployment automatically. Security headers and asset caching are configured in `vercel.json`.
 
 ## Architecture
 
-All site logic lives in three files:
+Each edition is three files:
 
 - [index.html](index.html) — Single-page markup with all sections (hero, projects, videos, contact, command palette)
 - [styles.css](styles.css) — All styles using CSS custom properties for theming
-- [script.js](script.js) — All interactivity, initialized via a sequence of `initialize*()` functions called on `DOMContentLoaded`
+- [script.js](script.js) — All interactivity, wrapped in an IIFE and initialized via a sequence of `initialize*()` functions called on `DOMContentLoaded`. Each initializer runs inside a `runInit()` wrapper so one failure cannot take down the rest of the page.
 
 **External dependencies** are loaded via CDN (no local install needed):
 - `particles.js` — hero background animation
@@ -30,9 +43,15 @@ All site logic lives in three files:
 - `Font Awesome` — icons
 - `Google Fonts` — Cormorant Garamond (headings), Inter (body)
 
+CDN `<script>` and `<link rel="stylesheet">` tags carry `integrity` + `crossorigin` attributes. **If you change a CDN URL or version, you must regenerate its Subresource Integrity hash**, otherwise the browser will refuse to load it:
+```bash
+curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
+```
+The `Content-Security-Policy` in `vercel.json` also allowlists the CDN hosts — add any new host there too.
+
 ## Theming
 
-CSS variables are defined at the `:root` level and overridden via `[data-theme="dark"]` on the `<html>` element. Theme preference is persisted in `localStorage`. When adding new components, always use the existing CSS variables rather than hardcoded colors.
+CSS variables are defined at the `:root` level and overridden via `[data-theme="dark"]` on the `<html>` element. Theme preference is persisted in `localStorage`. When adding new components, always use the existing CSS variables rather than hardcoded colors — including the `--z-*` stacking scale near the top of `styles.css` instead of ad-hoc `z-index` numbers.
 
 ## Project Filtering
 
