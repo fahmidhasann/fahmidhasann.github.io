@@ -1,16 +1,16 @@
 # Graph Report - fahmidhasann.github.io  (2026-07-25)
 
 ## Corpus Check
-- 13 files · ~243,647 words
+- 13 files · ~243,966 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 226 nodes · 311 edges · 25 communities (16 shown, 9 thin omitted)
+- 231 nodes · 325 edges · 25 communities (16 shown, 9 thin omitted)
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.62)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `696bdd80`
+- Built from commit: `c4d860f2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,9 +46,9 @@
 2. `Project Management Automation` - 11 edges
 3. `motionReduced()` - 9 edges
 4. `initPrompt()` - 9 edges
-5. `Freelance Business Automation` - 8 edges
-6. `openDialog()` - 7 edges
-7. `closeDialog()` - 7 edges
+5. `openDialog()` - 8 edges
+6. `closeDialog()` - 8 edges
+7. `Freelance Business Automation` - 8 edges
 8. `initializeNavigation()` - 6 edges
 9. `printLine()` - 6 edges
 10. `smoothBehavior()` - 5 edges
@@ -63,16 +63,16 @@
 ## Communities (25 total, 9 thin omitted)
 
 ### Community 0 - "AI Freelancer Landscape"
-Cohesion: 0.09
-Nodes (27): AI Agent, AI Cannot Replace Developers, AI Hallucination Problem, AI-Driven Layoffs, AI Tool, Ashley Allen (freelance developer), Battle Ready Laravel (book), ChatGPT (+19 more)
+Cohesion: 0.11
+Nodes (24): AI Agent, AI Cannot Replace Developers, AI Hallucination Problem, AI-Driven Layoffs, AI Tool, Ashley Allen (freelance developer), Battle Ready Laravel (book), ChatGPT (+16 more)
 
 ### Community 1 - "Portfolio Projects & Stack"
 Cohesion: 0.50
 Nodes (4): Agentic Workflow Concept, AI Agents vs Traditional Automation, AI Agents vs Traditional Dev Tools, Traditional Structured Workflow
 
 ### Community 3 - "Productivity & Meeting Tools"
-Cohesion: 0.10
-Nodes (25): AI Automation Stack for Freelancers, Asana, Calendly, ClickUp, Client Acquisition Automation, Content Marketing Automation, Contract Management Automation, Fireflies.ai (+17 more)
+Cohesion: 0.09
+Nodes (28): AI Automation Stack for Freelancers, Asana, Calendly, ClickUp, Client Acquisition Automation, Commission-Free Freelance Platform, Content Marketing Automation, Contract Management Automation (+20 more)
 
 ### Community 4 - "AI Automation Agencies"
 Cohesion: 0.29
@@ -99,8 +99,8 @@ Cohesion: 0.50
 Nodes (3): data, web, success
 
 ### Community 10 - "Agentic Workflow Concepts"
-Cohesion: 0.10
-Nodes (38): activateEasterEgg(), clearPageInert(), closeActiveDialog(), closeCommandPalette(), closeDialog(), closeMobileMenu(), closeVideoPopup(), createConfetti() (+30 more)
+Cohesion: 0.09
+Nodes (43): activateEasterEgg(), clearPageInert(), closeActiveDialog(), closeCommandPalette(), closeDialog(), closeEditionChooser(), closeMobileMenu(), closeVideoPopup() (+35 more)
 
 ### Community 12 - "Upwork Research Insights"
 Cohesion: 0.67
@@ -120,7 +120,7 @@ Nodes (7): Architecture, Command Palette, Development, graphify, Overview, Proje
 
 ### Community 22 - "script.js"
 Cohesion: 0.07
-Nodes (51): applyFilter(), clearConsole(), clearGhost(), closeDemo(), cmdHistory, COMMANDS, currentTheme(), demoSlugs() (+43 more)
+Nodes (52): applyFilter(), clearConsole(), clearGhost(), closeDemo(), cmdHistory, COMMANDS, currentTheme(), demoSlugs() (+44 more)
 
 ### Community 29 - "AGENTS.md"
 Cohesion: 0.20
@@ -141,14 +141,14 @@ _Questions this graph is uniquely positioned to answer:_
 - **What is the exact relationship between `AI-Powered Lead Generation & Cold Outreach Transcript` and `Dam koto bot`?**
   _Edge tagged AMBIGUOUS (relation: conceptually_related_to) - confidence is low._
 - **Why does `Freelance Business Automation` connect `Productivity & Meeting Tools` to `AI Freelancer Landscape`, `AI Automation Agencies`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
+  _High betweenness centrality (0.041) - this node is a cross-community bridge._
 - **Why does `AI Agent` connect `AI Freelancer Landscape` to `Productivity & Meeting Tools`?**
-  _High betweenness centrality (0.030) - this node is a cross-community bridge._
+  _High betweenness centrality (0.029) - this node is a cross-community bridge._
 - **Are the 2 inferred relationships involving `initPrompt()` (e.g. with `clearGhost()` and `updateGhost()`) actually correct?**
   _`initPrompt()` has 2 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `@playwright/mcp`, `prefersReducedMotion`, `modalState` to the rest of the system?**
   _74 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AI Freelancer Landscape` be split into smaller, more focused modules?**
-  _Cohesion score 0.09116809116809117 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10507246376811594 - nodes in this community are weakly interconnected._
 - **Should `Productivity & Meeting Tools` be split into smaller, more focused modules?**
-  _Cohesion score 0.1 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0873015873015873 - nodes in this community are weakly interconnected._

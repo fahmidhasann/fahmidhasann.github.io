@@ -102,6 +102,13 @@ function goClassic() {
   window.location.assign('/');
 }
 
+function isCurrentEditionPath(edition) {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (edition === 'classic') return path === '' || path === '/' || path.endsWith('/index.html');
+  if (edition === 'terminal') return path === '/v2' || path.endsWith('/v2') || path.includes('/v2/');
+  return false;
+}
+
 function initEditionSwitch() {
   document.querySelectorAll('.edition-switch[data-edition]').forEach(link => {
     if (link.dataset.editionReady) return;
@@ -112,6 +119,7 @@ function initEditionSwitch() {
       // Save first, then navigate ourselves so the preference always sticks
       // even if something else interrupts the default link behaviour.
       event.preventDefault();
+      if (isCurrentEditionPath(edition)) return;
       window.location.assign(link.href);
     });
   });
@@ -561,7 +569,7 @@ const COMMANDS = {
       });
       printGap();
       printLine('tab completes · ↑ ↓ walks history · ⌘K or ctrl+K focuses the prompt', 'is-dim');
-      printLine('tip: type classic (or click [← classic] top-right) to leave this edition', 'is-dim');
+        printLine('tip: type classic (or use Classic | Terminal above) to leave this edition', 'is-dim');
     }
   },
 
@@ -969,7 +977,7 @@ function initBootSequence() {
     `> loading projects (${projects}) ................ [ ok ]`,
     `> loading creative work (${films}) ........... [ ok ]`,
     '> starting shell ...................... [ ok ]',
-    '> tip: type classic to leave terminal edition',
+    '> tip: type classic — or use Classic | Terminal above',
     'ready.'
   ];
 

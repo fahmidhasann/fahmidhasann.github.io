@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   runInit('initializeCommandPalette', initializeCommandPalette);
   runInit('initializeThemeToggle', initializeThemeToggle);
   runInit('initializeEditionSwitch', initializeEditionSwitch);
+  runInit('initializeEditionChooser', initializeEditionChooser);
   runInit('initializeVideoPopup', initializeVideoPopup);
   runInit('initializeNavScroll', initializeNavScroll);
   runInit('initializeContactForm', initializeContactForm);
@@ -155,6 +156,7 @@ function closeActiveDialog() {
   if (!dialog) return;
   if (dialog.id === 'videoPopup') closeVideoPopup();
   else if (dialog.id === 'commandPalette') closeCommandPalette();
+  else if (dialog.id === 'editionChooser') closeEditionChooser();
   else closeDialog(dialog);
 }
 
@@ -270,21 +272,67 @@ function initializeThemeToggle() {
   updateThemeToggle();
 }
 
+function rememberEdition(edition) {
+  if (edition !== 'classic' && edition !== 'terminal') return false;
+  try {
+    localStorage.setItem('portfolioEdition', edition);
+  } catch { /* private mode / blocked storage */ }
+  return true;
+}
+
+function isCurrentEditionPath(edition) {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (edition === 'classic') return path === '' || path === '/' || path.endsWith('/index.html');
+  if (edition === 'terminal') return path === '/v2' || path.endsWith('/v2') || path.includes('/v2/');
+  return false;
+}
+
 function initializeEditionSwitch() {
   document.querySelectorAll('.edition-switch[data-edition]').forEach(link => {
     if (link.dataset.editionReady) return;
     link.dataset.editionReady = 'true';
     link.addEventListener('click', (event) => {
       const edition = link.dataset.edition;
-      if (edition !== 'classic' && edition !== 'terminal') return;
-      try {
-        localStorage.setItem('portfolioEdition', edition);
-      } catch { /* private mode / blocked storage */ }
-      // Save first, then navigate ourselves so the preference always sticks.
+      if (!rememberEdition(edition)) return;
       event.preventDefault();
+      if (isCurrentEditionPath(edition)) return;
+      // Save first, then navigate ourselves so the preference always sticks.
       window.location.assign(link.href);
     });
   });
+}
+
+function closeEditionChooser() {
+  const dialog = document.getElementById('editionChooser');
+  rememberEdition('classic');
+  if (dialog) closeDialog(dialog);
+}
+
+function initializeEditionChooser() {
+  const dialog = document.getElementById('editionChooser');
+  if (!dialog) return;
+
+  let saved = null;
+  try {
+    saved = localStorage.getItem('portfolioEdition');
+  } catch { /* private mode / blocked storage */ }
+  if (saved === 'classic' || saved === 'terminal') return;
+
+  const chooseClassic = () => closeEditionChooser();
+  const chooseTerminal = () => {
+    rememberEdition('terminal');
+    window.location.assign('/v2/');
+  };
+
+  document.getElementById('editionChooserClassic')?.addEventListener('click', chooseClassic);
+  document.getElementById('editionChooserTerminal')?.addEventListener('click', chooseTerminal);
+  document.getElementById('editionChooserClose')?.addEventListener('click', chooseClassic);
+
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) chooseClassic();
+  });
+
+  openDialog(dialog);
 }
 
 function initializeParticles() {

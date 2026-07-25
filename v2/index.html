@@ -42,7 +42,10 @@
         </nav>
         <span class="titlebar-progress" id="scrollProgress" aria-hidden="true">[··············]   0%</span>
         <div class="titlebar-actions">
-          <a href="/" class="edition-switch" data-edition="classic" aria-label="Switch to classic edition">[← classic]</a>
+          <div class="edition-switcher" role="group" aria-label="Portfolio edition">
+            <a href="/" class="edition-switch" data-edition="classic">Classic</a>
+            <a href="/v2/" class="edition-switch is-active" data-edition="terminal" aria-current="page">Terminal</a>
+          </div>
           <button class="themebtn" id="themeToggle" type="button" aria-pressed="true">
             <span aria-hidden="true">[</span><span class="themebtn-label" id="themeLabel">dark</span><span aria-hidden="true">]</span>
             <span class="sr-only">Toggle colour theme</span>

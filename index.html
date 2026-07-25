@@ -56,7 +56,10 @@
           <li><a href="#videos" class="nav-link">Creative Work</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
-        <a href="/v2/" class="edition-switch" data-edition="terminal" aria-label="Switch to terminal edition">Terminal</a>
+        <div class="edition-switcher" role="group" aria-label="Portfolio edition">
+          <a href="/" class="edition-switch is-active" data-edition="classic" aria-current="page">Classic</a>
+          <a href="/v2/" class="edition-switch" data-edition="terminal">Terminal</a>
+        </div>
         <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
           <i class="fas fa-moon" aria-hidden="true"></i>
           <span class="sr-only">Theme</span>
@@ -561,6 +564,19 @@
         </div>
       </div>
     </footer>
+
+    <!-- First-visit edition chooser -->
+    <div class="edition-chooser" id="editionChooser" role="dialog" aria-labelledby="editionChooserTitle" aria-describedby="editionChooserDesc" aria-modal="true" hidden>
+      <div class="edition-chooser-panel">
+        <button class="edition-chooser-close" id="editionChooserClose" type="button" aria-label="Stay on Classic">&times;</button>
+        <h2 id="editionChooserTitle" class="edition-chooser-title">Two ways to view this portfolio</h2>
+        <p id="editionChooserDesc" class="edition-chooser-desc">Pick a look. You can switch anytime.</p>
+        <div class="edition-chooser-actions">
+          <button type="button" class="edition-chooser-btn" id="editionChooserClassic" data-dialog-initial-focus data-edition-choice="classic">Classic</button>
+          <button type="button" class="edition-chooser-btn edition-chooser-btn-alt" id="editionChooserTerminal" data-edition-choice="terminal">Terminal</button>
+        </div>
+      </div>
+    </div>
 
     <!-- Command Palette -->
     <div class="command-palette" id="commandPalette" role="dialog" aria-labelledby="commandPaletteLabel" aria-modal="true" hidden>
