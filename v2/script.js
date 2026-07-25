@@ -69,6 +69,37 @@
   function scrollBehavior() { return motionOff() ? 'auto' : 'smooth'; }
 
   /* --------------------------------------------------------------------------
+     Modal isolation
+
+     A Tab trap alone still lets the pointer and the screen reader reach the page
+     behind an overlay, so anything covering the page marks its siblings inert
+     for as long as it is up.
+     -------------------------------------------------------------------------- */
+
+  const inerted = [];
+
+  function setPageInert(exceptions) {
+    clearPageInert();
+    Array.from(document.body.children).forEach(child => {
+      if (exceptions.includes(child) || child.tagName === 'SCRIPT' || child.tagName === 'STYLE') return;
+      const wasInert = child.inert;
+      const ariaHidden = child.getAttribute('aria-hidden');
+      child.inert = true;
+      child.setAttribute('aria-hidden', 'true');
+      inerted.push({ child, wasInert, ariaHidden });
+    });
+  }
+
+  function clearPageInert() {
+    inerted.forEach(({ child, wasInert, ariaHidden }) => {
+      child.inert = wasInert;
+      if (ariaHidden === null) child.removeAttribute('aria-hidden');
+      else child.setAttribute('aria-hidden', ariaHidden);
+    });
+    inerted.length = 0;
+  }
+
+  /* --------------------------------------------------------------------------
      Coalesced scroll and resize dispatch
 
      The progress bar, the current-section highlight and every carousel react to
@@ -457,9 +488,13 @@
 
     dom.popupTitle.textContent = card.dataset.title || card.querySelector('.proj-title')?.textContent || 'Demo';
     dom.popupPlayer.src = source;
+    // Show the card's own thumbnail instead of a black frame while the file buffers.
+    const thumbnail = card.querySelector('.asciiframe-media img');
+    if (thumbnail) dom.popupPlayer.poster = thumbnail.currentSrc || thumbnail.src;
     dom.popupBackdrop.hidden = false;
     dom.popup.hidden = false;
     document.body.classList.add('locked');
+    setPageInert([dom.popup, dom.popupBackdrop]);
     popupState.opener = opener || null;
     dom.popupClose?.focus();
     dom.popupPlayer.play?.().catch(() => { /* autoplay may be blocked */ });
@@ -469,10 +504,12 @@
     if (!dom.popup || dom.popup.hidden) return;
     dom.popupPlayer.pause?.();
     dom.popupPlayer.removeAttribute('src');
+    dom.popupPlayer.removeAttribute('poster');
     dom.popupPlayer.load?.();
     dom.popup.hidden = true;
     dom.popupBackdrop.hidden = true;
     document.body.classList.remove('locked');
+    clearPageInert();
     popupState.opener?.focus?.();
     popupState.opener = null;
   }
@@ -1054,6 +1091,9 @@
 
     document.body.appendChild(overlay);
     document.body.classList.add('locked');
+    // The overlay itself is decorative, so nothing behind it should be reachable
+    // by keyboard or screen reader while it is still covering the page.
+    setPageInert([overlay]);
 
     let index = 0;
     let finished = false;
@@ -1066,6 +1106,7 @@
       document.removeEventListener('keydown', finish);
       document.removeEventListener('pointerdown', finish);
       document.body.classList.remove('locked');
+      clearPageInert();
       overlay.dataset.done = 'true';
       window.setTimeout(() => overlay.remove(), BOOT_FADE_MS);
     };

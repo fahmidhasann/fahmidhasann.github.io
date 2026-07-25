@@ -11,19 +11,23 @@ import { expect, test } from '@playwright/test';
 
 /** Both editions read this key to decide whether to redirect on load. */
 const EDITION_KEY = 'portfolioEdition';
+/** The terminal edition plays its boot animation once per session. */
+const BOOT_KEY = 'v2:booted';
 
 /**
- * Seeds localStorage before any page script runs, so the first-visit edition
- * chooser does not block the flow under test. Seeding only fills in missing
- * keys, so reloads and in-test preference changes still survive navigation.
+ * Seeds storage before any page script runs, so the first-visit edition chooser
+ * and the terminal boot animation do not block the flow under test. Seeding only
+ * fills in missing keys, so reloads and in-test preference changes still survive
+ * navigation. Pass `boot: true` to let the boot animation play.
  */
-async function visit(page, path, { edition = 'classic', theme = 'light' } = {}) {
+async function visit(page, path, { edition = 'classic', theme = 'light', boot = false } = {}) {
   await page.addInitScript(
-    ([key, value, themeValue]) => {
+    ([key, value, themeValue, bootKey, skipBoot]) => {
       if (window.localStorage.getItem(key) === null) window.localStorage.setItem(key, value);
       if (window.localStorage.getItem('theme') === null) window.localStorage.setItem('theme', themeValue);
+      if (skipBoot) window.sessionStorage.setItem(bootKey, '1');
     },
-    [EDITION_KEY, edition, theme]
+    [EDITION_KEY, edition, theme, BOOT_KEY, !boot]
   );
   await page.goto(path);
 }
@@ -289,13 +293,31 @@ test.describe('classic edition', () => {
 });
 
 test.describe('terminal edition', () => {
-  test('loads and finishes booting without script errors', async ({ page }) => {
+  test('loads without script errors', async ({ page }) => {
     const errors = watchForErrors(page);
     await visit(page, '/v2/', { edition: 'terminal' });
 
     await expect(page.locator('#projects')).toBeAttached();
     await expect(page.locator('.proj')).toHaveCount(7);
     expect(errors).toEqual([]);
+  });
+
+  test('the boot animation holds the page, then hands it back', async ({ page }) => {
+    await visit(page, '/v2/', { edition: 'terminal', boot: true });
+
+    // Nothing behind the overlay should be reachable while it is up.
+    const overlay = page.locator('.boot');
+    await expect(overlay).toBeVisible();
+    await expect(page.locator('.term')).toHaveJSProperty('inert', true);
+
+    await page.keyboard.press('Enter');
+    await expect(overlay).toBeHidden();
+    await expect(page.locator('.term')).toHaveJSProperty('inert', false);
+    await expect(page.locator('body')).not.toHaveClass(/locked/);
+
+    // And it only plays once per session.
+    await page.reload();
+    await expect(page.locator('.boot')).toHaveCount(0);
   });
 
   test('theme toggle flips the theme and remembers it', async ({ page }) => {
@@ -400,9 +422,12 @@ test.describe('terminal edition', () => {
     await page.locator('.proj[data-slug="cold-outreach"] .btn-demo').click();
     await expect(popup).toBeVisible();
     await expect(page.locator('#videoPopupClose')).toBeFocused();
+    // The page behind the dialog must be out of reach, not merely covered.
+    await expect(page.locator('.term')).toHaveJSProperty('inert', true);
 
     await page.keyboard.press('Escape');
     await expect(popup).toBeHidden();
+    await expect(page.locator('.term')).toHaveJSProperty('inert', false);
     expect(await page.locator('#videoPopupPlayer').getAttribute('src')).toBeNull();
   });
 
