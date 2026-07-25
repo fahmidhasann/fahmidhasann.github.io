@@ -148,6 +148,13 @@ a { color: inherit; }
 }
 .dark-mode-toggle { position: fixed; top: 1rem; right: var(--gutter); z-index: 1100; color: var(--on-navy); }
 .nav-shell .theme-toggle, .nav-shell .dark-mode-toggle { position: static; margin-left: .45rem; }
+.edition-switch {
+  display: inline-flex; align-items: center; flex: 0 0 auto; min-height: 2.5rem;
+  margin-left: .35rem; padding: .35rem .7rem; color: inherit; font-size: .82rem; font-weight: 600;
+  letter-spacing: .02em; text-decoration: none; border: 1px solid currentColor; border-radius: var(--radius-sm);
+  transition: color var(--fast) ease, border-color var(--fast) ease, background var(--fast) ease, transform var(--fast) var(--ease-out);
+}
+.edition-switch:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
 .nav-toggle { display: none; border-radius: var(--radius-sm); }
 .nav-toggle span { display: block; width: 1.1rem; height: 1.5px; margin: .16rem auto; background: currentColor; border-radius: 999px; transition: transform var(--fast) ease, opacity var(--fast) ease; }
 .nav-toggle[aria-expanded='true'] span:first-child { transform: translateY(5px) rotate(45deg); }
@@ -712,7 +719,8 @@ a { color: inherit; }
   .compact-nav { padding: .65rem var(--gutter); }
   .nav-shell { min-height: 3.25rem; padding: .25rem .28rem .25rem .8rem; }
   .nav-toggle { display: inline-grid; order: -1; margin-right: .35rem; }
-  .nav-shell .theme-toggle, .nav-shell .dark-mode-toggle { margin-left: auto; }
+  .nav-shell .edition-switch { margin-left: auto; }
+  .nav-shell .theme-toggle, .nav-shell .dark-mode-toggle { margin-left: .35rem; }
   .nav-menu { position: fixed; top: 4.65rem; right: var(--gutter); left: var(--gutter); display: grid; gap: .2rem; max-height: calc(100vh - 6rem); max-height: calc(100dvh - 6rem); overflow-y: auto; padding: .55rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface-raised); box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transform: translateY(-.75rem); transition: opacity var(--normal) ease, transform var(--normal) var(--ease-out), visibility var(--normal) ease; }
   .nav-menu.active { opacity: 1; visibility: visible; transform: translateY(0); }
   .nav-link { min-height: 2.85rem; padding-inline: .8rem; color: var(--ink); border-radius: .4rem; }

@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   boot('theme', initTheme);
+  boot('editionSwitch', initEditionSwitch);
   boot('reveals', initReveals);
   boot('anchors', initAnchors);
   boot('scrollState', initScrollState);
@@ -86,6 +87,20 @@ function setTheme(theme) {
 function syncThemeButton(theme) {
   if (dom.themeLabel) dom.themeLabel.textContent = theme;
   dom.themeToggle?.setAttribute('aria-pressed', String(theme === 'dark'));
+}
+
+function initEditionSwitch() {
+  document.querySelectorAll('.edition-switch[data-edition]').forEach(link => {
+    if (link.dataset.editionReady) return;
+    link.dataset.editionReady = 'true';
+    link.addEventListener('click', () => {
+      const edition = link.dataset.edition;
+      if (edition !== 'classic' && edition !== 'terminal') return;
+      try {
+        localStorage.setItem('portfolioEdition', edition);
+      } catch { /* private mode */ }
+    });
+  });
 }
 
 /* --------------------------------------------------------------------------

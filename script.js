@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   runInit('initializeProjectFiltering', initializeProjectFiltering);
   runInit('initializeCommandPalette', initializeCommandPalette);
   runInit('initializeThemeToggle', initializeThemeToggle);
+  runInit('initializeEditionSwitch', initializeEditionSwitch);
   runInit('initializeVideoPopup', initializeVideoPopup);
   runInit('initializeNavScroll', initializeNavScroll);
   runInit('initializeContactForm', initializeContactForm);
@@ -267,6 +268,20 @@ function initializeThemeToggle() {
   toggle.dataset.themeReady = 'true';
   toggle.addEventListener('click', toggleTheme);
   updateThemeToggle();
+}
+
+function initializeEditionSwitch() {
+  document.querySelectorAll('.edition-switch[data-edition]').forEach(link => {
+    if (link.dataset.editionReady) return;
+    link.dataset.editionReady = 'true';
+    link.addEventListener('click', () => {
+      const edition = link.dataset.edition;
+      if (edition !== 'classic' && edition !== 'terminal') return;
+      try {
+        localStorage.setItem('portfolioEdition', edition);
+      } catch { /* private mode / blocked storage */ }
+    });
+  });
 }
 
 function initializeParticles() {
