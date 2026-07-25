@@ -4,6 +4,8 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const SECTIONS = ['home', 'projects', 'creative', 'contact'];
 const CONSOLE_MAX_LINES = 240;
+const MATRIX_MS = 6000;
+const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
 
 const dom = {};
 const popupState = { opener: null };
@@ -64,6 +66,68 @@ function motionOff() { return reduceMotion.matches; }
 function scrollBehavior() { return motionOff() ? 'auto' : 'smooth'; }
 
 /* --------------------------------------------------------------------------
+   Coalesced scroll and resize dispatch
+
+   The progress bar, the current-section highlight and every carousel react to
+   the same two event streams. Subscribing here keeps that to one listener per
+   stream and one batch of layout reads per animation frame.
+   -------------------------------------------------------------------------- */
+
+function createFrameDispatcher(eventName) {
+  const subscribers = new Set();
+  let frame = 0;
+
+  const flush = () => {
+    frame = 0;
+    subscribers.forEach(subscriber => {
+      try {
+        subscriber();
+      } catch (error) {
+        console.error(`[terminal] ${eventName} subscriber failed`, error);
+      }
+    });
+  };
+
+  const schedule = () => {
+    if (frame) return;
+    frame = window.requestAnimationFrame(flush);
+  };
+
+  return subscriber => {
+    if (!subscribers.size) window.addEventListener(eventName, schedule, { passive: true });
+    subscribers.add(subscriber);
+    subscriber();
+  };
+}
+
+const onScroll = createFrameDispatcher('scroll');
+const onResize = createFrameDispatcher('resize');
+
+/* --------------------------------------------------------------------------
+   Preference storage
+
+   Reading or writing storage throws outright in some privacy modes, so every
+   access goes through these helpers and degrades to "no preference saved".
+   -------------------------------------------------------------------------- */
+
+function readStored(store, key) {
+  try {
+    return store.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeStored(store, key, value) {
+  try {
+    store.setItem(key, value);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/* --------------------------------------------------------------------------
    Theme
    -------------------------------------------------------------------------- */
 
@@ -80,7 +144,7 @@ function currentTheme() {
 
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
-  try { localStorage.setItem('theme', theme); } catch { /* private mode */ }
+  writeStored(localStorage, 'theme', theme);
   syncThemeButton(theme);
 }
 
@@ -91,9 +155,7 @@ function syncThemeButton(theme) {
 
 function rememberEdition(edition) {
   if (edition !== 'classic' && edition !== 'terminal') return false;
-  try {
-    localStorage.setItem('portfolioEdition', edition);
-  } catch { /* private mode */ }
+  writeStored(localStorage, 'portfolioEdition', edition);
   return true;
 }
 
@@ -191,20 +253,12 @@ function initAnchors() {
 }
 
 function initScrollState() {
-  let queued = false;
   const update = () => {
-    queued = false;
     updateProgress();
     updateCurrentSection();
   };
-  const onScroll = () => {
-    if (queued) return;
-    queued = true;
-    window.requestAnimationFrame(update);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  update();
+  onScroll(update);
+  onResize(update);
 }
 
 function updateProgress() {
@@ -234,6 +288,10 @@ function updateCurrentSection() {
 /* --------------------------------------------------------------------------
    Carousels
    -------------------------------------------------------------------------- */
+
+// Keyed by the carousel shell so filtering can drive a carousel it does not own,
+// without hanging custom properties off the DOM node.
+const carouselControllers = new WeakMap();
 
 function initCarousels() {
   const carousels = Array.from(document.querySelectorAll('[data-carousel]'));
@@ -292,18 +350,19 @@ function initCarousels() {
     });
 
     track.addEventListener('scroll', scheduleUpdate, { passive: true });
-    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    onResize(scheduleUpdate);
     if (typeof ResizeObserver !== 'undefined') {
-      const observer = new ResizeObserver(scheduleUpdate);
-      observer.observe(track);
+      new ResizeObserver(scheduleUpdate).observe(track);
     }
 
-    carousel.__updateCarousel = () => updateChrome(carousel, track, prevBtn, nextBtn);
-    carousel.__resetCarousel = () => {
-      track.scrollTo({ left: 0, behavior: 'auto' });
-      track.scrollLeft = 0;
-      updateChrome(carousel, track, prevBtn, nextBtn);
-    };
+    carouselControllers.set(carousel, {
+      update: () => updateChrome(carousel, track, prevBtn, nextBtn),
+      reset: () => {
+        track.scrollTo({ left: 0, behavior: 'auto' });
+        track.scrollLeft = 0;
+        updateChrome(carousel, track, prevBtn, nextBtn);
+      }
+    });
 
     updateChrome(carousel, track, prevBtn, nextBtn);
   });
@@ -314,6 +373,8 @@ function initCarousels() {
    -------------------------------------------------------------------------- */
 
 const FILTERS = ['all', 'ai', 'automation', 'data'];
+// Long enough for the browser to re-lay-out the track after cards are hidden.
+const FILTER_RELAYOUT_MS = 40;
 let activeFilter = 'all';
 
 function initFilters() {
@@ -349,15 +410,11 @@ function applyFilter(filter, { silent = false } = {}) {
     dom.filterStatus.textContent = `${shown} project${shown === 1 ? '' : 's'} shown for filter ${filter}.`;
   }
 
-  if (dom.projectsCarousel && typeof dom.projectsCarousel.__resetCarousel === 'function') {
-    dom.projectsCarousel.__resetCarousel();
-    if (!silent) {
-      window.setTimeout(() => {
-        if (typeof dom.projectsCarousel.__updateCarousel === 'function') {
-          dom.projectsCarousel.__updateCarousel();
-        }
-      }, 40);
-    }
+  const carousel = dom.projectsCarousel && carouselControllers.get(dom.projectsCarousel);
+  if (carousel) {
+    carousel.reset();
+    // Hiding cards changes the track width, but not until layout settles.
+    if (!silent) window.setTimeout(carousel.update, FILTER_RELAYOUT_MS);
   } else if (dom.projectsList) {
     dom.projectsList.scrollLeft = 0;
   }
@@ -458,12 +515,13 @@ function initContactForm() {
     setFormResult(result, 'sending message', 'is-pending');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+      const response = await fetch(CONTACT_ENDPOINT, { method: 'POST', body: new FormData(form) });
       const data = await response.json();
       if (!response.ok || !data.success) throw new Error(data.message || 'Submission failed');
       setFormResult(result, "[ok] message sent — I'll get back to you soon.", 'is-ok');
       form.reset();
-    } catch {
+    } catch (error) {
+      console.error('[terminal] contact form submission failed', error);
       setFormResult(result, '[error] could not send. Please email fahmidhasantaohid@gmail.com directly.', 'is-err');
     } finally {
       form.setAttribute('aria-busy', 'false');
@@ -569,7 +627,7 @@ const COMMANDS = {
       });
       printGap();
       printLine('tab completes · ↑ ↓ walks history · ⌘K or ctrl+K focuses the prompt', 'is-dim');
-        printLine('tip: type classic (or use Classic | Terminal above) to leave this edition', 'is-dim');
+      printLine('tip: type classic (or use Classic | Terminal above) to leave this edition', 'is-dim');
     }
   },
 
@@ -770,8 +828,8 @@ const COMMANDS = {
         printLine('sudo: visitor is not in the sudoers file. This incident has been reported.', 'is-err');
         return;
       }
-      printLine('sudo: permission granted for exactly 6 seconds', 'is-ok');
-      runMatrix(6000);
+      printLine(`sudo: permission granted for exactly ${MATRIX_MS / 1000} seconds`, 'is-ok');
+      runMatrix(MATRIX_MS);
     }
   }
 };
@@ -961,13 +1019,14 @@ function clearGhost() {
    -------------------------------------------------------------------------- */
 
 const BOOT_KEY = 'v2:booted';
+const BOOT_LINE_MS = 110;
+const BOOT_FAILSAFE_MS = 2600;
+const BOOT_FADE_MS = 400;
 
 function initBootSequence() {
-  let booted = false;
-  try { booted = sessionStorage.getItem(BOOT_KEY) === '1'; } catch { booted = false; }
-  if (booted || motionOff()) return;
+  if (readStored(sessionStorage, BOOT_KEY) === '1' || motionOff()) return;
 
-  try { sessionStorage.setItem(BOOT_KEY, '1'); } catch { /* private mode */ }
+  writeStored(sessionStorage, BOOT_KEY, '1');
 
   const projects = document.querySelectorAll('.proj').length;
   const films = document.querySelectorAll('.film').length + document.querySelectorAll('.reel').length;
@@ -1005,7 +1064,7 @@ function initBootSequence() {
     document.removeEventListener('pointerdown', finish);
     document.body.classList.remove('locked');
     overlay.dataset.done = 'true';
-    window.setTimeout(() => overlay.remove(), 400);
+    window.setTimeout(() => overlay.remove(), BOOT_FADE_MS);
   };
 
   const timer = window.setInterval(() => {
@@ -1018,9 +1077,9 @@ function initBootSequence() {
     line.textContent = lines[index];
     overlay.insertBefore(line, skip);
     index += 1;
-  }, 110);
+  }, BOOT_LINE_MS);
 
-  const failsafe = window.setTimeout(finish, 2600);
+  const failsafe = window.setTimeout(finish, BOOT_FAILSAFE_MS);
   document.addEventListener('keydown', finish);
   document.addEventListener('pointerdown', finish);
 }
