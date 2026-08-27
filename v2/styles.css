@@ -492,6 +492,26 @@ button, input, textarea {
 .tbtn-primary { color: var(--accent); border-color: var(--accent-dim); }
 .tbtn[disabled] { opacity: .5; cursor: not-allowed; }
 
+.credlist {
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.1rem;
+}
+.cred {
+  width: fit-content;
+  max-width: 100%;
+  padding: .7rem .9rem .85rem;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+}
+.cred-head {
+  font-size: .8125rem;
+  color: var(--fg-bright);
+}
+.cred .kv { margin-top: .55rem; }
+
 .actions {
   margin-top: 1.9rem;
   display: flex;

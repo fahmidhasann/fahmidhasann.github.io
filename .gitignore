@@ -10,10 +10,12 @@
 .vercel
 .env*.local
 
-# Dev tooling (this site ships as plain static files; npm is only for linting/tests)
+# Tooling, if it is ever reinstalled (this repo ships as plain static files)
 node_modules/
-npm-debug.log*
-test-results/
-playwright-report/
-blob-report/
-.playwright/
+
+# Generated knowledge graph — rebuild with: graphify update .
+graphify-out/
+
+# Local research scratch and finished task logs
+.firecrawl/
+tasks/

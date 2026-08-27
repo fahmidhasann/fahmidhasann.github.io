@@ -655,6 +655,24 @@
     return projectIndex().filter(item => item.hasVideo).map(item => item.slug);
   }
 
+  // Credentials are printed straight off the markup, so the HTML stays the single source.
+  function printCredentials() {
+    const creds = Array.from(document.querySelectorAll('#home .cred'));
+    if (!creds.length) {
+      printLine('no credentials on file', 'is-dim');
+      return;
+    }
+    creds.forEach((cred, index) => {
+      if (index) printGap();
+      printLine(cred.querySelector('.cred-head')?.textContent?.trim() || '', 'is-ok');
+      cred.querySelectorAll('.kv-row').forEach(row => {
+        const key = row.querySelector('dt')?.textContent?.trim() || '';
+        const value = row.querySelector('dd')?.textContent?.trim() || '';
+        printLine(`  ${key.padEnd(9, ' ')}${value}`);
+      });
+    });
+  }
+
   const COMMANDS = {
     help: {
       summary: 'list every command',
@@ -691,7 +709,8 @@
             'drwxr-xr-x  projects   7 items',
             'drwxr-xr-x  creative   8 items',
             '-rw-r--r--  about.txt',
-            '-rw-r--r--  contact.txt'
+            '-rw-r--r--  contact.txt',
+            '-rw-r--r--  credentials.txt'
           ]);
           return;
         }
@@ -743,9 +762,9 @@
     },
 
     cat: {
-      summary: 'print about.txt or contact.txt',
+      summary: 'print about.txt, contact.txt or credentials.txt',
       usage: '<file>',
-      args: () => ['about.txt', 'contact.txt'],
+      args: () => ['about.txt', 'contact.txt', 'credentials.txt'],
       run(args) {
         const file = (args[0] || '').replace(/\.txt$/, '');
         if (file === 'about') {
@@ -755,6 +774,10 @@
           });
           return;
         }
+        if (file === 'credentials') {
+          printCredentials();
+          return;
+        }
         if (file === 'contact') {
           printLine('email     fahmidhasantaohid@gmail.com');
           printLine('whatsapp  +880 1732 021592');
@@ -762,6 +785,13 @@
           return;
         }
         printLine(`cat: ${args[0] || ''}: no such file`, 'is-err');
+      }
+    },
+
+    certs: {
+      summary: 'list verified credentials',
+      run() {
+        printCredentials();
       }
     },
 
