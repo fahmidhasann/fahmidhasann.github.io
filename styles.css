@@ -100,7 +100,7 @@ a { color: inherit; }
 /* Shared primitives -------------------------------------------------------- */
 .container { width: min(100% - (var(--gutter) * 2), 74rem); min-width: 0; margin-inline: auto; }
 .section { position: relative; min-height: 0; padding-block: var(--space-section); scroll-margin-top: 5.75rem; }
-.section-header { max-width: 43rem; margin: 0 auto clamp(2.5rem, 5vw, 4.5rem); text-align: center; }
+.section-header { max-width: 43rem; margin: 0 auto clamp(2rem, 4vw, 3.25rem); text-align: center; }
 .section-title { color: var(--ink-strong); font-family: var(--font-heading); font-size: clamp(2.5rem, 4.4vw, 3.6rem); font-weight: 600; line-height: .95; letter-spacing: -.035em; }
 .section-title::after { content: ''; display: block; width: 2.8rem; height: 2px; margin: 1.05rem auto 0; background: var(--accent); }
 .section-subtitle { max-width: 39rem; margin: 1.25rem auto 0; color: var(--muted); font-size: clamp(.95rem, 1.5vw, 1.06rem); line-height: 1.75; }
@@ -285,7 +285,7 @@ a { color: inherit; }
 
 /* Projects ---------------------------------------------------------------- */
 .projects-section { background: var(--page); }
-.projects-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(.7rem, 2vw, 1.7rem); margin: -1rem auto clamp(2rem, 4vw, 3.25rem); }
+.projects-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: clamp(.7rem, 2vw, 1.7rem); margin: 0 auto clamp(2rem, 4vw, 3.25rem); }
 .filter-btn { position: relative; min-height: 2.7rem; padding: .55rem .35rem; color: var(--muted); border: 0; background: transparent; font-size: .8rem; font-weight: 600; letter-spacing: .025em; cursor: pointer; transition: color var(--fast) ease; }
 .filter-btn::after { content: ''; position: absolute; right: .35rem; bottom: .2rem; left: .35rem; height: 2px; background: var(--accent); transform: scaleX(0); transition: transform var(--normal) var(--ease-out); }
 .filter-btn:hover { color: var(--ink); }
@@ -806,7 +806,7 @@ a { color: inherit; }
   .container { width: min(100% - (var(--gutter) * 2), 74rem); }
   .credential-card { gap: .7rem; padding: .55rem .75rem .55rem .55rem; }
   .credential-badge { width: 6rem; }
-  .section-header { margin-bottom: 2.5rem; }
+  .section-header { margin-bottom: 2rem; }
   .project-card {
     flex-basis: min(17.5rem, 85vw);
     width: min(17.5rem, 85vw);
