@@ -601,6 +601,35 @@ button, input, textarea {
 }
 [data-theme='light'] .playmark { background: rgba(244, 241, 234, .55); }
 
+.film-tag {
+  position: absolute;
+  top: .45rem;
+  left: .5rem;
+  z-index: var(--z-card-overlay);
+  font-family: var(--font);
+  font-size: .625rem;
+  line-height: 1.2;
+  letter-spacing: .03em;
+  color: var(--fg-dim);
+  background: var(--bg-inset);
+  padding: .15rem .4rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-xs);
+  pointer-events: none;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.film-tag.ai {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line-strong));
+}
+.film:hover .film-tag {
+  color: var(--fg-bright);
+}
+.film:hover .film-tag.ai {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 /* --------------------------------------------------------------------------
    Hero
    -------------------------------------------------------------------------- */

@@ -489,6 +489,43 @@ a { color: inherit; }
 .video-overlay i { display: grid; place-items: center; width: 3rem; height: 3rem; padding-left: .13rem; border: 1px solid rgba(255,255,255,.72); border-radius: 50%; background: rgba(7,16,32,.2); font-size: 1rem; transition: transform var(--normal) var(--ease-out), color var(--normal) ease, background var(--normal) ease; }
 .video-card-link:hover .video-overlay { background: rgba(7,16,32,.36); }
 .video-card-link:hover .video-overlay i, .video-card-link:focus-visible .video-overlay i { color: var(--navy); background: #fff; transform: scale(1.08); }
+.video-pill {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .25rem .58rem;
+  font-family: var(--font-body);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(7, 16, 32, .72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, .22);
+  border-radius: 9999px;
+  pointer-events: none;
+  line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .28);
+  transition: border-color var(--normal) ease, background var(--normal) ease;
+}
+.video-card-link:hover .video-pill {
+  border-color: rgba(255, 255, 255, .4);
+  background: rgba(7, 16, 32, .85);
+}
+.video-pill.ai {
+  background: color-mix(in srgb, var(--accent) 32%, rgba(7, 16, 32, .82));
+  border-color: color-mix(in srgb, var(--accent) 70%, rgba(255, 255, 255, .3));
+}
+.video-card-link:hover .video-pill.ai {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 42%, rgba(7, 16, 32, .88));
+}
 .video-content { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 1.05rem 1.15rem 1.2rem; }
 .video-title { color: var(--ink-strong); font-family: var(--font-heading); font-size: clamp(1.35rem, 2.4vw, 1.75rem); font-weight: 600; line-height: 1.08; letter-spacing: -.02em; }
 .video-description { margin-top: .55rem; color: var(--muted); font-size: .88rem; line-height: 1.55; }
