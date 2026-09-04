@@ -725,10 +725,15 @@
         }
 
         if (target === 'creative' || target === 'creative/personal' || target === 'creative/client' || target === 'creative/explainers') {
+          const explainers = Array.from(document.querySelectorAll('#explainersList .film-title')).map(node => node.textContent.trim());
           const personal = Array.from(document.querySelectorAll('#personalFilmsList .film-title')).map(node => node.textContent.trim());
           const client = Array.from(document.querySelectorAll('#clientReelsList .reel-title')).map(node => node.textContent.trim());
-          const explainers = Array.from(document.querySelectorAll('#explainersList .film-title')).map(node => node.textContent.trim());
+          if (target === 'creative' || target === 'creative/explainers') {
+            printLine(`explainers/  ${explainers.length} items`, 'is-dim');
+            explainers.forEach(title => printLine(`  ${title}`));
+          }
           if (target === 'creative' || target === 'creative/personal') {
+            if (target === 'creative') printGap();
             printLine(`personal/  ${personal.length} items`, 'is-dim');
             personal.forEach(title => printLine(`  ${title}`));
           }
@@ -736,11 +741,6 @@
             if (target === 'creative') printGap();
             printLine(`client/  ${client.length} items`, 'is-dim');
             client.forEach(title => printLine(`  ${title}`));
-          }
-          if (target === 'creative' || target === 'creative/explainers') {
-            if (target === 'creative') printGap();
-            printLine(`explainers/  ${explainers.length} items`, 'is-dim');
-            explainers.forEach(title => printLine(`  ${title}`));
           }
           return;
         }
