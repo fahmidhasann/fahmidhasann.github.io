@@ -539,6 +539,14 @@ a { color: inherit; }
   border-color: rgba(255, 255, 255, .6);
   color: #fff;
 }
+.video-pill.yt-playlist {
+  background: color-mix(in srgb, #e62117 38%, rgba(7, 16, 32, .88));
+  border-color: color-mix(in srgb, #ff4d4d 70%, rgba(255, 255, 255, .4));
+}
+.video-card-link:hover .video-pill.yt-playlist {
+  border-color: #ff5555;
+  background: color-mix(in srgb, #e62117 50%, rgba(7, 16, 32, .92));
+}
 .yt-channel-card .yt-channel-thumbnail {
   display: flex;
   align-items: center;

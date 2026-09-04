@@ -707,7 +707,7 @@
         if (!target || target === '.') {
           printLines([
             'drwxr-xr-x  projects   7 items',
-            'drwxr-xr-x  creative   16 items',
+            'drwxr-xr-x  creative   14 items',
             '-rw-r--r--  about.txt',
             '-rw-r--r--  contact.txt',
             '-rw-r--r--  credentials.txt'
