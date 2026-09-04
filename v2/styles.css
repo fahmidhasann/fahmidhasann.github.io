@@ -629,6 +629,41 @@ button, input, textarea {
   color: var(--accent);
   border-color: var(--accent);
 }
+.film-tag.yt {
+  color: #ff5555;
+  border-color: color-mix(in srgb, #ff5555 55%, var(--line-strong));
+}
+.film:hover .film-tag.yt {
+  color: #ff7777;
+  border-color: #ff5555;
+}
+.film-tag.yt-brand {
+  color: #fff;
+  background: #cc0000;
+  border-color: #ff4444;
+}
+.film:hover .film-tag.yt-brand {
+  background: #ee1111;
+  border-color: #ff6666;
+}
+.yt-channel-media {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, rgba(255, 68, 68, .12), var(--bg-inset));
+}
+.yt-channel-media .yt-channel-avatar {
+  width: 96px !important;
+  height: 96px !important;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  object-fit: cover;
+  transition: transform .3s var(--ease), border-color .2s var(--ease);
+}
+.film:hover .yt-channel-media .yt-channel-avatar {
+  transform: scale(1.06);
+  border-color: #ff5555;
+}
 
 /* --------------------------------------------------------------------------
    Hero

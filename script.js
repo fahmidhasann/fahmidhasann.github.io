@@ -901,6 +901,7 @@
     closeCommandPalette();
     if (action === 'dark-mode') toggleTheme();
     else if (action === 'videos' || action === 'creative') scrollToSection('videos');
+    else if (action === 'explainers' || action === 'youtube') scrollToSection('youtubeExplainers');
     else scrollToSection(action);
   }
 

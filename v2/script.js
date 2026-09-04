@@ -700,14 +700,14 @@
     ls: {
       summary: 'list a directory — projects, creative',
       usage: '[dir]',
-      args: () => ['projects', 'creative'],
+      args: () => ['projects', 'creative', 'creative/personal', 'creative/client', 'creative/explainers'],
       run(args) {
         const target = (args[0] || '').replace(/^~?\/?/, '').replace(/\/$/, '');
 
         if (!target || target === '.') {
           printLines([
             'drwxr-xr-x  projects   7 items',
-            'drwxr-xr-x  creative   10 items',
+            'drwxr-xr-x  creative   16 items',
             '-rw-r--r--  about.txt',
             '-rw-r--r--  contact.txt',
             '-rw-r--r--  credentials.txt'
@@ -724,17 +724,23 @@
           return;
         }
 
-        if (target === 'creative' || target === 'creative/personal' || target === 'creative/client') {
-          const personal = Array.from(document.querySelectorAll('.film-title')).map(node => node.textContent.trim());
-          const client = Array.from(document.querySelectorAll('.reel-title')).map(node => node.textContent.trim());
-          if (target !== 'creative/client') {
+        if (target === 'creative' || target === 'creative/personal' || target === 'creative/client' || target === 'creative/explainers') {
+          const personal = Array.from(document.querySelectorAll('#personalFilmsList .film-title')).map(node => node.textContent.trim());
+          const client = Array.from(document.querySelectorAll('#clientReelsList .reel-title')).map(node => node.textContent.trim());
+          const explainers = Array.from(document.querySelectorAll('#explainersList .film-title')).map(node => node.textContent.trim());
+          if (target === 'creative' || target === 'creative/personal') {
             printLine(`personal/  ${personal.length} items`, 'is-dim');
             personal.forEach(title => printLine(`  ${title}`));
           }
-          if (target !== 'creative/personal') {
+          if (target === 'creative' || target === 'creative/client') {
             if (target === 'creative') printGap();
             printLine(`client/  ${client.length} items`, 'is-dim');
             client.forEach(title => printLine(`  ${title}`));
+          }
+          if (target === 'creative' || target === 'creative/explainers') {
+            if (target === 'creative') printGap();
+            printLine(`explainers/  ${explainers.length} items`, 'is-dim');
+            explainers.forEach(title => printLine(`  ${title}`));
           }
           return;
         }
