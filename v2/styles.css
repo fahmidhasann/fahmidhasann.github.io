@@ -957,6 +957,14 @@ button, input, textarea {
 
 .film-text { margin-top: .6rem; }
 .film-title { font-size: .9375rem; font-weight: 500; color: var(--fg-bright); }
+.film-title-bn,
+.film-title [lang="bn"] {
+  display: inline;
+  font-family: 'Kohinoor Bangla', 'Bangla Sangam MN', 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.88em;
+  font-weight: 500;
+  letter-spacing: 0;
+}
 .film-desc { margin-top: .25rem; color: var(--fg-dim); font-size: .8125rem; }
 
 .reel-client {
