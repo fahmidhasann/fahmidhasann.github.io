@@ -301,7 +301,8 @@ a { color: inherit; }
   gap: .65rem;
 }
 .projects-section .carousel { --carousel-fade: var(--page); }
-.video-section .carousel { --carousel-fade: var(--surface-soft); }
+.video-section .carousel,
+.client-section .carousel { --carousel-fade: var(--surface-soft); }
 .carousel-viewport {
   position: relative;
   min-width: 0;
@@ -441,7 +442,9 @@ a { color: inherit; }
 }
 
 /* Creative work ----------------------------------------------------------- */
-.video-section { background: var(--surface-soft); }
+.video-section,
+.client-section { background: var(--surface-soft); }
+.client-section .carousel { max-width: 67rem; margin-inline: auto; }
 .creative-subsections { display: grid; gap: clamp(2.25rem, 5vw, 4.75rem); max-width: 67rem; min-width: 0; margin-inline: auto; }
 .creative-subsection { min-width: 0; }
 .creative-subsection-header { margin-bottom: clamp(1rem, 2.5vw, 2rem); }

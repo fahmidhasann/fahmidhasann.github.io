@@ -5,7 +5,7 @@
   'use strict';
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const SECTIONS = ['home', 'projects', 'creative', 'contact'];
+  const SECTIONS = ['home', 'creative', 'projects', 'client', 'contact'];
   const CONSOLE_MAX_LINES = 240;
   const MATRIX_MS = 6000;
   const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
@@ -698,16 +698,17 @@
     },
 
     ls: {
-      summary: 'list a directory — projects, creative',
+      summary: 'list a directory — creative, projects, client',
       usage: '[dir]',
-      args: () => ['projects', 'creative', 'creative/personal', 'creative/client', 'creative/explainers'],
+      args: () => ['creative', 'creative/explainers', 'creative/personal', 'projects', 'client', 'creative/client'],
       run(args) {
         const target = (args[0] || '').replace(/^~?\/?/, '').replace(/\/$/, '');
 
         if (!target || target === '.') {
           printLines([
+            'drwxr-xr-x  creative   9 items',
             'drwxr-xr-x  projects   7 items',
-            'drwxr-xr-x  creative   14 items',
+            'drwxr-xr-x  client     5 items',
             '-rw-r--r--  about.txt',
             '-rw-r--r--  contact.txt',
             '-rw-r--r--  credentials.txt'
@@ -724,6 +725,13 @@
           return;
         }
 
+        if (target === 'client') {
+          const client = Array.from(document.querySelectorAll('#clientReelsList .reel-title')).map(node => node.textContent.trim());
+          printLine(`client/  ${client.length} items`, 'is-dim');
+          client.forEach(title => printLine(`  ${title}`));
+          return;
+        }
+
         if (target === 'creative' || target === 'creative/personal' || target === 'creative/client' || target === 'creative/explainers') {
           const explainers = Array.from(document.querySelectorAll('#explainersList .film-title')).map(node => node.textContent.trim());
           const personal = Array.from(document.querySelectorAll('#personalFilmsList .film-title')).map(node => node.textContent.trim());
@@ -737,8 +745,7 @@
             printLine(`personal/  ${personal.length} items`, 'is-dim');
             personal.forEach(title => printLine(`  ${title}`));
           }
-          if (target === 'creative' || target === 'creative/client') {
-            if (target === 'creative') printGap();
+          if (target === 'creative/client') {
             printLine(`client/  ${client.length} items`, 'is-dim');
             client.forEach(title => printLine(`  ${title}`));
           }
@@ -750,13 +757,13 @@
     },
 
     open: {
-      summary: 'jump to home, projects, creative or contact',
+      summary: 'jump to home, creative, projects, client or contact',
       usage: '<section>',
       args: () => SECTIONS,
       run(args) {
         const target = (args[0] || '').replace(/^~?\/?/, '');
         if (!target) {
-          printLine('open: which section? try: open projects', 'is-err');
+          printLine('open: which section? try: open creative', 'is-err');
           return;
         }
         if (!goToSection(target)) {

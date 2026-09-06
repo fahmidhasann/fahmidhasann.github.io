@@ -902,6 +902,7 @@
     if (action === 'dark-mode') toggleTheme();
     else if (action === 'videos' || action === 'creative') scrollToSection('videos');
     else if (action === 'explainers' || action === 'youtube') scrollToSection('youtubeExplainers');
+    else if (action === 'client' || action === 'client-projects') scrollToSection('client-projects');
     else scrollToSection(action);
   }
 
