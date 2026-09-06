@@ -793,7 +793,6 @@
         }
         if (file === 'contact') {
           printLine('email     fahmidhasantaohid@gmail.com');
-          printLine('whatsapp  +880 1732 021592');
           printLine('reply     usually within 24h');
           return;
         }
