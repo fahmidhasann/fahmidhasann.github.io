@@ -983,6 +983,7 @@
     // Tech Explainers & Personal Projects (.video-card-link)
     document.querySelectorAll('.video-card-link').forEach(link => {
       if (link.classList.contains('yt-channel-card-link')) return;
+      if (link.dataset.embed === 'false') return;
       const embed = resolveVideoEmbed(link.href);
       if (!embed) return;
       link.addEventListener('click', event => {
@@ -994,6 +995,7 @@
 
     // Client Projects (.reel-card)
     document.querySelectorAll('.reel-card').forEach(link => {
+      if (link.dataset.embed === 'false') return;
       const embed = resolveVideoEmbed(link.href);
       if (!embed) return;
       link.addEventListener('click', event => {
@@ -1012,6 +1014,7 @@
     if (!popup || !backdrop) return;
 
     const isElement = target instanceof Element;
+    if (isElement && target.dataset.embed === 'false') return;
     const url = isElement ? (target.dataset.video || target.href) : target.url;
     const resolved = isElement ? resolveVideoEmbed(url) : (target.embed || resolveVideoEmbed(url));
     if (!resolved) return;

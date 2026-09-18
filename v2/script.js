@@ -506,6 +506,7 @@
     });
 
     document.querySelectorAll('.film, .reel').forEach(link => {
+      if (link.dataset.embed === 'false') return;
       const embed = resolveVideoEmbed(link.href);
       if (!embed) return;
       link.addEventListener('click', event => {
@@ -532,6 +533,7 @@
   function openDemo(target, opener) {
     if (!dom.popup || !dom.popupBackdrop) return;
     const isElement = target instanceof Element;
+    if (isElement && target.dataset.embed === 'false') return;
     const url = isElement ? (target.dataset.video || target.href) : target.url;
     const resolved = isElement ? resolveVideoEmbed(url) : (target.embed || resolveVideoEmbed(url));
     if (!resolved) return;
