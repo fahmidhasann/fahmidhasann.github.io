@@ -907,61 +907,192 @@
   }
 
   /** Populated by initializeVideoPopup so the open/close paths do not re-query the DOM. */
-  const videoPopupRefs = { popup: null, backdrop: null, player: null, title: null };
+  const videoPopupRefs = {
+    popup: null,
+    backdrop: null,
+    player: null,
+    iframe: null,
+    title: null,
+    badge: null,
+    external: null
+  };
+
+  function resolveVideoEmbed(url) {
+    if (!url) return null;
+    const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/);
+    const listMatch = url.match(/[?&]list=([\w-]+)/);
+    if (ytMatch) {
+      const isShorts = url.includes('/shorts/');
+      const embedUrl = listMatch
+        ? `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?list=${listMatch[1]}&autoplay=1&rel=0`
+        : `https://www.youtube-nocookie.com/embed/${ytMatch[1]}?autoplay=1&rel=0`;
+      return { type: 'youtube', embedUrl, platform: 'YouTube', isPortrait: isShorts };
+    }
+    if (listMatch) {
+      return {
+        type: 'youtube',
+        embedUrl: `https://www.youtube-nocookie.com/embed/videoseries?list=${listMatch[1]}&autoplay=1&rel=0`,
+        platform: 'YouTube',
+        isPortrait: false
+      };
+    }
+    if (url.includes('facebook.com')) {
+      const isReel = url.includes('/reel/');
+      return {
+        type: 'facebook',
+        embedUrl: `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(url)}&show_text=0&autoplay=1`,
+        platform: 'Facebook',
+        isPortrait: isReel
+      };
+    }
+    if (/\.(mp4|webm|ogg)($|\?)/i.test(url)) {
+      return { type: 'local', embedUrl: url, platform: 'Demo', isPortrait: false };
+    }
+    return null;
+  }
 
   function initializeVideoPopup() {
     const backdrop = document.getElementById('videoPopupBackdrop');
     const popup = document.getElementById('videoPopup');
     const player = document.getElementById('videoPopupPlayer');
+    const iframe = document.getElementById('videoPopupIframe');
     const close = document.getElementById('videoPopupClose');
-    if (!backdrop || !popup || !player) return;
+    if (!backdrop || !popup || (!player && !iframe)) return;
 
     videoPopupRefs.popup = popup;
     videoPopupRefs.backdrop = backdrop;
     videoPopupRefs.player = player;
+    videoPopupRefs.iframe = iframe;
     videoPopupRefs.title = document.getElementById('videoPopupTitle');
+    videoPopupRefs.badge = document.getElementById('videoPopupBadge');
+    videoPopupRefs.external = document.getElementById('videoPopupExternal');
 
     backdrop.hidden = true;
     popup.hidden = true;
     popup.setAttribute('aria-hidden', 'true');
     popup.setAttribute('aria-modal', 'true');
     backdrop.setAttribute('aria-hidden', 'true');
+
+    // Project demos (MP4)
     document.querySelectorAll('.btn-demo').forEach(button => {
       const card = button.closest('.project-card[data-video]');
       if (!card) return;
       button.addEventListener('click', () => openVideoPopup(card, button));
     });
+
+    // Tech Explainers & Personal Projects (.video-card-link)
+    document.querySelectorAll('.video-card-link').forEach(link => {
+      if (link.classList.contains('yt-channel-card-link')) return;
+      const embed = resolveVideoEmbed(link.href);
+      if (!embed) return;
+      link.addEventListener('click', event => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+        event.preventDefault();
+        openVideoPopup(link, link);
+      });
+    });
+
+    // Client Projects (.reel-card)
+    document.querySelectorAll('.reel-card').forEach(link => {
+      const embed = resolveVideoEmbed(link.href);
+      if (!embed) return;
+      link.addEventListener('click', event => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+        event.preventDefault();
+        openVideoPopup(link, link);
+      });
+    });
+
     backdrop.addEventListener('click', closeVideoPopup);
     if (close) close.addEventListener('click', closeVideoPopup);
   }
 
-  function openVideoPopup(card, opener) {
-    const { popup, backdrop, player, title } = videoPopupRefs;
-    const src = card.dataset.video;
-    if (!popup || !backdrop || !player || !src) return;
-    // The dialog is labelled by this heading, so it must never be empty.
-    if (title) title.textContent = card.dataset.title || card.querySelector('.project-title')?.textContent || 'Project demo';
-    player.src = src;
-    // Show the card's own thumbnail instead of a black frame while the file buffers.
-    const thumbnail = card.querySelector('.project-image img');
-    if (thumbnail) player.poster = thumbnail.currentSrc || thumbnail.src;
-    player.load();
+  function openVideoPopup(target, opener) {
+    const { popup, backdrop, player, iframe, title, badge, external } = videoPopupRefs;
+    if (!popup || !backdrop) return;
+
+    const isElement = target instanceof Element;
+    const url = isElement ? (target.dataset.video || target.href) : target.url;
+    const resolved = isElement ? resolveVideoEmbed(url) : (target.embed || resolveVideoEmbed(url));
+    if (!resolved) return;
+
+    const videoTitle = (isElement
+      ? (target.dataset.title || target.getAttribute('aria-label')?.replace(/^Watch\s+/i, '') || target.querySelector('.project-title, .video-title, .reel-title')?.textContent)
+      : target.title) || 'Video';
+
+    const thumbnail = isElement
+      ? (target.querySelector('.project-image img, .video-thumbnail img, .reel-frame img')?.currentSrc
+        || target.querySelector('.project-image img, .video-thumbnail img, .reel-frame img')?.src
+        || '')
+      : (target.thumbnail || '');
+
+    if (title) title.textContent = videoTitle;
+    if (badge) {
+      const icon = resolved.type === 'youtube' ? 'fab fa-youtube' : (resolved.type === 'facebook' ? 'fab fa-facebook' : 'fas fa-play');
+      badge.innerHTML = `<i class="${icon}" aria-hidden="true"></i> ${resolved.platform === 'Local' ? 'Demo' : resolved.platform}`;
+    }
+
+    if (external) {
+      if (resolved.type === 'local') {
+        external.hidden = true;
+      } else {
+        external.href = url;
+        external.hidden = false;
+        const textSpan = external.querySelector('.video-popup-external-text');
+        if (textSpan) textSpan.textContent = `Watch on ${resolved.platform}`;
+        external.setAttribute('aria-label', `Watch "${videoTitle}" on ${resolved.platform}`);
+      }
+    }
+
+    const isPortrait = target.dataset?.aspect === 'portrait' || (target.isPortrait ?? resolved.isPortrait);
+    popup.classList.toggle('is-portrait', Boolean(isPortrait));
+    popup.classList.toggle('is-landscape', !isPortrait);
+
+    if (resolved.type === 'local') {
+      if (iframe) {
+        iframe.hidden = true;
+        iframe.src = 'about:blank';
+      }
+      if (player) {
+        player.hidden = false;
+        player.src = resolved.embedUrl;
+        if (thumbnail) player.poster = thumbnail;
+        player.load();
+        if (!motionReduced()) player.play().catch(() => {});
+      }
+    } else {
+      if (player) {
+        player.pause();
+        player.removeAttribute('src');
+        player.removeAttribute('poster');
+        player.hidden = true;
+      }
+      if (iframe) {
+        iframe.hidden = false;
+        iframe.src = resolved.embedUrl;
+      }
+    }
+
     backdrop.hidden = false;
     backdrop.classList.add('active', 'visible');
     openDialog(popup, opener, [backdrop]);
-    // Autoplay is a nicety: browsers may refuse it, and the controls still work.
-    if (!motionReduced()) player.play().catch(() => {});
   }
 
   function closeVideoPopup() {
-    const { popup, backdrop, player } = videoPopupRefs;
+    const { popup, backdrop, player, iframe } = videoPopupRefs;
     if (!popup) return;
     if (player) {
       player.pause();
       player.removeAttribute('src');
       player.removeAttribute('poster');
       player.load();
+      player.hidden = true;
     }
+    if (iframe) {
+      iframe.src = 'about:blank';
+      iframe.hidden = true;
+    }
+    popup.classList.remove('is-portrait', 'is-landscape');
     if (backdrop) {
       backdrop.classList.remove('active', 'visible');
       backdrop.setAttribute('aria-hidden', 'true');

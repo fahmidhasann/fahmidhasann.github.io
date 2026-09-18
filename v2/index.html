@@ -627,15 +627,19 @@
       </footer>
     </div>
 
-    <!-- Video demo window -->
+    <!-- Video popup window -->
     <div class="vp-backdrop" id="videoPopupBackdrop" hidden></div>
     <div class="vp" id="videoPopup" role="dialog" aria-modal="true" aria-labelledby="videoPopupTitle" hidden>
       <div class="vp-bar">
-        <span class="vp-badge" aria-hidden="true">▶ playing</span>
-        <h2 class="vp-title" id="videoPopupTitle">Project demo</h2>
+        <span class="vp-badge" id="videoPopupBadge" aria-hidden="true">▶ playing</span>
+        <h2 class="vp-title" id="videoPopupTitle">Project video</h2>
+        <a class="vp-external" id="videoPopupExternal" href="#" target="_blank" rel="noopener noreferrer" aria-label="Open on external platform" hidden>[ext ↗]</a>
         <button class="vp-close" id="videoPopupClose" type="button" aria-label="Close demo">[ x ]</button>
       </div>
-      <video id="videoPopupPlayer" muted loop playsinline preload="none" controls></video>
+      <div class="vp-body">
+        <video id="videoPopupPlayer" muted loop playsinline preload="none" controls></video>
+        <iframe id="videoPopupIframe" class="vp-iframe" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe>
+      </div>
     </div>
 
     <script defer src="script.js"></script>
