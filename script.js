@@ -982,7 +982,7 @@
 
     // Tech Explainers & Personal Projects (.video-card-link)
     document.querySelectorAll('.video-card-link').forEach(link => {
-      if (link.classList.contains('yt-channel-card-link')) return;
+      if (link.classList.contains('yt-channel-card-link') || link.classList.contains('fb-channel-card-link')) return;
       if (link.dataset.embed === 'false') return;
       const embed = resolveVideoEmbed(link.href);
       if (!embed) return;
