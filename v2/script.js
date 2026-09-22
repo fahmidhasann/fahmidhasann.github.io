@@ -875,6 +875,11 @@
           printLine('open: which section? try: open creative', 'is-err');
           return;
         }
+        if (target === 'call' || target === 'book' || target === 'schedule' || target === 'book-a-call') {
+          goToSection('book-a-call');
+          printLine('→ ~/contact#book-a-call', 'is-ok');
+          return;
+        }
         if (!goToSection(target)) {
           printLine(`open: no section named '${target}'`, 'is-err');
           return;
@@ -986,6 +991,38 @@
         printLink('github     /fahmidhasann', 'https://github.com/fahmidhasann', { external: true });
         printLink('instagram  /fahmid_hasann', 'https://www.instagram.com/fahmid_hasann/', { external: true });
         printLink('facebook   /fahmiddhasann', 'https://www.facebook.com/fahmiddhasann', { external: true });
+      }
+    },
+
+    call: {
+      summary: 'book a 30-min strategy call on Google Meet',
+      run() {
+        printLine('Strategy Call — 1-on-1 Consultation', 'is-ok');
+        printLine('schedule : Mon - Sun | 18:00 - 22:00 BST (UTC+6)');
+        printLine('platform : Google Meet (auto-invite)');
+        printLink('open booking calendar → cal.com/fahmid-hasan-taohid-n2y05r', 'https://cal.com/fahmid-hasan-taohid-n2y05r', { external: true });
+        goToSection('book-a-call');
+      }
+    },
+
+    book: {
+      summary: 'alias for call',
+      run() {
+        COMMANDS.call.run();
+      }
+    },
+
+    schedule: {
+      summary: 'alias for call',
+      run() {
+        COMMANDS.call.run();
+      }
+    },
+
+    cal: {
+      summary: 'alias for call',
+      run() {
+        COMMANDS.call.run();
       }
     },
 

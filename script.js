@@ -903,6 +903,7 @@
     else if (action === 'videos' || action === 'creative') scrollToSection('videos');
     else if (action === 'explainers' || action === 'youtube') scrollToSection('youtubeExplainers');
     else if (action === 'client' || action === 'client-projects') scrollToSection('client-projects');
+    else if (action === 'book-a-call' || action === 'call') scrollToSection('book-a-call');
     else scrollToSection(action);
   }
 

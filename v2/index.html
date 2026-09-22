@@ -113,6 +113,7 @@
 
               <div class="actions">
                 <a href="#projects" class="tbtn tbtn-primary">./view-projects</a>
+                <a href="#book-a-call" class="tbtn tbtn-primary">./book-a-call</a>
                 <a href="#contact" class="tbtn">./start-a-project</a>
               </div>
 
@@ -572,12 +573,32 @@
 
         <!-- ================= CONTACT ================= -->
         <section id="contact" class="block" aria-labelledby="contact-heading">
-          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> mail -s "new project" fahmid</p>
-
           <div class="out contact">
             <div class="contact-main">
               <h2 id="contact-heading" class="blocktitle">Let's Connect</h2>
               <p class="prose dim">Tell me what you want to build, automate, or improve. I usually work best on focused scopes with clear business outcomes.</p>
+
+              <!-- Book a Call Terminal Card -->
+              <div class="call-term-card" id="book-a-call">
+                <p class="cmd cmd-inline"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> cal --schedule "strategy-call"</p>
+                <div class="call-term-box">
+                  <div class="call-term-header">
+                    <span class="term-status-dot" aria-hidden="true">●</span> <strong>STRATEGY CALL (1-ON-1)</strong>
+                  </div>
+                  <p class="prose dim call-term-desc">Direct Google Meet consultation to discuss AI automation, workflows, or project development.</p>
+                  <dl class="kv call-kv">
+                    <div class="kv-row"><dt>duration</dt><dd>15-30 min discovery &amp; strategy</dd></div>
+                    <div class="kv-row"><dt>platform</dt><dd>Google Meet (auto-invite)</dd></div>
+                    <div class="kv-row"><dt>schedule</dt><dd>Mon - Sun | 18:00 - 22:00 BST (UTC+6)</dd></div>
+                    <div class="kv-row"><dt>sync</dt><dd>cal.com real-time calendar</dd></div>
+                  </dl>
+                  <div class="call-term-actions">
+                    <a href="https://cal.com/fahmid-hasan-taohid-n2y05r" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">./book-via-cal ↗</a>
+                  </div>
+                </div>
+              </div>
+
+              <p class="cmd cmd-inline cmd-mail-header"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> mail -s "new project" fahmid</p>
 
               <form id="contactForm" class="tform" aria-busy="false">
                 <input type="hidden" name="access_key" value="756aa2fa-77ba-4671-9ba7-2161b61c8c11">
