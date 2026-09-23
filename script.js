@@ -47,6 +47,7 @@
     runInit('initializeEditionSwitch', initializeEditionSwitch);
     runInit('initializeEditionChooser', initializeEditionChooser);
     runInit('initializeVideoPopup', initializeVideoPopup);
+    runInit('initializeCalPopup', initializeCalPopup);
     runInit('initializeNavScroll', initializeNavScroll);
     runInit('initializeContactForm', initializeContactForm);
     runInit('initializeEasterEgg', initializeEasterEgg);
@@ -245,6 +246,7 @@
     if (dialog.id === 'videoPopup') closeVideoPopup();
     else if (dialog.id === 'commandPalette') closeCommandPalette();
     else if (dialog.id === 'editionChooser') closeEditionChooser();
+    else if (dialog.id === 'calPopup') closeCalPopup();
     else closeDialog(dialog);
   }
 
@@ -903,7 +905,7 @@
     else if (action === 'videos' || action === 'creative') scrollToSection('videos');
     else if (action === 'explainers' || action === 'youtube') scrollToSection('youtubeExplainers');
     else if (action === 'client' || action === 'client-projects') scrollToSection('client-projects');
-    else if (action === 'book-a-call' || action === 'call') scrollToSection('book-a-call');
+    else if (action === 'book-a-call' || action === 'call') openCalPopup();
     else scrollToSection(action);
   }
 
@@ -1097,6 +1099,87 @@
       iframe.hidden = true;
     }
     popup.classList.remove('is-portrait', 'is-landscape');
+    if (backdrop) {
+      backdrop.classList.remove('active', 'visible');
+      backdrop.setAttribute('aria-hidden', 'true');
+      backdrop.hidden = true;
+    }
+    closeDialog(popup);
+  }
+
+  /* --------------------------------------------------------------------------
+     Cal.com Booking Modal
+     -------------------------------------------------------------------------- */
+
+  const calPopupRefs = {
+    popup: null,
+    backdrop: null,
+    iframe: null,
+    loading: null,
+    close: null
+  };
+
+  const CAL_BOOKING_URL = 'https://cal.com/fahmid-hasan-taohid-n2y05r/30min?embed=true';
+
+  function initializeCalPopup() {
+    const backdrop = document.getElementById('calPopupBackdrop');
+    const popup = document.getElementById('calPopup');
+    const iframe = document.getElementById('calPopupIframe');
+    const loading = document.getElementById('calPopupLoading');
+    const close = document.getElementById('calPopupClose');
+    if (!backdrop || !popup || !iframe) return;
+
+    calPopupRefs.popup = popup;
+    calPopupRefs.backdrop = backdrop;
+    calPopupRefs.iframe = iframe;
+    calPopupRefs.loading = loading;
+    calPopupRefs.close = close;
+
+    backdrop.hidden = true;
+    popup.hidden = true;
+    popup.setAttribute('aria-hidden', 'true');
+    popup.setAttribute('aria-modal', 'true');
+    backdrop.setAttribute('aria-hidden', 'true');
+
+    iframe.addEventListener('load', () => {
+      if (iframe.src && !iframe.src.includes('about:blank')) {
+        if (loading) loading.hidden = true;
+      }
+    });
+
+    const triggerButtons = document.querySelectorAll('#heroBookCallBtn, #contactBookCallBtn, [data-trigger="cal-popup"]');
+    triggerButtons.forEach(btn => {
+      btn.addEventListener('click', event => {
+        event.preventDefault();
+        openCalPopup(btn);
+      });
+    });
+
+    backdrop.addEventListener('click', closeCalPopup);
+    if (close) close.addEventListener('click', closeCalPopup);
+  }
+
+  function openCalPopup(opener) {
+    const { popup, backdrop, iframe, loading } = calPopupRefs;
+    if (!popup || !backdrop || !iframe) return;
+
+    if (!iframe.src || iframe.src.includes('about:blank') || !iframe.src.includes('cal.com')) {
+      if (loading) loading.hidden = false;
+      iframe.src = CAL_BOOKING_URL;
+      // Failsafe in case network or sandbox delays load event
+      window.setTimeout(() => {
+        if (loading && !loading.hidden) loading.hidden = true;
+      }, 4000);
+    }
+
+    backdrop.hidden = false;
+    backdrop.classList.add('active', 'visible');
+    openDialog(popup, opener, [backdrop]);
+  }
+
+  function closeCalPopup() {
+    const { popup, backdrop } = calPopupRefs;
+    if (!popup) return;
     if (backdrop) {
       backdrop.classList.remove('active', 'visible');
       backdrop.setAttribute('aria-hidden', 'true');

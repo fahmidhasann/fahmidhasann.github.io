@@ -1235,6 +1235,51 @@ button, input, textarea {
   object-fit: contain;
 }
 
+/* Cal.com booking popup window --------------------------------------------- */
+.cal-term-popup {
+  width: min(58rem, calc(100vw - 2rem));
+  height: min(46rem, 90vh);
+  max-height: 90vh;
+}
+.cal-term-body {
+  flex: 1 1 auto;
+  position: relative;
+  background: var(--bg-canvas);
+  min-height: 0;
+  height: 100%;
+  aspect-ratio: auto !important;
+}
+.cal-term-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.cal-term-iframe[hidden] {
+  display: none;
+}
+.cal-term-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--fg-dim);
+  font-size: 0.8125rem;
+  background: var(--bg-canvas);
+  z-index: 1;
+}
+.cal-term-loading[hidden] {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .cal-term-popup .vp-badge {
+    display: none;
+  }
+}
+
 body.locked { overflow: hidden; }
 
 /* --------------------------------------------------------------------------

@@ -32,6 +32,7 @@
     boot('carousels', initCarousels);
     boot('filters', initFilters);
     boot('videoPopup', initVideoPopup);
+    boot('calPopup', initCalPopup);
     boot('contactForm', initContactForm);
     boot('prompt', initPrompt);
     boot('bootSequence', initBootSequence);
@@ -65,6 +66,11 @@
     dom.popupBadge = document.getElementById('videoPopupBadge');
     dom.popupExternal = document.getElementById('videoPopupExternal');
     dom.popupClose = document.getElementById('videoPopupClose');
+    dom.calPopup = document.getElementById('calTermPopup');
+    dom.calPopupBackdrop = document.getElementById('calTermPopupBackdrop');
+    dom.calPopupIframe = document.getElementById('calTermIframe');
+    dom.calPopupLoading = document.getElementById('calTermLoading');
+    dom.calPopupClose = document.getElementById('calTermPopupClose');
   }
 
   function motionOff() { return reduceMotion.matches; }
@@ -623,6 +629,72 @@
     popupState.opener = null;
   }
 
+  const calState = {
+    opener: null
+  };
+
+  const CAL_EMBED_URL = 'https://cal.com/fahmid-hasan-taohid-n2y05r/30min?embed=true';
+
+  function initCalPopup() {
+    const triggers = document.querySelectorAll('#heroBookCallBtn, #contactBookCallBtn, [data-trigger="cal-popup"]');
+    triggers.forEach(btn => {
+      btn.addEventListener('click', event => {
+        event.preventDefault();
+        openCalPopup(btn);
+      });
+    });
+
+    dom.calPopupIframe?.addEventListener('load', () => {
+      if (dom.calPopupIframe.src && !dom.calPopupIframe.src.includes('about:blank')) {
+        if (dom.calPopupLoading) dom.calPopupLoading.hidden = true;
+      }
+    });
+
+    dom.calPopupClose?.addEventListener('click', closeCalPopup);
+    dom.calPopupBackdrop?.addEventListener('click', closeCalPopup);
+
+    document.addEventListener('keydown', event => {
+      if (!dom.calPopup || dom.calPopup.hidden) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeCalPopup();
+        return;
+      }
+      if (event.key === 'Tab') trapFocus(event, dom.calPopup);
+    });
+  }
+
+  function openCalPopup(opener) {
+    if (!dom.calPopup || !dom.calPopupBackdrop) return;
+    if (!dom.calPopupIframe?.src || dom.calPopupIframe.src.includes('about:blank') || !dom.calPopupIframe.src.includes('cal.com')) {
+      if (dom.calPopupLoading) dom.calPopupLoading.hidden = false;
+      if (dom.calPopupIframe) {
+        dom.calPopupIframe.src = CAL_EMBED_URL;
+      }
+      // Failsafe in case network or sandbox delays load event
+      window.setTimeout(() => {
+        if (dom.calPopupLoading && !dom.calPopupLoading.hidden) dom.calPopupLoading.hidden = true;
+      }, 4000);
+    }
+
+    dom.calPopupBackdrop.hidden = false;
+    dom.calPopup.hidden = false;
+    document.body.classList.add('locked');
+    setPageInert([dom.calPopup, dom.calPopupBackdrop]);
+    calState.opener = opener || null;
+    dom.calPopupClose?.focus();
+  }
+
+  function closeCalPopup() {
+    if (!dom.calPopup || dom.calPopup.hidden) return;
+    dom.calPopup.hidden = true;
+    dom.calPopupBackdrop.hidden = true;
+    document.body.classList.remove('locked');
+    clearPageInert();
+    calState.opener?.focus?.();
+    calState.opener = null;
+  }
+
   function trapFocus(event, container) {
     const focusable = Array.from(container.querySelectorAll(
       'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), video[controls], [tabindex]:not([tabindex="-1"])'
@@ -876,8 +948,8 @@
           return;
         }
         if (target === 'call' || target === 'book' || target === 'schedule' || target === 'book-a-call') {
-          goToSection('book-a-call');
-          printLine('→ ~/contact#book-a-call', 'is-ok');
+          openCalPopup(dom.prompt);
+          printLine('→ opening cal.com booking modal', 'is-ok');
           return;
         }
         if (!goToSection(target)) {
@@ -1000,8 +1072,8 @@
         printLine('Strategy Call — 1-on-1 Consultation', 'is-ok');
         printLine('schedule : Mon - Sun | 18:00 - 22:00 BST (UTC+6)');
         printLine('platform : Google Meet (auto-invite)');
-        printLink('open booking calendar → cal.com/fahmid-hasan-taohid-n2y05r', 'https://cal.com/fahmid-hasan-taohid-n2y05r', { external: true });
-        goToSection('book-a-call');
+        printLink('open booking calendar → cal.com/fahmid-hasan-taohid-n2y05r/30min', 'https://cal.com/fahmid-hasan-taohid-n2y05r/30min', { external: true });
+        openCalPopup(dom.prompt);
       }
     },
 

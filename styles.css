@@ -945,6 +945,167 @@ a { color: inherit; }
 .video-popup-iframe[hidden] { display: none; }
 .video-popup video { max-height: calc(92vh - 3.6rem); object-fit: contain; }
 
+/* Cal.com popup modal ----------------------------------------------------- */
+.cal-popup-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-video-popup);
+  background: var(--overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--normal) ease;
+}
+.cal-popup-backdrop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.cal-popup {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  z-index: calc(var(--z-video-popup) + 1);
+  width: min(94vw, 56rem);
+  height: min(90vh, 46rem);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -48%) scale(.97);
+  transition: opacity var(--normal) ease, transform var(--normal) var(--ease-out);
+}
+.cal-popup.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.cal-popup-header {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 3.6rem;
+  padding: .6rem .75rem .6rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+.cal-popup-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .26rem .55rem;
+  color: var(--on-accent);
+  border-radius: .25rem;
+  background: var(--accent);
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cal-popup-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink-strong);
+  font-size: .95rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+.cal-popup-external {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .32rem .65rem;
+  color: var(--muted);
+  font-size: .75rem;
+  font-weight: 500;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: color var(--fast) ease, border-color var(--fast) ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.cal-popup-external:hover {
+  color: var(--ink);
+  border-color: var(--accent);
+}
+.cal-popup-close {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  padding: 0;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--fast) ease, border-color var(--fast) ease, background var(--fast) ease;
+}
+.cal-popup-close:hover {
+  color: var(--on-accent);
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.cal-popup-body {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  background: var(--page);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.cal-popup-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.cal-popup-iframe[hidden] {
+  display: none;
+}
+.cal-popup-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  color: var(--muted);
+  font-size: .88rem;
+  font-weight: 500;
+  background: var(--surface);
+  z-index: 1;
+}
+.cal-popup-loading[hidden] {
+  display: none;
+}
+.cal-popup-loading i {
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .cal-popup-badge {
+    display: none;
+  }
+  .cal-popup-external-text {
+    display: none;
+  }
+}
+
 /* Konami easter egg ------------------------------------------------------- */
 .confetti-layer { position: fixed; inset: 0; z-index: var(--z-confetti); pointer-events: none; }
 .confetti-piece {

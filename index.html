@@ -168,7 +168,9 @@
 
           <div class="hero-cta hero-entrance">
             <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="#book-a-call" class="btn btn-call-hero"><i class="fas fa-calendar-check" aria-hidden="true"></i> Book a Call</a>
+            <button type="button" class="btn btn-call-hero" id="heroBookCallBtn" aria-haspopup="dialog" aria-controls="calPopup">
+              <i class="fas fa-calendar-check" aria-hidden="true"></i> Book a Call
+            </button>
             <a href="#contact" class="btn btn-secondary">Start a Project</a>
           </div>
 
@@ -692,10 +694,10 @@
             </div>
           </div>
           <div class="call-banner-action">
-            <a href="https://cal.com/fahmid-hasan-taohid-n2y05r" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-call-cta">
+            <button type="button" class="btn btn-primary btn-call-cta" id="contactBookCallBtn" aria-haspopup="dialog" aria-controls="calPopup">
               <span>Book via Cal.com</span>
-              <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-            </a>
+              <i class="fas fa-calendar-check" aria-hidden="true"></i>
+            </button>
             <span class="call-action-note"><i class="fas fa-bolt" aria-hidden="true"></i> Instant calendar sync</span>
           </div>
         </div>
@@ -857,6 +859,27 @@
       <div class="video-popup-body">
         <video id="videoPopupPlayer" muted loop playsinline preload="none" controls></video>
         <iframe id="videoPopupIframe" class="video-popup-iframe" title="Video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen hidden></iframe>
+      </div>
+    </div>
+
+    <!-- Cal.com Booking Popup Modal -->
+    <div class="cal-popup-backdrop" id="calPopupBackdrop" aria-hidden="true" hidden></div>
+    <div class="cal-popup" id="calPopup" role="dialog" aria-modal="true" aria-labelledby="calPopupTitle" hidden>
+      <div class="cal-popup-header">
+        <span class="cal-popup-badge"><i class="fas fa-calendar-check" aria-hidden="true"></i> Booking</span>
+        <h2 class="cal-popup-title" id="calPopupTitle">Book a 30-Min Strategy Call</h2>
+        <a class="cal-popup-external" id="calPopupExternal" href="https://cal.com/fahmid-hasan-taohid-n2y05r/30min" target="_blank" rel="noopener noreferrer" aria-label="Open booking page in new tab">
+          <span class="cal-popup-external-text">Open in New Tab</span>
+          <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="cal-popup-close" id="calPopupClose" aria-label="Close booking modal">&#x2715;</button>
+      </div>
+      <div class="cal-popup-body">
+        <div class="cal-popup-loading" id="calPopupLoading" aria-hidden="true">
+          <i class="fas fa-spinner fa-spin" aria-hidden="true"></i>
+          <span>Loading booking calendar...</span>
+        </div>
+        <iframe id="calPopupIframe" class="cal-popup-iframe" title="Cal.com Booking Scheduler" allow="camera; microphone; autoplay; fullscreen"></iframe>
       </div>
     </div>
 
