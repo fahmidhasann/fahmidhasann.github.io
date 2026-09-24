@@ -85,6 +85,7 @@ body {
   transition: background-color var(--normal) ease, color var(--normal) ease;
 }
 body.scroll-locked { overflow: hidden; }
+[hidden] { display: none !important; }
 img, video { display: block; max-width: 100%; }
 button, input, textarea, select { font: inherit; }
 button { color: inherit; }
@@ -327,6 +328,7 @@ a { color: inherit; }
   position: relative;
   min-width: 0;
   overflow: hidden;
+  touch-action: pan-y;
 }
 .carousel-viewport::before,
 .carousel-viewport::after {
@@ -357,14 +359,25 @@ a { color: inherit; }
   margin: 0;
   padding: .35rem .15rem .85rem;
   overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  overflow-y: clip;
+  touch-action: pan-x pan-y;
+  scroll-snap-type: x proximity;
   scroll-padding-inline: .15rem;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: auto;
+  overscroll-behavior-y: auto;
   scrollbar-width: none;
   outline: none;
+}
+.carousel-track.is-dragging {
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+  cursor: grabbing;
+  user-select: none;
+}
+.carousel-track.is-dragging * {
+  cursor: grabbing;
+  user-select: none;
 }
 .carousel-track::-webkit-scrollbar { display: none; }
 .carousel-track:focus-visible {
@@ -413,12 +426,14 @@ a { color: inherit; }
   background: var(--surface);
   box-shadow: 0 1px 0 rgba(15, 29, 52, .02);
   scroll-snap-align: start;
+  touch-action: pan-x pan-y;
+  -webkit-user-drag: none;
   transition: transform var(--normal) var(--ease-out), box-shadow var(--normal) ease, border-color var(--normal) ease, opacity var(--normal) var(--ease-out);
 }
 .project-card[id] { scroll-margin-top: 6rem; }
 .project-card:hover { border-color: color-mix(in srgb, var(--accent) 68%, var(--line)); box-shadow: var(--shadow-md); transform: translateY(-5px); }
 .project-image { position: relative; aspect-ratio: 16 / 9.4; overflow: hidden; background: var(--surface-soft); }
-.project-image > img, .project-image > video { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .65s var(--ease-out); }
+.project-image > img, .project-image > video { width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; -webkit-user-drag: none; user-select: none; transition: transform .65s var(--ease-out); }
 .project-card:hover .project-image > img, .project-card:hover .project-image > video { transform: scale(1.045); }
 .project-content { display: flex; flex: 1; flex-direction: column; padding: clamp(1.15rem, 2vw, 1.5rem); }
 .project-title { color: var(--ink-strong); font-family: var(--font-heading); font-size: clamp(1.45rem, 2.3vw, 1.85rem); font-weight: 600; line-height: 1.02; letter-spacing: -.025em; }
@@ -484,6 +499,8 @@ a { color: inherit; }
   box-shadow: var(--shadow-sm);
   text-decoration: none;
   scroll-snap-align: start;
+  touch-action: pan-x pan-y;
+  -webkit-user-drag: none;
   transition: opacity var(--normal) var(--ease-out), transform var(--normal) var(--ease-out), box-shadow var(--normal) ease, border-color var(--normal) ease;
 }
 .video-card-link:hover, .video-card-link:focus-visible {
@@ -506,7 +523,7 @@ a { color: inherit; }
   border-radius: 0;
   background: var(--navy-deep);
 }
-.video-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s var(--ease-out), filter var(--normal) ease; }
+.video-thumbnail img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; -webkit-user-drag: none; user-select: none; transition: transform .65s var(--ease-out), filter var(--normal) ease; }
 .video-card-link:hover .video-thumbnail img { filter: brightness(.83); transform: scale(1.045); }
 .video-overlay { position: absolute; inset: 0; display: grid; place-items: center; color: var(--on-accent); background: rgba(7,16,32,.22); opacity: 1; transition: background var(--normal) ease; }
 .video-overlay i { display: grid; place-items: center; width: 3rem; height: 3rem; padding-left: .13rem; border: 1px solid rgba(255,255,255,.72); border-radius: 50%; background: rgba(7,16,32,.2); font-size: 1rem; transition: transform var(--normal) var(--ease-out), color var(--normal) ease, background var(--normal) ease; }
@@ -633,6 +650,8 @@ a { color: inherit; }
   color: inherit;
   text-decoration: none;
   scroll-snap-align: start;
+  touch-action: pan-x pan-y;
+  -webkit-user-drag: none;
   transition: transform var(--normal) var(--ease-out);
 }
 .reel-card:hover, .reel-card:focus-visible { transform: translateY(-4px); }
@@ -650,6 +669,9 @@ a { color: inherit; }
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
   transition: transform .65s var(--ease-out), filter var(--normal) ease;
 }
 .reel-card:hover .reel-frame img, .reel-card:focus-visible .reel-frame img {
@@ -924,6 +946,8 @@ a { color: inherit; }
 }
 .video-popup-backdrop { position: fixed; inset: 0; z-index: var(--z-video-popup); background: var(--overlay); opacity: 0; pointer-events: none; transition: opacity var(--normal) ease; }
 .video-popup-backdrop.visible { opacity: 1; pointer-events: auto; }
+.video-popup-backdrop[hidden],
+.video-popup[hidden] { display: none !important; }
 .video-popup { position: fixed; inset: 50% auto auto 50%; z-index: calc(var(--z-video-popup) + 1); width: min(92vw, 56rem); max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transform: translate(-50%, -48%) scale(.97); transition: opacity var(--normal) ease, transform var(--normal) var(--ease-out), width var(--normal) var(--ease-out); }
 .video-popup.visible { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
 .video-popup.is-portrait { width: min(92vw, 24rem); }
@@ -958,6 +982,10 @@ a { color: inherit; }
 .cal-popup-backdrop.visible {
   opacity: 1;
   pointer-events: auto;
+}
+.cal-popup-backdrop[hidden],
+.cal-popup[hidden] {
+  display: none !important;
 }
 .cal-popup {
   position: fixed;

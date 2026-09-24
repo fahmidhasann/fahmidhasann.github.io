@@ -683,6 +683,104 @@
       track.scrollBy({ left: getStep(track) * direction, behavior: smoothBehavior() });
     };
 
+    const snapToNearestCard = (track) => {
+      const items = Array.from(track.children).filter(child => !child.classList.contains('hidden-card') && !child.hidden && child.offsetParent !== null);
+      if (!items.length) return;
+      const currentScroll = track.scrollLeft;
+      let closestItem = items[0];
+      let minDistance = Infinity;
+
+      for (const item of items) {
+        const itemLeft = item.offsetLeft - track.offsetLeft;
+        const dist = Math.abs(itemLeft - currentScroll);
+        if (dist < minDistance) {
+          minDistance = dist;
+          closestItem = item;
+        }
+      }
+
+      if (closestItem) {
+        const target = Math.max(0, Math.min(closestItem.offsetLeft - track.offsetLeft, track.scrollWidth - track.clientWidth));
+        track.scrollTo({ left: target, behavior: smoothBehavior() });
+      }
+    };
+
+    const setupDrag = (track) => {
+      let isDown = false;
+      let startX = 0;
+      let startY = 0;
+      let startScrollLeft = 0;
+      let isDragging = false;
+      let directionDecided = false;
+      let isHorizontal = false;
+      let activePointerId = null;
+
+      const onPointerDown = (e) => {
+        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        if (e.target.closest('button, input, select, textarea, .carousel-btn')) return;
+
+        isDown = true;
+        isDragging = false;
+        directionDecided = false;
+        isHorizontal = false;
+        activePointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        startScrollLeft = track.scrollLeft;
+      };
+
+      const onPointerMove = (e) => {
+        if (!isDown || e.pointerId !== activePointerId) return;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        if (!directionDecided) {
+          if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+          directionDecided = true;
+          if (Math.abs(dy) >= Math.abs(dx)) {
+            isDown = false;
+            return;
+          }
+          isHorizontal = true;
+          track.classList.add('is-dragging');
+          try { track.setPointerCapture(e.pointerId); } catch (_) {}
+        }
+
+        if (isHorizontal) {
+          isDragging = true;
+          track.scrollLeft = startScrollLeft - dx;
+        }
+      };
+
+      const onPointerUp = (e) => {
+        if (!isDown && !isDragging) return;
+        if (activePointerId !== null && e.pointerId !== activePointerId) return;
+        isDown = false;
+        activePointerId = null;
+        track.classList.remove('is-dragging');
+        try { track.releasePointerCapture(e.pointerId); } catch (_) {}
+
+        if (isDragging) {
+          const preventClick = (clickEvt) => {
+            clickEvt.preventDefault();
+            clickEvt.stopPropagation();
+          };
+          window.addEventListener('click', preventClick, { capture: true, once: true });
+          window.setTimeout(() => {
+            window.removeEventListener('click', preventClick, { capture: true });
+          }, 80);
+
+          snapToNearestCard(track);
+        }
+        isDragging = false;
+      };
+
+      track.addEventListener('pointerdown', onPointerDown);
+      track.addEventListener('pointermove', onPointerMove, { passive: true });
+      track.addEventListener('pointerup', onPointerUp);
+      track.addEventListener('pointercancel', onPointerUp);
+    };
+
     carousels.forEach(carousel => {
       const track = carousel.querySelector('.carousel-track');
       const prevBtn = carousel.querySelector('.carousel-btn-prev');
@@ -716,6 +814,8 @@
       if (typeof ResizeObserver !== 'undefined') {
         new ResizeObserver(scheduleUpdate).observe(track);
       }
+
+      setupDrag(track);
 
       carouselControllers.set(carousel, {
         update: () => updateChrome(carousel, track, prevBtn, nextBtn)
