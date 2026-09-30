@@ -611,7 +611,7 @@
                   </article>
 
                   <article class="proj reveal" id="project-plantdoc" data-category="ai" data-slug="plantdoc">
-                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">plantdoc-rag.py</span></p>
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">plantdoc-rag.ts</span></p>
                     <figure class="asciiframe">
                       <div class="asciiframe-media">
                         <img src="../assets/project/plantdoc-chatbot.jpeg" alt="PlantDoc — Plant Disease Q&amp;A Chatbot" width="1280" height="853" loading="lazy" decoding="async">
@@ -619,15 +619,15 @@
                       <figcaption class="asciiframe-cap" aria-hidden="true">└─ plantdoc-chatbot.jpeg</figcaption>
                     </figure>
                     <div class="proj-text">
-                      <h3 class="proj-title">PlantDoc — Plant Disease Q&amp;A Chatbot</h3>
-                      <p class="proj-desc">A chatbot that answers plant disease questions from a pathology textbook, and shows the page each answer came from.</p>
-                      <p class="proj-how"><span class="proj-how-label">// how it works</span> RAG: the 948-page book is split into 2,870 chunks in ChromaDB. The closest chunks go to DeepSeek, which writes the answer.</p>
+                      <h3 class="proj-title">PlantDoc — Multimodal Plant Pathology AI</h3>
+                      <p class="proj-desc">A multimodal plant disease assistant that diagnoses leaf photos and answers pathology questions grounded in an authoritative 948-page textbook with exact page citations.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> Multimodal RAG: Gemini 3.8 Flash analyzes leaf symptoms or queries, retrieves relevant chunks from Pinecone, and synthesizes clinical diagnoses with textbook page citations.</p>
                       <ul class="tags" aria-label="Stack">
-                        <li>Python</li><li>Streamlit</li><li>ChromaDB</li><li>DeepSeek</li>
+                        <li>Next.js</li><li>Gemini 3.8 Flash</li><li>Pinecone</li><li>Multimodal RAG</li>
                       </ul>
                       <div class="proj-actions">
                         <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
-                        <a href="https://huggingface.co/spaces/fahmidhasan/plant-pathology-expert" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                        <a href="https://plantdoc-rag.vercel.app" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
                       </div>
                     </div>
                   </article>
