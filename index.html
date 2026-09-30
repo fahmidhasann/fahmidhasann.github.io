@@ -107,10 +107,10 @@
         <ul class="nav-menu" id="navMenu">
           <li><a href="#hero" class="nav-link">Home</a></li>
           <li><a href="#journey" class="nav-link">Journey</a></li>
-          <li><a href="#videos" class="nav-link">Creative Work</a></li>
           <li><a href="#ai-education" class="nav-link">AI Education</a></li>
           <li><a href="#projects" class="nav-link">Automation</a></li>
           <li><a href="#side-projects" class="nav-link">Side Projects</a></li>
+          <li><a href="#videos" class="nav-link">Creative Work</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
         <div class="edition-switcher" role="group" aria-label="Portfolio edition">
@@ -235,6 +235,243 @@
             <a href="#ai-education" class="btn-link live journey-link">See my work →</a>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <!-- AI Education Section -->
+    <section id="ai-education" class="section projects-section education-section" aria-labelledby="ai-education-heading">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="ai-education-heading" class="section-title">AI Education</h2>
+          <p class="section-subtitle">I learn how AI works in depth, then make it simple for others. Most good material is in English, so I write for Bangla readers too.</p>
+        </header>
+
+        <article class="project-card project-card-featured" id="project-transformer-course" data-category="ai">
+          <div class="project-image project-art">
+            <svg class="embed-art" viewBox="0 0 400 280" role="img" aria-labelledby="embedArtTitle">
+              <title id="embedArtTitle">Word embedding illustration: the arrow from man to woman runs parallel to the arrow from king to queen, so king minus man plus woman lands near queen.</title>
+              <defs>
+                <marker id="embedArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path class="embed-arrowhead" d="M0 1 L9 5 L0 9 z"/>
+                </marker>
+              </defs>
+              <g class="embed-noise" aria-hidden="true">
+                <circle cx="46" cy="58" r="3"/><circle cx="196" cy="34" r="3"/><circle cx="362" cy="132" r="3"/><circle cx="222" cy="230" r="3"/><circle cx="352" cy="214" r="3"/><circle cx="38" cy="150" r="3"/><circle cx="190" cy="118" r="3"/>
+              </g>
+              <g aria-hidden="true">
+                <line class="embed-axis" x1="102" y1="187" x2="256" y2="161"/>
+                <line class="embed-axis" x1="132" y1="87" x2="286" y2="61"/>
+                <line class="embed-link" x1="93" y1="176" x2="116" y2="104" marker-end="url(#embedArrow)"/>
+                <line class="embed-link" x1="273" y1="146" x2="296" y2="74" marker-end="url(#embedArrow)"/>
+                <circle class="embed-target" cx="300" cy="60" r="16"/>
+                <circle class="embed-dot" cx="90" cy="190" r="7"/>
+                <circle class="embed-dot" cx="270" cy="160" r="7"/>
+                <circle class="embed-dot embed-dot-alt" cx="120" cy="90" r="7"/>
+                <circle class="embed-dot embed-dot-alt" cx="300" cy="60" r="7"/>
+                <text class="embed-word" x="90" y="220" text-anchor="middle">man</text>
+                <text class="embed-word" x="270" y="190" text-anchor="middle">king</text>
+                <text class="embed-word" x="120" y="70" text-anchor="middle">woman</text>
+                <text class="embed-word embed-word-alt" x="300" y="30" text-anchor="middle">queen</text>
+                <text class="embed-formula" x="200" y="262" text-anchor="middle">king − man + woman ≈ <tspan class="embed-formula-hit">queen</tspan></text>
+              </g>
+            </svg>
+          </div>
+          <div class="project-content">
+            <p class="project-eyebrow">Free open course · Bangla + English</p>
+            <h3 class="project-title">Transformers, Explained in Bangla</h3>
+            <p class="project-description">An interactive course on how ChatGPT, Gemini, and Claude work inside. Written in Bangla first, with a full English version.</p>
+            <ul class="project-stats" aria-label="Course at a glance">
+              <li><strong>6</strong> lessons</li>
+              <li><strong>8</strong> simulators</li>
+              <li><strong>2</strong> languages</li>
+              <li><strong>0</strong> sign-ups</li>
+            </ul>
+            <p class="project-how"><span class="project-how-label">How it works</span>Each lesson has a simulator to play with: click a word to see its attention, or rotate a 3D word map. A short quiz ends every lesson.</p>
+            <div class="project-tags">
+              <span class="tag">Self-Attention</span>
+              <span class="tag">Embeddings</span>
+              <span class="tag">Causal Masking</span>
+              <span class="tag">HTML/CSS/JS</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://fahmidhasann.github.io/transformers-course-v2/" target="_blank" rel="noopener noreferrer" class="btn-link live">Start the Course →</a>
+              <a href="https://fahmidhasann.github.io/transformers-course-v2/lessons/0003-self-attention-mechanism-en.html" target="_blank" rel="noopener noreferrer" class="btn-link">Try the Attention Simulator →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Business Automation Section -->
+    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="projects-heading" class="section-title">Business Automation</h2>
+          <p class="section-subtitle">AI systems that take over everyday business work, like taking food orders or writing sales emails.</p>
+        </header>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous business automation projects" disabled>
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="carousel-viewport">
+            <section class="projects-grid carousel-track" id="projectsGrid" aria-roledescription="carousel" aria-label="Business automation projects" tabindex="0">
+          <!-- Project 1: Shonar Tori — AI Restaurant Ordering System -->
+          <div class="project-card" id="project-shonar-tori" data-category="automation">
+            <div class="project-image">
+              <img src="assets/project/shonar-tori-restaurant-thumbnail.jpeg" alt="Shonar Tori Restaurant website with the Ask Shonar Tori AI ordering assistant and Messenger and WhatsApp buttons" width="1600" height="1000" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Shonar Tori — AI Restaurant Ordering System</h3>
+              <p class="project-description">A demo restaurant site where customers order or book a table by chatting in Bangla, on the website or Messenger. Staff see every order in one dashboard.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>One Gemini agent calls tools to search the menu and place orders, so prices come from the database, never the AI.</p>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Gemini Function Calling</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Messenger API</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://shonar-tori-restaurant.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Preview →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: AI Cold Email Automation -->
+          <div class="project-card" id="project-cold-outreach" data-category="automation" data-video="assets/project/cold-outreach-demo.mp4" data-title="AI Cold Email Automation">
+            <div class="project-image">
+              <img src="assets/project/cold-outreach-thumbnail.jpeg" alt="AI Cold Email Automation" width="2832" height="1262" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">AI Cold Email Automation</h3>
+              <p class="project-description">A practice project. Give it a Google Sheet of leads, and it reads each company's website, writes a personal email, and sends it.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>A scheduled n8n workflow scrapes the site, asks LLaMA 3.3 on Groq for the email as JSON, and sends it through Gmail.</p>
+              <div class="project-tags">
+                <span class="tag">n8n</span>
+                <span class="tag">Groq (LLaMA 3.3)</span>
+                <span class="tag">Google Sheets</span>
+                <span class="tag">Gmail</span>
+              </div>
+              <div class="project-actions">
+                <button type="button" class="btn-demo" aria-label="Watch demo for AI Cold Email Automation"><i class="fas fa-play" aria-hidden="true"></i> Watch Demo</button>
+              </div>
+            </div>
+          </div>
+            </section>
+          </div>
+          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next business automation projects">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Side Projects Section -->
+    <section id="side-projects" class="section projects-section side-projects-section" aria-labelledby="side-projects-heading">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="side-projects-heading" class="section-title">Side Projects</h2>
+          <p class="section-subtitle">Things I built on my own to learn and to solve problems I care about, mostly around farming and public data in Bangladesh.</p>
+        </header>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous side projects" disabled>
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="carousel-viewport">
+            <section class="projects-grid carousel-track" id="sideProjectsGrid" aria-roledescription="carousel" aria-label="Side projects" tabindex="0">
+          <!-- Project 1: Krishoker Kotha — Voice-First Farm Support -->
+          <div class="project-card" id="project-krishoker-kotha" data-category="ai">
+            <div class="project-image">
+              <img src="assets/project/krishoker-kotha.jpeg" alt="Krishoker Kotha home screen in Bangla, with farmer, field officer, and specialist role cards" width="1280" height="853" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Krishoker Kotha — Voice-First Farm Support</h3>
+              <p class="project-description">Built at a BAU hackathon. A farmer describes a crop, fish, or livestock problem by speaking Bangla. The case goes to the right local officer or university expert, and the farmer reads their answer in Bangla.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>ElevenLabs turns speech into text, and Gemini turns it into a case as JSON. The server routes it, and flags 3+ similar cases nearby as a possible cluster.</p>
+              <div class="project-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">ElevenLabs STT</span>
+                <span class="tag">Gemini</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://voice-first-agri-support.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Chashi Bondhu — Crop Disease Checker -->
+          <div class="project-card" id="project-chashi-bondhu" data-category="ai">
+            <div class="project-image">
+              <img src="assets/project/chashi-bondhu.jpeg" alt="Chashi Bondhu — Crop Disease Checker" width="1280" height="853" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Chashi Bondhu — Crop Disease Checker</h3>
+              <p class="project-description">Upload a photo of a sick leaf, and it names the crop disease and suggests treatment in Bangla or English. It can read the answer aloud.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>Gemini 2.5 Flash reads the photo and returns structured JSON. Gemini TTS speaks the result.</p>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Gemini 2.5 Flash</span>
+                <span class="tag">Gemini TTS</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/fahmidhasann/Chashi-Bondhu" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
+                <a href="https://huggingface.co/spaces/fahmidhasan/chashi-bondh" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: PlantDoc — Plant Disease Q&A Chatbot -->
+          <div class="project-card" id="project-plantdoc" data-category="ai">
+            <div class="project-image">
+              <img src="assets/project/plantdoc-chatbot.jpeg" alt="PlantDoc — Plant Disease Q&amp;A Chatbot" width="1280" height="853" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">PlantDoc — Multimodal Plant Pathology AI</h3>
+              <p class="project-description">A multimodal plant disease assistant that diagnoses leaf photos and answers pathology questions grounded in an authoritative 948-page textbook with exact page citations.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>Multimodal RAG: Gemini 3.8 Flash analyzes leaf symptoms or queries, retrieves relevant chunks from Pinecone, and synthesizes clinical diagnoses with textbook page citations.</p>
+              <div class="project-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">Gemini 3.8 Flash</span>
+                <span class="tag">Pinecone</span>
+                <span class="tag">Multimodal RAG</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
+                <a href="https://plantdoc-rag.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Interactive Bangladesh District Map -->
+          <div class="project-card" id="project-choropleth" data-category="data">
+            <div class="project-image">
+              <img src="assets/project/bd-choropleth-map.jpeg" alt="Interactive Bangladesh District Map" width="1280" height="853" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Interactive Bangladesh District Map</h3>
+              <p class="project-description">A map of Bangladesh's 64 districts that you fill with your own data, like literacy rates. Each district is colored by its value, so patterns stand out.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>Runs in the browser. Papa Parse reads the CSV, D3 builds the color scale, and Leaflet draws the map.</p>
+              <div class="project-tags">
+                <span class="tag">JavaScript</span>
+                <span class="tag">Leaflet.js</span>
+                <span class="tag">D3.js</span>
+                <span class="tag">Papa Parse</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://github.com/fahmidhasann/Interactive-BD-Choropleth" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
+                <a href="https://fahmidhasann.github.io/Interactive-BD-Choropleth/" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
+              </div>
+            </div>
+          </div>
+            </section>
+          </div>
+          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next side projects">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -521,243 +758,6 @@
       </div>
     </section>
 
-    <!-- AI Education Section -->
-    <section id="ai-education" class="section projects-section education-section" aria-labelledby="ai-education-heading">
-      <div class="container">
-        <header class="section-header">
-          <h2 id="ai-education-heading" class="section-title">AI Education</h2>
-          <p class="section-subtitle">I learn how AI works in depth, then make it simple for others. Most good material is in English, so I write for Bangla readers too.</p>
-        </header>
-
-        <article class="project-card project-card-featured" id="project-transformer-course" data-category="ai">
-          <div class="project-image project-art">
-            <svg class="embed-art" viewBox="0 0 400 280" role="img" aria-labelledby="embedArtTitle">
-              <title id="embedArtTitle">Word embedding illustration: the arrow from man to woman runs parallel to the arrow from king to queen, so king minus man plus woman lands near queen.</title>
-              <defs>
-                <marker id="embedArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                  <path class="embed-arrowhead" d="M0 1 L9 5 L0 9 z"/>
-                </marker>
-              </defs>
-              <g class="embed-noise" aria-hidden="true">
-                <circle cx="46" cy="58" r="3"/><circle cx="196" cy="34" r="3"/><circle cx="362" cy="132" r="3"/><circle cx="222" cy="230" r="3"/><circle cx="352" cy="214" r="3"/><circle cx="38" cy="150" r="3"/><circle cx="190" cy="118" r="3"/>
-              </g>
-              <g aria-hidden="true">
-                <line class="embed-axis" x1="102" y1="187" x2="256" y2="161"/>
-                <line class="embed-axis" x1="132" y1="87" x2="286" y2="61"/>
-                <line class="embed-link" x1="93" y1="176" x2="116" y2="104" marker-end="url(#embedArrow)"/>
-                <line class="embed-link" x1="273" y1="146" x2="296" y2="74" marker-end="url(#embedArrow)"/>
-                <circle class="embed-target" cx="300" cy="60" r="16"/>
-                <circle class="embed-dot" cx="90" cy="190" r="7"/>
-                <circle class="embed-dot" cx="270" cy="160" r="7"/>
-                <circle class="embed-dot embed-dot-alt" cx="120" cy="90" r="7"/>
-                <circle class="embed-dot embed-dot-alt" cx="300" cy="60" r="7"/>
-                <text class="embed-word" x="90" y="220" text-anchor="middle">man</text>
-                <text class="embed-word" x="270" y="190" text-anchor="middle">king</text>
-                <text class="embed-word" x="120" y="70" text-anchor="middle">woman</text>
-                <text class="embed-word embed-word-alt" x="300" y="30" text-anchor="middle">queen</text>
-                <text class="embed-formula" x="200" y="262" text-anchor="middle">king − man + woman ≈ <tspan class="embed-formula-hit">queen</tspan></text>
-              </g>
-            </svg>
-          </div>
-          <div class="project-content">
-            <p class="project-eyebrow">Free open course · Bangla + English</p>
-            <h3 class="project-title">Transformers, Explained in Bangla</h3>
-            <p class="project-description">An interactive course on how ChatGPT, Gemini, and Claude work inside. Written in Bangla first, with a full English version.</p>
-            <ul class="project-stats" aria-label="Course at a glance">
-              <li><strong>6</strong> lessons</li>
-              <li><strong>8</strong> simulators</li>
-              <li><strong>2</strong> languages</li>
-              <li><strong>0</strong> sign-ups</li>
-            </ul>
-            <p class="project-how"><span class="project-how-label">How it works</span>Each lesson has a simulator to play with: click a word to see its attention, or rotate a 3D word map. A short quiz ends every lesson.</p>
-            <div class="project-tags">
-              <span class="tag">Self-Attention</span>
-              <span class="tag">Embeddings</span>
-              <span class="tag">Causal Masking</span>
-              <span class="tag">HTML/CSS/JS</span>
-            </div>
-            <div class="project-actions">
-              <a href="https://fahmidhasann.github.io/transformers-course-v2/" target="_blank" rel="noopener noreferrer" class="btn-link live">Start the Course →</a>
-              <a href="https://fahmidhasann.github.io/transformers-course-v2/lessons/0003-self-attention-mechanism-en.html" target="_blank" rel="noopener noreferrer" class="btn-link">Try the Attention Simulator →</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Business Automation Section -->
-    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
-      <div class="container">
-        <header class="section-header">
-          <h2 id="projects-heading" class="section-title">Business Automation</h2>
-          <p class="section-subtitle">AI systems that take over everyday business work, like taking food orders or writing sales emails.</p>
-        </header>
-
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous business automation projects" disabled>
-            <i class="fas fa-chevron-left" aria-hidden="true"></i>
-          </button>
-          <div class="carousel-viewport">
-            <section class="projects-grid carousel-track" id="projectsGrid" aria-roledescription="carousel" aria-label="Business automation projects" tabindex="0">
-          <!-- Project 1: Shonar Tori — AI Restaurant Ordering System -->
-          <div class="project-card" id="project-shonar-tori" data-category="automation">
-            <div class="project-image">
-              <img src="assets/project/shonar-tori-restaurant-thumbnail.jpeg" alt="Shonar Tori Restaurant website with the Ask Shonar Tori AI ordering assistant and Messenger and WhatsApp buttons" width="1600" height="1000" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Shonar Tori — AI Restaurant Ordering System</h3>
-              <p class="project-description">A demo restaurant site where customers order or book a table by chatting in Bangla, on the website or Messenger. Staff see every order in one dashboard.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>One Gemini agent calls tools to search the menu and place orders, so prices come from the database, never the AI.</p>
-              <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">Gemini Function Calling</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">Messenger API</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://shonar-tori-restaurant.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Preview →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: AI Cold Email Automation -->
-          <div class="project-card" id="project-cold-outreach" data-category="automation" data-video="assets/project/cold-outreach-demo.mp4" data-title="AI Cold Email Automation">
-            <div class="project-image">
-              <img src="assets/project/cold-outreach-thumbnail.jpeg" alt="AI Cold Email Automation" width="2832" height="1262" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">AI Cold Email Automation</h3>
-              <p class="project-description">A practice project. Give it a Google Sheet of leads, and it reads each company's website, writes a personal email, and sends it.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>A scheduled n8n workflow scrapes the site, asks LLaMA 3.3 on Groq for the email as JSON, and sends it through Gmail.</p>
-              <div class="project-tags">
-                <span class="tag">n8n</span>
-                <span class="tag">Groq (LLaMA 3.3)</span>
-                <span class="tag">Google Sheets</span>
-                <span class="tag">Gmail</span>
-              </div>
-              <div class="project-actions">
-                <button type="button" class="btn-demo" aria-label="Watch demo for AI Cold Email Automation"><i class="fas fa-play" aria-hidden="true"></i> Watch Demo</button>
-              </div>
-            </div>
-          </div>
-            </section>
-          </div>
-          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next business automation projects">
-            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Side Projects Section -->
-    <section id="side-projects" class="section projects-section side-projects-section" aria-labelledby="side-projects-heading">
-      <div class="container">
-        <header class="section-header">
-          <h2 id="side-projects-heading" class="section-title">Side Projects</h2>
-          <p class="section-subtitle">Things I built on my own to learn and to solve problems I care about, mostly around farming and public data in Bangladesh.</p>
-        </header>
-
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous side projects" disabled>
-            <i class="fas fa-chevron-left" aria-hidden="true"></i>
-          </button>
-          <div class="carousel-viewport">
-            <section class="projects-grid carousel-track" id="sideProjectsGrid" aria-roledescription="carousel" aria-label="Side projects" tabindex="0">
-          <!-- Project 1: Krishoker Kotha — Voice-First Farm Support -->
-          <div class="project-card" id="project-krishoker-kotha" data-category="ai">
-            <div class="project-image">
-              <img src="assets/project/krishoker-kotha.jpeg" alt="Krishoker Kotha home screen in Bangla, with farmer, field officer, and specialist role cards" width="1280" height="853" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Krishoker Kotha — Voice-First Farm Support</h3>
-              <p class="project-description">Built at a BAU hackathon. A farmer describes a crop, fish, or livestock problem by speaking Bangla. The case goes to the right local officer or university expert, and the farmer reads their answer in Bangla.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>ElevenLabs turns speech into text, and Gemini turns it into a case as JSON. The server routes it, and flags 3+ similar cases nearby as a possible cluster.</p>
-              <div class="project-tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">ElevenLabs STT</span>
-                <span class="tag">Gemini</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://voice-first-agri-support.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: Chashi Bondhu — Crop Disease Checker -->
-          <div class="project-card" id="project-chashi-bondhu" data-category="ai">
-            <div class="project-image">
-              <img src="assets/project/chashi-bondhu.jpeg" alt="Chashi Bondhu — Crop Disease Checker" width="1280" height="853" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Chashi Bondhu — Crop Disease Checker</h3>
-              <p class="project-description">Upload a photo of a sick leaf, and it names the crop disease and suggests treatment in Bangla or English. It can read the answer aloud.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>Gemini 2.5 Flash reads the photo and returns structured JSON. Gemini TTS speaks the result.</p>
-              <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">Gemini 2.5 Flash</span>
-                <span class="tag">Gemini TTS</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/fahmidhasann/Chashi-Bondhu" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
-                <a href="https://huggingface.co/spaces/fahmidhasan/chashi-bondh" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 3: PlantDoc — Plant Disease Q&A Chatbot -->
-          <div class="project-card" id="project-plantdoc" data-category="ai">
-            <div class="project-image">
-              <img src="assets/project/plantdoc-chatbot.jpeg" alt="PlantDoc — Plant Disease Q&amp;A Chatbot" width="1280" height="853" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">PlantDoc — Multimodal Plant Pathology AI</h3>
-              <p class="project-description">A multimodal plant disease assistant that diagnoses leaf photos and answers pathology questions grounded in an authoritative 948-page textbook with exact page citations.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>Multimodal RAG: Gemini 3.8 Flash analyzes leaf symptoms or queries, retrieves relevant chunks from Pinecone, and synthesizes clinical diagnoses with textbook page citations.</p>
-              <div class="project-tags">
-                <span class="tag">Next.js</span>
-                <span class="tag">Gemini 3.8 Flash</span>
-                <span class="tag">Pinecone</span>
-                <span class="tag">Multimodal RAG</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
-                <a href="https://plantdoc-rag.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4: Interactive Bangladesh District Map -->
-          <div class="project-card" id="project-choropleth" data-category="data">
-            <div class="project-image">
-              <img src="assets/project/bd-choropleth-map.jpeg" alt="Interactive Bangladesh District Map" width="1280" height="853" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Interactive Bangladesh District Map</h3>
-              <p class="project-description">A map of Bangladesh's 64 districts that you fill with your own data, like literacy rates. Each district is colored by its value, so patterns stand out.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>Runs in the browser. Papa Parse reads the CSV, D3 builds the color scale, and Leaflet draws the map.</p>
-              <div class="project-tags">
-                <span class="tag">JavaScript</span>
-                <span class="tag">Leaflet.js</span>
-                <span class="tag">D3.js</span>
-                <span class="tag">Papa Parse</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://github.com/fahmidhasann/Interactive-BD-Choropleth" target="_blank" rel="noopener noreferrer" class="btn-link">View Project →</a>
-                <a href="https://fahmidhasann.github.io/Interactive-BD-Choropleth/" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Demo →</a>
-              </div>
-            </div>
-          </div>
-            </section>
-          </div>
-          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next side projects">
-            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
       <div class="container">
@@ -925,12 +925,12 @@
         <ul id="commandList" class="command-list" role="listbox">
           <li id="command-home" data-action="hero" role="option" aria-selected="false">Home</li>
           <li id="command-journey" data-action="journey" role="option" aria-selected="false">My Journey</li>
-          <li id="command-videos" data-action="videos" role="option" aria-selected="false">Creative Work</li>
-          <li id="command-explainers" data-action="explainers" role="option" aria-selected="false">Tech &amp; AI Explainers (YouTube)</li>
-          <li id="command-client" data-action="client-projects" role="option" aria-selected="false">Client Projects (Videos)</li>
           <li id="command-ai-education" data-action="ai-education" role="option" aria-selected="false">AI Education (Transformer Course)</li>
           <li id="command-projects" data-action="projects" role="option" aria-selected="false">Business Automation</li>
           <li id="command-side-projects" data-action="side-projects" role="option" aria-selected="false">Side Projects</li>
+          <li id="command-videos" data-action="videos" role="option" aria-selected="false">Creative Work</li>
+          <li id="command-explainers" data-action="explainers" role="option" aria-selected="false">Tech &amp; AI Explainers (YouTube)</li>
+          <li id="command-client" data-action="client-projects" role="option" aria-selected="false">Client Projects (Videos)</li>
           <li id="command-contact" data-action="contact" role="option" aria-selected="false">Contact</li>
           <li id="command-book-call" data-action="book-a-call" role="option" aria-selected="false">Book a Call (Google Meet)</li>
           <li id="command-dark-mode" data-action="dark-mode" role="option" aria-selected="false">Toggle Dark Mode</li>

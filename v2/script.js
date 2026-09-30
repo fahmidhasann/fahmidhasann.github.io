@@ -5,7 +5,7 @@
   'use strict';
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const SECTIONS = ['home', 'journey', 'creative', 'education', 'automation', 'side-projects', 'contact'];
+  const SECTIONS = ['home', 'journey', 'education', 'automation', 'side-projects', 'creative', 'contact'];
   // Old names still work at the prompt, so muscle memory and shared links keep landing.
   const SECTION_ALIASES = { projects: 'automation', research: 'side-projects', edu: 'education', course: 'education' };
   const CONSOLE_MAX_LINES = 240;
@@ -973,9 +973,9 @@
     },
 
     ls: {
-      summary: 'list a directory — creative, education, automation, side-projects',
+      summary: 'list a directory — education, automation, side-projects, creative',
       usage: '[dir]',
-      args: () => ['creative', 'creative/explainers', 'creative/personal', 'creative/client', 'education', 'automation', 'side-projects'],
+      args: () => ['education', 'automation', 'side-projects', 'creative', 'creative/explainers', 'creative/personal', 'creative/client'],
       run(args) {
         let target = (args[0] || '').replace(/^~?\/?/, '').replace(/\/$/, '');
         if (target === 'client') target = 'creative/client';
@@ -1002,10 +1002,10 @@
         if (!target || target === '.') {
           const count = n => `${n} items`.padStart(9, ' ');
           printLines([
-            `drwxr-xr-x  creative      ${count(explainers.length + personal.length + client.length)}`,
             `drwxr-xr-x  education     ${count(inSection('education').length)}`,
             `drwxr-xr-x  automation    ${count(inSection('automation').length)}`,
             `drwxr-xr-x  side-projects ${count(inSection('side-projects').length)}`,
+            `drwxr-xr-x  creative      ${count(explainers.length + personal.length + client.length)}`,
             '-rw-r--r--  about.txt',
             '-rw-r--r--  journey.txt',
             '-rw-r--r--  contact.txt',
@@ -1054,7 +1054,7 @@
     },
 
     open: {
-      summary: 'jump to home, journey, creative, education, automation, side-projects or contact',
+      summary: 'jump to home, journey, education, automation, side-projects, creative or contact',
       usage: '<section>',
       args: () => SECTIONS,
       run(args) {

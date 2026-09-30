@@ -306,7 +306,6 @@ a { color: inherit; }
 
 /* Projects ---------------------------------------------------------------- */
 .projects-section { background: var(--page); }
-.side-projects-section { background: var(--surface-soft); }
 /* Carousel shell ---------------------------------------------------------- */
 .carousel {
   --carousel-fade: var(--page);
@@ -317,8 +316,7 @@ a { color: inherit; }
   gap: .65rem;
 }
 .projects-section .carousel { --carousel-fade: var(--page); }
-.video-section .carousel,
-.side-projects-section .carousel { --carousel-fade: var(--surface-soft); }
+.video-section .carousel { --carousel-fade: var(--surface-soft); }
 .carousel-viewport {
   position: relative;
   min-width: 0;
@@ -454,7 +452,7 @@ a { color: inherit; }
 [data-theme='dark'] .btn-link:not(.live) { color: var(--ink); }
 
 /* AI Education: one featured card, laid out wide instead of in a carousel. */
-.education-section + .projects-section { border-top: 1px solid var(--line); }
+.projects-section + .projects-section { border-top: 1px solid var(--line); }
 .project-card.project-card-featured {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
