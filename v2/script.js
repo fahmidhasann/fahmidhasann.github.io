@@ -5,7 +5,9 @@
   'use strict';
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const SECTIONS = ['home', 'creative', 'projects', 'client', 'contact'];
+  const SECTIONS = ['home', 'journey', 'creative', 'education', 'automation', 'side-projects', 'contact'];
+  // Old names still work at the prompt, so muscle memory and shared links keep landing.
+  const SECTION_ALIASES = { projects: 'automation', research: 'side-projects', edu: 'education', course: 'education' };
   const CONSOLE_MAX_LINES = 240;
   const MATRIX_MS = 6000;
   const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
@@ -30,7 +32,6 @@
     boot('anchors', initAnchors);
     boot('scrollState', initScrollState);
     boot('carousels', initCarousels);
-    boot('filters', initFilters);
     boot('videoPopup', initVideoPopup);
     boot('calPopup', initCalPopup);
     boot('contactForm', initContactForm);
@@ -52,12 +53,6 @@
     dom.progress = document.getElementById('scrollProgress');
     dom.navLinks = Array.from(document.querySelectorAll('.navlink'));
     dom.projects = Array.from(document.querySelectorAll('.proj'));
-    dom.flags = Array.from(document.querySelectorAll('.flag'));
-    dom.flagEcho = document.getElementById('activeFlagEcho');
-    dom.projectsList = document.getElementById('projectsList');
-    dom.projectsCarousel = dom.projectsList && dom.projectsList.closest('[data-carousel]');
-    dom.projectsTotal = document.getElementById('projectsTotal');
-    dom.filterStatus = document.getElementById('projectsFilterStatus');
     dom.popup = document.getElementById('videoPopup');
     dom.popupBackdrop = document.getElementById('videoPopupBackdrop');
     dom.popupTitle = document.getElementById('videoPopupTitle');
@@ -332,7 +327,7 @@
      Carousels
      -------------------------------------------------------------------------- */
 
-  // Keyed by the carousel shell so filtering can drive a carousel it does not own,
+  // Keyed by the carousel shell so other code can drive a carousel it does not own,
   // without hanging custom properties off the DOM node.
   const carouselControllers = new WeakMap();
 
@@ -509,60 +504,6 @@
 
       updateChrome(carousel, track, prevBtn, nextBtn);
     });
-  }
-
-  /* --------------------------------------------------------------------------
-     Project filtering
-     -------------------------------------------------------------------------- */
-
-  const FILTERS = ['all', 'ai', 'automation', 'data'];
-  // Long enough for the browser to re-lay-out the track after cards are hidden.
-  const FILTER_RELAYOUT_MS = 40;
-  let activeFilter = 'all';
-
-  function initFilters() {
-    dom.flags.forEach(flag => {
-      flag.addEventListener('click', () => applyFilter(flag.dataset.filter));
-    });
-    applyFilter('all', { silent: true });
-  }
-
-  function applyFilter(filter, { silent = false } = {}) {
-    if (!FILTERS.includes(filter)) return 0;
-    activeFilter = filter;
-
-    let shown = 0;
-    dom.projects.forEach(project => {
-      const match = filter === 'all' || project.dataset.category === filter;
-      project.hidden = !match;
-      if (!match) return;
-      shown += 1;
-      // A card revealed by filtering may never have crossed the observer.
-      if (!silent) project.classList.add('in');
-    });
-
-    dom.flags.forEach(flag => {
-      const on = flag.dataset.filter === filter;
-      flag.classList.toggle('active', on);
-      flag.setAttribute('aria-pressed', String(on));
-    });
-
-    if (dom.flagEcho) dom.flagEcho.textContent = `--filter=${filter}`;
-    if (dom.projectsTotal) dom.projectsTotal.textContent = String(shown);
-    if (dom.filterStatus && !silent) {
-      dom.filterStatus.textContent = `${shown} project${shown === 1 ? '' : 's'} shown for filter ${filter}.`;
-    }
-
-    const carousel = dom.projectsCarousel && carouselControllers.get(dom.projectsCarousel);
-    if (carousel) {
-      carousel.reset();
-      // Hiding cards changes the track width, but not until layout settles.
-      if (!silent) window.setTimeout(carousel.update, FILTER_RELAYOUT_MS);
-    } else if (dom.projectsList) {
-      dom.projectsList.scrollLeft = 0;
-    }
-
-    return shown;
   }
 
   /* --------------------------------------------------------------------------
@@ -926,6 +867,7 @@
     return dom.projects.map(project => ({
       slug: project.dataset.slug,
       category: project.dataset.category,
+      section: project.closest('.block')?.id || '',
       title: project.querySelector('.proj-title')?.textContent?.trim() || project.dataset.slug,
       hasVideo: Boolean(project.dataset.video),
       node: project
@@ -950,6 +892,24 @@
         const key = row.querySelector('dt')?.textContent?.trim() || '';
         const value = row.querySelector('dd')?.textContent?.trim() || '';
         printLine(`  ${key.padEnd(9, ' ')}${value}`);
+      });
+    });
+  }
+
+  // The journey is printed straight off the markup too, so there is one copy of the story.
+  function printJourney() {
+    const steps = Array.from(document.querySelectorAll('#journey .jl'));
+    if (!steps.length) {
+      printLine('journey.txt is empty', 'is-dim');
+      return;
+    }
+    steps.forEach((step, index) => {
+      if (index) printGap();
+      const when = step.querySelector('.jl-when')?.textContent?.trim() || '';
+      const title = step.querySelector('.jl-title')?.textContent?.trim() || '';
+      printLine(`${when.padEnd(16, ' ')}${title}`, 'is-ok');
+      step.querySelectorAll('.jl-place').forEach(node => {
+        printLine(`${''.padEnd(16, ' ')}${node.textContent.trim()}`);
       });
     });
   }
@@ -979,57 +939,79 @@
     },
 
     ls: {
-      summary: 'list a directory — creative, projects, client',
+      summary: 'list a directory — creative, education, automation, side-projects',
       usage: '[dir]',
-      args: () => ['creative', 'creative/explainers', 'creative/personal', 'projects', 'client', 'creative/client'],
+      args: () => ['creative', 'creative/explainers', 'creative/personal', 'creative/client', 'education', 'automation', 'side-projects'],
       run(args) {
-        const target = (args[0] || '').replace(/^~?\/?/, '').replace(/\/$/, '');
+        let target = (args[0] || '').replace(/^~?\/?/, '').replace(/\/$/, '');
+        if (target === 'client') target = 'creative/client';
+        if (SECTION_ALIASES[target] && target !== 'projects') target = SECTION_ALIASES[target];
+
+        const titles = selector => Array.from(document.querySelectorAll(selector)).map(node => node.textContent.trim());
+        const explainers = titles('#explainersList .film-title');
+        const personal = titles('#personalFilmsList .film-title');
+        const client = titles('#clientReelsList .reel-title');
+        const projects = projectIndex();
+        const inSection = id => projects.filter(item => item.section === id);
+        const printProjects = id => {
+          const items = inSection(id);
+          printLine(`${id}/  total ${items.length}`, 'is-dim');
+          items.forEach(item => {
+            printLine(`  ${item.category.padEnd(11, ' ')}${item.slug.padEnd(18, ' ')}${item.title}`);
+          });
+        };
+        const printDir = (name, items) => {
+          printLine(`${name}/  ${items.length} items`, 'is-dim');
+          items.forEach(title => printLine(`  ${title}`));
+        };
 
         if (!target || target === '.') {
+          const count = n => `${n} items`.padStart(9, ' ');
           printLines([
-            'drwxr-xr-x  creative   9 items',
-            'drwxr-xr-x  projects   7 items',
-            'drwxr-xr-x  client     5 items',
+            `drwxr-xr-x  creative      ${count(explainers.length + personal.length + client.length)}`,
+            `drwxr-xr-x  education     ${count(inSection('education').length)}`,
+            `drwxr-xr-x  automation    ${count(inSection('automation').length)}`,
+            `drwxr-xr-x  side-projects ${count(inSection('side-projects').length)}`,
             '-rw-r--r--  about.txt',
+            '-rw-r--r--  journey.txt',
             '-rw-r--r--  contact.txt',
             '-rw-r--r--  credentials.txt'
           ]);
           return;
         }
 
+        if (target === 'automation' || target === 'education' || target === 'side-projects') {
+          printProjects(target);
+          return;
+        }
+
         if (target === 'projects') {
-          const items = projectIndex().filter(item => activeFilter === 'all' || item.category === activeFilter);
-          printLine(`total ${items.length}  (filter: ${activeFilter})`, 'is-dim');
-          items.forEach(item => {
-            printLine(`  ${item.category.padEnd(11, ' ')}${item.slug.padEnd(18, ' ')}${item.title}`);
-          });
+          printProjects('education');
+          printGap();
+          printProjects('automation');
+          printGap();
+          printProjects('side-projects');
           return;
         }
 
-        if (target === 'client') {
-          const client = Array.from(document.querySelectorAll('#clientReelsList .reel-title')).map(node => node.textContent.trim());
-          printLine(`client/  ${client.length} items`, 'is-dim');
-          client.forEach(title => printLine(`  ${title}`));
+        if (target === 'creative') {
+          printDir('explainers', explainers);
+          printGap();
+          printDir('personal', personal);
+          printGap();
+          printDir('client', client);
           return;
         }
-
-        if (target === 'creative' || target === 'creative/personal' || target === 'creative/client' || target === 'creative/explainers') {
-          const explainers = Array.from(document.querySelectorAll('#explainersList .film-title')).map(node => node.textContent.trim());
-          const personal = Array.from(document.querySelectorAll('#personalFilmsList .film-title')).map(node => node.textContent.trim());
-          const client = Array.from(document.querySelectorAll('#clientReelsList .reel-title')).map(node => node.textContent.trim());
-          if (target === 'creative' || target === 'creative/explainers') {
-            printLine(`explainers/  ${explainers.length} items`, 'is-dim');
-            explainers.forEach(title => printLine(`  ${title}`));
-          }
-          if (target === 'creative' || target === 'creative/personal') {
-            if (target === 'creative') printGap();
-            printLine(`personal/  ${personal.length} items`, 'is-dim');
-            personal.forEach(title => printLine(`  ${title}`));
-          }
-          if (target === 'creative/client') {
-            printLine(`client/  ${client.length} items`, 'is-dim');
-            client.forEach(title => printLine(`  ${title}`));
-          }
+        if (target === 'creative/explainers') {
+          printDir('explainers', explainers);
+          return;
+        }
+        if (target === 'creative/personal') {
+          printDir('personal', personal);
+          return;
+        }
+        if (target === 'creative/client') {
+          printDir('client', client);
           return;
         }
 
@@ -1038,13 +1020,14 @@
     },
 
     open: {
-      summary: 'jump to home, creative, projects, client or contact',
+      summary: 'jump to home, journey, creative, education, automation, side-projects or contact',
       usage: '<section>',
       args: () => SECTIONS,
       run(args) {
-        const target = (args[0] || '').replace(/^~?\/?/, '');
+        const typed = (args[0] || '').replace(/^~?\/?/, '');
+        const target = SECTION_ALIASES[typed] || typed;
         if (!target) {
-          printLine('open: which section? try: open creative', 'is-err');
+          printLine('open: which section? try: open automation', 'is-err');
           return;
         }
         if (target === 'call' || target === 'book' || target === 'schedule' || target === 'book-a-call') {
@@ -1061,9 +1044,9 @@
     },
 
     cat: {
-      summary: 'print about.txt, contact.txt or credentials.txt',
+      summary: 'print about.txt, journey.txt, contact.txt or credentials.txt',
       usage: '<file>',
-      args: () => ['about.txt', 'contact.txt', 'credentials.txt'],
+      args: () => ['about.txt', 'journey.txt', 'contact.txt', 'credentials.txt'],
       run(args) {
         const file = (args[0] || '').replace(/\.txt$/, '');
         if (file === 'about') {
@@ -1071,6 +1054,10 @@
             printLine(node.textContent.trim());
             printGap();
           });
+          return;
+        }
+        if (file === 'journey') {
+          printJourney();
           return;
         }
         if (file === 'credentials') {
@@ -1100,22 +1087,6 @@
         printLine('builder · AI automation · visual storytelling');
         printLine('AI agents, RAG systems, workflow automation · videography and short films');
         printLine('status: available for client work', 'is-dim');
-      }
-    },
-
-    filter: {
-      summary: 'filter projects — all, ai, automation, data',
-      usage: '<category>',
-      args: () => FILTERS,
-      run(args) {
-        const value = args[0];
-        if (!FILTERS.includes(value)) {
-          printLine(`filter: unknown category '${value || ''}' — try: ${FILTERS.join(', ')}`, 'is-err');
-          return;
-        }
-        const shown = applyFilter(value);
-        printLine(`filter=${value} → ${shown} project${shown === 1 ? '' : 's'}`, 'is-ok');
-        goToSection('projects');
       }
     },
 

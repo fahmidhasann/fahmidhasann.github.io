@@ -5,10 +5,6 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const modalState = { active: null, opener: null, locks: new Set(), inerted: [], focusFrame: 0, focusTimer: 0 };
 
-  /** How long a filtered-out card fades before it is pulled out of the layout. */
-  const CARD_FADE_MS = 280;
-  /** Slack on top of the fade, for the browser to settle the new track width. */
-  const FILTER_RELAYOUT_MS = 20;
   /** Last-resort reveal of the hero if an enhancer throws before it can run. */
   const HERO_FAILSAFE_MS = 2000;
   /** Stagger between hero name characters, then between the blocks below it. */
@@ -25,6 +21,8 @@
   const CONFETTI_LIFETIME_MS = 5000;
   /** Web3Forms endpoint backing the contact form. */
   const CONTACT_ENDPOINT = 'https://api.web3forms.com/submit';
+  /** Journey timeline: line draw plus the last step's delay, with a little slack. */
+  const JOURNEY_SETTLE_MS = 2200;
 
   document.addEventListener('DOMContentLoaded', () => {
     const runInit = (name, fn) => {
@@ -41,7 +39,7 @@
 
     runInit('initializeNavigation', initializeNavigation);
     runInit('initializeCarousels', initializeCarousels);
-    runInit('initializeProjectFiltering', initializeProjectFiltering);
+    runInit('initializeProjectDeepLinks', initializeProjectDeepLinks);
     runInit('initializeCommandPalette', initializeCommandPalette);
     runInit('initializeThemeToggle', initializeThemeToggle);
     runInit('initializeEditionSwitch', initializeEditionSwitch);
@@ -54,6 +52,7 @@
     runInit('initializeParticles', initializeParticles);
     runInit('initializeHeroEntrance', initializeHeroEntrance);
     runInit('initializeScrollEffects', initializeScrollEffects);
+    runInit('initializeJourney', initializeJourney);
     runInit('initializeProgressBar', initializeProgressBar);
   });
 
@@ -248,59 +247,6 @@
     else if (dialog.id === 'editionChooser') closeEditionChooser();
     else if (dialog.id === 'calPopup') closeCalPopup();
     else closeDialog(dialog);
-  }
-
-  function setItemFocusable(item, enabled) {
-    item.querySelectorAll('a, button, input, select, textarea, [tabindex]').forEach(control => {
-      if (enabled) {
-        if (control.dataset.previousTabindex !== undefined) {
-          if (control.dataset.previousTabindex) control.setAttribute('tabindex', control.dataset.previousTabindex);
-          else control.removeAttribute('tabindex');
-          delete control.dataset.previousTabindex;
-        }
-      } else if (control.dataset.previousTabindex === undefined) {
-        control.dataset.previousTabindex = control.getAttribute('tabindex') || '';
-        control.setAttribute('tabindex', '-1');
-      }
-    });
-  }
-
-  function setItemVisible(item, visible, { instant = false } = {}) {
-    if (item._fadeTimer) {
-      window.clearTimeout(item._fadeTimer);
-      item._fadeTimer = null;
-    }
-
-    const skipMotion = instant || motionReduced();
-
-    if (visible) {
-      const wasHidden = item.classList.contains('hidden-card');
-      item.classList.remove('hidden-card');
-      item.setAttribute('aria-hidden', 'false');
-      setItemFocusable(item, true);
-      if (skipMotion || !wasHidden) {
-        item.classList.remove('is-fading');
-        return;
-      }
-      item.classList.add('is-fading');
-      void item.offsetWidth;
-      window.requestAnimationFrame(() => item.classList.remove('is-fading'));
-      return;
-    }
-
-    item.setAttribute('aria-hidden', 'true');
-    setItemFocusable(item, false);
-    if (skipMotion || item.classList.contains('hidden-card')) {
-      item.classList.add('hidden-card');
-      item.classList.remove('is-fading');
-      return;
-    }
-    item.classList.add('is-fading');
-    item._fadeTimer = window.setTimeout(() => {
-      item.classList.add('hidden-card');
-      item.classList.remove('is-fading');
-      item._fadeTimer = null;
-    }, CARD_FADE_MS);
   }
 
   /* --------------------------------------------------------------------------
@@ -521,6 +467,22 @@
     observeRevealItems(items);
   }
 
+  /** Draws the journey line once, the first time the timeline scrolls into view. */
+  function initializeJourney() {
+    const journey = document.querySelector('[data-journey]');
+    if (!journey || motionReduced() || !('IntersectionObserver' in window)) return;
+
+    journey.classList.add('is-armed');
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      journey.classList.add('is-drawn');
+      // Drop the staggered transitions once played, so theme changes stay instant.
+      window.setTimeout(() => journey.classList.remove('is-armed'), JOURNEY_SETTLE_MS);
+    }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+    observer.observe(journey);
+  }
+
   function initializeProgressBar() {
     const bar = document.querySelector('.progress-bar');
     if (!bar) return;
@@ -627,7 +589,7 @@
 
   function initializeNavScroll() {
     const nav = document.querySelector('.compact-nav');
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('main > section[id]');
     const links = document.querySelectorAll('.nav-link');
     if (!nav) return;
     const update = () => {
@@ -648,10 +610,10 @@
   }
 
   /* --------------------------------------------------------------------------
-     Project filtering and disclosure
+     Carousels and project deep links
      -------------------------------------------------------------------------- */
 
-  // Keyed by the carousel shell so filtering can refresh a carousel it does not
+  // Keyed by the carousel shell so other code can refresh a carousel it does not
   // own, without hanging custom properties off the DOM node.
   const carouselControllers = new WeakMap();
 
@@ -660,7 +622,7 @@
     if (!carousels.length) return;
 
     const getStep = (track) => {
-      const item = Array.from(track.children).find(child => !child.classList.contains('hidden-card') && child.offsetParent !== null);
+      const item = Array.from(track.children).find(child => child.offsetParent !== null);
       if (!item) return Math.max(track.clientWidth * 0.8, 240);
       const styles = window.getComputedStyle(track);
       const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
@@ -684,7 +646,7 @@
     };
 
     const snapToNearestCard = (track) => {
-      const items = Array.from(track.children).filter(child => !child.classList.contains('hidden-card') && !child.hidden && child.offsetParent !== null);
+      const items = Array.from(track.children).filter(child => !child.hidden && child.offsetParent !== null);
       if (!items.length) return;
       const currentScroll = track.scrollLeft;
       let closestItem = items[0];
@@ -825,46 +787,7 @@
     });
   }
 
-  function initializeProjectFiltering() {
-    const buttons = Array.from(document.querySelectorAll('.filter-btn'));
-    const cards = Array.from(document.querySelectorAll('.project-card'));
-    const status = document.getElementById('projectsFilterStatus');
-    const projectsGrid = document.getElementById('projectsGrid');
-    const projectsCarousel = projectsGrid && projectsGrid.closest('[data-carousel]');
-    if (!buttons.length || !cards.length) return;
-
-    const apply = (filter, { instant = false } = {}) => {
-      const matching = cards.filter(card => filter === 'all' || card.dataset.category === filter);
-      buttons.forEach(button => {
-        const selected = button.dataset.filter === filter;
-        button.classList.toggle('active', selected);
-        button.setAttribute('aria-pressed', String(selected));
-      });
-      cards.forEach(card => {
-        setItemVisible(card, matching.includes(card), { instant });
-      });
-      if (status) {
-        status.textContent = `${matching.length} ${matching.length === 1 ? 'project' : 'projects'} shown`;
-      }
-      const carousel = projectsCarousel && carouselControllers.get(projectsCarousel);
-      if (carousel) {
-        if (projectsGrid) {
-          projectsGrid.scrollTo({ left: 0, behavior: 'auto' });
-          projectsGrid.scrollLeft = 0;
-        }
-        carousel.update();
-        // Cards fade out before they stop taking up space, so measure again once
-        // the transition has finished and the track has its final width.
-        if (!instant) window.setTimeout(carousel.update, CARD_FADE_MS + FILTER_RELAYOUT_MS);
-      } else if (projectsGrid) {
-        projectsGrid.scrollLeft = 0;
-      }
-      window.__portfolioProjectFilter = { filter, matching, apply };
-    };
-
-    buttons.forEach(button => button.addEventListener('click', () => apply(button.dataset.filter)));
-    apply((buttons.find(button => button.classList.contains('active')) || buttons[0]).dataset.filter, { instant: true });
-
+  function initializeProjectDeepLinks() {
     const hashId = (location.hash || '').slice(1);
     const hashCard = hashId ? document.getElementById(hashId) : null;
     if (hashCard && hashCard.classList.contains('project-card')) {
@@ -875,14 +798,8 @@
     }
   }
 
+  /** Scrolls a project's carousel sideways so a deep-linked card is in view. */
   function revealProjectCard(card) {
-    const state = window.__portfolioProjectFilter;
-    if (state) {
-      if (state.filter !== 'all') state.apply('all', { instant: true });
-    } else {
-      const allButton = document.querySelector('.filter-btn[data-filter="all"]');
-      if (allButton && !allButton.classList.contains('active')) allButton.click();
-    }
     if (typeof card.scrollIntoView === 'function') {
       card.scrollIntoView({ behavior: 'auto', inline: 'nearest', block: 'nearest' });
     }

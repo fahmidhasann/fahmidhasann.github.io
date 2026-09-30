@@ -37,9 +37,11 @@
         <span class="titlebar-name" aria-hidden="true">fahmid@portfolio: ~<span class="caret"></span></span>
         <nav class="titlebar-nav" aria-label="Main navigation">
           <a href="#home" class="navlink" data-section="home">~/home</a>
+          <a href="#journey" class="navlink" data-section="journey">~/journey</a>
           <a href="#creative" class="navlink" data-section="creative">~/creative</a>
-          <a href="#projects" class="navlink" data-section="projects">~/projects</a>
-          <a href="#client" class="navlink" data-section="client">~/client</a>
+          <a href="#education" class="navlink" data-section="education" aria-label="AI education">~/edu</a>
+          <a href="#automation" class="navlink" data-section="automation">~/automation</a>
+          <a href="#side-projects" class="navlink" data-section="side-projects" aria-label="Side projects">~/side</a>
           <a href="#contact" class="navlink" data-section="contact">~/contact</a>
         </nav>
         <span class="titlebar-progress" id="scrollProgress" aria-hidden="true">[··············]   0%</span>
@@ -112,7 +114,7 @@
               </ul>
 
               <div class="actions">
-                <a href="#projects" class="tbtn tbtn-primary">./view-projects</a>
+                <a href="#automation" class="tbtn tbtn-primary">./view-projects</a>
                 <button type="button" class="tbtn tbtn-primary" id="heroBookCallBtn" aria-haspopup="dialog" aria-controls="calTermPopup">./book-a-call</button>
                 <a href="#contact" class="tbtn">./start-a-project</a>
               </div>
@@ -132,6 +134,45 @@
               </div>
               <figcaption class="asciiframe-cap" aria-hidden="true">└─ profile-hero-portrait.jpg</figcaption>
             </figure>
+          </div>
+        </section>
+
+        <!-- ================= JOURNEY ================= -->
+        <section id="journey" class="block" aria-labelledby="journey-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> cat journey.txt</p>
+
+          <div class="out">
+            <h2 id="journey-heading" class="blocktitle">Journey</h2>
+
+            <ol class="journeylog">
+              <li class="jl reveal">
+                <p class="jl-when">since childhood</p>
+                <div class="jl-body">
+                  <h3 class="jl-title">Curious about tech</h3>
+                </div>
+              </li>
+              <li class="jl reveal">
+                <p class="jl-when">2018 – 2020</p>
+                <div class="jl-body">
+                  <h3 class="jl-title">SSC &amp; HSC</h3>
+                  <p class="jl-place">Savar Cantonment Public School and College</p>
+                </div>
+              </li>
+              <li class="jl reveal">
+                <p class="jl-when">2022 – 2026</p>
+                <div class="jl-body">
+                  <h3 class="jl-title">BSc in Agriculture</h3>
+                  <p class="jl-place">Bangladesh Agricultural University</p>
+                </div>
+              </li>
+              <li class="jl jl-now reveal">
+                <p class="jl-when">now</p>
+                <div class="jl-body">
+                  <h3 class="jl-title">Building with AI</h3>
+                  <a href="#education" class="tlink jl-link">[see my work →]</a>
+                </div>
+              </li>
+            </ol>
           </div>
         </section>
 
@@ -313,86 +354,207 @@
               </div>
             </section>
 
+            <section class="subblock" id="client" aria-labelledby="client-heading">
+              <p class="cmd cmd-inline"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls ~/creative/client</p>
+              <h3 id="client-heading" class="subtitle">Client Projects</h3>
+
+              <div class="carousel" data-carousel>
+                <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous client projects" disabled>‹</button>
+                <div class="carousel-viewport">
+                  <section class="reellist carousel-track" id="clientReelsList" aria-roledescription="carousel" aria-label="Client projects" tabindex="0">
+                    <a href="https://www.facebook.com/reel/1042219817454072" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch Built Different. Move Different.">
+                      <figure class="asciiframe">
+                        <div class="asciiframe-media tall">
+                          <img src="../assets/client/reel_1042219817454072.jpg" alt="Built Different. Move Different." width="432" height="768" loading="lazy" decoding="async">
+                          <span class="playmark" aria-hidden="true">▶</span>
+                        </div>
+                        <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_01.mp4</figcaption>
+                      </figure>
+                      <p class="reel-client">Sajjad Hossain Snigdho</p>
+                      <h4 class="reel-title">Built Different. Move Different.</h4>
+                    </a>
+
+                    <a href="https://www.facebook.com/reel/438344139340070" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch One Run at a Time">
+                      <figure class="asciiframe">
+                        <div class="asciiframe-media tall">
+                          <img src="../assets/client/reel_438344139340070.jpg" alt="One Run at a Time" width="540" height="960" loading="lazy" decoding="async">
+                          <span class="playmark" aria-hidden="true">▶</span>
+                        </div>
+                        <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_02.mp4</figcaption>
+                      </figure>
+                      <p class="reel-client">Sajjad Hossain Snigdho</p>
+                      <h4 class="reel-title">One Run at a Time</h4>
+                    </a>
+
+                    <a href="https://www.facebook.com/reel/624648880582291" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch Before You Run to Lose Weight">
+                      <figure class="asciiframe">
+                        <div class="asciiframe-media tall">
+                          <img src="../assets/client/reel_624648880582291.jpg" alt="Before You Run to Lose Weight" width="432" height="768" loading="lazy" decoding="async">
+                          <span class="playmark" aria-hidden="true">▶</span>
+                        </div>
+                        <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_03.mp4</figcaption>
+                      </figure>
+                      <p class="reel-client">Sajjad Hossain Snigdho</p>
+                      <h4 class="reel-title">Before You Run to Lose Weight</h4>
+                    </a>
+
+                    <a href="https://www.facebook.com/reel/1245324753666981" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch For New Runners">
+                      <figure class="asciiframe">
+                        <div class="asciiframe-media tall">
+                          <img src="../assets/client/reel_1245324753666981.jpg" alt="For New Runners" width="540" height="960" loading="lazy" decoding="async">
+                          <span class="playmark" aria-hidden="true">▶</span>
+                        </div>
+                        <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_04.mp4</figcaption>
+                      </figure>
+                      <p class="reel-client">Sajjad Hossain Snigdho</p>
+                      <h4 class="reel-title">For New Runners</h4>
+                    </a>
+
+                    <a href="https://www.facebook.com/reel/1470923473890560" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch Heart Rate Zones">
+                      <figure class="asciiframe">
+                        <div class="asciiframe-media tall">
+                          <img src="../assets/client/reel_1470923473890560.jpg" alt="Heart Rate Zones" width="540" height="960" loading="lazy" decoding="async">
+                          <span class="playmark" aria-hidden="true">▶</span>
+                        </div>
+                        <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_05.mp4</figcaption>
+                      </figure>
+                      <p class="reel-client">Sajjad Hossain Snigdho</p>
+                      <h4 class="reel-title">Heart Rate Zones</h4>
+                    </a>
+                  </section>
+                </div>
+                <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next client projects">›</button>
+              </div>
+            </section>
+
           </div>
         </section>
 
-        <!-- ================= PROJECTS ================= -->
-        <section id="projects" class="block" aria-labelledby="projects-heading">
-          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls -la ~/projects <span class="cmd-flag" id="activeFlagEcho">--filter=all</span></p>
+        <!-- ================= AI EDUCATION ================= -->
+        <section id="education" class="block" aria-labelledby="education-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls -la ~/education</p>
 
           <div class="out">
-            <h2 id="projects-heading" class="blocktitle">Projects &amp; Research</h2>
+            <h2 id="education-heading" class="blocktitle">AI Education</h2>
+            <p class="prose dim">I learn how AI works in depth, then make it simple for others. Most good material is in English, so I write for Bangla readers too.</p>
 
-            <div class="filters" role="group" aria-label="Filter projects">
-              <button type="button" class="flag active" data-filter="all" aria-pressed="true" aria-controls="projectsList">--all</button>
-              <button type="button" class="flag" data-filter="ai" aria-pressed="false" aria-controls="projectsList">--ai</button>
-              <button type="button" class="flag" data-filter="automation" aria-pressed="false" aria-controls="projectsList">--automation</button>
-              <button type="button" class="flag" data-filter="data" aria-pressed="false" aria-controls="projectsList">--data</button>
-            </div>
-            <p id="projectsFilterStatus" class="sr-only" role="status" aria-live="polite"></p>
+            <p class="lscount" aria-hidden="true">total 1</p>
 
-            <p class="lscount" aria-hidden="true">total <span id="projectsTotal">7</span></p>
+            <article class="proj proj-featured reveal" id="project-transformer-course" data-category="ai" data-slug="transformers-bn">
+              <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">transformers-in-bangla/</span></p>
+              <figure class="asciiframe">
+                <div class="asciiframe-media">
+                  <img src="../assets/project/transformer-course-attention.jpeg" alt="Interactive attention simulator from the course: the word 'it' draws most of its attention from 'animal' in the sentence 'The animal didn't cross the street because it was too tired.'" width="1042" height="970" loading="lazy" decoding="async">
+                </div>
+                <figcaption class="asciiframe-cap" aria-hidden="true">└─ transformer-course-attention.jpeg</figcaption>
+              </figure>
+              <div class="proj-text">
+                <h3 class="proj-title">Transformers, Explained in Bangla</h3>
+                <p class="proj-desc">A free, interactive course on how large language models like ChatGPT, Gemini, and Claude work inside. It is written in Bangla first, with a full English version. Technical terms stay in English, so learners can move on to other resources with confidence.</p>
+                <p class="proj-meta">6 lessons · 8 simulators · 2 languages · 0 installs</p>
+                <p class="proj-how"><span class="proj-how-label">// how it works</span> Each lesson turns one idea into something you can try. Click a word to see where its attention goes, rotate a 3D embedding space, or watch causal masking hide future words step by step. A short quiz closes every lesson, and progress is saved in the browser.</p>
+                <ul class="tags" aria-label="Topics and stack">
+                  <li>Self-Attention</li><li>Embeddings</li><li>Positional Encoding</li><li>Causal Masking</li><li>HTML/CSS/JS</li>
+                </ul>
+                <div class="proj-actions">
+                  <a href="https://fahmidhasann.github.io/transformers-course-v2/lessons/0003-self-attention-mechanism-en.html" target="_blank" rel="noopener noreferrer" class="tbtn">try-attention →</a>
+                  <a href="https://fahmidhasann.github.io/transformers-course-v2/" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">start-course →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= BUSINESS AUTOMATION ================= -->
+        <section id="automation" class="block" aria-labelledby="automation-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls -la ~/automation</p>
+
+          <div class="out">
+            <h2 id="automation-heading" class="blocktitle">Business Automation</h2>
+            <p class="prose dim">AI systems that take over everyday business work, like taking food orders or writing sales emails.</p>
+
+            <p class="lscount" aria-hidden="true">total 2</p>
 
             <div class="carousel" data-carousel>
-              <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous projects" disabled>‹</button>
+              <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous business automation projects" disabled>‹</button>
               <div class="carousel-viewport">
-                <section class="projlist carousel-track" id="projectsList" aria-roledescription="carousel" aria-label="Projects" tabindex="0">
-                  <!-- 1 -->
-                  <article class="proj reveal" id="project-cold-outreach" data-category="automation" data-slug="cold-outreach" data-video="../assets/project/cold-outreach-demo.mp4" data-title="AI-Powered Cold Outreach Automation">
+                <section class="projlist carousel-track" id="automationList" aria-roledescription="carousel" aria-label="Business automation projects" tabindex="0">
+                  <article class="proj reveal" id="project-shonar-tori" data-category="automation" data-slug="shonar-tori">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  automation  <span class="proj-file">shonar-tori-bot.ts</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/project/shonar-tori-restaurant-thumbnail.jpeg" alt="Shonar Tori Restaurant website with the Ask Shonar Tori AI ordering assistant and Messenger and WhatsApp buttons" width="1600" height="1000" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ shonar-tori-restaurant-thumbnail.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">Shonar Tori — AI Restaurant Ordering System</h3>
+                      <p class="proj-desc">A demo website and chatbot for a Bangladeshi restaurant. Customers order food or book a table by chatting in Bangla on the website, WhatsApp, or Messenger. Staff see every order in one dashboard.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> One Gemini agent serves all three channels. It calls tools to search the menu, fill the cart, and place orders, so prices always come from the database, never from the AI.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>React</li><li>TypeScript</li><li>Gemini Function Calling</li><li>Supabase</li><li>WhatsApp Cloud API</li><li>Messenger API</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://shonar-tori-restaurant.vercel.app" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-preview →</a>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="proj reveal" id="project-cold-outreach" data-category="automation" data-slug="cold-outreach" data-video="../assets/project/cold-outreach-demo.mp4" data-title="AI Cold Email Automation">
                     <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  automation  <span class="proj-file">cold-outreach.md</span></p>
                     <figure class="asciiframe">
                       <div class="asciiframe-media">
-                        <img src="../assets/project/cold-outreach-thumbnail.jpeg" alt="AI-Powered Cold Outreach Automation" width="2832" height="1262" loading="lazy" decoding="async">
+                        <img src="../assets/project/cold-outreach-thumbnail.jpeg" alt="AI Cold Email Automation" width="2832" height="1262" loading="lazy" decoding="async">
                       </div>
                       <figcaption class="asciiframe-cap" aria-hidden="true">└─ cold-outreach-thumbnail.jpeg</figcaption>
                     </figure>
                     <div class="proj-text">
-                      <h3 class="proj-title">AI-Powered Cold Outreach Automation</h3>
-                      <p class="proj-desc">An automated B2B outreach pipeline that scrapes lead websites, uses Groq LLM to generate personalized cold emails, sends them via Gmail, and updates lead status in Google Sheets — fully hands-free.</p>
+                      <h3 class="proj-title">AI Cold Email Automation</h3>
+                      <p class="proj-desc">A practice project that writes and sends cold emails on its own. Give it a Google Sheet of leads. It reads each company's website, writes a personal email about that company, sends it, and marks the lead as done.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> An n8n workflow on a schedule. It skips bad email addresses, scrapes and cleans the website, asks LLaMA 3.3 on Groq for the email as JSON, then sends it through Gmail.</p>
                       <ul class="tags" aria-label="Stack">
-                        <li>n8n</li><li>Google Sheets</li><li>Groq (LLaMA 3.3)</li><li>Gmail</li>
+                        <li>n8n</li><li>Groq (LLaMA 3.3)</li><li>Google Sheets</li><li>Gmail</li>
                       </ul>
                       <div class="proj-actions">
-                        <button class="tbtn btn-demo" type="button" aria-label="Watch demo for AI-Powered Cold Outreach Automation">./watch-demo</button>
+                        <button class="tbtn btn-demo" type="button" aria-label="Watch demo for AI Cold Email Automation">./watch-demo</button>
                       </div>
                     </div>
                   </article>
+                </section>
+              </div>
+              <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next business automation projects">›</button>
+            </div>
+          </div>
+        </section>
 
-                  <!-- 2 -->
-                  <article class="proj reveal" id="project-damkoto-python" data-category="ai" data-slug="damkoto-python">
-                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">dam-koto-bot.py</span></p>
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media">
-                        <img src="../assets/project/damkoto-python-thumbnail.png" alt="Dam Koto Bot — Python RAG Assistant" width="1376" height="768" loading="lazy" decoding="async">
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ damkoto-python-thumbnail.png</figcaption>
-                    </figure>
-                    <div class="proj-text">
-                      <h3 class="proj-title">Dam Koto Bot — Python RAG Assistant</h3>
-                      <p class="proj-desc">A modular Python-based AI smartphone price assistant and customer support chatbot for Bangladeshi e-commerce. Features natural language query parsing (Bangla, Banglish &amp; English), SQLite product catalog search, ChromaDB vector RAG for policy FAQs, FastAPI REST API, and OpenRouter LLM orchestration.</p>
-                      <ul class="tags" aria-label="Stack">
-                        <li>Python</li><li>FastAPI</li><li>OpenRouter / Gemma</li><li>ChromaDB RAG</li><li>SQLAlchemy</li><li>Docker</li>
-                      </ul>
-                      <div class="proj-actions">
-                        <a href="https://huggingface.co/spaces/fahmidhasan/dam-koto-bot" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
-                      </div>
-                    </div>
-                  </article>
+        <!-- ================= SIDE PROJECTS ================= -->
+        <section id="side-projects" class="block" aria-labelledby="side-projects-heading">
+          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls -la ~/side-projects</p>
 
-                  <!-- 3 -->
+          <div class="out">
+            <h2 id="side-projects-heading" class="blocktitle">Side Projects</h2>
+            <p class="prose dim">Things I built on my own to learn and to solve problems I care about, mostly around farming and public data in Bangladesh.</p>
+
+            <p class="lscount" aria-hidden="true">total 3</p>
+
+            <div class="carousel" data-carousel>
+              <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous side projects" disabled>‹</button>
+              <div class="carousel-viewport">
+                <section class="projlist carousel-track" id="sideProjectsList" aria-roledescription="carousel" aria-label="Side projects" tabindex="0">
                   <article class="proj reveal" id="project-chashi-bondhu" data-category="ai" data-slug="chashi-bondhu">
                     <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">chashi-bondhu.tsx</span></p>
                     <figure class="asciiframe">
                       <div class="asciiframe-media">
-                        <img src="../assets/project/chashi-bondhu.jpeg" alt="Chashi Bondhu - Crop Disease Identifier" width="1280" height="853" loading="lazy" decoding="async">
+                        <img src="../assets/project/chashi-bondhu.jpeg" alt="Chashi Bondhu — Crop Disease Checker" width="1280" height="853" loading="lazy" decoding="async">
                       </div>
                       <figcaption class="asciiframe-cap" aria-hidden="true">└─ chashi-bondhu.jpeg</figcaption>
                     </figure>
                     <div class="proj-text">
-                      <h3 class="proj-title">Chashi Bondhu — Crop Disease Identifier</h3>
-                      <p class="proj-desc">An AI-powered tool that uses Google's Gemini AI to analyze images of crops and identify diseases, providing treatment recommendations in both Bengali and English.</p>
+                      <h3 class="proj-title">Chashi Bondhu — Crop Disease Checker</h3>
+                      <p class="proj-desc">Helps farmers in Bangladesh find out what is wrong with a sick crop. Upload a photo of a leaf, and it names the disease and suggests treatments in Bangla or English. It can also read the answer aloud.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> Gemini 2.5 Flash looks at the photo and returns structured JSON: healthy, diseased, or not a plant. A chat handles follow-up questions, and Gemini TTS speaks the result.</p>
                       <ul class="tags" aria-label="Stack">
-                        <li>React</li><li>TypeScript</li><li>Gemini AI</li>
+                        <li>React</li><li>TypeScript</li><li>Gemini 2.5 Flash</li><li>Gemini TTS</li>
                       </ul>
                       <div class="proj-actions">
                         <a href="https://github.com/fahmidhasann/Chashi-Bondhu" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
@@ -401,41 +563,20 @@
                     </div>
                   </article>
 
-                  <!-- 4 -->
-                  <article class="proj reveal" id="project-damkoto" data-category="automation" data-slug="damkoto-bot" data-video="../assets/project/damkoto-bot-demo.mp4" data-title="DamKoto Bot — Multilingual AI Customer Support">
-                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  automation  <span class="proj-file">damkoto-bot.json</span></p>
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media">
-                        <img src="../assets/project/damkoto-bot-thumbnail.jpeg" alt="DamKoto Bot — Multilingual AI Customer Support" width="2838" height="1482" loading="lazy" decoding="async">
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ damkoto-bot-thumbnail.jpeg</figcaption>
-                    </figure>
-                    <div class="proj-text">
-                      <h3 class="proj-title">DamKoto Bot — Multilingual AI Support</h3>
-                      <p class="proj-desc">An AI-powered customer support automation that responds fluently in Bangla, Banglish, or English by detecting and matching the user's language. Searches a live product catalog by brand, price range, or model, checks inventory status, and answers questions about delivery, payment, and return policies using a vector-based knowledge base.</p>
-                      <ul class="tags" aria-label="Stack">
-                        <li>n8n</li><li>Google Gemini</li><li>AI Agent</li><li>Vector Store</li><li>Bangla NLP</li>
-                      </ul>
-                      <div class="proj-actions">
-                        <button class="tbtn btn-demo" type="button" aria-label="Watch demo for DamKoto Bot">./watch-demo</button>
-                      </div>
-                    </div>
-                  </article>
-
-                  <!-- 5 -->
                   <article class="proj reveal" id="project-plantdoc" data-category="ai" data-slug="plantdoc">
                     <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">plantdoc-rag.py</span></p>
                     <figure class="asciiframe">
                       <div class="asciiframe-media">
-                        <img src="../assets/project/plantdoc-chatbot.jpeg" alt="PlantDoc RAG ChatBot" width="1280" height="853" loading="lazy" decoding="async">
+                        <img src="../assets/project/plantdoc-chatbot.jpeg" alt="PlantDoc — Plant Disease Q&amp;A Chatbot" width="1280" height="853" loading="lazy" decoding="async">
                       </div>
                       <figcaption class="asciiframe-cap" aria-hidden="true">└─ plantdoc-chatbot.jpeg</figcaption>
                     </figure>
                     <div class="proj-text">
-                      <h3 class="proj-title">PlantDoc RAG ChatBot</h3>
-                      <p class="proj-desc">An AI-powered document Q&amp;A chatbot using Retrieval-Augmented Generation with specialized agricultural models.</p>
+                      <h3 class="proj-title">PlantDoc — Plant Disease Q&amp;A Chatbot</h3>
+                      <p class="proj-desc">A chatbot that answers questions about plant diseases from a plant pathology textbook. Every answer shows the page it came from, so you can check it yourself.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> Retrieval-augmented generation (RAG). The 948-page book is split into 2,870 chunks and stored in ChromaDB using an agriculture-tuned embedding model. The closest chunks go to DeepSeek, which writes the answer.</p>
                       <ul class="tags" aria-label="Stack">
-                        <li>Python</li><li>Streamlit</li><li>ChromaDB</li>
+                        <li>Python</li><li>Streamlit</li><li>ChromaDB</li><li>Sentence Transformers</li><li>DeepSeek</li>
                       </ul>
                       <div class="proj-actions">
                         <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
@@ -444,41 +585,20 @@
                     </div>
                   </article>
 
-                  <!-- 6 -->
-                  <article class="proj reveal" id="project-vocabflow" data-category="ai" data-slug="vocabflow">
-                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">vocabflow.ts</span></p>
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media">
-                        <img src="../assets/project/vocabflow-thumbnail.png" alt="VocabFlow - AI-Powered Vocabulary Learning Platform" width="512" height="512" loading="lazy" decoding="async">
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ vocabflow-thumbnail.png</figcaption>
-                    </figure>
-                    <div class="proj-text">
-                      <h3 class="proj-title">VocabFlow — AI Vocabulary Learning</h3>
-                      <p class="proj-desc">A cloud-connected vocabulary learning platform combining the SM-2 spaced repetition algorithm with Groq LLM-powered semantic usage maps. Deployed as a Next.js PWA and native iOS/Android app via Capacitor.</p>
-                      <ul class="tags" aria-label="Stack">
-                        <li>Next.js 14</li><li>TypeScript</li><li>Groq LLM</li><li>Supabase</li><li>Capacitor</li>
-                      </ul>
-                      <div class="proj-actions">
-                        <a href="https://vocabflow-alpha.vercel.app/words" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
-                      </div>
-                    </div>
-                  </article>
-
-                  <!-- 7 -->
                   <article class="proj reveal" id="project-choropleth" data-category="data" data-slug="bd-choropleth">
                     <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  data        <span class="proj-file">bd-choropleth.js</span></p>
                     <figure class="asciiframe">
                       <div class="asciiframe-media">
-                        <img src="../assets/project/bd-choropleth-map.jpeg" alt="Interactive Bangladesh Choropleth Map" width="1280" height="853" loading="lazy" decoding="async">
+                        <img src="../assets/project/bd-choropleth-map.jpeg" alt="Interactive Bangladesh District Map" width="1280" height="853" loading="lazy" decoding="async">
                       </div>
                       <figcaption class="asciiframe-cap" aria-hidden="true">└─ bd-choropleth-map.jpeg</figcaption>
                     </figure>
                     <div class="proj-text">
-                      <h3 class="proj-title">Interactive Bangladesh Choropleth Map</h3>
-                      <p class="proj-desc">An interactive web-based choropleth map visualization tool for exploring educational statistics across all 64 districts of Bangladesh.</p>
+                      <h3 class="proj-title">Interactive Bangladesh District Map</h3>
+                      <p class="proj-desc">A map of Bangladesh's 64 districts that you can fill with your own data. Load a spreadsheet of numbers per district, such as literacy or dropout rates. Each district is colored by its value, so patterns stand out at a glance.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> Runs fully in the browser. Papa Parse reads the CSV, D3 builds the color scale, and Leaflet draws the map. The demo uses sample data, and any district-level CSV works.</p>
                       <ul class="tags" aria-label="Stack">
-                        <li>Leaflet.js</li><li>D3.js</li><li>JavaScript</li>
+                        <li>JavaScript</li><li>Leaflet.js</li><li>D3.js</li><li>Papa Parse</li>
                       </ul>
                       <div class="proj-actions">
                         <a href="https://github.com/fahmidhasann/Interactive-BD-Choropleth" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
@@ -488,85 +608,7 @@
                   </article>
                 </section>
               </div>
-              <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next projects">›</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- ================= CLIENT PROJECTS ================= -->
-        <section id="client" class="block" aria-labelledby="client-heading">
-          <p class="cmd"><span class="ps1" aria-hidden="true">visitor@fahmid<span class="ps1-punc">:</span><span class="ps1-path">~</span><span class="ps1-sign">$</span></span> ls ~/client</p>
-
-          <div class="out">
-            <h2 id="client-heading" class="blocktitle">Client Projects</h2>
-            <p class="prose dim">Client videography and social motion design — short-form video reels.</p>
-
-            <div class="carousel" data-carousel>
-              <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous client projects" disabled>‹</button>
-              <div class="carousel-viewport">
-                <section class="reellist carousel-track" id="clientReelsList" aria-roledescription="carousel" aria-label="Client projects" tabindex="0">
-                  <a href="https://www.facebook.com/reel/1042219817454072" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch Built Different. Move Different.">
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media tall">
-                        <img src="../assets/client/reel_1042219817454072.jpg" alt="Built Different. Move Different." width="432" height="768" loading="lazy" decoding="async">
-                        <span class="playmark" aria-hidden="true">▶</span>
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_01.mp4</figcaption>
-                    </figure>
-                    <p class="reel-client">Sajjad Hossain Snigdho</p>
-                    <h4 class="reel-title">Built Different. Move Different.</h4>
-                  </a>
-
-                  <a href="https://www.facebook.com/reel/438344139340070" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch One Run at a Time">
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media tall">
-                        <img src="../assets/client/reel_438344139340070.jpg" alt="One Run at a Time" width="540" height="960" loading="lazy" decoding="async">
-                        <span class="playmark" aria-hidden="true">▶</span>
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_02.mp4</figcaption>
-                    </figure>
-                    <p class="reel-client">Sajjad Hossain Snigdho</p>
-                    <h4 class="reel-title">One Run at a Time</h4>
-                  </a>
-
-                  <a href="https://www.facebook.com/reel/624648880582291" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch Before You Run to Lose Weight">
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media tall">
-                        <img src="../assets/client/reel_624648880582291.jpg" alt="Before You Run to Lose Weight" width="432" height="768" loading="lazy" decoding="async">
-                        <span class="playmark" aria-hidden="true">▶</span>
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_03.mp4</figcaption>
-                    </figure>
-                    <p class="reel-client">Sajjad Hossain Snigdho</p>
-                    <h4 class="reel-title">Before You Run to Lose Weight</h4>
-                  </a>
-
-                  <a href="https://www.facebook.com/reel/1245324753666981" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch For New Runners">
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media tall">
-                        <img src="../assets/client/reel_1245324753666981.jpg" alt="For New Runners" width="540" height="960" loading="lazy" decoding="async">
-                        <span class="playmark" aria-hidden="true">▶</span>
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_04.mp4</figcaption>
-                    </figure>
-                    <p class="reel-client">Sajjad Hossain Snigdho</p>
-                    <h4 class="reel-title">For New Runners</h4>
-                  </a>
-
-                  <a href="https://www.facebook.com/reel/1470923473890560" target="_blank" rel="noopener noreferrer" class="reel reveal" aria-label="Watch Heart Rate Zones">
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media tall">
-                        <img src="../assets/client/reel_1470923473890560.jpg" alt="Heart Rate Zones" width="540" height="960" loading="lazy" decoding="async">
-                        <span class="playmark" aria-hidden="true">▶</span>
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ reel_05.mp4</figcaption>
-                    </figure>
-                    <p class="reel-client">Sajjad Hossain Snigdho</p>
-                    <h4 class="reel-title">Heart Rate Zones</h4>
-                  </a>
-                </section>
-              </div>
-              <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next client projects">›</button>
+              <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next side projects">›</button>
             </div>
           </div>
         </section>

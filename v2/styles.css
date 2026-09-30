@@ -208,7 +208,7 @@ button, input, textarea {
 
 .titlebar-nav {
   display: flex;
-  gap: .1rem;
+  gap: 0;
   min-width: 0;
   flex: 1 1 auto;
   overflow-x: auto;
@@ -217,7 +217,7 @@ button, input, textarea {
 .titlebar-nav::-webkit-scrollbar { display: none; }
 
 .navlink {
-  padding: .15rem .5rem;
+  padding: .15rem .4rem;
   color: var(--fg-dim);
   text-decoration: none;
   white-space: nowrap;
@@ -428,7 +428,6 @@ button, input, textarea {
   overflow-wrap: break-word;
 }
 .cmd .ps1 { margin-inline-end: .6ch; }
-.cmd-flag { color: var(--accent); }
 .cmd-inline { margin-block: 2rem 1rem; }
 
 .blocktitle {
@@ -723,29 +722,6 @@ button, input, textarea {
    Projects
    -------------------------------------------------------------------------- */
 
-.filters {
-  margin-top: 1.75rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem;
-}
-
-.flag {
-  padding: .25rem .65rem;
-  background: transparent;
-  border: 1px solid var(--line);
-  color: var(--fg-dim);
-  font-size: .75rem;
-  cursor: pointer;
-  transition: color .15s var(--ease), border-color .15s var(--ease), background-color .15s var(--ease);
-}
-.flag:hover { color: var(--accent); border-color: var(--line-strong); }
-.flag.active {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--accent-tint);
-}
-
 .lscount {
   margin-top: 1.5rem;
   color: var(--fg-faint);
@@ -911,11 +887,35 @@ button, input, textarea {
   color: var(--fg);
   font-size: .8125rem;
   line-height: 1.6;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  overflow: hidden;
+}
+.proj-how {
+  margin-top: .6rem;
+  color: var(--fg-dim);
+  font-size: .75rem;
+  line-height: 1.6;
+}
+.proj-how-label { color: var(--fg-faint); }
+.proj-meta {
+  margin-top: .6rem;
+  color: var(--accent);
+  font-size: .75rem;
+}
+
+/* The single AI Education entry sits outside a carousel, so it spans the column. */
+.proj.proj-featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  column-gap: 1.25rem;
+  width: 100%;
+  max-width: 60rem;
+  min-width: 0;
+}
+.proj-featured .proj-stat { grid-column: 1 / -1; }
+.proj-featured .asciiframe-media { aspect-ratio: 1042 / 970; }
+.proj-featured .proj-text { margin-top: .65rem; }
+@media (max-width: 48rem) {
+  .proj.proj-featured { grid-template-columns: minmax(0, 1fr); width: 100%; }
+  .proj-featured .proj-text { margin-top: .85rem; }
 }
 
 .tags {
@@ -1351,6 +1351,42 @@ body.locked { overflow: hidden; }
   z-index: var(--z-matrix);
   pointer-events: none;
   opacity: .38;
+}
+
+/* --------------------------------------------------------------------------
+   Journey — a short timeline with a rail down the left
+   -------------------------------------------------------------------------- */
+
+.journeylog { max-width: 62rem; margin-top: 1.75rem; padding: 0; list-style: none; }
+.jl {
+  position: relative;
+  display: grid;
+  grid-template-columns: 15ch minmax(0, 1fr);
+  gap: .25rem 1.5rem;
+  padding: 0 0 1.75rem 1.6rem;
+  border-left: 1px solid var(--line-strong);
+}
+.jl:last-child { padding-bottom: 0; border-left-color: transparent; }
+.jl::before {
+  content: '';
+  position: absolute;
+  top: .5rem;
+  left: -.3rem;
+  width: .55rem;
+  height: .55rem;
+  background: var(--accent);
+}
+.jl-now::before { box-shadow: 0 0 0 .25rem var(--accent-tint), 0 0 0 1px var(--accent-dim); }
+.jl-when { color: var(--accent); white-space: nowrap; }
+.jl-title { color: var(--fg-bright); font-size: 1rem; font-weight: 700; }
+.jl-place { margin-top: .15rem; color: var(--fg); }
+.jl-link { display: inline-block; margin-top: .5rem; }
+.js-ready .jl.reveal:nth-child(2) { transition-delay: .12s; }
+.js-ready .jl.reveal:nth-child(3) { transition-delay: .24s; }
+.js-ready .jl.reveal:nth-child(4) { transition-delay: .36s; }
+
+@media (max-width: 40rem) {
+  .jl { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* --------------------------------------------------------------------------

@@ -32,7 +32,7 @@ If you reintroduce tooling, `git log -- package.json` recovers the old setup.
 
 Each edition is three files:
 
-- [index.html](index.html) — Single-page markup with all sections (hero, projects, videos, contact, command palette)
+- [index.html](index.html) — Single-page markup with all sections (hero, journey, projects, videos, contact, command palette)
 - [styles.css](styles.css) — All styles using CSS custom properties for theming
 - [script.js](script.js) — All interactivity, wrapped in an IIFE and initialized via a sequence of `initialize*()` functions called on `DOMContentLoaded`. Each initializer runs inside a `runInit()` wrapper so one failure cannot take down the rest of the page. `v2/script.js` follows the same shape with shorter `init*()` names and a `boot()` wrapper.
 
@@ -80,23 +80,34 @@ CSS variables are defined at the `:root` level and overridden via `[data-theme="
 
 When adding new components, always use the existing CSS variables rather than hardcoded colors — including the `--z-*` stacking scale near the top of each stylesheet instead of ad-hoc `z-index` numbers.
 
-## Project Filtering
+## Projects
 
-Projects in the HTML have `data-category` attributes (`ai`, `automation`, `data`). The filter buttons in `script.js` toggle visibility by matching this attribute. Matching cards live in a horizontal peek carousel (`#projectsGrid`); filtering resets the track to the start. Adding a new project requires:
-1. Adding the card to the `#projectsGrid` carousel track in `index.html` with the correct `data-category`
-2. No JS changes needed unless adding a new category
+Software projects are split by audience into three sections. Business Automation and Side Projects are horizontal peek carousels; AI Education is a single wide featured card (`.project-card-featured` / `.proj-featured`) with no carousel. There are no filter buttons.
+
+| Section | Classic (`index.html`) | Terminal (`v2/index.html`) | What belongs there |
+| --- | --- | --- | --- |
+| **Business Automation** | `#projects` → `#projectsGrid` | `#automation` → `#automationList` | Systems built for a business or client (ordering bots, support bots, outreach) |
+| **AI Education** | `#ai-education` | `#education` | Teaching material, such as the Bangla Transformer course |
+| **Side Projects** | `#side-projects` → `#sideProjectsGrid` | `#side-projects` → `#sideProjectsList` | Personal projects built to learn |
+
+Adding a project means adding the card to the matching track in **both** editions. Each card has a plain-language description for any visitor, followed by a short "How it works" line for developers (`.project-how` in classic, `.proj-how` in terminal). Keep the `data-category` attribute (`ai`, `automation`, `data`) — the terminal edition prints it in `ls`. In the terminal edition, also bump the static `total N` line above the carousel. No JS changes are needed: `ls automation` / `ls side-projects` read the cards from the DOM.
+
+## Journey
+
+`#journey` sits right after the hero in both editions and tells the short story from agriculture to AI. Each step is an `<li>` in `ol.journey` (classic) or `ol.journeylog` (terminal); the terminal's `cat journey.txt` prints the same steps straight from the markup, so edit the HTML only. In classic, `initializeJourney()` draws the line once on first view; the finished state is the CSS default, so it is fully shown without JS or with reduced motion. The per-step delays are `nth-child` rules in `styles.css` — keep them in step with the number of steps.
 
 ## Creative Work
 
-The `#videos` section has two subsections in `index.html`, each in its own peek carousel:
+The `#videos` section has three subsections in `index.html`, each in its own peek carousel:
+- **Tech & AI Explainers** — `#youtubeExplainersGrid`
 - **Personal Projects** — `#personalVideosGrid` (`.video-grid` / `.video-card-link`)
-- **Client Projects** — `#clientVideosGrid` (`.reel-grid` / `.reel-card`)
+- **Client Projects** — `#client-projects` → `#clientVideosGrid` (`.reel-grid` / `.reel-card`). In the terminal edition this is the `#client` subblock inside `#creative`.
 
 Add new video cards to the matching track. Project media lives under `assets/project/`, client reel thumbnails under `assets/client/`. Carousel chrome (edge fades, prev/next arrows, keyboard) is initialized by `initializeCarousels()` for every `[data-carousel]` shell.
 
 ## Command Palette
 
-Accessible via `Cmd+K` / `Ctrl+K`. Commands are defined as an array in `script.js` inside `initializeCommandPalette()`. Add new navigation targets there.
+Accessible via `Cmd+K` / `Ctrl+K`. Commands are the `<li data-action>` items inside `#commandList` in `index.html`. An action that matches a section `id` just scrolls there; anything special (theme, call booking, aliases) is handled in `executeCommand()` in `script.js`.
 
 ## Repository hygiene
 
