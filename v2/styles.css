@@ -782,11 +782,14 @@ button, input, textarea {
   scroll-snap-type: x proximity;
   scroll-padding-inline: .1rem;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: auto;
+  overscroll-behavior-x: contain;
   overscroll-behavior-y: auto;
   scrollbar-width: none;
   outline: none;
 }
+.carousel-track.is-settling { scroll-snap-type: none; }
+/* Hover zooms and lifts repaint whole cards; skip them while the track moves under a still pointer. */
+.carousel-track.is-scrolling > * { pointer-events: none; }
 .carousel-track.is-dragging {
   scroll-snap-type: none !important;
   scroll-behavior: auto !important;

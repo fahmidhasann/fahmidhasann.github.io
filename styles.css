@@ -359,11 +359,14 @@ a { color: inherit; }
   scroll-snap-type: x proximity;
   scroll-padding-inline: .15rem;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: auto;
+  overscroll-behavior-x: contain;
   overscroll-behavior-y: auto;
   scrollbar-width: none;
   outline: none;
 }
+.carousel-track.is-settling { scroll-snap-type: none; }
+/* Hover zooms and lifts repaint whole cards; skip them while the track moves under a still pointer. */
+.carousel-track.is-scrolling > * { pointer-events: none; }
 .carousel-track.is-dragging {
   scroll-snap-type: none !important;
   scroll-behavior: auto !important;
@@ -619,8 +622,6 @@ a { color: inherit; }
   text-transform: uppercase;
   color: #fff;
   background: rgba(7, 16, 32, .72);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, .22);
   border-radius: 9999px;
   pointer-events: none;
@@ -1304,8 +1305,7 @@ a { color: inherit; }
     width: 2.65rem;
     height: 2.65rem;
     transform: translateY(-50%);
-    background: color-mix(in srgb, var(--surface) 92%, transparent);
-    backdrop-filter: blur(8px);
+    background: color-mix(in srgb, var(--surface) 96%, transparent);
   }
   .carousel-btn:hover:not(:disabled) { transform: translateY(-50%); }
   .carousel-btn-prev { left: .15rem; }

@@ -384,7 +384,8 @@
 
   function initializeParticles() {
     if (motionReduced() || typeof particlesJS === 'undefined' || !document.getElementById('particles-js')) return;
-    particlesJS('particles-js', {
+    const host = document.getElementById('particles-js');
+    const start = () => particlesJS('particles-js', {
       particles: {
         number: { value: window.innerWidth < 768 ? 24 : 44, density: { enable: true, value_area: 900 } },
         color: { value: '#ffffff' }, shape: { type: 'circle' },
@@ -395,6 +396,24 @@
       interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'grab' }, resize: true }, modes: { grab: { distance: 140, line_linked: { opacity: 0.35 } } } },
       retina_detect: true
     });
+
+    // The canvas redraws every frame, so stop it while the hero is off screen.
+    const stop = () => {
+      const instance = window.pJSDom && window.pJSDom[0];
+      if (!instance) return;
+      instance.pJS.fn.vendors.destroypJS();
+      window.pJSDom = [];
+    };
+    if (!('IntersectionObserver' in window)) {
+      start();
+      return;
+    }
+    let running = false;
+    new IntersectionObserver(entries => {
+      const visible = entries[entries.length - 1].isIntersecting;
+      if (visible && !running) { running = true; start(); }
+      else if (!visible && running) { running = false; stop(); }
+    }).observe(host);
   }
 
   function initializeHeroEntrance() {
@@ -457,9 +476,14 @@
       // Mobile browser chrome changes viewport height as scrolling settles. Avoid
       // ScrollTrigger refreshes that can pull the page back to a recalculated point.
       ScrollTrigger.config({ ignoreMobileResize: true });
+      // The cards carry CSS transitions on opacity/transform; left on, they lag behind
+      // every GSAP frame. Turn them off for the reveal, then hand control back to CSS
+      // so hover lifts still work.
       gsap.utils.toArray(items).forEach((item, index) => gsap.from(item, {
         scrollTrigger: { trigger: item, start: 'top 88%', once: true },
-        y: 18, opacity: 0, duration: 0.62, delay: index % 3 * 0.07, ease: 'power2.out'
+        y: 18, opacity: 0, duration: 0.62, delay: index % 3 * 0.07, ease: 'power2.out',
+        onStart: () => { item.style.transition = 'none'; },
+        clearProps: 'opacity,transform,transition'
       }));
       return;
     }
@@ -667,7 +691,27 @@
       }
     };
 
-    const setupDrag = (track) => {
+    // After a drag the track glides to a card. Native snapping stays off until the
+    // glide ends, so the two never pull in different directions.
+    const createSettleController = (track) => {
+      let timer = 0;
+      const finish = () => {
+        window.clearTimeout(timer);
+        track.removeEventListener('scrollend', finish);
+        track.classList.remove('is-settling');
+      };
+      return {
+        start() {
+          track.classList.add('is-settling');
+          track.addEventListener('scrollend', finish, { once: true });
+          window.clearTimeout(timer);
+          timer = window.setTimeout(finish, 700);
+        },
+        cancel: finish
+      };
+    };
+
+    const setupDrag = (track, settleController) => {
       let isDown = false;
       let startX = 0;
       let startY = 0;
@@ -678,8 +722,11 @@
       let activePointerId = null;
 
       const onPointerDown = (e) => {
-        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        // Touch and pen already pan natively; scripting them as well makes the two fight.
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
         if (e.target.closest('button, input, select, textarea, .carousel-btn')) return;
+
+        settleController.cancel();
 
         isDown = true;
         isDragging = false;
@@ -732,6 +779,7 @@
             window.removeEventListener('click', preventClick, { capture: true });
           }, 80);
 
+          settleController.start();
           snapToNearestCard(track);
         }
         isDragging = false;
@@ -771,13 +819,23 @@
         }
       });
 
-      track.addEventListener('scroll', scheduleUpdate, { passive: true });
+      let scrollIdle = 0;
+      const markScrolling = () => {
+        if (!track.classList.contains('is-scrolling')) track.classList.add('is-scrolling');
+        window.clearTimeout(scrollIdle);
+        scrollIdle = window.setTimeout(() => track.classList.remove('is-scrolling'), 140);
+      };
+
+      track.addEventListener('scroll', () => {
+        markScrolling();
+        scheduleUpdate();
+      }, { passive: true });
       onResize(scheduleUpdate);
       if (typeof ResizeObserver !== 'undefined') {
         new ResizeObserver(scheduleUpdate).observe(track);
       }
 
-      setupDrag(track);
+      setupDrag(track, createSettleController(track));
 
       carouselControllers.set(carousel, {
         update: () => updateChrome(carousel, track, prevBtn, nextBtn)

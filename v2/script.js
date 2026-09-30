@@ -381,7 +381,27 @@
       }
     };
 
-    const setupDrag = (track) => {
+    // After a drag the track glides to a card. Native snapping stays off until the
+    // glide ends, so the two never pull in different directions.
+    const createSettleController = (track) => {
+      let timer = 0;
+      const finish = () => {
+        window.clearTimeout(timer);
+        track.removeEventListener('scrollend', finish);
+        track.classList.remove('is-settling');
+      };
+      return {
+        start() {
+          track.classList.add('is-settling');
+          track.addEventListener('scrollend', finish, { once: true });
+          window.clearTimeout(timer);
+          timer = window.setTimeout(finish, 700);
+        },
+        cancel: finish
+      };
+    };
+
+    const setupDrag = (track, settleController) => {
       let isDown = false;
       let startX = 0;
       let startY = 0;
@@ -392,8 +412,11 @@
       let activePointerId = null;
 
       const onPointerDown = (e) => {
-        if (e.button !== 0 && e.pointerType === 'mouse') return;
+        // Touch and pen already pan natively; scripting them as well makes the two fight.
+        if (e.pointerType !== 'mouse' || e.button !== 0) return;
         if (e.target.closest('button, input, select, textarea, .carousel-btn')) return;
+
+        settleController.cancel();
 
         isDown = true;
         isDragging = false;
@@ -446,6 +469,7 @@
             window.removeEventListener('click', preventClick, { capture: true });
           }, 80);
 
+          settleController.start();
           snapToNearestCard(track);
         }
         isDragging = false;
@@ -485,13 +509,23 @@
         }
       });
 
-      track.addEventListener('scroll', scheduleUpdate, { passive: true });
+      let scrollIdle = 0;
+      const markScrolling = () => {
+        if (!track.classList.contains('is-scrolling')) track.classList.add('is-scrolling');
+        window.clearTimeout(scrollIdle);
+        scrollIdle = window.setTimeout(() => track.classList.remove('is-scrolling'), 140);
+      };
+
+      track.addEventListener('scroll', () => {
+        markScrolling();
+        scheduleUpdate();
+      }, { passive: true });
       onResize(scheduleUpdate);
       if (typeof ResizeObserver !== 'undefined') {
         new ResizeObserver(scheduleUpdate).observe(track);
       }
 
-      setupDrag(track);
+      setupDrag(track, createSettleController(track));
 
       carouselControllers.set(carousel, {
         update: () => updateChrome(carousel, track, prevBtn, nextBtn),
