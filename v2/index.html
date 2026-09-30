@@ -561,12 +561,33 @@
             <h2 id="side-projects-heading" class="blocktitle">Side Projects</h2>
             <p class="prose dim">Things I built on my own to learn and to solve problems I care about, mostly around farming and public data in Bangladesh.</p>
 
-            <p class="lscount" aria-hidden="true">total 3</p>
+            <p class="lscount" aria-hidden="true">total 4</p>
 
             <div class="carousel" data-carousel>
               <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous side projects" disabled>‹</button>
               <div class="carousel-viewport">
                 <section class="projlist carousel-track" id="sideProjectsList" aria-roledescription="carousel" aria-label="Side projects" tabindex="0">
+                  <article class="proj reveal" id="project-krishoker-kotha" data-category="ai" data-slug="krishoker-kotha">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">krishoker-kotha.tsx</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/project/krishoker-kotha.jpeg" alt="Krishoker Kotha home screen in Bangla, with farmer, field officer, and specialist role cards" width="1280" height="853" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ krishoker-kotha.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">Krishoker Kotha — Voice-First Farm Support</h3>
+                      <p class="proj-desc">Built at a BAU hackathon. A farmer describes a crop, fish, or livestock problem by speaking Bangla. The case goes to the right local officer or university expert, and the farmer reads their answer in Bangla.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> ElevenLabs turns speech into text, and Gemini turns it into a case as JSON. The server routes it, and flags 3+ similar cases nearby as a possible cluster.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>Next.js</li><li>Supabase</li><li>ElevenLabs STT</li><li>Gemini</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://voice-first-agri-support.vercel.app" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                      </div>
+                    </div>
+                  </article>
+
                   <article class="proj reveal" id="project-chashi-bondhu" data-category="ai" data-slug="chashi-bondhu">
                     <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">chashi-bondhu.tsx</span></p>
                     <figure class="asciiframe">
