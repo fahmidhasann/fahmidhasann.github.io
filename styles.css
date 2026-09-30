@@ -461,16 +461,32 @@ a { color: inherit; }
   margin-inline: auto;
 }
 .project-card-featured .project-image { display: grid; place-items: center; height: 100%; min-height: 20rem; padding: clamp(1rem, 2.2vw, 1.75rem); aspect-ratio: auto; border-right: 1px solid var(--line); }
-.project-card-featured .project-image > img { height: auto; max-height: 100%; object-fit: contain; border: 1px solid var(--line); border-radius: var(--radius-sm); box-shadow: var(--shadow-md); }
-.project-card-featured:hover .project-image > img { transform: scale(1.02); }
 .project-card-featured .project-content { padding: clamp(1.35rem, 2.6vw, 2.1rem); }
 .project-card-featured .project-title { font-size: clamp(1.75rem, 3vw, 2.35rem); }
 .project-eyebrow { margin-bottom: .55rem; color: var(--accent); font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-.project-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem 1rem; margin-top: 1rem; padding: 0; list-style: none; color: var(--muted); font-size: .8rem; line-height: 1.35; }
-.project-stats strong { margin-right: .3rem; color: var(--ink-strong); font-family: var(--font-heading); font-size: 1.35rem; font-weight: 600; }
+.project-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; margin-top: 1.1rem; padding: 0; list-style: none; color: var(--muted); font-size: .74rem; line-height: 1.25; }
+.project-stats li { display: flex; flex-direction: column; }
+.project-stats strong { color: var(--ink-strong); font-family: var(--font-heading); font-size: 1.7rem; font-weight: 600; line-height: 1; }
+
+/* Drawn in SVG rather than a screenshot so the labels stay readable on phones and follow the theme. */
+.project-art { background: radial-gradient(circle, color-mix(in srgb, var(--muted) 22%, transparent) 1px, transparent 1.4px) 0 0 / 18px 18px, var(--surface-soft); }
+.embed-art { display: block; width: 100%; max-width: 32rem; height: auto; overflow: visible; transition: transform .65s var(--ease-out); }
+.project-card-featured:hover .embed-art { transform: scale(1.03); }
+.embed-noise circle { fill: var(--muted-soft); opacity: .35; }
+.embed-axis { stroke: var(--muted-soft); stroke-width: 1.5; stroke-dasharray: 2 5; stroke-linecap: round; }
+.embed-link { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
+.embed-arrowhead { fill: var(--accent); }
+.embed-target { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3 4; }
+.embed-dot { fill: var(--ink); }
+.embed-dot-alt { fill: var(--accent); }
+.embed-word { fill: var(--ink-strong); font-family: var(--font-heading); font-size: 24px; font-style: italic; font-weight: 600; }
+.embed-word-alt { fill: var(--accent); }
+.embed-formula { fill: var(--muted); font-family: var(--font-body); font-size: 15px; font-weight: 600; letter-spacing: .02em; }
+.embed-formula-hit { fill: var(--accent); }
 @media (max-width: 900px) {
   .project-card.project-card-featured { grid-template-columns: minmax(0, 1fr); }
-  .project-card-featured .project-image { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .project-card-featured .project-image { min-height: 0; padding: 1.1rem 1.25rem .9rem; border-right: 0; border-bottom: 1px solid var(--line); }
+  .embed-art { max-width: 26rem; }
 }
 .btn-demo { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.25rem; padding: .48rem .76rem; color: #fffdfa; border: 0; border-radius: .35rem; background: var(--accent); font-size: .73rem; font-weight: 700; letter-spacing: .02em; cursor: pointer; transition: background var(--fast) ease, transform var(--fast) var(--ease-out); }
 .btn-demo:hover { background: var(--accent-strong); transform: translateY(-1px); }
@@ -1367,8 +1383,12 @@ a { color: inherit; }
   }
   .project-image { aspect-ratio: 16 / 9; }
   .project-content { padding: 1.15rem; }
-  .project-title { font-size: 1.55rem; }
-  .project-description { font-size: .86rem; }
+  .project-title { font-size: 1.45rem; }
+  .project-description { font-size: .86rem; line-height: 1.6; }
+  .project-how { font-size: .78rem; line-height: 1.55; }
+  .project-actions { padding-top: 1.1rem; }
+  .project-stats strong { font-size: 1.5rem; }
+  .project-stats { font-size: .7rem; }
   .video-card-link {
     flex-basis: min(18rem, 85vw);
     width: min(18rem, 85vw);

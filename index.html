@@ -530,24 +530,49 @@
         </header>
 
         <article class="project-card project-card-featured" id="project-transformer-course" data-category="ai">
-          <div class="project-image">
-            <img src="assets/project/transformer-course-attention.jpeg" alt="Interactive attention simulator from the course: the word 'it' draws most of its attention from 'animal' in the sentence 'The animal didn't cross the street because it was too tired.'" width="1042" height="970" loading="lazy" decoding="async">
+          <div class="project-image project-art">
+            <svg class="embed-art" viewBox="0 0 400 280" role="img" aria-labelledby="embedArtTitle">
+              <title id="embedArtTitle">Word embedding illustration: the arrow from man to woman runs parallel to the arrow from king to queen, so king minus man plus woman lands near queen.</title>
+              <defs>
+                <marker id="embedArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path class="embed-arrowhead" d="M0 1 L9 5 L0 9 z"/>
+                </marker>
+              </defs>
+              <g class="embed-noise" aria-hidden="true">
+                <circle cx="46" cy="58" r="3"/><circle cx="196" cy="34" r="3"/><circle cx="362" cy="132" r="3"/><circle cx="222" cy="230" r="3"/><circle cx="352" cy="214" r="3"/><circle cx="38" cy="150" r="3"/><circle cx="190" cy="118" r="3"/>
+              </g>
+              <g aria-hidden="true">
+                <line class="embed-axis" x1="102" y1="187" x2="256" y2="161"/>
+                <line class="embed-axis" x1="132" y1="87" x2="286" y2="61"/>
+                <line class="embed-link" x1="93" y1="176" x2="116" y2="104" marker-end="url(#embedArrow)"/>
+                <line class="embed-link" x1="273" y1="146" x2="296" y2="74" marker-end="url(#embedArrow)"/>
+                <circle class="embed-target" cx="300" cy="60" r="16"/>
+                <circle class="embed-dot" cx="90" cy="190" r="7"/>
+                <circle class="embed-dot" cx="270" cy="160" r="7"/>
+                <circle class="embed-dot embed-dot-alt" cx="120" cy="90" r="7"/>
+                <circle class="embed-dot embed-dot-alt" cx="300" cy="60" r="7"/>
+                <text class="embed-word" x="90" y="220" text-anchor="middle">man</text>
+                <text class="embed-word" x="270" y="190" text-anchor="middle">king</text>
+                <text class="embed-word" x="120" y="70" text-anchor="middle">woman</text>
+                <text class="embed-word embed-word-alt" x="300" y="30" text-anchor="middle">queen</text>
+                <text class="embed-formula" x="200" y="262" text-anchor="middle">king − man + woman ≈ <tspan class="embed-formula-hit">queen</tspan></text>
+              </g>
+            </svg>
           </div>
           <div class="project-content">
             <p class="project-eyebrow">Free open course · Bangla + English</p>
             <h3 class="project-title">Transformers, Explained in Bangla</h3>
-            <p class="project-description">An interactive course on how large language models like ChatGPT, Gemini, and Claude work inside. It is written in Bangla first, with a full English version. Technical terms stay in English, so learners can move on to other resources with confidence.</p>
+            <p class="project-description">An interactive course on how ChatGPT, Gemini, and Claude work inside. Written in Bangla first, with a full English version.</p>
             <ul class="project-stats" aria-label="Course at a glance">
               <li><strong>6</strong> lessons</li>
-              <li><strong>8</strong> interactive simulators</li>
+              <li><strong>8</strong> simulators</li>
               <li><strong>2</strong> languages</li>
-              <li><strong>0</strong> installs or sign-ups</li>
+              <li><strong>0</strong> sign-ups</li>
             </ul>
-            <p class="project-how"><span class="project-how-label">How it works</span>Each lesson turns one idea into something you can try. Click a word to see where its attention goes, rotate a 3D embedding space, or watch causal masking hide future words step by step. A short quiz closes every lesson, and progress is saved in the browser.</p>
+            <p class="project-how"><span class="project-how-label">How it works</span>Each lesson has a simulator to play with: click a word to see its attention, or rotate a 3D word map. A short quiz ends every lesson.</p>
             <div class="project-tags">
               <span class="tag">Self-Attention</span>
               <span class="tag">Embeddings</span>
-              <span class="tag">Positional Encoding</span>
               <span class="tag">Causal Masking</span>
               <span class="tag">HTML/CSS/JS</span>
             </div>
@@ -581,14 +606,12 @@
             </div>
             <div class="project-content">
               <h3 class="project-title">Shonar Tori — AI Restaurant Ordering System</h3>
-              <p class="project-description">A demo website and chatbot for a Bangladeshi restaurant. Customers order food or book a table by chatting in Bangla on the website or Messenger. Staff see every order in one dashboard.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>One Gemini agent serves every channel. It calls tools to search the menu, fill the cart, and place orders, so prices always come from the database, never from the AI.</p>
+              <p class="project-description">A demo restaurant site where customers order or book a table by chatting in Bangla, on the website or Messenger. Staff see every order in one dashboard.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>One Gemini agent calls tools to search the menu and place orders, so prices come from the database, never the AI.</p>
               <div class="project-tags">
                 <span class="tag">React</span>
-                <span class="tag">TypeScript</span>
                 <span class="tag">Gemini Function Calling</span>
                 <span class="tag">Supabase</span>
-                <span class="tag">WhatsApp Cloud API</span>
                 <span class="tag">Messenger API</span>
               </div>
               <div class="project-actions">
@@ -604,8 +627,8 @@
             </div>
             <div class="project-content">
               <h3 class="project-title">AI Cold Email Automation</h3>
-              <p class="project-description">A practice project that writes and sends cold emails on its own. Give it a Google Sheet of leads. It reads each company's website, writes a personal email about that company, sends it, and marks the lead as done.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>An n8n workflow on a schedule. It skips bad email addresses, scrapes and cleans the website, asks LLaMA 3.3 on Groq for the email as JSON, then sends it through Gmail.</p>
+              <p class="project-description">A practice project. Give it a Google Sheet of leads, and it reads each company's website, writes a personal email, and sends it.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>A scheduled n8n workflow scrapes the site, asks LLaMA 3.3 on Groq for the email as JSON, and sends it through Gmail.</p>
               <div class="project-tags">
                 <span class="tag">n8n</span>
                 <span class="tag">Groq (LLaMA 3.3)</span>
@@ -647,8 +670,8 @@
             </div>
             <div class="project-content">
               <h3 class="project-title">Chashi Bondhu — Crop Disease Checker</h3>
-              <p class="project-description">Helps farmers in Bangladesh find out what is wrong with a sick crop. Upload a photo of a leaf, and it names the disease and suggests treatments in Bangla or English. It can also read the answer aloud.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>Gemini 2.5 Flash looks at the photo and returns structured JSON: healthy, diseased, or not a plant. A chat handles follow-up questions, and Gemini TTS speaks the result.</p>
+              <p class="project-description">Upload a photo of a sick leaf, and it names the crop disease and suggests treatment in Bangla or English. It can read the answer aloud.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>Gemini 2.5 Flash reads the photo and returns structured JSON. Gemini TTS speaks the result.</p>
               <div class="project-tags">
                 <span class="tag">React</span>
                 <span class="tag">TypeScript</span>
@@ -669,13 +692,12 @@
             </div>
             <div class="project-content">
               <h3 class="project-title">PlantDoc — Plant Disease Q&amp;A Chatbot</h3>
-              <p class="project-description">A chatbot that answers questions about plant diseases from a plant pathology textbook. Every answer shows the page it came from, so you can check it yourself.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>Retrieval-augmented generation (RAG). The 948-page book is split into 2,870 chunks and stored in ChromaDB using an agriculture-tuned embedding model. The closest chunks go to DeepSeek, which writes the answer.</p>
+              <p class="project-description">A chatbot that answers plant disease questions from a pathology textbook, and shows the page each answer came from.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>RAG: the 948-page book is split into 2,870 chunks in ChromaDB. The closest chunks go to DeepSeek, which writes the answer.</p>
               <div class="project-tags">
                 <span class="tag">Python</span>
                 <span class="tag">Streamlit</span>
                 <span class="tag">ChromaDB</span>
-                <span class="tag">Sentence Transformers</span>
                 <span class="tag">DeepSeek</span>
               </div>
               <div class="project-actions">
@@ -692,8 +714,8 @@
             </div>
             <div class="project-content">
               <h3 class="project-title">Interactive Bangladesh District Map</h3>
-              <p class="project-description">A map of Bangladesh's 64 districts that you can fill with your own data. Load a spreadsheet of numbers per district, such as literacy or dropout rates. Each district is colored by its value, so patterns stand out at a glance.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>Runs fully in the browser. Papa Parse reads the CSV, D3 builds the color scale, and Leaflet draws the map. The demo uses sample data, and any district-level CSV works.</p>
+              <p class="project-description">A map of Bangladesh's 64 districts that you fill with your own data, like literacy rates. Each district is colored by its value, so patterns stand out.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>Runs in the browser. Papa Parse reads the CSV, D3 builds the color scale, and Leaflet draws the map.</p>
               <div class="project-tags">
                 <span class="tag">JavaScript</span>
                 <span class="tag">Leaflet.js</span>

@@ -911,10 +911,29 @@ button, input, textarea {
   min-width: 0;
 }
 .proj-featured .proj-stat { grid-column: 1 / -1; }
-.proj-featured .asciiframe-media { aspect-ratio: 1042 / 970; }
+.proj-featured .asciiframe-media { aspect-ratio: 16 / 11; }
 .proj-featured .proj-text { margin-top: .65rem; }
+.project-art {
+  display: grid;
+  place-items: center;
+  padding: .75rem;
+  background: radial-gradient(circle, var(--line-strong) 1px, transparent 1.4px) 0 0 / 16px 16px, var(--bg-inset);
+}
+.embed-art { position: absolute; inset: .75rem; display: block; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem); overflow: visible; }
+.embed-noise circle { fill: var(--fg-faint); opacity: .6; }
+.embed-axis { stroke: var(--fg-faint); stroke-width: 1.5; stroke-dasharray: 2 5; stroke-linecap: round; }
+.embed-link { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
+.embed-arrowhead { fill: var(--accent); }
+.embed-target { fill: var(--accent-tint); stroke: var(--accent-dim); stroke-width: 1.5; stroke-dasharray: 3 4; }
+.embed-dot { fill: var(--fg-bright); }
+.embed-dot-alt { fill: var(--accent); }
+.embed-word { fill: var(--fg-bright); font-family: inherit; font-size: 20px; font-weight: 700; }
+.embed-word-alt { fill: var(--accent); }
+.embed-formula { fill: var(--fg-dim); font-family: inherit; font-size: 15px; }
+.embed-formula-hit { fill: var(--accent); }
 @media (max-width: 48rem) {
   .proj.proj-featured { grid-template-columns: minmax(0, 1fr); width: 100%; }
+  .proj-featured .asciiframe-media { aspect-ratio: 16 / 10; }
   .proj-featured .proj-text { margin-top: .85rem; }
 }
 
