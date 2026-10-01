@@ -476,23 +476,34 @@ a { color: inherit; }
 
 /* Drawn in SVG rather than a screenshot so the labels stay readable on phones and follow the theme. */
 .project-art { background: radial-gradient(circle, color-mix(in srgb, var(--muted) 22%, transparent) 1px, transparent 1.4px) 0 0 / 18px 18px, var(--surface-soft); }
-.embed-art { display: block; width: 100%; max-width: 32rem; height: auto; overflow: visible; transition: transform .65s var(--ease-out); }
-.project-card-featured:hover .embed-art { transform: scale(1.03); }
-.embed-noise circle { fill: var(--muted-soft); opacity: .35; }
-.embed-axis { stroke: var(--muted-soft); stroke-width: 1.5; stroke-dasharray: 2 5; stroke-linecap: round; }
-.embed-link { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
-.embed-arrowhead { fill: var(--accent); }
-.embed-target { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 3 4; }
-.embed-dot { fill: var(--ink); }
-.embed-dot-alt { fill: var(--accent); }
-.embed-word { fill: var(--ink-strong); font-family: var(--font-heading); font-size: 24px; font-style: italic; font-weight: 600; }
-.embed-word-alt { fill: var(--accent); }
-.embed-formula { fill: var(--muted); font-family: var(--font-body); font-size: 15px; font-weight: 600; letter-spacing: .02em; }
-.embed-formula-hit { fill: var(--accent); }
+.attn-art { display: block; width: 100%; max-width: 32rem; height: auto; overflow: visible; transition: transform .65s var(--ease-out); }
+.project-card-featured:hover .attn-art { transform: scale(1.03); }
+/* Line thickness is the attention weight, so stroke-width stays a presentation attribute on each path. */
+.attn-arc { fill: none; stroke: var(--muted-soft); stroke-linecap: round; stroke-dasharray: 1 1; }
+.attn-arc-strong { stroke: var(--accent); }
+.attn-hit { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.25; stroke-dasharray: 3 3; }
+.attn-focus { fill: var(--accent); }
+.attn-word { fill: var(--ink-strong); font-family: var(--font-heading); font-size: 19px; font-style: italic; font-weight: 600; }
+.attn-word-hit { fill: var(--accent-strong); }
+.attn-word-focus { fill: var(--page); }
+.attn-caption { fill: var(--muted); font-family: var(--font-body); font-size: 15px; font-weight: 600; letter-spacing: .02em; }
+.attn-caption-hit { fill: var(--accent); }
+/* Played once by initializeAttentionArt(); the finished drawing is the default. */
+.attn-art.is-armed .attn-arc { transition: stroke-dashoffset .7s cubic-bezier(.45, .05, .35, 1); }
+.attn-art.is-armed .attn-arc:nth-child(2) { transition-delay: .06s; }
+.attn-art.is-armed .attn-arc:nth-child(3) { transition-delay: .12s; }
+.attn-art.is-armed .attn-arc:nth-child(4) { transition-delay: .18s; }
+.attn-art.is-armed .attn-arc:nth-child(5) { transition-delay: .24s; }
+.attn-art.is-armed .attn-arc:nth-child(6) { transition-delay: .3s; }
+.attn-art.is-armed .attn-arc:nth-child(7) { transition-delay: .36s; }
+.attn-art.is-armed .attn-arc-strong { transition-duration: 1s; transition-delay: .55s; }
+.attn-art.is-armed .attn-hit, .attn-art.is-armed .attn-caption { transition: opacity .5s var(--ease-out) 1.35s; }
+.attn-art.is-armed:not(.is-drawn) .attn-arc { stroke-dashoffset: 1; }
+.attn-art.is-armed:not(.is-drawn) .attn-hit, .attn-art.is-armed:not(.is-drawn) .attn-caption { opacity: 0; }
 @media (max-width: 900px) {
   .project-card.project-card-featured { grid-template-columns: minmax(0, 1fr); }
   .project-card-featured .project-image { min-height: 0; padding: 1.1rem 1.25rem .9rem; border-right: 0; border-bottom: 1px solid var(--line); }
-  .embed-art { max-width: 26rem; }
+  .attn-art { max-width: 26rem; }
 }
 .btn-demo { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.25rem; padding: .48rem .76rem; color: #fffdfa; border: 0; border-radius: .35rem; background: var(--accent); font-size: .73rem; font-weight: 700; letter-spacing: .02em; cursor: pointer; transition: background var(--fast) ease, transform var(--fast) var(--ease-out); }
 .btn-demo:hover { background: var(--accent-strong); transform: translateY(-1px); }

@@ -922,18 +922,31 @@ button, input, textarea {
   padding: .75rem;
   background: radial-gradient(circle, var(--line-strong) 1px, transparent 1.4px) 0 0 / 16px 16px, var(--bg-inset);
 }
-.embed-art { position: absolute; inset: .75rem; display: block; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem); overflow: visible; }
-.embed-noise circle { fill: var(--fg-faint); opacity: .6; }
-.embed-axis { stroke: var(--fg-faint); stroke-width: 1.5; stroke-dasharray: 2 5; stroke-linecap: round; }
-.embed-link { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
-.embed-arrowhead { fill: var(--accent); }
-.embed-target { fill: var(--accent-tint); stroke: var(--accent-dim); stroke-width: 1.5; stroke-dasharray: 3 4; }
-.embed-dot { fill: var(--fg-bright); }
-.embed-dot-alt { fill: var(--accent); }
-.embed-word { fill: var(--fg-bright); font-family: inherit; font-size: 20px; font-weight: 700; }
-.embed-word-alt { fill: var(--accent); }
-.embed-formula { fill: var(--fg-dim); font-family: inherit; font-size: 15px; }
-.embed-formula-hit { fill: var(--accent); }
+.attn-art { position: absolute; inset: .75rem; display: block; width: calc(100% - 1.5rem); height: calc(100% - 1.5rem); overflow: visible; }
+/* Line thickness is the attention weight, so stroke-width stays a presentation attribute on each path. */
+.attn-arc { fill: none; stroke: var(--fg-dim); stroke-linecap: round; stroke-dasharray: 1 1; }
+.attn-arc-strong { stroke: var(--accent); }
+.attn-hit { fill: var(--accent-tint); stroke: var(--accent-dim); stroke-width: 1.25; stroke-dasharray: 3 3; }
+.attn-focus { fill: var(--accent); }
+.attn-word { fill: var(--fg-bright); font-family: inherit; font-size: 14px; font-weight: 700; }
+.attn-word-hit { fill: var(--accent); }
+.attn-word-focus { fill: var(--bg); }
+.attn-caption { fill: var(--fg-dim); font-family: inherit; font-size: 13px; }
+.attn-caption-hit { fill: var(--accent); }
+/* Drawn when the card's .reveal gets .in; without JS or with reduced motion the finished drawing shows. */
+@media (prefers-reduced-motion: no-preference) {
+  .js-ready .reveal .attn-arc { transition: stroke-dashoffset .7s cubic-bezier(.45, .05, .35, 1) .2s; }
+  .js-ready .reveal .attn-arc:nth-child(2) { transition-delay: .26s; }
+  .js-ready .reveal .attn-arc:nth-child(3) { transition-delay: .32s; }
+  .js-ready .reveal .attn-arc:nth-child(4) { transition-delay: .38s; }
+  .js-ready .reveal .attn-arc:nth-child(5) { transition-delay: .44s; }
+  .js-ready .reveal .attn-arc:nth-child(6) { transition-delay: .5s; }
+  .js-ready .reveal .attn-arc:nth-child(7) { transition-delay: .56s; }
+  .js-ready .reveal .attn-arc-strong { transition-duration: 1s; transition-delay: .75s; }
+  .js-ready .reveal .attn-hit, .js-ready .reveal .attn-caption { transition: opacity .5s ease 1.55s; }
+  .js-ready .reveal:not(.in) .attn-arc { stroke-dashoffset: 1; }
+  .js-ready .reveal:not(.in) .attn-hit, .js-ready .reveal:not(.in) .attn-caption { opacity: 0; }
+}
 @media (max-width: 48rem) {
   .proj.proj-featured { grid-template-columns: minmax(0, 1fr); width: 100%; }
   .proj-featured .asciiframe-media { aspect-ratio: 16 / 10; }

@@ -191,35 +191,35 @@
               <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">transformers-in-bangla/</span></p>
               <figure class="asciiframe">
                 <div class="asciiframe-media project-art">
-                  <svg class="embed-art" viewBox="0 0 400 280" role="img" aria-labelledby="embedArtTitle">
-                    <title id="embedArtTitle">Word embedding illustration: the arrow from man to woman runs parallel to the arrow from king to queen, so king minus man plus woman lands near queen.</title>
-                    <defs>
-                      <marker id="embedArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                        <path class="embed-arrowhead" d="M0 1 L9 5 L0 9 z"/>
-                      </marker>
-                    </defs>
-                    <g class="embed-noise" aria-hidden="true">
-                      <circle cx="46" cy="58" r="3"/><circle cx="196" cy="34" r="3"/><circle cx="362" cy="132" r="3"/><circle cx="222" cy="230" r="3"/><circle cx="352" cy="214" r="3"/><circle cx="38" cy="150" r="3"/><circle cx="190" cy="118" r="3"/>
-                    </g>
+                  <svg class="attn-art" viewBox="0 0 400 280" role="img" aria-labelledby="attnArtTitle" data-attention-art>
+                    <title id="attnArtTitle">Self-attention illustration: in the sentence “The cat ate the fish because it was hungry”, curved lines run from the word “it” to every other word. The thickest line goes to “cat”, because that is the word “it” refers to.</title>
                     <g aria-hidden="true">
-                      <line class="embed-axis" x1="102" y1="187" x2="256" y2="161"/>
-                      <line class="embed-axis" x1="132" y1="87" x2="286" y2="61"/>
-                      <line class="embed-link" x1="93" y1="176" x2="116" y2="104" marker-end="url(#embedArrow)"/>
-                      <line class="embed-link" x1="273" y1="146" x2="296" y2="74" marker-end="url(#embedArrow)"/>
-                      <circle class="embed-target" cx="300" cy="60" r="16"/>
-                      <circle class="embed-dot" cx="90" cy="190" r="7"/>
-                      <circle class="embed-dot" cx="270" cy="160" r="7"/>
-                      <circle class="embed-dot embed-dot-alt" cx="120" cy="90" r="7"/>
-                      <circle class="embed-dot embed-dot-alt" cx="300" cy="60" r="7"/>
-                      <text class="embed-word" x="90" y="220" text-anchor="middle">man</text>
-                      <text class="embed-word" x="270" y="190" text-anchor="middle">king</text>
-                      <text class="embed-word" x="120" y="70" text-anchor="middle">woman</text>
-                      <text class="embed-word embed-word-alt" x="300" y="30" text-anchor="middle">queen</text>
-                      <text class="embed-formula" x="200" y="262" text-anchor="middle">king − man + woman ≈ <tspan class="embed-formula-hit">queen</tspan></text>
+                      <g class="attn-arcs">
+                        <path class="attn-arc" d="M283 181 C283 65 133 65 133 181" stroke-width="1.4" stroke-opacity="0.3" pathLength="1"/>
+                        <path class="attn-arc" d="M283 181 C283 -5.7 22 -5.7 22 181" stroke-width="1.5" stroke-opacity="0.4" pathLength="1"/>
+                        <path class="attn-arc" d="M283 181 C283 142.3 233 142.3 233 181" stroke-width="1.6" stroke-opacity="0.4" pathLength="1"/>
+                        <path class="attn-arc" d="M283 181 C283 36.4 96 36.4 96 181" stroke-width="1.7" stroke-opacity="0.4" pathLength="1"/>
+                        <path class="attn-arc" d="M283 181 C283 155.5 316 155.5 316 181" stroke-width="1.7" stroke-opacity="0.4" pathLength="1"/>
+                        <path class="attn-arc" d="M283 181 C283 116.8 366 116.8 366 181" stroke-width="2.5" stroke-opacity="0.6" pathLength="1"/>
+                        <path class="attn-arc" d="M283 181 C283 97.5 175 97.5 175 181" stroke-width="2.6" stroke-opacity="0.6" pathLength="1"/>
+                        <path class="attn-arc attn-arc-strong" d="M283 181 C283 7.8 59 7.8 59 181" stroke-width="5.9" pathLength="1"/>
+                      </g>
+                      <rect class="attn-hit" x="38" y="182" width="42" height="26" rx="13"/>
+                      <rect class="attn-focus" x="268" y="182" width="30" height="26" rx="13"/>
+                      <text class="attn-word" x="22" y="200" text-anchor="middle">The</text>
+                      <text class="attn-word attn-word-hit" x="59" y="200" text-anchor="middle">cat</text>
+                      <text class="attn-word" x="96" y="200" text-anchor="middle">ate</text>
+                      <text class="attn-word" x="133" y="200" text-anchor="middle">the</text>
+                      <text class="attn-word" x="175" y="200" text-anchor="middle">fish</text>
+                      <text class="attn-word" x="233" y="200" text-anchor="middle">because</text>
+                      <text class="attn-word attn-word-focus" x="283" y="200" text-anchor="middle">it</text>
+                      <text class="attn-word" x="316" y="200" text-anchor="middle">was</text>
+                      <text class="attn-word" x="366" y="200" text-anchor="middle">hungry</text>
+                      <text class="attn-caption" x="200" y="252" text-anchor="middle"><tspan class="attn-caption-hit">“it”</tspan> pays the most attention to <tspan class="attn-caption-hit">“cat”</tspan></text>
                     </g>
                   </svg>
                 </div>
-                <figcaption class="asciiframe-cap" aria-hidden="true">└─ embedding-space.svg</figcaption>
+                <figcaption class="asciiframe-cap" aria-hidden="true">└─ self-attention.svg</figcaption>
               </figure>
               <div class="proj-text">
                 <h3 class="proj-title">Transformers, Explained in Bangla</h3>

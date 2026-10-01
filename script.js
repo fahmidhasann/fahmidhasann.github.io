@@ -53,6 +53,7 @@
     runInit('initializeHeroEntrance', initializeHeroEntrance);
     runInit('initializeScrollEffects', initializeScrollEffects);
     runInit('initializeJourney', initializeJourney);
+    runInit('initializeAttentionArt', initializeAttentionArt);
     runInit('initializeProgressBar', initializeProgressBar);
   });
 
@@ -505,6 +506,20 @@
       window.setTimeout(() => journey.classList.remove('is-armed'), JOURNEY_SETTLE_MS);
     }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
     observer.observe(journey);
+  }
+
+  /** Draws the attention lines out of "it" once, the first time the course card scrolls into view. */
+  function initializeAttentionArt() {
+    const art = document.querySelector('[data-attention-art]');
+    if (!art || motionReduced() || !('IntersectionObserver' in window)) return;
+
+    art.classList.add('is-armed');
+    const observer = new IntersectionObserver(entries => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      art.classList.add('is-drawn');
+    }, { threshold: 0.4 });
+    observer.observe(art);
   }
 
   function initializeProgressBar() {
