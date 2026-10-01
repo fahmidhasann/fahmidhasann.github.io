@@ -51,6 +51,10 @@ vercel.json           Security headers and asset caching
 Pushing to `main` deploys to Vercel automatically. `vercel.json` sets the
 security headers and long-lived caching for `/assets/*`.
 
+To update the CV, replace `assets/fahmid-hasan-cv.pdf` with the new PDF
+(same file name) and push. That file is excluded from the long-lived cache,
+so visitors always download the latest version.
+
 ## Contributing notes
 
 Conventions for adding projects, videos, and command-palette entries live in

@@ -109,6 +109,10 @@ Add new video cards to the matching track. Project media lives under `assets/pro
 
 Accessible via `Cmd+K` / `Ctrl+K`. Commands are the `<li data-action>` items inside `#commandList` in `index.html`. An action that matches a section `id` just scrolls there; anything special (theme, call booking, aliases) is handled in `executeCommand()` in `script.js`.
 
+## CV / Résumé
+
+The downloadable CV is `assets/fahmid-hasan-cv.pdf`. To update it, overwrite that file **keeping the exact same name** and push — every download link (classic hero pill + contact card, terminal `resume` rows, `cv`/`resume` commands, ⌘K palette) points at that one path. `vercel.json` gives this file `max-age=0, must-revalidate` (the rule sits after the `/assets/` immutable rule so it wins); keep that rule if you rename the file, or visitors will get a stale copy for a year.
+
 ## Repository hygiene
 
 - `graphify-out/`, `.firecrawl/`, and `tasks/` are deliberately untracked. The knowledge graph is regenerated with `graphify update .`, never committed — re-adding it puts 90+ generated files back into every diff.

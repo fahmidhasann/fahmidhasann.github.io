@@ -981,6 +981,7 @@
     else if (action === 'explainers' || action === 'youtube') scrollToSection('youtubeExplainers');
     else if (action === 'client' || action === 'client-projects') scrollToSection('client-projects');
     else if (action === 'book-a-call' || action === 'call') openCalPopup();
+    else if (action === 'cv' || action === 'resume') document.querySelector('[data-cv-link]')?.click();
     else scrollToSection(action);
   }
 

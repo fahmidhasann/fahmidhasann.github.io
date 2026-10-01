@@ -295,6 +295,11 @@ a { color: inherit; }
 .social-link:hover { color: var(--accent); border-color: var(--accent); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
 .hero-social .social-link { color: var(--on-navy); border-color: color-mix(in srgb, var(--on-navy) 38%, transparent); background: rgba(255,255,255,.06); }
 .hero-social .social-link:hover { color: var(--navy); border-color: var(--on-navy); background: var(--on-navy); }
+.cv-link { display: inline-flex; align-items: center; gap: .55rem; min-height: 2.75rem; padding: 0 1.05rem; color: var(--on-navy); border: 1px solid color-mix(in srgb, var(--accent) 70%, transparent); border-radius: var(--radius-sm); background: color-mix(in srgb, var(--accent) 16%, transparent); font-size: .84rem; font-weight: 600; letter-spacing: .025em; text-decoration: none; transition: color var(--fast) ease, background var(--fast) ease, border-color var(--fast) ease, transform var(--fast) var(--ease-out), box-shadow var(--fast) ease; }
+.hero-social .cv-link { margin-left: .35rem; }
+.cv-link i { color: var(--accent); transition: color var(--fast) ease, transform var(--fast) var(--ease-out); }
+.cv-link:hover { color: #fffdfa; border-color: var(--accent); background: var(--accent); box-shadow: 0 8px 18px rgba(185, 84, 54, .25); transform: translateY(-2px); }
+.cv-link:hover i { color: currentColor; transform: translateY(2px); }
 .hero-image { display: grid; place-items: center; }
 .profile-frame { position: relative; width: min(28vw, 24rem); min-width: 17.5rem; aspect-ratio: .69; overflow: hidden; border: 1px solid var(--frame-line); border-radius: var(--radius-sm); background: var(--frame-mat); box-shadow: var(--shadow-lg); }
 /* Museum mat: an opaque inset ring painted over the photo edge, plus a 1px
@@ -983,6 +988,9 @@ a { color: inherit; }
 .contact-card i { display: grid; width: 3rem; height: 3rem; place-items: center; color: var(--on-accent); border-radius: 50%; background: var(--navy); font-size: 1.25rem; }
 .contact-card h3 { color: currentColor; font-family: var(--font-heading); font-size: 1.35rem; font-weight: 600; line-height: 1.1; margin: 0; }
 .contact-card p, .contact-card a { color: inherit; text-decoration: none; }
+.contact-card-cv { grid-column: 1 / -1; }
+.contact-card-cv i { background: var(--accent); }
+.contact-card-meta { margin-left: .35rem; padding: .08rem .4rem; color: var(--accent); border: 1px solid currentColor; border-radius: .3rem; font-size: .66rem; font-weight: 700; letter-spacing: .08em; vertical-align: middle; }
 .contact-card-text { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
 .contact-card-label { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .contact-card-value { font-size: .86rem; font-weight: 500; color: var(--ink); word-break: break-all; line-height: 1.35; margin: 0; }

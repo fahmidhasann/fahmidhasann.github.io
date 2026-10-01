@@ -1009,7 +1009,8 @@
             '-rw-r--r--  about.txt',
             '-rw-r--r--  journey.txt',
             '-rw-r--r--  contact.txt',
-            '-rw-r--r--  credentials.txt'
+            '-rw-r--r--  credentials.txt',
+            '-rw-r--r--  fahmid-hasan-cv.pdf'
           ]);
           return;
         }
@@ -1101,6 +1102,11 @@
         if (file === 'contact') {
           printLine('email     fahmidhasantaohid@gmail.com');
           printLine('reply     usually within 24h');
+          printLine('resume    run cv to download fahmid-hasan-cv.pdf');
+          return;
+        }
+        if (/\.pdf$/i.test(file)) {
+          printLine(`cat: ${file}: binary file — run 'cv' to download it`, 'is-err');
           return;
         }
         printLine(`cat: ${args[0] || ''}: no such file`, 'is-err');
@@ -1200,6 +1206,27 @@
       summary: 'alias for call',
       run() {
         COMMANDS.call.run();
+      }
+    },
+
+    cv: {
+      summary: 'download my CV / résumé (PDF)',
+      run() {
+        const link = document.querySelector('[data-cv-link]');
+        if (!link) {
+          printLine('cv: file not found', 'is-err');
+          return;
+        }
+        printLine('downloading fahmid-hasan-cv.pdf ...', 'is-ok');
+        printLink('not starting? click here → fahmid-hasan-cv.pdf', link.getAttribute('href'));
+        link.click();
+      }
+    },
+
+    resume: {
+      summary: 'alias for cv',
+      run() {
+        COMMANDS.cv.run();
       }
     },
 
