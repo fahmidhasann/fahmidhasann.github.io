@@ -108,8 +108,8 @@
           <li><a href="#hero" class="nav-link">Home</a></li>
           <li><a href="#journey" class="nav-link">Journey</a></li>
           <li><a href="#ai-education" class="nav-link">AI Education</a></li>
-          <li><a href="#projects" class="nav-link">Automation</a></li>
           <li><a href="#side-projects" class="nav-link">Side Projects</a></li>
+          <li><a href="#projects" class="nav-link">Automation</a></li>
           <li><a href="#videos" class="nav-link">Creative Work</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
@@ -169,7 +169,7 @@
           </ul>
 
           <div class="hero-cta hero-entrance">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#side-projects" class="btn btn-primary">View Projects</a>
             <button type="button" class="btn btn-call-hero" id="heroBookCallBtn" aria-haspopup="dialog" aria-controls="calPopup">
               <i class="fas fa-calendar-check" aria-hidden="true"></i> Book a Call
             </button>
@@ -306,70 +306,6 @@
       </div>
     </section>
 
-    <!-- Business Automation Section -->
-    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
-      <div class="container">
-        <header class="section-header">
-          <h2 id="projects-heading" class="section-title">Business Automation</h2>
-          <p class="section-subtitle">AI systems that take over everyday business work, like taking food orders or writing sales emails.</p>
-        </header>
-
-        <div class="carousel" data-carousel>
-          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous business automation projects" disabled>
-            <i class="fas fa-chevron-left" aria-hidden="true"></i>
-          </button>
-          <div class="carousel-viewport">
-            <section class="projects-grid carousel-track" id="projectsGrid" aria-roledescription="carousel" aria-label="Business automation projects" tabindex="0">
-          <!-- Project 1: Shonar Tori — AI Restaurant Ordering System -->
-          <div class="project-card" id="project-shonar-tori" data-category="automation">
-            <div class="project-image">
-              <img src="assets/project/shonar-tori-restaurant-thumbnail.jpeg" alt="Shonar Tori Restaurant website with the Ask Shonar Tori AI ordering assistant and Messenger and WhatsApp buttons" width="1600" height="1000" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Shonar Tori — AI Restaurant Ordering System</h3>
-              <p class="project-description">A demo restaurant site where customers order or book a table by chatting in Bangla, on the website or Messenger. Staff see every order in one dashboard.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>One Gemini agent calls tools to search the menu and place orders, so prices come from the database, never the AI.</p>
-              <div class="project-tags">
-                <span class="tag">React</span>
-                <span class="tag">Gemini Function Calling</span>
-                <span class="tag">Supabase</span>
-                <span class="tag">Messenger API</span>
-              </div>
-              <div class="project-actions">
-                <a href="https://shonar-tori-restaurant.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Preview →</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 2: AI Cold Email Automation -->
-          <div class="project-card" id="project-cold-outreach" data-category="automation" data-video="assets/project/cold-outreach-demo.mp4" data-title="AI Cold Email Automation">
-            <div class="project-image">
-              <img src="assets/project/cold-outreach-thumbnail.jpeg" alt="AI Cold Email Automation" width="2832" height="1262" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">AI Cold Email Automation</h3>
-              <p class="project-description">A practice project. Give it a Google Sheet of leads, and it reads each company's website, writes a personal email, and sends it.</p>
-              <p class="project-how"><span class="project-how-label">How it works</span>A scheduled n8n workflow scrapes the site, asks LLaMA 3.3 on Groq for the email as JSON, and sends it through Gmail.</p>
-              <div class="project-tags">
-                <span class="tag">n8n</span>
-                <span class="tag">Groq (LLaMA 3.3)</span>
-                <span class="tag">Google Sheets</span>
-                <span class="tag">Gmail</span>
-              </div>
-              <div class="project-actions">
-                <button type="button" class="btn-demo" aria-label="Watch demo for AI Cold Email Automation"><i class="fas fa-play" aria-hidden="true"></i> Watch Demo</button>
-              </div>
-            </div>
-          </div>
-            </section>
-          </div>
-          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next business automation projects">
-            <i class="fas fa-chevron-right" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
-    </section>
-
     <!-- Side Projects Section -->
     <section id="side-projects" class="section projects-section side-projects-section" aria-labelledby="side-projects-heading">
       <div class="container">
@@ -474,6 +410,70 @@
             </section>
           </div>
           <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next side projects">
+            <i class="fas fa-chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Automation Section -->
+    <section id="projects" class="section projects-section" aria-labelledby="projects-heading">
+      <div class="container">
+        <header class="section-header">
+          <h2 id="projects-heading" class="section-title">Business Automation</h2>
+          <p class="section-subtitle">AI systems that take over everyday business work, like taking food orders or writing sales emails.</p>
+        </header>
+
+        <div class="carousel" data-carousel>
+          <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous business automation projects" disabled>
+            <i class="fas fa-chevron-left" aria-hidden="true"></i>
+          </button>
+          <div class="carousel-viewport">
+            <section class="projects-grid carousel-track" id="projectsGrid" aria-roledescription="carousel" aria-label="Business automation projects" tabindex="0">
+          <!-- Project 1: Shonar Tori — AI Restaurant Ordering System -->
+          <div class="project-card" id="project-shonar-tori" data-category="automation">
+            <div class="project-image">
+              <img src="assets/project/shonar-tori-restaurant-thumbnail.jpeg" alt="Shonar Tori Restaurant website with the Ask Shonar Tori AI ordering assistant and Messenger and WhatsApp buttons" width="1600" height="1000" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Shonar Tori — AI Restaurant Ordering System</h3>
+              <p class="project-description">A demo restaurant site where customers order or book a table by chatting in Bangla, on the website or Messenger. Staff see every order in one dashboard.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>One Gemini agent calls tools to search the menu and place orders, so prices come from the database, never the AI.</p>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">Gemini Function Calling</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Messenger API</span>
+              </div>
+              <div class="project-actions">
+                <a href="https://shonar-tori-restaurant.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-link live">Live Preview →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: AI Cold Email Automation -->
+          <div class="project-card" id="project-cold-outreach" data-category="automation" data-video="assets/project/cold-outreach-demo.mp4" data-title="AI Cold Email Automation">
+            <div class="project-image">
+              <img src="assets/project/cold-outreach-thumbnail.jpeg" alt="AI Cold Email Automation" width="2832" height="1262" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">AI Cold Email Automation</h3>
+              <p class="project-description">A practice project. Give it a Google Sheet of leads, and it reads each company's website, writes a personal email, and sends it.</p>
+              <p class="project-how"><span class="project-how-label">How it works</span>A scheduled n8n workflow scrapes the site, asks LLaMA 3.3 on Groq for the email as JSON, and sends it through Gmail.</p>
+              <div class="project-tags">
+                <span class="tag">n8n</span>
+                <span class="tag">Groq (LLaMA 3.3)</span>
+                <span class="tag">Google Sheets</span>
+                <span class="tag">Gmail</span>
+              </div>
+              <div class="project-actions">
+                <button type="button" class="btn-demo" aria-label="Watch demo for AI Cold Email Automation"><i class="fas fa-play" aria-hidden="true"></i> Watch Demo</button>
+              </div>
+            </div>
+          </div>
+            </section>
+          </div>
+          <button class="carousel-btn carousel-btn-next" type="button" aria-label="Next business automation projects">
             <i class="fas fa-chevron-right" aria-hidden="true"></i>
           </button>
         </div>
@@ -940,8 +940,8 @@
           <li id="command-home" data-action="hero" role="option" aria-selected="false">Home</li>
           <li id="command-journey" data-action="journey" role="option" aria-selected="false">My Journey</li>
           <li id="command-ai-education" data-action="ai-education" role="option" aria-selected="false">AI Education (Transformer Course)</li>
-          <li id="command-projects" data-action="projects" role="option" aria-selected="false">Business Automation</li>
           <li id="command-side-projects" data-action="side-projects" role="option" aria-selected="false">Side Projects</li>
+          <li id="command-projects" data-action="projects" role="option" aria-selected="false">Business Automation</li>
           <li id="command-videos" data-action="videos" role="option" aria-selected="false">Creative Work</li>
           <li id="command-explainers" data-action="explainers" role="option" aria-selected="false">Tech &amp; AI Explainers (YouTube)</li>
           <li id="command-client" data-action="client-projects" role="option" aria-selected="false">Client Projects (Videos)</li>

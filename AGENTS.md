@@ -86,9 +86,9 @@ Software projects are split by audience into three sections. Business Automation
 
 | Section | Classic (`index.html`) | Terminal (`v2/index.html`) | What belongs there |
 | --- | --- | --- | --- |
-| **Business Automation** | `#projects` → `#projectsGrid` | `#automation` → `#automationList` | Systems built for a business or client (ordering bots, support bots, outreach) |
 | **AI Education** | `#ai-education` | `#education` | Teaching material, such as the Bangla Transformer course |
 | **Side Projects** | `#side-projects` → `#sideProjectsGrid` | `#side-projects` → `#sideProjectsList` | Personal projects built to learn |
+| **Business Automation** | `#projects` → `#projectsGrid` | `#automation` → `#automationList` | Systems built for a business or client (ordering bots, support bots, outreach) |
 
 Adding a project means adding the card to the matching track in **both** editions. Each card has a plain-language description for any visitor, followed by a short "How it works" line for developers (`.project-how` in classic, `.proj-how` in terminal). Keep the `data-category` attribute (`ai`, `automation`, `data`) — the terminal edition prints it in `ls`. In the terminal edition, also bump the static `total N` line above the carousel. No JS changes are needed: `ls automation` / `ls side-projects` read the cards from the DOM.
 
