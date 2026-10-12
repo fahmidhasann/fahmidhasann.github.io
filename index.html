@@ -170,7 +170,7 @@
 
           <div class="hero-cta hero-entrance">
             <a href="#side-projects" class="btn btn-primary">View Projects</a>
-            <button type="button" class="btn btn-call-hero" id="heroBookCallBtn" aria-haspopup="dialog" aria-controls="calPopup">
+            <button type="button" class="btn btn-call-hero" id="heroBookCallBtn" hidden aria-haspopup="dialog" aria-controls="calPopup">
               <i class="fas fa-calendar-check" aria-hidden="true"></i> Book a Call
             </button>
             <a href="#contact" class="btn btn-secondary">Start a Project</a>
@@ -772,7 +772,7 @@
         </header>
 
         <!-- Book a Call Featured Banner -->
-        <div class="call-banner" id="book-a-call">
+        <div class="call-banner" id="book-a-call" hidden>
           <div class="call-banner-body">
             <div class="call-banner-badge">
               <span class="live-dot" aria-hidden="true"></span>
@@ -804,7 +804,7 @@
           </div>
         </div>
 
-        <div class="contact-divider" aria-hidden="true">
+        <div class="contact-divider" aria-hidden="true" hidden>
           <span>Or send a direct message below</span>
         </div>
 
@@ -946,7 +946,7 @@
           <li id="command-explainers" data-action="explainers" role="option" aria-selected="false">Tech &amp; AI Explainers (YouTube)</li>
           <li id="command-client" data-action="client-projects" role="option" aria-selected="false">Client Projects (Videos)</li>
           <li id="command-contact" data-action="contact" role="option" aria-selected="false">Contact</li>
-          <li id="command-book-call" data-action="book-a-call" role="option" aria-selected="false">Book a Call (Google Meet)</li>
+          <!-- Booking hidden for now: <li id="command-book-call" data-action="book-a-call" role="option" aria-selected="false">Book a Call (Google Meet)</li> -->
           <li id="command-cv" data-action="cv" role="option" aria-selected="false">Download CV / Résumé (PDF)</li>
           <li id="command-dark-mode" data-action="dark-mode" role="option" aria-selected="false">Toggle Dark Mode</li>
         </ul>

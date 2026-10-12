@@ -948,6 +948,8 @@
     });
   }
 
+  const BOOKING_ENABLED = false;
+
   const COMMANDS = {
     help: {
       summary: 'list every command',
@@ -1065,7 +1067,7 @@
           printLine('open: which section? try: open automation', 'is-err');
           return;
         }
-        if (target === 'call' || target === 'book' || target === 'schedule' || target === 'book-a-call') {
+        if (BOOKING_ENABLED && (target === 'call' || target === 'book' || target === 'schedule' || target === 'book-a-call')) {
           openCalPopup(dom.prompt);
           printLine('→ opening cal.com booking modal', 'is-ok');
           return;
@@ -1265,6 +1267,9 @@
       }
     }
   };
+
+  // Booking (cal.com) is hidden for now. Set BOOKING_ENABLED to true to bring it back.
+  if (!BOOKING_ENABLED) ['call', 'book', 'schedule', 'cal'].forEach((name) => delete COMMANDS[name]);
 
   /* --------------------------------------------------------------------------
      Prompt engine
