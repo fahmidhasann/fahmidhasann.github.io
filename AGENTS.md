@@ -4,7 +4,8 @@
 - `/lab/` — **Lab** (`lab/index.html`, `lab/lab.css`, `lab/lab.js`): the tech/AI portfolio (journey, AI education, side projects, business automation, contact). This replaces the old classic edition; creative work now lives only in the Studio.
 - `/v2/` — Terminal edition, kept as an easter egg linked from the Lab footer. Its "Classic" switch now points to `/lab/`.
 - Studio — separate repo `fahmidhasann/video-editor-portfolio` (films, reels, motion, explainers, photos).
-- `assets/brand.css` — shared tokens (Instrument Serif, Inter Tight, JetBrains Mono; Studio gold `#e3ad62`, Lab phosphor `#8fe3b4`). Keep in step with the Studio's `styles.css`.
+- `assets/brand.css` — shared tokens (Instrument Serif, Inter Tight, JetBrains Mono), the Hub · Studio · Lab switcher and the theme toggle. Keep in step with the Studio's `styles.css`.
+- **Themes (Oct 2026):** Light "paper" is the default for everyone (`:root`); Dim is `:root[data-theme="dim"]`. Never pure white/black. Light: paper `#f4efe6`, text `#2a2520`, muted `#625a50`, Studio amber `#8a5a16`, Lab sage `#2c6650`. Dim: `#24211d` / `#e6dfd3`, Studio `#e0a95c`, Lab `#8fd3ac`. Use the tokens (`--ink-rgb`/`--paper-rgb` for hairlines and translucent bars), never hard-coded dark colours. `assets/theme.js` (identical copy at the Studio's `theme.js`) is loaded *without* defer right after `<meta name="theme-color">` so the theme lands before first paint; the choice is shared across all three under `localStorage['fh-theme']`. Video players stay on a dark stage in both themes.
 - No inline scripts (Vercel CSP); no Font Awesome / GSAP / particles in Hub or Lab.
 
 The sections below describe the retired classic edition and the Terminal edition; for the Lab, add project cards straight into `lab/index.html` using the `.pcard` markup.

@@ -4,20 +4,35 @@
    styles.css; keep the two in step when changing anything here.
    ========================================================================== */
 
+/* Light "paper" is the default for every visitor; [data-theme="dim"] is the
+   softened warm-gray alternative. Neither uses pure white or pure black.
+   assets/theme.js sets data-theme on <html> before first paint.            */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
   /* Neutrals (shared with Studio) */
-  --text: #f2ece2;
-  --text-soft: #d9d2c6;
-  --muted: #a39c91;
-  --faint: #8a847a;
+  --paper: #f4efe6;           /* page */
+  --paper-2: #ede6da;         /* alternate band */
+  --surface: #faf6ef;         /* raised cards */
+  --surface-2: #f6f1e8;
+  --text: #2a2520;
+  --text-soft: #463f37;
+  --muted: #625a50;
+  --faint: #6e655a;
+  --ink-rgb: 42, 37, 32;      /* for hairlines: rgba(var(--ink-rgb), .12) */
+  --paper-rgb: 244, 239, 230; /* for translucent bars and scrims */
+  --on-accent: #fbf6ee;       /* text on an accent-filled button */
+  --shadow: 0 24px 60px -34px rgba(60, 44, 24, .35);
 
-  /* The two worlds */
-  --studio: #e3ad62;          /* warm gold — Studio */
-  --studio-bg: #0c0b0a;
-  --lab: #8fe3b4;             /* soft phosphor — Lab */
-  --lab-bg: #090c0b;
+  /* The two worlds — deepened so they read on cream */
+  --studio: #8a5a16;          /* amber / ochre — Studio (text-safe) */
+  --studio-bright: #c08a3e;   /* decorative dots and lines */
+  --studio-bg: #f1e9dc;
+  --studio-rgb: 192, 138, 62;
+  --lab: #2c6650;             /* deep sage — Lab (text-safe) */
+  --lab-bright: #4f9a7a;
+  --lab-bg: #eef0e8;
+  --lab-rgb: 79, 154, 122;
 
   --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -28,6 +43,29 @@
   --radius: 18px;
   --ease: cubic-bezier(.22, 1, .36, 1);
 }
+:root[data-theme="dim"] {
+  color-scheme: dark;
+  --paper: #24211d;
+  --paper-2: #292520;
+  --surface: #2d2925;
+  --surface-2: #322d28;
+  --text: #e6dfd3;
+  --text-soft: #d2c9bc;
+  --muted: #a69d90;
+  --faint: #9c9386;
+  --ink-rgb: 230, 223, 211;
+  --paper-rgb: 36, 33, 29;
+  --on-accent: #1f1a14;
+  --shadow: 0 24px 60px -30px rgba(10, 8, 6, .6);
+  --studio: #e0a95c;
+  --studio-bright: #e0a95c;
+  --studio-bg: #26221d;
+  --studio-rgb: 224, 169, 92;
+  --lab: #8fd3ac;
+  --lab-bright: #8fd3ac;
+  --lab-bg: #222421;
+  --lab-rgb: 143, 211, 172;
+}
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -37,6 +75,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -54,7 +93,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .skip-link {
   position: absolute; left: 1rem; top: -4rem; z-index: 100;
   padding: .6rem 1rem; border-radius: 999px;
-  background: var(--text); color: #111; font-weight: 600; text-decoration: none;
+  background: var(--text); color: var(--paper); font-weight: 600; text-decoration: none;
   transition: top .2s var(--ease);
 }
 .skip-link:focus { top: 1rem; }
@@ -78,4 +117,51 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+::selection { background: rgba(var(--accent-rgb, var(--studio-rgb)), .3); color: var(--text); }
+
+/* ---------- Theme toggle: Light / Dim (same block in Hub, Lab and Studio) ---------- */
+.theme-toggle {
+  position: relative; z-index: 3; flex: none;
+  display: inline-grid; place-items: center; width: 2.35rem; height: 2.35rem; padding: 0;
+  border-radius: 50%; border: 1px solid rgba(var(--ink-rgb), .2);
+  background: rgba(var(--paper-rgb), .55); color: var(--text); cursor: pointer;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: border-color .25s, background .25s, color .25s;
+}
+.theme-toggle:hover { border-color: rgba(var(--ink-rgb), .42); background: rgba(var(--paper-rgb), .85); }
+.theme-toggle svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.theme-toggle .tt-sun, [data-theme="dim"] .theme-toggle .tt-moon { display: none; }
+[data-theme="dim"] .theme-toggle .tt-sun { display: block; }
+
+/* ---------- Worlds switcher: Hub · Studio · Lab (same block in Hub, Lab and Studio) ---------- */
+.worlds {
+  position: relative; z-index: 3;
+  display: inline-flex; align-items: center; gap: 2px; padding: 3px;
+  border-radius: 999px; border: 1px solid rgba(var(--ink-rgb), .16);
+  background: rgba(var(--paper-rgb), .6);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+}
+.worlds a {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .38rem .8rem; border-radius: 999px;
+  font-size: .82rem; font-weight: 500; line-height: 1; letter-spacing: 0;
+  color: var(--muted); text-decoration: none;
+  transition: color .25s, background .25s;
+}
+.worlds a:hover { color: var(--text); background: rgba(var(--ink-rgb), .07); }
+.worlds svg { width: 13px; height: 13px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.worlds .w-dot { width: 6px; height: 6px; border-radius: 50%; flex: none; }
+.worlds .w-studio .w-dot { background: var(--studio-bright); }
+.worlds .w-lab .w-dot { background: var(--lab-bright); }
+.worlds a[aria-current="page"] { color: var(--on-accent); }
+.worlds .w-hub[aria-current="page"] { background: var(--text); color: var(--paper); }
+.worlds .w-studio[aria-current="page"] { background: var(--studio); }
+.worlds .w-lab[aria-current="page"] { background: var(--lab); }
+.worlds a[aria-current="page"] .w-dot { background: currentColor; opacity: .6; }
+@media (max-width: 520px) {
+  .worlds a { padding: .4rem .62rem; font-size: .78rem; }
+  .worlds .w-hub span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 }
