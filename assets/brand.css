@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Shared brand layer — Hub (/) and Lab (/lab/).
+   Studio (video-editor-portfolio) uses the same type and neutrals in its own
+   styles.css; keep the two in step when changing anything here.
+   ========================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Neutrals (shared with Studio) */
+  --text: #f2ece2;
+  --text-soft: #d9d2c6;
+  --muted: #a39c91;
+  --faint: #8a847a;
+
+  /* The two worlds */
+  --studio: #e3ad62;          /* warm gold — Studio */
+  --studio-bg: #0c0b0a;
+  --lab: #8fe3b4;             /* soft phosphor — Lab */
+  --lab-bg: #090c0b;
+
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: "Inter Tight", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+  --radius: 18px;
+  --ease: cubic-bezier(.22, 1, .36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; }
+button, input, textarea { font: inherit; color: inherit; }
+h1, h2, h3, h4, p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip-link {
+  position: absolute; left: 1rem; top: -4rem; z-index: 100;
+  padding: .6rem 1rem; border-radius: 999px;
+  background: var(--text); color: #111; font-weight: 600; text-decoration: none;
+  transition: top .2s var(--ease);
+}
+.skip-link:focus { top: 1rem; }
+
+:focus-visible { outline: 2px solid var(--accent, var(--text)); outline-offset: 3px; border-radius: 4px; }
+
+.container { width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -199,12 +199,12 @@
 
   function goClassic() {
     rememberEdition('classic');
-    window.location.assign('/');
+    window.location.assign('/lab/');
   }
 
   function isCurrentEditionPath(edition) {
     const path = window.location.pathname.replace(/\/+$/, '') || '/';
-    if (edition === 'classic') return path === '' || path === '/' || path.endsWith('/index.html');
+    if (edition === 'classic') return path === '/lab' || path.startsWith('/lab/');
     if (edition === 'terminal') return path === '/v2' || path.endsWith('/v2') || path.includes('/v2/');
     return false;
   }
@@ -962,12 +962,12 @@
         });
         printGap();
         printLine('tab completes · ↑ ↓ walks history · ⌘K or ctrl+K focuses the prompt', 'is-dim');
-        printLine('tip: type classic (or use Classic | Terminal above) to leave this edition', 'is-dim');
+        printLine('tip: type classic (or use Lab | Terminal above) to leave this edition', 'is-dim');
       }
     },
 
     classic: {
-      summary: 'open the classic portfolio edition',
+      summary: 'open the Lab (classic) edition',
       run() {
         printLine('switching to classic edition...', 'is-ok');
         goClassic();
@@ -1473,7 +1473,7 @@
       `> loading projects (${projects}) ................ [ ok ]`,
       `> loading creative work (${films}) ........... [ ok ]`,
       '> starting shell ...................... [ ok ]',
-      '> tip: type classic — or use Classic | Terminal above',
+      '> tip: type classic — or use Lab | Terminal above',
       'ready.'
     ];
 

@@ -1,3 +1,14 @@
+# Site map (Oct 2026 — Hub + Lab)
+
+- `/` — **Hub** (`index.html`, `hub.css`, `hub.js`): two doors, Studio and Lab, plus "Where they meet". `hub.js` forwards old one-page anchors (`/#projects`, `/#videos` …) to their new homes.
+- `/lab/` — **Lab** (`lab/index.html`, `lab/lab.css`, `lab/lab.js`): the tech/AI portfolio (journey, AI education, side projects, business automation, contact). This replaces the old classic edition; creative work now lives only in the Studio.
+- `/v2/` — Terminal edition, kept as an easter egg linked from the Lab footer. Its "Classic" switch now points to `/lab/`.
+- Studio — separate repo `fahmidhasann/video-editor-portfolio` (films, reels, motion, explainers, photos).
+- `assets/brand.css` — shared tokens (Instrument Serif, Inter Tight, JetBrains Mono; Studio gold `#e3ad62`, Lab phosphor `#8fe3b4`). Keep in step with the Studio's `styles.css`.
+- No inline scripts (Vercel CSP); no Font Awesome / GSAP / particles in Hub or Lab.
+
+The sections below describe the retired classic edition and the Terminal edition; for the Lab, add project cards straight into `lab/index.html` using the `.pcard` markup.
+
 # AGENTS.md
 
 This file is the single source of truth for coding agents working in this repository. `CLAUDE.md` points here.
