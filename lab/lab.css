@@ -231,13 +231,13 @@ html:has(.lab) { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-
 .rail-controls[hidden] { display: none !important; }
 
 .rail {
-  display: grid; grid-auto-flow: column; grid-auto-columns: minmax(300px, calc((100% - 2 * 1.25rem) / 3));
+  display: grid; grid-auto-flow: column; grid-auto-columns: max(300px, calc((100% - 2 * 1.25rem) / 3));
   gap: 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
   scrollbar-width: none; padding-bottom: .25rem;
 }
 .rail::-webkit-scrollbar { display: none; }
 .rail > li { scroll-snap-align: start; min-width: 0; }
-.rail-videos { grid-auto-columns: minmax(260px, calc((100% - 3 * 1.25rem) / 4)); }
+.rail-videos { grid-auto-columns: max(260px, calc((100% - 3 * 1.25rem) / 4)); }
 
 /* video cards */
 .vcard { display: flex; flex-direction: column; gap: .6rem; height: 100%; text-decoration: none; }
@@ -362,8 +362,8 @@ html:has(.lab) { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
-  .rail { grid-auto-columns: minmax(290px, calc((100% - 1.25rem) / 2)); }
-  .rail-videos { grid-auto-columns: minmax(250px, calc((100% - 2 * 1.25rem) / 3)); }
+  .rail { grid-auto-columns: max(290px, calc((100% - 1.25rem) / 2)); }
+  .rail-videos { grid-auto-columns: max(250px, calc((100% - 2 * 1.25rem) / 3)); }
 }
 @media (max-width: 900px) {
   .nav-links { position: fixed; inset: var(--header-h) 0 auto 0; flex-direction: column; align-items: stretch; gap: 0;
