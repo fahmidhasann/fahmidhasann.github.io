@@ -485,6 +485,19 @@
         }
       });
       if (fine) el.addEventListener('pointerenter', go);
+      // a generous, invisible tap area around each word (the words are small on phones)
+      const left = i ? (xs[i - 1] + xs[i]) / 2 : xs[i] - 22;
+      const right = i < xs.length - 1 ? (xs[i] + xs[i + 1]) / 2 : xs[i] + 30;
+      const pad = document.createElementNS(ns, 'rect');
+      pad.setAttribute('class', 'attn-tap');
+      pad.setAttribute('x', left.toFixed(1));
+      pad.setAttribute('y', '168');
+      pad.setAttribute('width', (right - left).toFixed(1));
+      pad.setAttribute('height', '50');
+      pad.setAttribute('aria-hidden', 'true');
+      pad.addEventListener('click', go);
+      if (fine) pad.addEventListener('pointerenter', go);
+      el.parentNode.appendChild(pad);
     });
     draw(current, false);
   }

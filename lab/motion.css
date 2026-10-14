@@ -7,6 +7,7 @@
    ========================================================== */
 
 /* ---------- Attention playground (always on, even without motion) ---------- */
+.attn-tap { fill: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .attn-pick { cursor: pointer; transition: fill .3s var(--ease); outline: none; }
 .attn-pick:hover:not(.attn-word-focus):not(.attn-word-hit) { fill: var(--text); }
 .attn-pick:focus-visible { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; }

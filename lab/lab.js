@@ -34,6 +34,15 @@
   if (toggle && menu) {
     toggle.addEventListener('click', () => setMenu(!header.classList.contains('is-open')));
     menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+    // tap outside the open menu, or scroll the page away, closes it
+    document.addEventListener('click', (e) => {
+      if (header.classList.contains('is-open') && !header.contains(e.target)) setMenu(false);
+    });
+    let openY = 0;
+    toggle.addEventListener('click', () => { openY = window.scrollY; });
+    window.addEventListener('scroll', () => {
+      if (header.classList.contains('is-open') && Math.abs(window.scrollY - openY) > 60) setMenu(false);
+    }, { passive: true });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
     window.matchMedia('(min-width: 901px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
   }
