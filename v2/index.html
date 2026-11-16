@@ -252,6 +252,28 @@
               <button class="carousel-btn carousel-btn-prev" type="button" aria-label="Previous side projects" disabled>‹</button>
               <div class="carousel-viewport">
                 <section class="projlist carousel-track" id="sideProjectsList" aria-roledescription="carousel" aria-label="Side projects" tabindex="0">
+                  <article class="proj reveal" id="project-plantdoc" data-category="ai" data-slug="plantdoc">
+                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">plantdoc-rag.ts</span></p>
+                    <figure class="asciiframe">
+                      <div class="asciiframe-media">
+                        <img src="../assets/project/plantdoc-chatbot.jpeg" alt="PlantDoc — Plant Disease Q&amp;A Chatbot" width="1280" height="853" loading="lazy" decoding="async">
+                      </div>
+                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ plantdoc-chatbot.jpeg</figcaption>
+                    </figure>
+                    <div class="proj-text">
+                      <h3 class="proj-title">PlantDoc — Multimodal Plant Pathology AI</h3>
+                      <p class="proj-desc">Ask about a plant disease in English or Bangla, or upload a leaf photo. Answers come from a 948-page plant pathology textbook and cite the page they used, and the citation opens the passage so it can be checked.</p>
+                      <p class="proj-how"><span class="proj-how-label">// how it works</span> The whole textbook sits in Pinecone as about 2,700 page-tagged passages, searched two ways at once — by meaning and by exact term, so binomials and chemical names match — then reranked by a cross-encoder before Gemini answers from the survivors and streams it back.</p>
+                      <ul class="tags" aria-label="Stack">
+                        <li>Next.js</li><li>Gemini Flash</li><li>Pinecone</li><li>Hybrid search</li><li>Reranking</li>
+                      </ul>
+                      <div class="proj-actions">
+                        <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
+                        <a href="https://plantdoc-ai-seven.vercel.app" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
+                      </div>
+                    </div>
+                  </article>
+
                   <article class="proj reveal" id="project-krishoker-kotha" data-category="ai" data-slug="krishoker-kotha">
                     <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">krishoker-kotha.tsx</span></p>
                     <figure class="asciiframe">
@@ -291,28 +313,6 @@
                       <div class="proj-actions">
                         <a href="https://github.com/fahmidhasann/Chashi-Bondhu" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
                         <a href="https://chashi-bondhu.vercel.app" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
-                      </div>
-                    </div>
-                  </article>
-
-                  <article class="proj reveal" id="project-plantdoc" data-category="ai" data-slug="plantdoc">
-                    <p class="proj-stat" aria-hidden="true">-rw-r--r--  fahmid  ai          <span class="proj-file">plantdoc-rag.ts</span></p>
-                    <figure class="asciiframe">
-                      <div class="asciiframe-media">
-                        <img src="../assets/project/plantdoc-chatbot.jpeg" alt="PlantDoc — Plant Disease Q&amp;A Chatbot" width="1280" height="853" loading="lazy" decoding="async">
-                      </div>
-                      <figcaption class="asciiframe-cap" aria-hidden="true">└─ plantdoc-chatbot.jpeg</figcaption>
-                    </figure>
-                    <div class="proj-text">
-                      <h3 class="proj-title">PlantDoc — Multimodal Plant Pathology AI</h3>
-                      <p class="proj-desc">Ask about a plant disease in English or Bangla, or upload a leaf photo. Answers come from a 948-page plant pathology textbook and cite the page they used, so they can be checked.</p>
-                      <p class="proj-how"><span class="proj-how-label">// how it works</span> The whole textbook sits in Pinecone as about 2,700 page-tagged passages. A question or leaf photo pulls up the closest passages, and Gemini 3.8 Flash answers from them with page numbers.</p>
-                      <ul class="tags" aria-label="Stack">
-                        <li>Next.js</li><li>Gemini 3.8 Flash</li><li>Pinecone</li><li>Multimodal RAG</li>
-                      </ul>
-                      <div class="proj-actions">
-                        <a href="https://github.com/fahmidhasann/PlantDoc-RAG-ChatBot" target="_blank" rel="noopener noreferrer" class="tbtn">view-source →</a>
-                        <a href="https://plantdoc-ai-seven.vercel.app" target="_blank" rel="noopener noreferrer" class="tbtn tbtn-primary">live-demo →</a>
                       </div>
                     </div>
                   </article>
